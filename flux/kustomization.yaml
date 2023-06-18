@@ -5,3 +5,4 @@ resources:
   - ./flux.yaml
   - ./FluxGitRepo.yaml
   - ./helmRepos
+  - ./cluster-apps.yaml
