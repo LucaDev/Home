@@ -4,4 +4,5 @@ kind: Kustomization
 resources:
   - ./kubernetes-sigs-external-dns.yaml
   - ./kubernetes-sigs-feature-discovery.yaml
+  - ./kubernetes-sigs-metrics-server.yaml
   - ./hwameistor.yaml
