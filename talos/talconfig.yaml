@@ -1,0 +1,17 @@
+clusterName: home-cluster
+talosVersion: v1.4.5
+kubernetesVersion: v1.27.2
+endpoint: https://192.168.1.69:6443
+domain: cluster.local
+allowSchedulingOnMasters: true
+additionalApiServerCertSans:
+  - home-cluster.local
+nodes:
+  - hostname: home-master
+    ipAddress: 192.168.1.69
+    installDiskSelector:
+      model: Samsung SSD 840
+      busPath: /pci0000:00/0000:00:1f.2/ata3/host2/target2:0:0/2:0:0:0/
+    controlPlane: true
+    nodeLabels:
+      location: home

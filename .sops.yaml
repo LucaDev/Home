@@ -1,0 +1,7 @@
+creation_rules:
+  - path_regex: .*\.sops\.ya?ml
+    # Laptop
+    # Flux
+    age: >-
+      age1aslwudntjj2qt6cqcxrupnw86tzuxazlu3rxu947zfz9a856293qankprr,
+      age1tzw4jxxswsztmd03554czgk6fjkhl9t6ajvzf4fe52ws496k9q4qpcd2gm
