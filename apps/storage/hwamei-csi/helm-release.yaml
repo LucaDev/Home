@@ -19,8 +19,8 @@ spec:
       - kustomize:
         patches:
           - patch: |
-              - op: add
-                path: /spec/template/spec/containers/1/volumeMounts/6/mountPath
+              - op: replace
+                path: /spec/template/spec/volumes/6/path
                 value: /var/lib/hwameistor-ssh
             target:
               kind: DaemonSet
