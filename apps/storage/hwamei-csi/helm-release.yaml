@@ -20,7 +20,7 @@ spec:
         patches:
           - patch: |
               - op: replace
-                path: /spec/template/spec/volumes/6/hostpath/path
+                path: /spec/template/spec/volumes/6/hostPath/path
                 value: /var/lib/hwameistor-ssh
             target:
               kind: DaemonSet
