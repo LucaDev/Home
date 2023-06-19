@@ -17,11 +17,11 @@ spec:
       interval: 30m
   postRenderers:
     - kustomize:
-      patches:
-        - patch: |
-            - op: replace
-              path: /spec/template/spec/volumes/6/hostPath/path
-              value: /var/lib/hwameistor-ssh
-          target:
-            kind: DaemonSet
-            name: hwameistor-local-storage
+        patches:
+          - patch: |
+              - op: replace
+                path: /spec/template/spec/volumes/6/hostPath/path
+                value: /var/lib/hwameistor-ssh
+            target:
+              kind: DaemonSet
+              name: hwameistor-local-storage
