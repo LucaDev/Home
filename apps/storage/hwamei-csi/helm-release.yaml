@@ -15,3 +15,13 @@ spec:
         name: hwameistor
         namespace: flux-system
       interval: 30m
+    postRenderers:
+      - kustomize:
+        patches:
+          - patch: |
+              - op: add
+                path: /spec/template/spec/containers/0/volumeMounts/6/mountPath/-
+                value: /var/lib/hwameistor-ssh
+            target:
+              kind: DaemonSet
+              name: "hwameistor-local-storage"
