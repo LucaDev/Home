@@ -34,7 +34,7 @@ controlPlane:
             - name: PodSecurity
               configuration:
                 exemptions:
-                  namespaces: [hwameistor]
+                  namespaces: [hwameistor, system]
     - |-
       cluster:
         proxy:
