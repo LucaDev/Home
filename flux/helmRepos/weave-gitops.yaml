@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: hwameistor
+  name: weave-gitops
   namespace: flux-system
 spec:
   interval: 30m
-  url: https://hwameistor.io/hwameistor
+  url: https://helm.gitops.weave.works
   timeout: 3m

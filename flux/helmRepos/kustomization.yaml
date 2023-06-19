@@ -8,3 +8,4 @@ resources:
   - ./hwameistor.yaml
   - ./cilium.yaml
   - ./ext-postgres-operator.yaml
+  - ./weave-gitops.yaml

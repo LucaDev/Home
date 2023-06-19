@@ -39,3 +39,14 @@ controlPlane:
       cluster:
         proxy:
           disabled: true
+    - |-
+      machine:
+        kubelet:
+          extraMounts:
+            - destination: /root/.ssh
+              type: bind
+              source: /tmp/rootssh
+              options:
+                - bind
+                - rshared
+                - rw
