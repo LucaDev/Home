@@ -6,3 +6,5 @@ resources:
   - ./kubernetes-sigs-feature-discovery.yaml
   - ./kubernetes-sigs-metrics-server.yaml
   - ./hwameistor.yaml
+  - ./cilium.yaml
+  - ./ext-postgres-operator

@@ -1,11 +1,20 @@
 clusterName: home-cluster
+
 talosVersion: v1.4.5
 kubernetesVersion: v1.27.2
+
+allowSchedulingOnMasters: true
+
 endpoint: https://192.168.1.69:6443
 domain: cluster.local
-allowSchedulingOnMasters: true
 additionalApiServerCertSans:
   - home-cluster.local
+additionalMachineCertSans:
+  - home-cluster.local
+  - 192.168.1.69
+cniConfig:
+  name: none
+
 nodes:
   - hostname: home-master
     ipAddress: 192.168.1.69
@@ -15,3 +24,18 @@ nodes:
     controlPlane: true
     nodeLabels:
       location: home
+
+controlPlane:
+  patches:
+    - |-
+      cluster:
+        apiServer:
+          admissionControl:
+            - name: PodSecurity
+              configuration:
+                exemptions:
+                  namespaces: [hwameistor]
+    - |-
+      cluster:
+        proxy:
+          disabled: true
