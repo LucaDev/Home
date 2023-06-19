@@ -2,13 +2,13 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: hwameistor-operator
+  name: hwameistor
   namespace: storage
 spec:
   interval: 30m
   chart:
     spec:
-      chart: hwameistor-operator
+      chart: hwameistor
       version: 0.10.4
       sourceRef:
         kind: HelmRepository
