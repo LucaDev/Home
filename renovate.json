@@ -1,6 +1,22 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
-  ]
+    "config:base",
+    ":dependencyDashboard",
+    ":disableRateLimiting",
+    "docker:enableMajor",
+    "docker:pinDigests",
+    ":automergeDigest",
+    ":enablePreCommit"
+  ],
+  "timezone": "Europe/Berlin",
+  "flux": {
+    "fileMatch": ["apps/.+\\.ya?ml$", "bootstrap/.+\\.ya?ml$", "flux/.+\\.ya?ml$"]
+  },
+  "helm-values": {
+    "fileMatch": ["apps/.+\\.ya?ml$", "bootstrap/.+\\.ya?ml$", "flux/.+\\.ya?ml$"]
+  },
+  "kubernetes": {
+    "fileMatch": ["apps/.+\\.ya?ml$", "bootstrap/.+\\.ya?ml$", "flux/.+\\.ya?ml$"]
+  }
 }
