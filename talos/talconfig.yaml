@@ -9,9 +9,9 @@ endpoint: https://192.168.1.69:6443
 domain: cluster.local
 additionalApiServerCertSans:
   - home-cluster.local
+  - 192.168.1.69
 additionalMachineCertSans:
   - home-cluster.local
-  - 192.168.1.69
 cniConfig:
   name: none
 
