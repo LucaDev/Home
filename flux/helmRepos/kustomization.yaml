@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - ./kubernetes-sigs-external-dns.yaml
   - ./kubernetes-sigs-feature-discovery.yaml
-  - ./kubernetes-sigs-metrics-server.yaml
+  - ./prometheus-community.yaml
   - ./hwameistor.yaml
   - ./cilium.yaml
   - ./ext-postgres-operator.yaml

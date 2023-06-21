@@ -11,6 +11,7 @@ additionalApiServerCertSans:
   - home-cluster.local
   - 192.168.1.69
 additionalMachineCertSans:
+  - 192.168.1.69
   - home-cluster.local
 cniConfig:
   name: none
@@ -34,19 +35,15 @@ controlPlane:
             - name: PodSecurity
               configuration:
                 exemptions:
-                  namespaces: [hwameistor, system]
+                  namespaces: [hwameistor]
     - |-
       cluster:
         proxy:
           disabled: true
     - |-
       machine:
-        kubelet:
-          extraMounts:
-            - destination: /root/.ssh
-              type: bind
-              source: /tmp/rootssh
-              options:
-                - bind
-                - rshared
-                - rw
+        install:
+          extensions:
+            - image: ghcr.io/siderolabs/i915-ucode:20230310
+            - image: ghcr.io/siderolabs/intel-ucode:20230512
+    - "@../bootstrap/bootstrap.patch.yaml"
