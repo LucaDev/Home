@@ -15,4 +15,6 @@ spec:
         name: cilium
         namespace: flux-system
       interval: 30m
-  valuesFile: values.yaml
+  valuesFrom:
+    - kind: ConfigMap
+      name: cilium-values
