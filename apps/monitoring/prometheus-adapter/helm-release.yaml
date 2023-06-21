@@ -14,3 +14,6 @@ spec:
         kind: HelmRepository
         name: prometheus-community
         namespace: flux-system
+  values:
+    prometheus:
+      url: kube-prometheus-stack-prometheus.monitoring.svc.cluster.local
