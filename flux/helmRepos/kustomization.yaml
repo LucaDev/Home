@@ -9,3 +9,4 @@ resources:
   - ./cilium.yaml
   - ./ext-postgres-operator.yaml
   - ./weave-gitops.yaml
+  - ./grafana.yaml
