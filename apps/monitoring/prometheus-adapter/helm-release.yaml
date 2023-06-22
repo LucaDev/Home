@@ -16,4 +16,4 @@ spec:
         namespace: flux-system
   values:
     prometheus:
-      url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+      url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local
