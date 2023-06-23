@@ -15,3 +15,8 @@ spec:
         name: hwameistor
         namespace: flux-system
       interval: 30m
+  values:
+    localStorage:
+      member:
+        imageRepository: lucakroeger/hwamei-local-storage-test
+        tag: latest

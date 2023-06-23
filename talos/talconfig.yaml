@@ -25,6 +25,13 @@ nodes:
     controlPlane: true
     nodeLabels:
       location: home
+    patches:
+      - |-
+        machine:
+          disks:
+            - device: /dev/sda
+              partitions:
+                - mountpoint: /var/mnt/sda
 
 controlPlane:
   patches:
@@ -46,4 +53,3 @@ controlPlane:
           extensions:
             - image: ghcr.io/siderolabs/i915-ucode:20230310
             - image: ghcr.io/siderolabs/intel-ucode:20230512
-    - "@../bootstrap/bootstrap.patch.yaml"
