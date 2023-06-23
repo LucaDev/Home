@@ -18,5 +18,5 @@ spec:
   values:
     localStorage:
       member:
-        imageRepository: lucakroeger/hwamei-local-storage-test
+        imageRepository: docker.io/lucakroeger/hwamei-local-storage-test
         tag: latest
