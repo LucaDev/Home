@@ -20,3 +20,6 @@ spec:
       member:
         imageRepository: docker.io/lucakroeger/hwamei-local-storage-test
         tag: latest
+
+    storageClass:
+      enabled: false
