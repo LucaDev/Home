@@ -10,3 +10,4 @@ resources:
   - ./ext-postgres-operator.yaml
   - ./weave-gitops.yaml
   - ./grafana.yaml
+  - ./ingress-nginx.yaml

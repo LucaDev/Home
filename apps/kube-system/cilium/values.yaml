@@ -55,6 +55,3 @@ hubble:
 
 operator:
   replicas: 1
-
-gatewayAPI:
-  enabled: true
