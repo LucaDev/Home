@@ -50,7 +50,7 @@ hubble:
   ui:
     enabled: true
     ingress:
-      enabled: false
+      enabled: true
     rollOutPods: true
 
 operator:
