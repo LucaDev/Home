@@ -6,5 +6,5 @@ metadata:
   namespace: flux-system
 spec:
   interval: 30m
-  url: https://lucadev.github.io/helm-charts/
+  url: https://hwameistor.io/hwameistor
   timeout: 3m
