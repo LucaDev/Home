@@ -51,6 +51,8 @@ hubble:
     enabled: true
     ingress:
       enabled: true
+      hosts:
+        - hubble.home.lucadev.de
     rollOutPods: true
 
 operator:
