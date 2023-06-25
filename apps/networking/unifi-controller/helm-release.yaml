@@ -1,0 +1,78 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: unifi-controller
+  namespace: networking
+spec:
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  interval: 30m
+  values:
+    controller:
+      type: statefulset
+
+    image:
+      repository: docker.iolinuxserver/unifi-controller
+      tag: 7.4.156
+
+    service:
+      main:
+        type: NodePort
+        ports:
+          https:
+            port: 8443
+          stun:
+            port: 3478/udp
+          ap_discovery:
+            port: 10001/udp
+          http:
+            port: 8080
+          speedtest:
+            port: 6789
+
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: &host unifi.home.lucadev.de
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: "OnRootMismatch"
+      supplementalGroups:
+        - 44
+        - 109
+        - 65539
+
+    nodeSelector:
+      location: "home"
+
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256M
+      limits:
+        cpu: 1000m
+        memory: 1024M
+
+    volumeClaimTemplates:
+      - name: config
+        mountPath: /config
+        accessMode: ReadWriteOnce
+        size: 2Gi

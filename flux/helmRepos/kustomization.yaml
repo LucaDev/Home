@@ -11,3 +11,5 @@ resources:
   - ./weave-gitops.yaml
   - ./grafana.yaml
   - ./ingress-nginx.yaml
+  - ./bitnami.yaml
+  - ./bjw-s.yaml

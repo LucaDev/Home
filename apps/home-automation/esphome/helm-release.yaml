@@ -1,0 +1,78 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: esphome
+  namespace: home-automation
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+
+  values:
+    controller:
+      type: statefulset
+
+    image:
+      repository: ghcr.io/esphome/esphome
+      tag: 2023.6.2
+
+    service:
+      main:
+        ports:
+          http:
+            port: 6052
+
+    nodeSelector:
+      location: "home"
+
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: &host "esphome.home.lucadev.de"
+            paths:
+              - path: /
+        tls:
+          - hosts:
+              - *host
+
+    persistence:
+      secrets:
+        enabled: true
+        type: secret
+        name: esphome-secrets
+        mountPath: /config/secrets.yaml
+        subPath: secrets.yaml
+      esphome-cache:
+        enabled: true
+        type: emptyDir
+        mountPath: /config/.esphome
+
+    probes:
+      liveness:
+        enabled: false
+      readiness:
+        enabled: false
+      startup:
+        enabled: false
+
+    resources:
+      requests:
+        cpu: 5m
+        memory: 512M
+      limits:
+        memory: 1024M
+
+    volumeClaimTemplates:
+      - name: config
+        mountPath: /config
+        accessMode: ReadWriteOnce
+        size: 2Gi
