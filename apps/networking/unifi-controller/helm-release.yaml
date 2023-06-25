@@ -20,7 +20,7 @@ spec:
       type: statefulset
 
     image:
-      repository: docker.iolinuxserver/unifi-controller
+      repository: docker.io/linuxserver/unifi-controller
       tag: 7.4.156
 
     service:
