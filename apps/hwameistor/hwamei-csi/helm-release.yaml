@@ -18,3 +18,8 @@ spec:
   values:
     storageClass:
       enabled: false
+
+    local-storage:
+      hostPaths:
+        sshDir: /var/lib/hwameistor-ssh
+        drbdDir: /var/lib/hwameistor-drbd.d
