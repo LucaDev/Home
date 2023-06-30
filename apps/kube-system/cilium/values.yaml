@@ -1,6 +1,25 @@
 ipam:
   mode: kubernetes
 kubeProxyReplacement: strict
+
+rollOutCiliumPods: true
+localRedirectPolicy: true
+
+bgp:
+  enabled: false
+  announce:
+    loadbalancerIP: true
+    podCIDR: false
+
+bgpControlPlane:
+  enabled: true
+
+ingressController:
+  enabled: true
+  loadbalancerMode: shared
+
+autoDirectNodeRoutes: true
+
 securityContext:
   capabilities:
     ciliumAgent:
