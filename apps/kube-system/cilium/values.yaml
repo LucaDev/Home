@@ -18,6 +18,7 @@ ingressController:
   enabled: true
   loadbalancerMode: shared
 
+tunnel: "disabled"
 autoDirectNodeRoutes: true
 
 securityContext:
