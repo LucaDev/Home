@@ -24,7 +24,7 @@ spec:
 
       service:
         enabled: true
-        type: NodePort
+        type: LoadBalancer
 
       publishService:
         enabled: true
