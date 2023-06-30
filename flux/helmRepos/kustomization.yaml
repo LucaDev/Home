@@ -13,4 +13,3 @@ resources:
   - ./ingress-nginx.yaml
   - ./bitnami.yaml
   - ./bjw-s.yaml
-  - ./metallb.yaml
