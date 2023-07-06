@@ -13,3 +13,4 @@ resources:
   - ./ingress-nginx.yaml
   - ./bitnami.yaml
   - ./bjw-s.yaml
+  - ./longhorn.yaml

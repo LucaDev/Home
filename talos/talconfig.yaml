@@ -25,6 +25,7 @@ nodes:
     controlPlane: true
     nodeLabels:
       location: home
+      hwameistor.io/eviction: disable
 
 controlPlane:
   patches:

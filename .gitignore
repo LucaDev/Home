@@ -10,3 +10,6 @@ Thumbs.db
 
 # Kubernetes
 kubeconfig
+
+# JetBrains
+/.idea
