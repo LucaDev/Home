@@ -27,3 +27,4 @@ spec:
     etcd:
       persistence:
         enabled: false
+        storageClassName: manual
