@@ -14,3 +14,4 @@ resources:
   - ./bitnami.yaml
   - ./bjw-s.yaml
   - ./longhorn.yaml
+  - ./mayastor.yaml

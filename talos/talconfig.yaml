@@ -25,7 +25,7 @@ nodes:
     controlPlane: true
     nodeLabels:
       location: home
-      hwameistor.io/eviction: disable
+      openebs.io/engine: mayastor
 
 controlPlane:
   patches:
@@ -36,7 +36,7 @@ controlPlane:
             - name: PodSecurity
               configuration:
                 exemptions:
-                  namespaces: [hwameistor, monitoring]
+                  namespaces: [monitoring]
     - |-
       cluster:
         proxy:
@@ -49,18 +49,8 @@ controlPlane:
             - image: ghcr.io/siderolabs/intel-ucode:20230512
     - |-
       machine:
-        files:
-          - path: /etc/lvm/lvm.conf
-            permissions: 0o664
-            op: overwrite
-            content: |
-              backup {
-                backup_dir = /var/lib/lvm/backup
-                archive_dir = /var/lib/lvm/archive
-              }
-              activation {
-                use_mlockall = 1
-              }
+        sysctls:
+          vm.nr_hugepages: "1024"
     - |-
       machine:
         files:
