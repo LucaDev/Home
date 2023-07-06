@@ -18,3 +18,8 @@ spec:
   values:
     loki-stack:
       enabled: false
+
+    io_engine:
+      resources:
+        requests:
+          cpu: "500m"

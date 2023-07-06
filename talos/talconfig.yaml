@@ -36,7 +36,7 @@ controlPlane:
             - name: PodSecurity
               configuration:
                 exemptions:
-                  namespaces: [monitoring]
+                  namespaces: [mayastor, monitoring]
     - |-
       cluster:
         proxy:
