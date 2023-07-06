@@ -28,3 +28,4 @@ spec:
       persistence:
         enabled: false
         storageClassName: manual
+        replicaCount: 1
