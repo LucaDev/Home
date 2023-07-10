@@ -1,0 +1,40 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":dependencyDashboard",
+    ":disableRateLimiting",
+    "docker:enableMajor",
+    "docker:pinDigests",
+    ":automergeDigest",
+    ":enablePreCommit"
+  ],
+  "timezone": "Europe/Berlin",
+  "flux": {
+    "fileMatch": ["apps/.+\\.ya?ml$", "bootstrap/.+\\.ya?ml$", "flux/.+\\.ya?ml$"]
+  },
+  "helm-values": {
+    "fileMatch": ["apps/.+\\.ya?ml$", "bootstrap/.+\\.ya?ml$", "flux/.+\\.ya?ml$"]
+  },
+  "kubernetes": {
+    "fileMatch": ["apps/.+\\.ya?ml$", "bootstrap/.+\\.ya?ml$", "flux/.+\\.ya?ml$"]
+  },
+  "terraform": {
+    "fileMatch": ["terraform/.+\\.tf$"]
+  },
+  "regexManagers": [
+    {
+      "fileMatch": ["terraform/.+\\.tf$", "talos/.+\\.tf$"],
+      "matchStrings": ["\"talos_version\" {default = \"(?<currentValue>.*?)\"}\\n", "talosVersion: (?<currentValue>.*?)\\n"],
+      "depName": "siderolabs/talos",
+      "datasource": "github-releases"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
+    }
+  ]
+}

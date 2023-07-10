@@ -15,3 +15,5 @@ resources:
   - ./bjw-s.yaml
   - ./longhorn.yaml
   - ./mayastor.yaml
+  - ./tf-controller.yaml
+  - ./external-secrets.yaml
