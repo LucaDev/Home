@@ -26,8 +26,8 @@
     {
       "fileMatch": ["terraform/.+\\.tf$", "talos/.+\\.tf$"],
       "matchStrings": ["\"talos_version\" {default = \"(?<currentValue>.*?)\"}\\n", "talosVersion: (?<currentValue>.*?)\\n"],
-      "depName": "siderolabs/talos",
-      "datasource": "github-releases"
+      "depNameTemplate": "siderolabs/talos",
+      "datasourceTemplate": "github-releases"
     }
   ],
   "packageRules": [
