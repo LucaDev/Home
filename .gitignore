@@ -13,3 +13,6 @@ kubeconfig
 
 # JetBrains
 /.idea
+
+# TF
+.terraform/
