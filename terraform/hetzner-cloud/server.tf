@@ -1,4 +1,4 @@
-variable "talos_version" {default = "1.4.6"}
+variable "talos_version" {default = "v1.5.1"}
 
 variable "image" {
   type = string
