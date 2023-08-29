@@ -26,3 +26,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: github-repo
+  ignore: |
+    /apps/kube-system/*
