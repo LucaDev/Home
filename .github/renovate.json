@@ -22,14 +22,6 @@
   "terraform": {
     "fileMatch": ["terraform/.+\\.tf$"]
   },
-  "regexManagers": [
-    {
-      "fileMatch": ["terraform/.+\\.tf$", "talos/.+\\.tf$"],
-      "matchStrings": ["\"talos_version\" {default = \"(?<currentValue>.*?)\"}\\n", "talosVersion: (?<currentValue>.*?)\\n"],
-      "depNameTemplate": "siderolabs/talos",
-      "datasourceTemplate": "github-releases"
-    }
-  ],
   "packageRules": [
     {
       "matchUpdateTypes": ["patch"],
