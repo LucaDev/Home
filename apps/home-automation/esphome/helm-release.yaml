@@ -30,9 +30,6 @@ spec:
           http:
             port: 6052
 
-    nodeSelector:
-      location: "home"
-
     ingress:
       main:
         enabled: true
