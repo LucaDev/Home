@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 1.5.0
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -21,7 +21,7 @@ spec:
 
     image:
       repository: docker.io/linuxserver/unifi-controller
-      tag: 7.4.162
+      tag: 7.3.83
 
     service:
       main:
@@ -59,9 +59,6 @@ spec:
         - 44
         - 109
         - 65539
-
-    nodeSelector:
-      location: "home"
 
     resources:
       requests:
