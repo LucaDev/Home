@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: docker.io/linuxserver/unifi-controller
-      tag: 7.3.83
+      tag: 7.4.162
 
     service:
       main:
