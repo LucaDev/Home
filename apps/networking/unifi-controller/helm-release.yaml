@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.0
+      version: 1.5.1
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -51,14 +51,10 @@ spec:
               - *host
 
     podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
       fsGroupChangePolicy: "OnRootMismatch"
-      supplementalGroups:
-        - 44
-        - 109
-        - 65539
 
     resources:
       requests:
@@ -68,8 +64,16 @@ spec:
         cpu: 1000m
         memory: 1024M
 
-    volumeClaimTemplates:
-      - name: config
+    persistence:
+      data:
+        enabled: true
+        name: unifi-data
         mountPath: /config
+        type: pvc
         accessMode: ReadWriteOnce
-        size: 2Gi
+        size: 5Gi
+
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
