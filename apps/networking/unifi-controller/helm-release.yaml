@@ -16,9 +16,6 @@ spec:
         namespace: flux-system
   interval: 30m
   values:
-    controller:
-      type: statefulset
-
     image:
       repository: docker.io/linuxserver/unifi-controller
       tag: 7.3.83
