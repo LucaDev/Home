@@ -31,7 +31,7 @@ spec:
             port: 8443
           stun:
             port: 3478
-          ap_discovery:
+          apdiscovery:
             port: 10001
           http:
             port: 8080
