@@ -74,6 +74,6 @@ spec:
         size: 5Gi
 
     env:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/Berlin
+      PUID: "1000"
+      PGID: "1000"
+      TZ: Europe/Berlin
