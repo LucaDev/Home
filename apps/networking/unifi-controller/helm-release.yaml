@@ -23,20 +23,20 @@ spec:
       repository: docker.io/linuxserver/unifi-controller
       tag: 7.3.83
 
-#    service:
-#      main:
-#        type: NodePort
-#        ports:
-#          https:
-#            port: 8443
-#          stun:
-##            port: 3478/udp
-#          ap_discovery:
-#            port: 10001/udp
-#          http:
-#            port: 8080
-#          speedtest:
-#            port: 6789
+    service:
+      main:
+        type: NodePort
+        ports:
+          https:
+            port: 8443
+          stun:
+            port: 3478
+          ap_discovery:
+            port: 10001
+          http:
+            port: 8080
+          speedtest:
+            port: 6789
 
     ingress:
       main:
@@ -50,15 +50,15 @@ spec:
           - hosts:
               - *host
 
-#    podSecurityContext:
-#      runAsUser: 568
-#      runAsGroup: 568
-#      fsGroup: 568
-#      fsGroupChangePolicy: "OnRootMismatch"
-#      supplementalGroups:
-#        - 44
-#        - 109
-#        - 65539
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: "OnRootMismatch"
+      supplementalGroups:
+        - 44
+        - 109
+        - 65539
 
     resources:
       requests:
