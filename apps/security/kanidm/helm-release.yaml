@@ -36,7 +36,7 @@ spec:
       main:
         enabled: true
         hosts:
-          - host: &host "idm.lucadev.de"
+          - host: &host "idm.home.lucadev.de"
             paths:
               - path: /
                 pathType: Prefix
