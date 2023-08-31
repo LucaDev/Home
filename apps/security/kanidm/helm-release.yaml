@@ -30,7 +30,7 @@ spec:
         ports:
           https:
             port: 8443
-            type: HTTPS
+            protocol: HTTPS
 
     ingress:
       main:

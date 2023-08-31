@@ -26,7 +26,7 @@ spec:
         ports:
           http:
             port: 6052
-            type: HTTP
+            protocol: HTTP
 
     ingress:
       main:
