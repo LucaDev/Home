@@ -62,7 +62,6 @@ spec:
         name: kanidm-certs
         mountPath: /data/certs
 
-
     resources:
       requests:
         cpu: 50m
