@@ -13,3 +13,4 @@ resources:
   - ./bjw-s.yaml
   - ./tf-controller.yaml
   - ./external-secrets.yaml
+  - ./homepage.yaml
