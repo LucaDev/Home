@@ -50,6 +50,7 @@ spec:
         type: pvc
         name: data-kanidm
         size: 1Gi
+        accessMode: ReadWriteOnce
         mountPath: /data/persistent/
       config:
         enabled: true
