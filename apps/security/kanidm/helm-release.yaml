@@ -1,0 +1,72 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kanidm
+  namespace: security
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+
+  values:
+    controller:
+      replicas: 1
+      strategy: Recreate
+
+    image:
+      repository: kanidm/server
+      tag: 1.1.0-beta.13
+
+    service:
+      main:
+        ports:
+          https:
+            port: 8443
+            type: HTTPS
+
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: &host "idm.lucadev.de"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+
+    persistence:
+      data:
+        enabled: true
+        type: pvc
+        name: data-kanidm
+        size: 1Gi
+        mountPath: /data/persistent/
+      config:
+        enabled: true
+        type: configMap
+        name: kanidm-configuration
+        mountPath: /data/server.toml
+      certs:
+        enabled: true
+        type: configMap
+        name: kanidm-certs
+        mountPath: /data/certs
+
+
+    resources:
+      requests:
+        cpu: 50m
+        memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi

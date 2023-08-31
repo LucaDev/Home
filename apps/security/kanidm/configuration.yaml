@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kanidm-configuration
+data:
+  server.toml: |-
+    bindaddress = "[::]:8443"
+    trust_x_forward_for = true
+    db_path = "/data/persistent/kanidm.db"
+    tls_chain = "/data/certs/chain.pem"
+    tls_key = "/data/certs/key.pem"
+    log_level = "info"
+    domain = "idm.home.lucadev.de"
+    origin = "https://idm.home.lucadev.de"
+    [online_backup]
+    path = "/data/persistent/backups/"
+    schedule = "00 22 * * *"
+    # Number of backups to keep (default 7)
+    versions = 7

@@ -16,6 +16,9 @@ spec:
         namespace: flux-system
   interval: 30m
   values:
+    controller:
+      strategy: Recreate
+
     image:
       repository: docker.io/linuxserver/unifi-controller
       tag: 7.4.162
