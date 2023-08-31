@@ -26,10 +26,6 @@ spec:
       main:
         enabled: true
 
-    persistence:
-      logs:
-        enabled: false
-
     config:
       bookmarks:
         - Developer:
