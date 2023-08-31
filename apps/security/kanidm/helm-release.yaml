@@ -54,6 +54,7 @@ spec:
         mountPath: /data/persistent/
       config:
         enabled: true
+        type: custom
         volumeSpec:
           configMap:
             name: kanidm-configuration
@@ -70,7 +71,7 @@ spec:
           - path: key.pem
             mountPath: /data/certs/key.pem
           - path: chain.pem
-            mountPath: /certs/certs/chain.pem
+            mountPath: /data/certs/chain.pem
 
     resources:
       requests:
