@@ -22,7 +22,7 @@ spec:
       strategy: Recreate
 
     image:
-      repository: kanidm/server
+      repository: docker.io/kanidm/server
       tag: 1.1.0-beta.13
 
     service:
