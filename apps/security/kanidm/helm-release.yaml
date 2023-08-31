@@ -54,9 +54,12 @@ spec:
         mountPath: /data/persistent/
       config:
         enabled: true
-        type: configMap
-        name: kanidm-configuration
-        mountPath: /data/server.toml
+        volumeSpec:
+          configMap:
+            name: kanidm-configuration
+        subPath:
+          - path: server.toml
+            mountPath: /data/server.toml
       certs:
         enabled: true
         type: custom
