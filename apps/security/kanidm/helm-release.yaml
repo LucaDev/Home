@@ -28,7 +28,7 @@ spec:
     service:
       main:
         ports:
-          https:
+          http:
             port: 8443
             protocol: HTTPS
 
