@@ -59,9 +59,15 @@ spec:
         mountPath: /data/server.toml
       certs:
         enabled: true
-        type: configMap
-        name: kanidm-certs
-        mountPath: /data/certs
+        type: custom
+        volumeSpec:
+          configMap:
+            name: kanidm-certs
+        subPath:
+          - path: key.pem
+            mountPath: /data/certs/key.pem
+          - path: chain.pem
+            mountPath: /certs/certs/chain.pem
 
     resources:
       requests:
