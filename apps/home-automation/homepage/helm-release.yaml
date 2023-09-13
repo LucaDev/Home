@@ -17,7 +17,7 @@ spec:
         namespace: flux-system
   values:
     image:
-      tag: 0.6.29
+      tag: v0.6.29
 
     podAnnotations:
       reloader.stakater.com/auto: "true"
