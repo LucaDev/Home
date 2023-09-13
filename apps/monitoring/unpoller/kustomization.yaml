@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - ./external-secret.yaml
-  - ./helmrelease.yaml
+  - ./helm-release.yaml
