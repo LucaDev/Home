@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: security
 resources:
   - ./namespace.yaml
-  - ./kanidm
+#  - ./kanidm

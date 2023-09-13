@@ -4,7 +4,7 @@ resources:
   - ./namespace.yaml
   - ./prometheus-adapter
   - ./kube-prometheus-stack
-  - ./loki
-  - ./unpoller
-  - ./grafana
-  - ./promtail
+#  - ./loki
+#  - ./unpoller
+#  - ./grafana
+#  - ./promtail
