@@ -1,17 +1,14 @@
 ---
-apiVersion: kustomize.config.k8s.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
-resources:
-  - ./external-secret.yaml
-  - ./helm-release.yaml
-commonLabels:
-  app.kubernetes.io/name: node-red
-  app.kubernetes.io/instance: node-red
-configMapGenerator:
-  - name: node-red-configmap
-    files:
-      - settings.js
-generatorOptions:
-  disableNameSuffixHash: true
-  annotations:
-    kustomize.toolkit.fluxcd.io/substitute: disabled
+metadata:
+  name: cluster-apps-node-red
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: "./apps/home-automation/node-red/app"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-ops-kubernetes
+  wait: false # no flux ks dependents
