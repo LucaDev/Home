@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./jellyfin
-#  - ./paperless-ngx/ks.yaml
-#  - ./immich/ks.yaml
+  - ./paperless-ngx/ks.yaml
+  - ./immich/ks.yaml
 #  - ./frigate/ks.yaml
