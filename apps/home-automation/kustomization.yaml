@@ -4,6 +4,6 @@ resources:
   - ./namespace.yaml
   - ./esphome
   - ./homepage
-  - ./node-red/ks.yaml
-  - ./mosquitto
-  - ./homeassistant
+ # - ./node-red/ks.yaml
+ # - ./mosquitto
+ # - ./homeassistant
