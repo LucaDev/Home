@@ -49,7 +49,7 @@ spec:
             honor_timestamps: true
             static_configs:
               - targets:
-                  - http://pvanlage.local/metrics # ToDo
+                  - http://192.168.1.111/metrics # ToDo
 
         enableAdminAPI: true
         #retention: 10d
