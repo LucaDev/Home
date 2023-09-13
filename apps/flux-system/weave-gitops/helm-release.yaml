@@ -15,6 +15,9 @@ spec:
         kind: HelmRepository
         name: weave-gitops
   values:
+    podAnnotations:
+      reloader.stakater.com/auto: "true"
+
     logLevel: info
 
     adminUser:

@@ -1,0 +1,199 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  chart:
+    spec:
+      chart: grafana
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+        namespace: flux-system
+      version: 6.59.0
+  interval: 30m
+  timeout: 20m
+  values:
+    replicas: 1
+
+    dashboardProviders:
+      dashboardproviders.yaml:
+        apiVersion: 1
+        providers:
+          - name: default
+            disableDeletion: false
+            editable: true
+            folder: ""
+            options:
+              path: /var/lib/grafana/dashboards/default
+            orgId: 1
+            type: file
+          - name: node-exporter
+            disableDeletion: false
+            editable: true
+            folder: "node-exporter"
+            options:
+              path: /var/lib/grafana/dashboards/node-exporter
+            orgId: 1
+            type: file
+          - name: unpoller
+            disableDeletion: false
+            editable: true
+            folder: "UniFi Poller"
+            options:
+              path: /var/lib/grafana/dashboards/unpoller
+            orgId: 1
+            type: file
+
+    dashboards:
+      default:
+        speedtest-exporter-hub:
+          gnetId: 13665
+          revision: 4
+          datasource:
+            - name: "DS_PROMETHEUS"
+              value: Prometheus
+
+      node-exporter:
+        # Ref: https://grafana.com/grafana/dashboards/1860-node-exporter-full/
+        node-exporter:
+          gnetId: 1860
+          revision: 29
+          datasource: Prometheus
+
+      unpoller:
+        # Ref: https://grafana.com/grafana/dashboards/11315
+        clients:
+          gnetId: 11315
+          revision: 9
+          datasource:
+            - name: "DS_PROMETHEUS"
+              value: Prometheus
+        # Ref: https://grafana.com/grafana/dashboards/11314
+        uap:
+          gnetId: 11314
+          revision: 10
+          datasource:
+            - name: "DS_PROMETHEUS"
+              value: Prometheus
+
+    deploymentStrategy:
+      type: Recreate
+
+    envFromSecret: grafana-secret
+
+    grafana.ini:
+      analytics:
+        check_for_updates: false
+        check_for_plugin_updates: false
+        reporting_enabled: false
+      auth:
+        oauth_auto_login: true
+        oauth_allow_insecure_email_lookup: true
+      #auth.basic:
+      #  enabled: false
+      #auth.generic_oauth:
+      #  enabled: true
+      #  name: Authelia
+      #  icon: signin
+      #  scopes: openid profile email groups
+      #  empty_scopes: false
+      #  login_attribute_path: preferred_username
+      #  groups_attribute_path: groups
+      #  name_attribute_path: name
+      #  use_pkce: true
+      #  client_id: grafana
+      #  client_secret: # Set by env vars
+      #  auth_url: https://auth.bjw-s.dev/api/oidc/authorization
+      #  token_url: https://auth.bjw-s.dev/api/oidc/token
+      #  api_url: https://auth.bjw-s.dev/api/oidc/userinfo
+      #auth.generic_oauth.group_mapping:
+      #  org_id: 1
+      #  role_attribute_path: |
+      #    contains(groups[*], 'admins') && 'Admin' || contains(groups[*], 'people') && 'Viewer'
+      dashboards:
+        default_home_dashboard_path: /tmp/dashboards/home.json
+      date_formats:
+        use_browser_locale: true
+      explore:
+        enabled: true
+      grafana_net:
+        url: https://grafana.net
+      log:
+        mode: console
+      news:
+        news_feed_enabled: false
+      panels:
+        disable_sanitize_html: true
+      paths:
+        data: /var/lib/grafana/data
+        logs: /var/log/grafana
+        plugins: /var/lib/grafana/plugins
+        provisioning: /etc/grafana/provisioning
+      security:
+        allow_embedding: true
+        cookie_samesite: grafana
+      server:
+        root_url: https://grafana.home.lucadev.de
+
+    imageRenderer:
+      enabled: false
+
+    ingress:
+      enabled: true
+      ingressClassName: internal-nginx
+      hosts:
+        - &host grafana.home.lucadev.de
+      tls:
+        - hosts:
+            - *host
+      annotations:
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/description: Monitoring
+        gethomepage.dev/group: Monitoring
+        gethomepage.dev/icon: grafana
+        gethomepage.dev/name: Grafana
+
+    persistence:
+      enabled: false
+
+    plugins:
+      - natel-discrete-panel
+      - grafana-piechart-panel
+      - grafana-clock-panel
+
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: grafana
+      secret.reloader.stakater.com/reload: grafana-secrets
+
+    rbac:
+      pspEnabled: false
+
+    resources:
+      limits:
+        memory: 200M
+      requests:
+        cpu: 20m
+        memory: 100M
+
+    serviceMonitor:
+      enabled: true
+
+    sidecar:
+      dashboards:
+        enabled: true
+        labelValue: ""
+        label: grafana_dashboard
+        folderAnnotation: grafana_folder
+        searchNamespace: ALL
+        provider:
+          disableDelete: true
+          foldersFromFilesStructure: true
+      datasources:
+        enabled: true
+        labelValue: ""
+        searchNamespace: ALL
+      logLevel: INFO

@@ -16,6 +16,12 @@ spec:
         name: homepage
         namespace: flux-system
   values:
+    image:
+      tag: 0.6.29
+
+    podAnnotations:
+      reloader.stakater.com/auto: "true"
+
     enableRbac: true
 
     serviceAccount:
@@ -28,24 +34,27 @@ spec:
 
     config:
       bookmarks:
-        - Developer:
-            - Github:
-                - abbr: GH
-                  href: https://github.com/
+      providers:
+        openweathermap: openweathermapapikey
       services:
-        - My First Group:
-            - My First Service:
-                href: http://localhost/
-                description: Homepage is awesome
+      - Spielzeug:
+        - 3D Drucker:
+            href: http://3ddrucker.local
+            description: Homepage is awesome
+            widget:
+              type: moonraker
+              url: http://3ddrucker.local
       widgets:
-        - resources:
-            backend: kubernetes
-            expanded: true
-            cpu: true
-            memory: true
         - search:
-            provider: duckduckgo
+            provider: google
             target: _blank
+        - openweathermap:
+          label: Löhne
+          latitude: 52.1825473
+          longitude: 8.7164592
+          units: metric
+          provider: openweathermap
+          cache: 30
         - kubernetes:
             cluster:
               show: true
@@ -54,18 +63,20 @@ spec:
               showLabel: true
               label: "cluster"
             nodes:
-              show: true
-              cpu: true
-              memory: true
-              showLabel: true
+              show: false
+        - datetime:
+          text_size: xl
+          format:
+            timeStyle: short
       kubernetes:
         mode: cluster
       docker:
       settings:
         headerStyle: boxed
         background: https://i.imgur.com/hOzzkCY.jpeg
-        backgroundOpacity: 0.2
+        backgroundOpacity: 0.3
         target: _self
+        language: de
         quicklaunch:
             searchDescriptions: true
             hideInternetSearch: true

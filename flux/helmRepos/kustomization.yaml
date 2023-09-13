@@ -14,3 +14,4 @@ resources:
   - ./tf-controller.yaml
   - ./external-secrets.yaml
   - ./homepage.yaml
+  - ./stakater.yaml

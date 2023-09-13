@@ -69,6 +69,16 @@ spec:
         tls:
           - hosts:
               - *host
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: WLAN Management
+          gethomepage.dev/group: Netzwerk
+          gethomepage.dev/icon: unifi
+          gethomepage.dev/name: Unifi
+          gethomepage.dev/widget.type: "unifi"
+          gethomepage.dev/widget.url: "https://unifi.home.lucadev.de:"
+          gethomepage.dev/widget.username: "monitoring"
+          gethomepage.dev/widget.password: "monitoring" # ToDo
 
     resources:
       requests:

@@ -15,6 +15,9 @@ spec:
         kind: HelmRepository
         name: tf-controller
   values:
+    podAnnotations:
+      reloader.stakater.com/auto: "true"
+
     metrics:
       enabled: true
       serviceMonitor:

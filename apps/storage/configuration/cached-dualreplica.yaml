@@ -1,0 +1,9 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: cached-singlereplica
+provisioner: cluster.local/local-path-provisioner
+parameters:
+  nodePath: /mnt/data/cached/single/
+volumeBindingMode: WaitForFirstConsumer
+reclaimPolicy: Delete

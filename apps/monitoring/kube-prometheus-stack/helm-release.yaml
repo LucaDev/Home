@@ -9,8 +9,64 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: 49.2.0
+      version: 50.0.0
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
         namespace: flux-system
+  values:
+    kubeEtcd:
+      enabled: false
+
+    grafana:
+      enabled: false
+      forceDeployDashboards: true
+
+    ###
+    ### Prometheus instance values
+    ###
+    prometheus:
+      ingress:
+        enabled: true
+        ingressClassName: internal-nginx
+        pathType: Prefix
+        hosts:
+          - &host_prometheus prometheus.home.lucadev.de
+        tls:
+          - hosts:
+              - *host_prometheus
+
+      prometheusSpec:
+        alertingEndpoints:
+          - namespace: monitoring
+            name: alertmanager
+            port: 9093
+            apiVersion: v2
+        additionalScrapeConfigs:
+          - job_name: solar
+            scrape_interval: 1m
+            scrape_timeout: 10s
+            honor_timestamps: true
+            static_configs:
+              - targets:
+                  - http://pvanlage.local/metrics # ToDo
+
+        enableAdminAPI: true
+        #retention: 10d
+        #retentionSize: "10GB"
+        scrapeInterval: 1m
+
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              version: v1
+              kind: ConfigMap
+              labelSelector: grafana_dashboard in (1)
+            patch: |-
+              apiVersion: v1
+              kind: ConfigMap
+              metadata:
+                name: not-used
+                namespace: not-used
+                annotations:

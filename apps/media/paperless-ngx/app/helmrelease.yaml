@@ -1,0 +1,79 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: paperless
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+
+  values:
+    image:
+      repository: ghcr.io/bjw-s/paperless-ngx
+      tag: 1.17.3@sha256:32464fa243930504426c081d158e2d874dce544e47013a0898dbb41a16516757
+
+    envFrom:
+      - secretRef:
+          name: paperless-secret
+      - configMapRef:
+          name: paperless-configmap
+
+    service:
+      main:
+        ports:
+          http:
+            port: 8000
+
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: &host "paperless.home.lucadev.de"
+            paths:
+              - path: /
+        tls:
+          - hosts:
+              - *host
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Document Management System
+          gethomepage.dev/group: Media
+          gethomepage.dev/icon: paperlessngx
+          gethomepage.dev/name: PaperlessNGX
+          gethomepage.dev/widget.type: paperlessngx
+          gethomepage.dev/widget.url: https://paperless.home.lucadev.de
+          gethomepage.dev/widget.key: apikeyapikeyapikeyapikeyapikey # ToDo
+
+    persistence:
+      consume:
+        enabled: true
+        mountPath: /data/consume
+        type: pvc
+        accessMode: ReadWriteOnce
+      export:
+        enabled: true
+        mountPath: /data/export
+        type: pvc
+        accessMode: ReadWriteOnce
+
+    resources:
+      requests:
+        cpu: 11m
+        memory: 1812M
+      limits:
+        cpu: 1000m
+        memory: 1812M
+
+    volumeClaimTemplates:
+      - name: data
+        mountPath: /data/local
+        accessMode: ReadWriteOnce
+        size: 15Gi

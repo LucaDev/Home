@@ -1,0 +1,42 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: paperless-configmap
+data:
+  # Configure application
+  PAPERLESS_URL: https://paperless.home.lucadev.de
+  PAPERLESS_PORT: "8000"
+  PAPERLESS_TIME_ZONE: "Europe/Berlin"
+  PAPERLESS_WEBSERVER_WORKERS: "2"
+  PAPERLESS_TASK_WORKERS: "2"
+
+  # Configure LDAP
+  PAPERLESS_LDAP_AUTH_ENABLED: "true"
+  PAPERLESS_LDAP_AUTH_URL: "" # TODO
+  PAPERLESS_LDAP_AUTH_SEARCH_BASE: "ou=people,dc=home,dc=lucadev,dc=de"
+  PAPERLESS_LDAP_UID_FORMAT: "uid=%s,ou=people,dc=home,dc=lucadev,dc=de"
+  PAPERLESS_LDAP_USER_GROUP: "cn=paperless,ou=groups,dc=home,dc=lucadev,dc=de"
+  PAPERLESS_LDAP_ADMIN_GROUP: "cn=paperless_admin,ou=groups,dc=home,dc=lucadev,dc=de"
+  PAPERLESS_LDAP_LLDAP_FIX: "true"
+
+  # Configure folders
+  PAPERLESS_CONSUMPTION_DIR: /data/nas/consume
+  PAPERLESS_DATA_DIR: /data/local/data
+  PAPERLESS_EXPORT_DIR: /data/nas/export
+  PAPERLESS_MEDIA_ROOT: /data/local/media
+
+  # Configure folder importer
+  PAPERLESS_CONSUMER_POLLING: "60"
+  PAPERLESS_CONSUMER_RECURSIVE: "true"
+  PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS: "true"
+
+  # Configure OCR
+  PAPERLESS_OCR_LANGUAGES: ger
+  PAPERLESS_OCR_LANGUAGE: ger
+
+  # Configure redis integration
+  PAPERLESS_REDIS: redis://paperless-redis.media.svc.cluster.local:6379
+
+  # Configure user permissions
+  USERMAP_GID: "65543"

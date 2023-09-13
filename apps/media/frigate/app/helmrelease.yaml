@@ -1,0 +1,126 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/helm.toolkit.fluxcd.io/helmrelease_v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: frigate
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  #dependsOn:
+  #  - name: mosquitto
+  #    namespace: default
+  values:
+    controller:
+      type: statefulset
+      annotations:
+        reloader.stakater.com/auto: "true"
+    image:
+      repository: ghcr.io/blakeblackshear/frigate
+      tag: 0.12.1
+    env:
+      TZ: Europe/Berlin
+      LIBVA_DRIVER_NAME: i965 #TODO
+    envFrom:
+      - secretRef:
+          name: frigate-secret
+    service:
+      main:
+        ports:
+          http:
+            port: &port 5000
+          rtsp:
+            enabled: true
+            port: 8554
+    probes:
+      liveness: &probes
+        enabled: true
+        custom: true
+        spec:
+          httpGet:
+            path: /api/version
+            port: *port
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          timeoutSeconds: 1
+          failureThreshold: 3
+      readiness: *probes
+      startup:
+        enabled: false
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: &host "frigate.home.lucadev.de"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Cameras
+          gethomepage.dev/group: Media
+          gethomepage.dev/icon: frigate
+          gethomepage.dev/name: Frigate
+    securityContext:
+      privileged: true
+    volumeClaimTemplates:
+      - name: config
+        mountPath: /data
+        accessMode: ReadWriteOnce
+        size: 5Gi
+    persistence:
+      config-file:
+        enabled: true
+        type: configMap
+        name: frigate-configmap
+        subPath: config.yml
+        mountPath: /config/config.yml
+        readOnly: true
+      media:
+        enabled: true
+        existingClaim: frigate
+        mountPath: /media
+      cache:
+        enabled: true
+        type: emptyDir
+        medium: Memory
+        sizeLimit: 4Gi
+        mountPath: /dev/shm
+      usb:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/bus/usb
+        hostPathType: Directory
+        mountPath: /dev/bus/usb
+    #nodeSelector:
+    #  google.feature.node.kubernetes.io/coral: "true"
+    #  intel.feature.node.kubernetes.io/gpu: "true"
+    resources:
+      requests:
+        cpu: 10m
+        memory: 1000Mi
+        #gpu.intel.com/i915: "1"
+      limits:
+        cpu: 3000m
+        memory: 4000Mi
+        #gpu.intel.com/i915: "1"
