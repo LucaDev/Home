@@ -30,9 +30,9 @@ spec:
             name: home-assistant-pguser-home-assistant
             key: uri
 
-    envFrom:
-      - secretRef:
-          name: home-assistant-secret
+#    envFrom:
+#      - secretRef:
+#          name: home-assistant-secret
 
     service:
       main:

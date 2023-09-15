@@ -4,4 +4,4 @@ namespace: home-automation
 resources:
   - ./helm-release.yaml
   - ./postgres-cluster.yaml
-  - ./external-secret.yaml
+#  - ./external-secret.yaml
