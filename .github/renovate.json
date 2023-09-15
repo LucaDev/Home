@@ -6,7 +6,8 @@
     ":disableRateLimiting",
     "docker:enableMajor",
     ":automergeDigest",
-    ":enablePreCommit"
+    ":enablePreCommit",
+    ":skipStatusChecks"
   ],
   "timezone": "Europe/Berlin",
   "flux": {
@@ -23,9 +24,34 @@
   },
   "packageRules": [
     {
+      "description": "Automerge patch updates",
       "matchUpdateTypes": ["patch"],
-      "matchCurrentVersion": "!/^0/",
       "automerge": true
+    },
+    {
+      "description": "Flux Group",
+      "groupName": "Flux",
+      "matchPackagePatterns": ["^flux", "^ghcr.io/fluxcd/"],
+      "matchDatasources": ["docker", "github-tags"],
+      "versioning": "semver",
+      "group": {
+        "commitMessageTopic": "{{{groupName}}} group"
+      },
+      "separateMinorPatch": true
+    },
+    {
+      "description": "Immich images",
+      "groupName": "Immich",
+      "matchPackageNames": [
+        "ghcr.io/immich-app/immich-server",
+        "ghcr.io/immich-app/immich-web",
+        "ghcr.io/immich-app/immich-machine-learning"
+      ],
+      "matchDatasources": ["docker"],
+      "group": {
+        "commitMessageTopic": "{{{groupName}}} group"
+      },
+      "separateMinorPatch": true
     }
   ]
 }
