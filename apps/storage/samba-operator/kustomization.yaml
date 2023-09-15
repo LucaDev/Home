@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: storage
 namePrefix: samba-operator-
 resources:
-  - github.com/samba-in-kubernetes/samba-operator/blob/master/config/default/
+  - https://raw.githubusercontent.com/samba-in-kubernetes/samba-operator/master/config/default/kustomization.yaml
