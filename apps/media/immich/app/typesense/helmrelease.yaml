@@ -90,7 +90,6 @@ spec:
         mountPath: /config
         accessMode: ReadWriteOnce
         size: 10Gi
-        storageClass: ceph-block
 
     resources:
       requests:
