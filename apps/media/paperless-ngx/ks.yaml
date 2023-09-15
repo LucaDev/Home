@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./apps/media/paperless/app"
+  path: "./apps/media/paperless-ngx/app"
   prune: true
   sourceRef:
     kind: GitRepository
