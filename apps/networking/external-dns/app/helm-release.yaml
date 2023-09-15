@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: external-dns
-      version: 1.13.0
+      version: 1.13.5
       sourceRef:
         kind: HelmRepository
         name: kubernetes-sigs-external-dns
@@ -45,6 +45,6 @@ spec:
     txtOwnerId: default
     domainFilters: ["lucadev.de"]
     serviceMonitor:
-      enabled: false # Todo
+      enabled: true
     podAnnotations:
       secret.reloader.stakater.com/reload: external-dns-secret
