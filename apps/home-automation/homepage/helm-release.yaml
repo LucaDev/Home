@@ -17,6 +17,7 @@ spec:
         namespace: flux-system
   values:
     image:
+      # renovate: datasource=github-releases depName=benphelps/homepage
       tag: v0.6.29
 
     podAnnotations:
@@ -45,20 +46,23 @@ spec:
       - Spielzeug:
         - 3D Drucker:
             href: http://3ddrucker.local
+            icon: mainsail
             widget:
               type: moonraker
               url: http://3ddrucker.local
+        - Solaranlage:
+            href: http://pv-anlage.local
       widgets:
         - search:
             provider: google
             target: _blank
         - openweathermap:
-          label: Löhne
-          latitude: 52.1825473
-          longitude: 8.7164592
-          units: metric
-          provider: openweathermap
-          cache: 30
+            label: Löhne
+            latitude: 52.1825473
+            longitude: 8.7164592
+            units: metric
+            provider: openweathermap
+            cache: 30
         - kubernetes:
             cluster:
               show: true
@@ -69,9 +73,9 @@ spec:
             nodes:
               show: false
         - datetime:
-          text_size: xl
-          format:
-            timeStyle: short
+            text_size: xl
+            format:
+              timeStyle: short
       kubernetes:
         mode: cluster
       docker:
