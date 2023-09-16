@@ -16,7 +16,7 @@ spec:
       interval: 5m
   values:
     auth:
-      existingSecret: ext-postgres-operator-secret
+      existingSecret: postgres-secret
     metrics:
       enabled: true
       serviceMonitor:
