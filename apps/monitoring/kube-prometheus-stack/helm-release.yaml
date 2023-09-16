@@ -37,6 +37,11 @@ spec:
               - *host_prometheus
 
       prometheusSpec:
+        ruleSelectorNilUsesHelmValues: false
+        scrapeConfigSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelectorNilUsesHelmValues: false
+        probeSelectorNilUsesHelmValues: false
         alertingEndpoints:
           - namespace: monitoring
             name: alertmanager
