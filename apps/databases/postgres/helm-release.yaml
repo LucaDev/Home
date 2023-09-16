@@ -16,6 +16,7 @@ spec:
       interval: 5m
   values:
     auth:
+      database: postgres
       existingSecret: postgres-secret
     metrics:
       enabled: true
