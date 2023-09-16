@@ -46,7 +46,7 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Document Management System
           gethomepage.dev/group: Media
-          gethomepage.dev/icon: paperlessngx
+          gethomepage.dev/icon: paperless-ngx
           gethomepage.dev/name: PaperlessNGX
           gethomepage.dev/widget.type: paperlessngx
           gethomepage.dev/widget.url: https://paperless.home.lucadev.de

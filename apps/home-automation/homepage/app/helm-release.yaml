@@ -46,12 +46,13 @@ spec:
       - Spielzeug:
         - 3D Drucker:
             href: http://3ddrucker.local
-            icon: mainsail
+            icon: mainsail.svg
             widget:
               type: moonraker
               url: http://3ddrucker.local
         - Solaranlage:
             href: http://pv-anlage.local
+            icon: mdi-solar-power-variant
       widgets:
         - search:
             provider: google
