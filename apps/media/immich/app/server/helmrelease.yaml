@@ -69,7 +69,7 @@ spec:
     persistence:
       library:
         enabled: true
-        existingClaim: immich-nfs
+        existingClaim: immich-data
         mountPath: /usr/src/app/upload
 
     podSecurityContext:
