@@ -54,7 +54,8 @@ spec:
             honor_timestamps: true
             static_configs:
               - targets:
-                  - pvanlage.local # ToDo
+                  - url: pvanlage.local # ToDo
+                    path: /api/prometheus/metrics
 
         enableAdminAPI: true
         #retention: 10d

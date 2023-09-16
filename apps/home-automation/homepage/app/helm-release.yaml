@@ -51,7 +51,7 @@ spec:
               type: moonraker
               url: http://3ddrucker.local
         - Solaranlage:
-            href: http://pv-anlage.local
+            href: http://192.168.1.60
             icon: mdi-solar-power-variant
       widgets:
         - search:
