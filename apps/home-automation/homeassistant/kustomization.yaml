@@ -3,5 +3,5 @@ kind: Kustomization
 namespace: home-automation
 resources:
   - ./helm-release.yaml
-  - ./postgres-cluster.yaml
+  - ./database.yaml
 #  - ./external-secret.yaml
