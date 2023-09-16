@@ -1,0 +1,17 @@
+apiVersion: db.movetokube.com/v1alpha1
+kind: Postgres
+metadata:
+  name: homeassistant-db
+spec:
+  database: homeassistant-db
+  dropOnDelete: false
+---
+apiVersion: db.movetokube.com/v1alpha1
+kind: PostgresUser
+metadata:
+  name: homeassistant-db-user
+spec:
+  role: username
+  database: homeassistant-db
+  secretName: homeassistant-db-user
+  privileges: OWNER
