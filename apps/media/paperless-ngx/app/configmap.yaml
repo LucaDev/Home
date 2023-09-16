@@ -36,7 +36,7 @@ data:
   PAPERLESS_OCR_LANGUAGE: ger
 
   # Configure redis integration
-  PAPERLESS_REDIS: redis://paperless-redis.media.svc.cluster.local:6379
+  PAPERLESS_REDIS: redis://shared-redis.databases.svc.cluster.local:6379
 
   # Configure user permissions
   USERMAP_GID: "65543"

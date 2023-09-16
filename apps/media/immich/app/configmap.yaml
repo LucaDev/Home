@@ -19,7 +19,7 @@ data:
   # DATABASE
   DB_PORT: "5432"
   # REDIS
-  REDIS_HOSTNAME: immich-redis.media.svc.cluster.local
+  REDIS_HOSTNAME: shared-redis.databases.svc.cluster.local
   REDIS_PORT: "6379"
   # TYPESENSE
   TYPESENSE_HOST: immich-typesense.media.svc.cluster.local
