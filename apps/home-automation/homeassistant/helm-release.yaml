@@ -23,14 +23,9 @@ spec:
       repository: ghcr.io/home-assistant/home-assistant
       tag: 2023.9.2@sha256:223c9986ff318eaf35fac70351900cf766c15faf82fbe54150b73b7cfc3c933a
 
-    env:
-      SECRET_RECORDER_DB_URL:
-        valueFrom:
-          secretKeyRef:
-            name: home-assistant-db-user-home-assistant
-            key: uri
-
-#    envFrom:
+    envFrom:
+      - secretRef:
+          name: secret-homeassistant-db-user
 #      - secretRef:
 #          name: home-assistant-secret
 

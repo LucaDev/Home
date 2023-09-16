@@ -13,5 +13,5 @@ metadata:
 spec:
   role: username
   database: homeassistant-db
-  secretName: homeassistant-db-user
+  secretName: secret
   privileges: OWNER
