@@ -80,6 +80,26 @@ spec:
             - name: "DS_PROMETHEUS"
               value: Prometheus
 
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+          - access: proxy
+            isDefault: true
+            name: Prometheus
+            type: prometheus
+            url: http://kube-prometheus-stack-prometheus.monitoring:9090
+          - access: proxy
+            name: Loki
+            type: loki
+            url: http://loki-headless.monitoring:80 # TODO
+          - name: Alertmanager
+            type: alertmanager
+            access: proxy
+            url: http://kube-prometheus-stack-alertmanager.monitoring:9093
+            jsonData:
+              implementation: prometheus
+
     deploymentStrategy:
       type: Recreate
 
