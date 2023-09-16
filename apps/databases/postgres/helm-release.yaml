@@ -1,0 +1,26 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: shared-postgres
+  namespace: databases
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: postgresql
+      version: 12.11.2
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+      interval: 5m
+  values:
+    auth:
+      existingSecret: ext-postgres-operator-secret
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    persistence:
+      size: 5Gi
+      existingClaim: postgresql-data
