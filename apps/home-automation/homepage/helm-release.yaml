@@ -31,6 +31,11 @@ spec:
     ingress:
       main:
         enabled: true
+        hosts:
+        - host: home.lucadev.de
+          paths:
+          - path: /
+            pathType: Prefix
 
     config:
       bookmarks:
@@ -40,7 +45,6 @@ spec:
       - Spielzeug:
         - 3D Drucker:
             href: http://3ddrucker.local
-            description: Homepage is awesome
             widget:
               type: moonraker
               url: http://3ddrucker.local
