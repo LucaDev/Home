@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./esphome
-  - ./homepage
+  - ./homepage/ks.yaml
   - ./node-red/ks.yaml
   - ./mosquitto
   - ./homeassistant
