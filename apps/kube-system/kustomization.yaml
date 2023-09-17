@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - ./node-feature-discovery/ks.yaml
   - ./reloader/ks.yaml
-  - ./traefik
+  - ./traefik/ks.yaml
