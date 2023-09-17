@@ -9,5 +9,4 @@ spec:
   - "*.home.lucadev.de"
   issuerRef:
     name: letsencrypt-staging
-    kind: Issuer
-    group: cert-manager.io
+    kind: ClusterIssuer
