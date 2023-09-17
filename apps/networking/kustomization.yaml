@@ -4,3 +4,4 @@ resources:
   - ./namespace.yaml
   - ./external-dns/app/ # ToDo: ks.yaml
   - ./unifi-controller/ks.yaml
+  - ./cert-manager/ks.yaml
