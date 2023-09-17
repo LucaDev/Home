@@ -37,3 +37,4 @@ spec:
       enabled: true
     podAnnotations:
       secret.reloader.stakater.com/reload: external-dns-secret
+# TODO: external secret

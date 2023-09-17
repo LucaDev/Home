@@ -6,8 +6,8 @@ metadata:
   name: frigate
   namespace: flux-system
 spec:
-  #dependsOn:
-  #  - name: cluster-apps-external-secrets-stores
+  dependsOn:
+    - name: external-secrets-stores
   #  - name: cluster-apps-node-feature-discovery-rules
   path: ./apps/media/frigate/app
   prune: true
