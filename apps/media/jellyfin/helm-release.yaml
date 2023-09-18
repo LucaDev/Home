@@ -58,7 +58,7 @@ spec:
         type: pvc
         accessMode: ReadWriteOnce
         mountPath: /media/
-        Size: 100G
+        size: 100G
       cache:
         enabled: true
         type: emptyDir

@@ -103,6 +103,7 @@ spec:
               apiVersion: apps/v1
               kind: Deployment
               metadata:
+                namespace: home-automation
                 name: homepage
               spec:
                 template:
