@@ -18,7 +18,7 @@ spec:
   values:
     image:
       # renovate: datasource=github-releases depName=benphelps/homepage
-      tag: v0.6.29
+      tag: v0.6.33
 
     podAnnotations:
       reloader.stakater.com/auto: "true"
@@ -58,9 +58,9 @@ spec:
             provider: google
             target: _blank
         - openweathermap:
-            label: Löhne
-            latitude: 52.1825473
-            longitude: 8.7164592
+            label: Zuhause
+            latitude: {{HOMEPAGE_VAR_OPENWEATHERMAP_LAT}}
+            longitude: {{HOMEPAGE_VAR_OPENWEATHERMAP_LONG}}
             units: metric
             provider: openweathermap
             cache: 30
