@@ -18,7 +18,7 @@ spec:
   values:
     image:
       # renovate: datasource=github-releases depName=benphelps/homepage
-      tag: v0.6.33
+      tag: v0.6.29
 
     podAnnotations:
       reloader.stakater.com/auto: "true"
