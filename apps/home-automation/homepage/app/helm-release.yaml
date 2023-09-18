@@ -59,8 +59,8 @@ spec:
             target: _blank
         - openweathermap:
             label: Zuhause
-            latitude: {{HOMEPAGE_VAR_OPENWEATHERMAP_LAT}}
-            longitude: {{HOMEPAGE_VAR_OPENWEATHERMAP_LONG}}
+            latitude: "{{HOMEPAGE_VAR_OPENWEATHERMAP_LAT}}"
+            longitude: "{{HOMEPAGE_VAR_OPENWEATHERMAP_LONG}}"
             units: metric
             provider: openweathermap
             cache: 30
