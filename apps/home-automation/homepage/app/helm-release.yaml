@@ -93,3 +93,19 @@ spec:
             hideInternetSearch: true
             hideVisitURL: true
         hideVersion: true
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              version: v1
+              kind: Deployment
+              name: homepage
+            patch: |-
+              spec:
+                template:
+                  spec:
+                    containers:
+                      - name: homepage
+                        envFrom:
+                          - secretRef:
+                              name: homepage-secret
