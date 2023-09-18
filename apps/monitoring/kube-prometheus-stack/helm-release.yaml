@@ -28,13 +28,21 @@ spec:
     prometheus:
       ingress:
         enabled: true
-        ingressClassName: internal-nginx
         pathType: Prefix
         hosts:
           - &host_prometheus prometheus.home.lucadev.de
         tls:
           - hosts:
               - *host_prometheus
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: TSDB
+          gethomepage.dev/group: Monitoring
+          gethomepage.dev/icon: prometheus
+          gethomepage.dev/name: Prometheus
+          gethomepage.dev/widget.type: prometheus
+          gethomepage.dev/widget.url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+
 
       prometheusSpec:
         ruleSelectorNilUsesHelmValues: false

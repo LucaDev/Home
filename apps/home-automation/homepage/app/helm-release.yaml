@@ -47,11 +47,13 @@ spec:
         - 3D Drucker:
             href: http://3ddrucker.local
             icon: mainsail.svg
+            ping: http://3ddrucker.local
             widget:
               type: moonraker
               url: http://3ddrucker.local
         - Solaranlage:
-            href: http://192.168.1.60
+            href: http://pv-anlage.local
+            ping: http://192.168.1.60
             icon: mdi-solar-power-variant
       widgets:
         - search:
