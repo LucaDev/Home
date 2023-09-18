@@ -97,15 +97,18 @@ spec:
     - kustomize:
         patches:
           - target:
-              version: v1
               kind: Deployment
               name: homepage
             patch: |-
+              apiVersion: apps/v1
+              kind: Deployment
+              metadata:
+                name: homepage
               spec:
                 template:
                   spec:
                     containers:
                       - name: homepage
-                        envFrom:
-                          - secretRef:
-                              name: homepage-secret
+                          envFrom:
+                            - secretRef:
+                                name: homepage-secret
