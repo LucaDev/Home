@@ -65,6 +65,12 @@ spec:
         type: pvc
         accessMode: ReadWriteOnce
         size: 1G
+      data:
+        enabled: true
+        mountPath: /data/local
+        accessMode: ReadWriteOnce
+        type: pvc
+        size: 15Gi
 
     resources:
       requests:
@@ -73,9 +79,3 @@ spec:
       limits:
         cpu: 1000m
         memory: 1812M
-
-    volumeClaimTemplates:
-      - name: data
-        mountPath: /data/local
-        accessMode: ReadWriteOnce
-        size: 15Gi

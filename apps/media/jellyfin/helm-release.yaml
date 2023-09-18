@@ -38,8 +38,8 @@ spec:
           gethomepage.dev/widget.type: jellyfin
           gethomepage.dev/widget.url: https://jellyfin.home.lucadev.de
           gethomepage.dev/widget.key: apikeyapikeyapikeyapikeyapikey # ToDo
-          gethomepage.dev/widget.enableBlocks: true
-          gethomepage.dev/widget.enableNowPlaying: true
+          gethomepage.dev/widget.enableBlocks: "true"
+          gethomepage.dev/widget.enableNowPlaying: "true"
         hosts:
           - host: &host "jellyfin.home.lucadev.de"
             paths:

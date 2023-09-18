@@ -110,6 +110,6 @@ spec:
                   spec:
                     containers:
                       - name: homepage
-                          envFrom:
-                            - secretRef:
-                              name: homepage-secret
+                        envFrom:
+                          - secretRef:
+                            name: homepage-secret
