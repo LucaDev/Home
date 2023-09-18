@@ -8,8 +8,8 @@ data:
   PAPERLESS_URL: https://paperless.home.lucadev.de
   PAPERLESS_PORT: "8000"
   PAPERLESS_TIME_ZONE: "Europe/Berlin"
-  PAPERLESS_WEBSERVER_WORKERS: "2"
-  PAPERLESS_TASK_WORKERS: "2"
+  PAPERLESS_WEBSERVER_WORKERS: "1"
+  PAPERLESS_TASK_WORKERS: "1"
 
   # Configure LDAP
   PAPERLESS_LDAP_AUTH_ENABLED: "true"
@@ -21,9 +21,9 @@ data:
   PAPERLESS_LDAP_LLDAP_FIX: "true"
 
   # Configure folders
-  PAPERLESS_CONSUMPTION_DIR: /data/nas/consume
+  PAPERLESS_CONSUMPTION_DIR: /data/consume
   PAPERLESS_DATA_DIR: /data/local/data
-  PAPERLESS_EXPORT_DIR: /data/nas/export
+  PAPERLESS_EXPORT_DIR: /data/export
   PAPERLESS_MEDIA_ROOT: /data/local/media
 
   # Configure folder importer
@@ -32,8 +32,8 @@ data:
   PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS: "true"
 
   # Configure OCR
-  PAPERLESS_OCR_LANGUAGES: ger
-  PAPERLESS_OCR_LANGUAGE: ger
+  PAPERLESS_OCR_LANGUAGES: deu eng
+  PAPERLESS_OCR_LANGUAGE: deu
 
   # Configure redis integration
   PAPERLESS_REDIS: redis://shared-redis.databases.svc.cluster.local:6379

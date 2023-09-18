@@ -51,8 +51,10 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: jellyfin-config
-        mountPath: /config
+        type: pvc
+        accessMode: ReadWriteOnce
+        mountPath: /config/
+        size: 1G
       media:
         enabled: true
         type: pvc
