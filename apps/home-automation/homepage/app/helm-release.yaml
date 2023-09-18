@@ -111,4 +111,4 @@ spec:
                       - name: homepage
                           envFrom:
                             - secretRef:
-                                name: homepage-secret
+                              name: homepage-secret
