@@ -26,6 +26,9 @@ spec:
     service:
       main:
         type: LoadBalancer
+        annotations:
+          traefik.ingress.kubernetes.io/service.serverstransport: insecure-https@KubernetesCRD
+          traefik.ingress.kubernetes.io/service.serversscheme: https
         ports:
           http:
             port: 8443
