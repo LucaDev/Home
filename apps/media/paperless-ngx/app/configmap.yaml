@@ -14,11 +14,11 @@ data:
   # Configure LDAP
   PAPERLESS_LDAP_AUTH_ENABLED: "true"
   PAPERLESS_LDAP_AUTH_URL: "kanidm.security.svc.cluster.local:3269"
-  PAPERLESS_LDAP_AUTH_SEARCH_BASE: "ou=people,dc=home,dc=lucadev,dc=de"
-  PAPERLESS_LDAP_UID_FORMAT: "uid=%s,ou=people,dc=home,dc=lucadev,dc=de"
-  PAPERLESS_LDAP_USER_GROUP: "cn=paperless,ou=groups,dc=home,dc=lucadev,dc=de"
-  PAPERLESS_LDAP_ADMIN_GROUP: "cn=paperless_admin,ou=groups,dc=home,dc=lucadev,dc=de"
-  PAPERLESS_LDAP_LLDAP_FIX: "true"
+  PAPERLESS_LDAP_AUTH_SEARCH_BASE: "(class=person),dc=idm,dc=home,dc=lucadev,dc=de"
+  PAPERLESS_LDAP_UID_FORMAT: "spn=%s,dc=idm,dc=home,dc=lucadev,dc=de"
+  PAPERLESS_LDAP_USER_GROUP: "spn=paperless@idm.home.lucadev.de,dc=idm,dc=home,dc=lucadev,dc=de"
+  PAPERLESS_LDAP_ADMIN_GROUP: "spn=paperless-admin@idm.home.lucadev.de,dc=idm,dc=home,dc=lucadev,dc=de"
+  #PAPERLESS_LDAP_LLDAP_FIX: "true"
 
   # Configure folders
   PAPERLESS_CONSUMPTION_DIR: /data/consume

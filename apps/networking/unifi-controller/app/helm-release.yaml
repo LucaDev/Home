@@ -79,7 +79,7 @@ spec:
           gethomepage.dev/icon: unifi
           gethomepage.dev/name: Unifi
           gethomepage.dev/widget.type: "unifi"
-          gethomepage.dev/widget.url: "https://unifi.home.lucadev.de:"
+          gethomepage.dev/widget.url: "https://unifi.home.lucadev.de"
           gethomepage.dev/widget.username: "monitoring"
           gethomepage.dev/widget.password: "{{HOMEPAGE_VAR_UNIFI_MONITORING_PASSWORD}}"
 
