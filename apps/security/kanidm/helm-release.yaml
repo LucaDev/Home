@@ -33,6 +33,7 @@ spec:
             protocol: HTTPS
         annotations:
           traefik.ingress.kubernetes.io/service.serversscheme: https
+          traefik.ingress.kubernetes.io/service.serverstransport: secrets-kanidm@kubernetescrd
 
     ingress:
       main:
