@@ -31,6 +31,8 @@ spec:
           http:
             port: 8443
             protocol: HTTPS
+        annotations:
+          traefik.ingress.kubernetes.io/service.serversscheme: https
 
     ingress:
       main:
