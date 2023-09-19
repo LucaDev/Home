@@ -50,7 +50,7 @@ spec:
           gethomepage.dev/name: PaperlessNGX
           gethomepage.dev/widget.type: paperlessngx
           gethomepage.dev/widget.url: https://paperless.home.lucadev.de
-          gethomepage.dev/widget.key: apikeyapikeyapikeyapikeyapikey # ToDo
+          gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_PAPERLESS_APIKEY}}"
 
     persistence:
       consume:

@@ -61,7 +61,7 @@ spec:
             honor_timestamps: true
             static_configs:
               - targets:
-                  - url: pvanlage.local # ToDo
+                  - url: "192.168.1.60"
                     path: /api/prometheus/metrics
 
         enableAdminAPI: true

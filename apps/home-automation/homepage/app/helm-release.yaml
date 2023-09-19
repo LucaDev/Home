@@ -41,7 +41,7 @@ spec:
     config:
       bookmarks:
       providers:
-        openweathermap: "{{HOMEPAGE_VAR_OPENWEATHERMAP_APIKEY}}" # TODO
+        openweathermap: "{{HOMEPAGE_VAR_OPENWEATHERMAP_APIKEY}}"
       services:
       - Spielzeug:
         - 3D Drucker:
