@@ -53,7 +53,7 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: User Management
           gethomepage.dev/group: User Management
-          gethomepage.dev/icon: kanidm
+          gethomepage.dev/icon: mdi-account-lock
           gethomepage.dev/name: kanidm
 
     persistence:
