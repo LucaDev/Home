@@ -95,11 +95,11 @@ spec:
         hideVersion: true
   postRenderers:
     - kustomize:
-        patchesJSON6902:
+        patches:
           - target:
               kind: Deployment
               name: homepage
-            patch: |-
+            patch: |
               - op: add
                 path: /spec/template/spec/containers/0/envFrom/-
                 value:
