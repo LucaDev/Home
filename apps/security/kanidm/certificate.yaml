@@ -1,0 +1,12 @@
+# ENC.AES256 - this is just to skip forbid-secrets
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: home-lucadev-de-wildcard-cert
+  annotations:
+    replicator.v1.mittwald.de/replicate-from: default/home-lucadev-de-wildcard-cert
+type: kubernetes.io/tls
+data:
+  tls.key: ""
+  tls.crt: ""

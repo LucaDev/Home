@@ -10,3 +10,7 @@ spec:
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
+  secretTemplate:
+    annotations:
+      replicator.v1.mittwald.de/replication-allowed: "true"
+      replicator.v1.mittwald.de/replication-allowed-namespaces: "security"

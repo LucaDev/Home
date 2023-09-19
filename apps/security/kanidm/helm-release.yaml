@@ -69,15 +69,9 @@ spec:
             mountPath: /data/server.toml
       certs:
         enabled: true
-        type: custom
-        volumeSpec:
-          configMap:
-            name: kanidm-certs
-        subPath:
-          - path: key.pem
-            mountPath: /data/certs/key.pem
-          - path: chain.pem
-            mountPath: /data/certs/chain.pem
+        type: secret
+        name: home-lucadev-de-wildcard-cert
+        mountPath: /data/certs/
 
     resources:
       requests:

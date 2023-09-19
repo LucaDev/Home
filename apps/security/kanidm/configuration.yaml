@@ -7,8 +7,8 @@ data:
     bindaddress = "[::]:8443"
     trust_x_forward_for = true
     db_path = "/data/persistent/kanidm.db"
-    tls_chain = "/data/certs/chain.pem"
-    tls_key = "/data/certs/key.pem"
+    tls_chain = "/data/certs/tls.crt"
+    tls_key = "/data/certs/tls.key"
     log_level = "info"
     domain = "idm.home.lucadev.de"
     origin = "https://idm.home.lucadev.de"

@@ -16,3 +16,4 @@ resources:
   - ./homepage.yaml
   - ./stakater.yaml
   - ./jetstack.yaml
+  - ./mittwald.yaml
