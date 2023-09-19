@@ -100,16 +100,8 @@ spec:
               kind: Deployment
               name: homepage
             patch: |-
-              apiVersion: apps/v1
-              kind: Deployment
-              metadata:
-                namespace: home-automation
-                name: homepage
-              spec:
-                template:
-                  spec:
-                    containers:
-                      - name: homepage
-                        envFrom:
-                        - secretRef:
-                            name: homepage-secret
+              - op: add
+                path: /spec/template/spec/containers/0/envFrom/-
+                value:
+                  secretRef:
+                    name: homepage-secret
