@@ -95,7 +95,7 @@ spec:
         hideVersion: true
   postRenderers:
     - kustomize:
-        patches:
+        patchesJSON6902:
           - target:
               kind: Deployment
               name: homepage
