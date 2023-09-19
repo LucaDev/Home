@@ -37,6 +37,9 @@ spec:
     singleBinary:
       replicas: 1
 
+    gateway:
+      enabled: true
+
     monitoring:
       dashboards:
         annotations:

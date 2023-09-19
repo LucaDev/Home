@@ -43,6 +43,12 @@ spec:
         tls:
           - hosts:
               - *host
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: User Management
+          gethomepage.dev/group: User Management
+          gethomepage.dev/icon: kanidm
+          gethomepage.dev/name: kanidm
 
     persistence:
       data:

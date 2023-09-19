@@ -31,8 +31,8 @@ spec:
         enabled: true
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Medien
-          gethomepage.dev/group: Medien
+          gethomepage.dev/description: Filme und Serien
+          gethomepage.dev/group: Media
           gethomepage.dev/icon: jellyfin
           gethomepage.dev/name: Jellyfin
           gethomepage.dev/widget.type: jellyfin

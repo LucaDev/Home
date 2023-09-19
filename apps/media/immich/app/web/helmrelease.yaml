@@ -69,8 +69,7 @@ spec:
       main:
         enabled: true
         annotations:
-          nginx.ingress.kubernetes.io/configuration-snippet: | # ToDo: => traefik
-            rewrite /api/(.*) /$1 break;
+          traefik.ingress.kubernetes.io/router.middlewares: immich-prefixstrip@kubernetescrd
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Immich photo management
           gethomepage.dev/group: Media

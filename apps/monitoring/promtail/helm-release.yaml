@@ -56,7 +56,7 @@ spec:
 
     config:
       snippets:
-        extraScrapeConfigs:
+        extraScrapeConfigs: |
           - job_name: syslog
             syslog:
               listen_address: 0.0.0.0:1514
