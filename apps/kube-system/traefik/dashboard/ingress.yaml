@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: traefik-ingress
+  namespace: kube-system
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: kube-system-traefik-dashboard@kubernetescrd
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Traefik Dashboard
+    gethomepage.dev/group: System
+    gethomepage.dev/icon: traefik
+    gethomepage.dev/name: Traefik
+spec:
+  rules:
+    - host: traefik.home.lucadev.de
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: traefik-dashboard
+                port:
+                  number: 9000
