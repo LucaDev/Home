@@ -40,8 +40,6 @@ spec:
 
     config:
       bookmarks:
-      providers:
-        openweathermap: "{{HOMEPAGE_VAR_OPENWEATHERMAP_APIKEY}}"
       services:
       - Spielzeug:
         - 3D Drucker:
@@ -65,6 +63,7 @@ spec:
             longitude: "{{HOMEPAGE_VAR_OPENWEATHERMAP_LONG}}"
             units: metric
             provider: openweathermap
+            apiKey: "{{HOMEPAGE_VAR_OPENWEATHERMAP_APIKEY}}"
             cache: 30
         - kubernetes:
             cluster:
