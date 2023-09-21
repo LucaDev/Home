@@ -93,19 +93,13 @@ spec:
             hideInternetSearch: true
             hideVisitURL: true
         hideVersion: true
+
+    envFrom:
+      - secretRef:
+          name: homepage-secret
   postRenderers:
     - kustomize:
         patches:
-          - target:
-              kind: Deployment
-              name: homepage
-            patch: |
-              - op: add
-                path: /spec/template/spec/containers/0/
-                value:
-                  envFrom:
-                    - secretRef:
-                        name: homepage-secret
           - target:
               kind: ClusterRole
               name: homepage
@@ -119,3 +113,12 @@ spec:
                     - customresourcedefinitions/status
                   verbs:
                     - get
+          - target:
+              kind: ConfigMap
+              name: homepage
+            patch: |
+              - op: add
+                path: /data/-
+                value:
+                  custom.css: ".not_used {}"
+                  custom.js: ""
