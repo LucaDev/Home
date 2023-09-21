@@ -32,7 +32,7 @@ spec:
             port: 8443
             protocol: HTTPS
           ldap:
-            port: 3269
+            port: 636
             protocol: TCP
         annotations:
           #traefik.ingress.kubernetes.io/service.serversscheme: https

@@ -7,7 +7,7 @@ data:
     # Bind
     bindaddress = "[::]:8443"
     # LDAP Bind
-    ldapbindaddress = "[::]:3269"
+    ldapbindaddress = "[::]:636"
 
     # Traefik
     trust_x_forward_for = true
