@@ -3,5 +3,3 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: security
-  labels:
-    home-lucadev-de-wildcard-cert: default
