@@ -12,13 +12,13 @@ module.exports = {
       icon: "fa-cloud",
       strategy: require("passport-openidconnect").Strategy,
       options: {
-        issuer: "",
-        authorizationURL: "",
-        tokenURL: "",
-        userInfoURL: "",
-        clientID: "nodered",
+        issuer: "https://idm.home.lucadev.de/oauth2/openid/node-red/",
+        authorizationURL: "https://idm.home.lucadev.de/oauth2/authorise",
+        tokenURL: "https://idm.home.lucadev.de/oauth2/token",
+        userInfoURL: "https://idm.home.lucadev.de/oauth2/openid/node-red/userinfo",
+        clientID: "node-red",
         clientSecret: process.env.NODE_RED_OAUTH_CLIENT_SECRET,
-        callbackURL: "",
+        callbackURL: "https://node-red.home.lucadev.de/auth/strategy/callback",
         scope: ["email", "profile", "openid"],
         proxy: true,
         verify: function (issuer, profile, done) {
@@ -26,7 +26,7 @@ module.exports = {
         },
       },
     },
-    users: [{ username: "luca", permissions: ["*"] }],
+    users: [{ username: "lucadev", permissions: ["*"] }],
   },
 
   uiPort: process.env.PORT || 1880,
