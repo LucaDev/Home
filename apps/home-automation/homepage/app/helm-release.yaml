@@ -101,10 +101,11 @@ spec:
               name: homepage
             patch: |
               - op: add
-                path: /spec/template/spec/containers/0/envFrom/-
+                path: /spec/template/spec/containers/0/
                 value:
-                  secretRef:
-                    name: homepage-secret
+                  envFrom:
+                    - secretRef:
+                        name: homepage-secret
           - target:
               kind: ClusterRole
               name: homepage

@@ -35,7 +35,7 @@ spec:
             port: 3269
             protocol: TCP
         annotations:
-          traefik.ingress.kubernetes.io/service.serversscheme: https
+          #traefik.ingress.kubernetes.io/service.serversscheme: https
           traefik.ingress.kubernetes.io/service.serverstransport: security-kanidm@kubernetescrd
 
     ingress:

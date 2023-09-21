@@ -1,0 +1,119 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  creationTimestamp: "2023-09-19T14:21:13Z"
+  finalizers:
+  - finalizers.fluxcd.io
+  generation: 5
+  labels:
+    kustomize.toolkit.fluxcd.io/name: cluster-apps
+    kustomize.toolkit.fluxcd.io/namespace: flux-system
+  name: kanidm
+  namespace: security
+  resourceVersion: "1868266"
+  uid: 1a4d683b-f94f-43e4-bc55-2d6f4e602712
+spec:
+  chart:
+    spec:
+      chart: app-template
+      interval: 30m
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      version: 1.5.1
+  interval: 30m
+  values:
+    controller:
+      replicas: 1
+      strategy: Recreate
+    image:
+      repository: docker.io/kanidm/server
+      tag: 1.1.0-beta.13
+    ingress:
+      main:
+        annotations:
+          gethomepage.dev/description: User Management
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: User Management
+          gethomepage.dev/icon: mdi-account-lock
+          gethomepage.dev/name: kanidm
+        enabled: true
+        hosts:
+        - host: idm.home.lucadev.de
+          paths:
+          - path: /
+            pathType: Prefix
+        tls:
+        - hosts:
+          - idm.home.lucadev.de
+    persistence:
+      certs:
+        enabled: true
+        mountPath: /data/certs/
+        name: home-lucadev-de-wildcard-cert
+        type: secret
+      config:
+        enabled: true
+        subPath:
+        - mountPath: /data/server.toml
+          path: server.toml
+        type: custom
+        volumeSpec:
+          configMap:
+            name: kanidm-configuration
+      data:
+        accessMode: ReadWriteOnce
+        enabled: true
+        mountPath: /data/persistent/
+        name: data-kanidm
+        size: 1Gi
+        type: pvc
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 50m
+        memory: 128Mi
+    service:
+      main:
+        annotations:
+          traefik.ingress.kubernetes.io/service.serversscheme: https
+          traefik.ingress.kubernetes.io/service.serverstransport: security-kanidm@kubernetescrd
+        ports:
+          http:
+            port: 8443
+            protocol: HTTPS
+          ldap:
+            port: 3269
+            protocol: TCP
+status:
+  conditions:
+  - lastTransitionTime: "2023-09-21T09:06:53Z"
+    message: |-
+      Helm upgrade failed: error while running post render on files: map[string]interface {}(nil): yaml: unmarshal errors:
+        line 16: mapping key "traefik.ingress.kubernetes.io/service.serversscheme" already defined at line 15
+    reason: UpgradeFailed
+    status: "False"
+    type: Ready
+  - lastTransitionTime: "2023-09-21T09:06:53Z"
+    message: |-
+      Helm upgrade failed: error while running post render on files: map[string]interface {}(nil): yaml: unmarshal errors:
+        line 16: mapping key "traefik.ingress.kubernetes.io/service.serversscheme" already defined at line 15
+
+      Last Helm logs:
+
+      preparing upgrade for kanidm
+      resetting values to the chart's original version
+    reason: UpgradeFailed
+    status: "False"
+    type: Released
+  failures: 1
+  helmChart: flux-system/security-kanidm
+  lastAppliedRevision: 1.5.1
+  lastAttemptedRevision: 1.5.1
+  lastAttemptedValuesChecksum: 2d4e2ce5f9dd59bc1efa7cef9878930f5985c92e
+  observedGeneration: 5
+  upgradeFailures: 1
