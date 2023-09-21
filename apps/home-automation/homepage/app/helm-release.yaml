@@ -13,7 +13,7 @@ spec:
       interval: 30m
       sourceRef:
         kind: HelmRepository
-        name: homepage
+        name: lucadev
         namespace: flux-system
   values:
     image:
@@ -97,28 +97,3 @@ spec:
     envFrom:
       - secretRef:
           name: homepage-secret
-  postRenderers:
-    - kustomize:
-        patches:
-          - target:
-              kind: ClusterRole
-              name: homepage
-            patch: |
-              - op: add
-                path: /rules/-
-                value:
-                  apiGroups:
-                    - apiextensions.k8s.io
-                  resources:
-                    - customresourcedefinitions/status
-                  verbs:
-                    - get
-          - target:
-              kind: ConfigMap
-              name: homepage
-            patch: |
-              - op: add
-                path: /data/-
-                value:
-                  custom.css: ".not_used {}"
-                  custom.js: ""

@@ -17,3 +17,4 @@ resources:
   - ./stakater.yaml
   - ./jetstack.yaml
   - ./mittwald.yaml
+  - ./lucadev.yaml
