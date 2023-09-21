@@ -31,7 +31,7 @@ spec:
           http:
             port: 8443
             protocol: HTTPS
-          ldap:
+          ldaps:
             port: 636
             protocol: TCP
         annotations:
