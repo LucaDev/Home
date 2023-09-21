@@ -18,3 +18,4 @@ resources:
   - ./jetstack.yaml
   - ./mittwald.yaml
   - ./lucadev.yaml
+  - ./appscode.yaml

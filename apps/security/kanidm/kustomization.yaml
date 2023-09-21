@@ -5,5 +5,4 @@ namespace: security
 resources:
   - ./helm-release.yaml
   - ./configuration.yaml
-  - ./certificate.yaml
   - ./kanidm-transport.yaml
