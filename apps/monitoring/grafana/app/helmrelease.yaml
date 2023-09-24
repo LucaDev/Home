@@ -126,7 +126,7 @@ spec:
         name_attribute_path: name
         use_pkce: true
         client_id: grafana
-        client_secret: # Set by env vars
+        # client_secret: # Set by env vars
         auth_url: https://idm.home.lucadev.de/oauth2/authorise
         token_url: https://idm.home.lucadev.de/oauth2/token
         api_url: https://idm.home.lucadev.de/oauth2/openid/grafana/userinfo
