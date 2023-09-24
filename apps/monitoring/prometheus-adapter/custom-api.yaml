@@ -2,10 +2,6 @@ apiVersion: apiregistration.k8s.io/v1
 kind: APIService
 metadata:
   name: v1beta2.custom.metrics.k8s.io
-  labels:
-    app.kubernetes.io/managed-by: "Helm"
-    meta.helm.sh/release-name: "prometheus-adapter"
-    meta.helm.sh/release-namespace: "monitoring"
 spec:
   group: custom.metrics.k8s.io
   groupPriorityMinimum: 100
