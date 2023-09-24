@@ -39,6 +39,7 @@ spec:
 
     gateway:
       enabled: true
+      replicas: 1
 
     monitoring:
       dashboards:
