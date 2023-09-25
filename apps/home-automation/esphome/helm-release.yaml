@@ -59,6 +59,12 @@ spec:
         enabled: true
         type: emptyDir
         mountPath: /config/.esphome
+      config:
+        enabled: true
+        type: pvc
+        mountPath: /config
+        accessMode: ReadWriteOnce
+        size: 2Gi
 
     probes:
       liveness:
@@ -74,9 +80,3 @@ spec:
         memory: 512M
       limits:
         memory: 1024M
-
-    volumeClaimTemplates:
-      - name: config
-        mountPath: /config
-        accessMode: ReadWriteOnce
-        size: 2Gi
