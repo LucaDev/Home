@@ -4,5 +4,6 @@ metadata:
   name: traefik-dashboard
   namespace: kube-system
 spec:
-  addPrefix:
-    prefix: /dashboard/
+  redirectRegex:
+    regex: ^(https?://[a-zA-Z0-9.]*)/*$
+    replacement: ${1}/dashboard/
