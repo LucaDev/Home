@@ -58,6 +58,12 @@ spec:
         mountPath: "/data/settings.js"
         subPath: "settings.js"
         readOnly: true
+      data:
+        enabled: true
+        type: pvc
+        mountPath: /data
+        accessMode: ReadWriteOnce
+        size: 1Gi
 
     podSecurityContext:
       runAsUser: 1000
@@ -72,9 +78,3 @@ spec:
       limits:
         cpu: 500m
         memory: 512Mi
-
-    volumeClaimTemplates:
-      - name: data
-        mountPath: /data
-        accessMode: ReadWriteOnce
-        size: 1Gi
