@@ -1,9 +1,9 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: ssd-dualreplica
+  name: ssd-singlereplica
 provisioner: cluster.local/local-path-provisioner
 parameters:
-  nodePath: /mnt/data/ssd/dual/
+  nodePath: /mnt/data/ssd/single/
 volumeBindingMode: WaitForFirstConsumer
 reclaimPolicy: Delete
