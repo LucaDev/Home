@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./configuration/ks.yaml
-  - ./samba-operator
+  - ./samba-operator/ks.yaml
