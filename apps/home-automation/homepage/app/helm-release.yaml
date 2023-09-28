@@ -45,7 +45,7 @@ spec:
         - 3D Drucker:
             href: http://3ddrucker.local
             icon: mainsail.svg
-            ping: http://3ddrucker.local
+            ping: http://192.168.1.90
             widget:
               type: moonraker
               url: http://3ddrucker.local
@@ -54,9 +54,6 @@ spec:
             ping: http://192.168.1.60
             icon: mdi-solar-power-variant
       widgets:
-        - search:
-            provider: google
-            target: _blank
         - openweathermap:
             label: Zuhause
             latitude: "{{HOMEPAGE_VAR_OPENWEATHERMAP_LAT}}"
@@ -81,7 +78,6 @@ spec:
         mode: cluster
       docker:
       settings:
-        headerStyle: boxed
         background: https://i.imgur.com/hOzzkCY.jpeg
         backgroundOpacity: 0.3
         target: _self
