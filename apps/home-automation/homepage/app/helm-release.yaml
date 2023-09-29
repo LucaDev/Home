@@ -46,6 +46,7 @@ spec:
             href: http://3ddrucker.local
             icon: mainsail.svg
             ping: http://192.168.1.90
+            statusStyle: basic
             widget:
               type: moonraker
               url: http://3ddrucker.local
@@ -53,6 +54,10 @@ spec:
             href: http://pv-anlage.local
             ping: http://192.168.1.60
             icon: mdi-solar-power-variant
+            statusStyle: basic
+            widget:
+              type: opendtu
+              url: http://192.168.1.60
       widgets:
         - openweathermap:
             label: Zuhause
