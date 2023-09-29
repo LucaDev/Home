@@ -1,0 +1,9 @@
+apiVersion: samba-operator.samba.org/v1alpha1
+kind: SmbSecurityConfig
+metadata:
+  name: smb-users
+spec:
+  mode: user
+  users:
+    secret: smb-users
+    key: users

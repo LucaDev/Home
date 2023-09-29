@@ -12,3 +12,17 @@ spec:
     kind: GitRepository
     name: github-repo
   wait: false
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: samba-shares
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: "./apps/storage/samba-operator/shares"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: github-repo
+  wait: false

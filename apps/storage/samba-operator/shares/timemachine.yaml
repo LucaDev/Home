@@ -1,0 +1,16 @@
+apiVersion: samba-operator.samba.org/v1alpha1
+kind: SmbShare
+metadata:
+  name: timemachine
+spec:
+  shareName: "TimeMachine"
+  commonConfig: external-share
+  storage:
+    pvc:
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 100Gi
+  readOnly: false
