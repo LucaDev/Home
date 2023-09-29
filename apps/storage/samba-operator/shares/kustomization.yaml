@@ -3,6 +3,6 @@ kind: Kustomization
 namespace: storage
 resources:
   - commonConfig.yaml
-  - smb-users.yaml
+  - smbUsers.yaml
   - securityConfig.yaml
   - timemachine.yaml
