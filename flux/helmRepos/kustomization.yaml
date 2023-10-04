@@ -19,3 +19,4 @@ resources:
   - ./mittwald.yaml
   - ./lucadev.yaml
   - ./appscode.yaml
+  - ./cnpg.yaml
