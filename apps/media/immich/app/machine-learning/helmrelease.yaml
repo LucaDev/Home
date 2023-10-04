@@ -29,25 +29,19 @@ spec:
 
     env:
       DB_HOSTNAME:
-        valueFrom:
-          secretKeyRef:
-            name: immich-pguser-immich
-            key: HOST
+        value: "immich-rw.databases.svc.cluster.local"
       DB_USERNAME:
         valueFrom:
           secretKeyRef:
-            name: immich-pguser-immich
-            key: LOGIN
+            name: immich-app
+            key: username
       DB_PASSWORD:
         valueFrom:
           secretKeyRef:
-            name: immich-pguser-immich
-            key: PASSWORD
+            name: immich-app
+            key: password
       DB_DATABASE_NAME:
-        valueFrom:
-          secretKeyRef:
-            name: immich-pguser-immich
-            key: DATABASE_NAME
+        value: "app"
 
     envFrom:
       - secretRef:

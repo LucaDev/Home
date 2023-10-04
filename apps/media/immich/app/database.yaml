@@ -1,17 +1,13 @@
-apiVersion: db.movetokube.com/v1alpha1
-kind: Postgres
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
 metadata:
-  name: immich-db
+  name: immich
 spec:
-  database: immich-db
-  dropOnDelete: false
----
-apiVersion: db.movetokube.com/v1alpha1
-kind: PostgresUser
-metadata:
-  name: pguser-immich
-spec:
-  role: username
-  database: immich-db
-  secretName: immich
-  privileges: OWNER
+  instances: 1
+  primaryUpdateStrategy: unsupervised
+
+  storage:
+    size: 2Gi
+
+  monitoring:
+    enablePodMonitor: true

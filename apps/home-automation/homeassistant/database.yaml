@@ -1,17 +1,13 @@
-apiVersion: db.movetokube.com/v1alpha1
-kind: Postgres
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
 metadata:
-  name: homeassistant-db
+  name: homeassistant
 spec:
-  database: homeassistant-db
-  dropOnDelete: false
----
-apiVersion: db.movetokube.com/v1alpha1
-kind: PostgresUser
-metadata:
-  name: homeassistant-db-user
-spec:
-  role: username
-  database: homeassistant-db
-  secretName: secret
-  privileges: OWNER
+  instances: 1
+  primaryUpdateStrategy: unsupervised
+
+  storage:
+    size: 2Gi
+
+  monitoring:
+    enablePodMonitor: true
