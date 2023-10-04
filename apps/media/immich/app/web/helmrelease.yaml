@@ -33,7 +33,7 @@ spec:
 
     env:
       DB_HOSTNAME:
-        value: "immich-rw.databases.svc.cluster.local"
+        value: "immich-rw.media.svc.cluster.local"
       DB_USERNAME:
         valueFrom:
           secretKeyRef:
