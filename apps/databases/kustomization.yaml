@@ -4,5 +4,5 @@ resources:
   - ./namespace.yaml
 #  - ./ext-postgres-operator
   - ./redis/ks.yaml
-  - ./postgres
+#  - ./postgres
   - ./cloudnative-pg
