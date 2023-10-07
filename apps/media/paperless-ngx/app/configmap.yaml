@@ -13,11 +13,12 @@ data:
 
   # Configure LDAP
   PAPERLESS_LDAP_AUTH_ENABLED: "true"
-  PAPERLESS_LDAP_AUTH_URL: "kanidm.security.svc.cluster.local:3269"
-  PAPERLESS_LDAP_AUTH_SEARCH_BASE: "(class=person),dc=idm,dc=home,dc=lucadev,dc=de"
+  PAPERLESS_LDAP_AUTH_URL: "kanidm.security.svc.cluster.local:636"
+  PAPERLESS_LDAP_AUTH_SEARCH_BASE: "dc=idm,dc=home,dc=lucadev,dc=de"
   PAPERLESS_LDAP_UID_FORMAT: "spn=%s,dc=idm,dc=home,dc=lucadev,dc=de"
-  PAPERLESS_LDAP_USER_GROUP: "spn=paperless@idm.home.lucadev.de,dc=idm,dc=home,dc=lucadev,dc=de"
-  PAPERLESS_LDAP_ADMIN_GROUP: "spn=paperless-admin@idm.home.lucadev.de,dc=idm,dc=home,dc=lucadev,dc=de"
+  PAPERLESS_LDAP_USER_GROUP: "spn=idm_all_persons@idm.home.lucadev.de,dc=idm,dc=home,dc=lucadev,dc =de"
+  PAPERLESS_LDAP_ADMIN_GROUP: "spn=admins@idm.home.lucadev.de,dc=idm,dc=home,dc=lucadev,dc=de"
+  PAPERLESS_LDAP_AUTH_CONNECTION_USERNAME: "token"
   #PAPERLESS_LDAP_LLDAP_FIX: "true"
 
   # Configure folders
