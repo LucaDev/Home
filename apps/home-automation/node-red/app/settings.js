@@ -13,7 +13,7 @@ module.exports = {
       strategy: require("passport-openidconnect").Strategy,
       options: {
         issuer: "https://idm.home.lucadev.de/oauth2/openid/node-red/",
-        authorizationURL: "https://idm.home.lucadev.de/oauth2/authorise",
+        authorizationURL: "https://idm.home.lucadev.de/ui/oauth2",
         tokenURL: "https://idm.home.lucadev.de/oauth2/token",
         userInfoURL: "https://idm.home.lucadev.de/oauth2/openid/node-red/userinfo",
         clientID: "node-red",

@@ -23,7 +23,7 @@ spec:
 
     image:
       repository: docker.io/kanidm/server
-      tag: 1.1.0-beta.13
+      tag: 1.1.0-rc.14-dev
 
     service:
       main:
