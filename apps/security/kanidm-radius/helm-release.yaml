@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: kanidm
+  name: kanidm-radius
   namespace: security
 spec:
   interval: 30m
@@ -22,47 +22,17 @@ spec:
       strategy: Recreate
 
     image:
-      repository: docker.io/kanidm/server
+      repository: docker.io/kanidm/radius-server
       tag: 1.1.0-rc.14-dev
 
     service:
       main:
         ports:
-          http:
+          radius:
             port: 8443
-            protocol: HTTPS
-          ldaps:
-            port: 636
-            protocol: TCP
-        annotations:
-          traefik.ingress.kubernetes.io/service.serverstransport: security-kanidm@kubernetescrd
-
-    ingress:
-      main:
-        enabled: true
-        hosts:
-          - host: &host "idm.home.lucadev.de"
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-              - *host
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: User Management
-          gethomepage.dev/group: User Management
-          gethomepage.dev/icon: mdi-account-lock
-          gethomepage.dev/name: kanidm
+            protocol: TCP # TODO
 
     persistence:
-      data:
-        enabled: true
-        type: pvc
-        name: data-kanidm
-        size: 1Gi
-        accessMode: ReadWriteOnce
-        mountPath: /data/persistent/
       config:
         enabled: true
         type: custom
