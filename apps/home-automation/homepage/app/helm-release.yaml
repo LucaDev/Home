@@ -17,8 +17,9 @@ spec:
         namespace: flux-system
   values:
     image:
-      # renovate: datasource=github-releases depName=benphelps/homepage
-      tag: v0.7.0
+      # renovate: datasource=github-releases depName=gethomepage/homepage
+      repository: ghcr.io/gethomepage/homepage
+      tag: v0.7.3
 
     podAnnotations:
       reloader.stakater.com/auto: "true"
@@ -46,7 +47,6 @@ spec:
             href: http://3ddrucker.local
             icon: mainsail.svg
             ping: http://192.168.1.90
-            statusStyle: basic
             widget:
               type: moonraker
               url: http://3ddrucker.local
@@ -54,10 +54,13 @@ spec:
             href: http://pv-anlage.local
             ping: http://192.168.1.60
             icon: mdi-solar-power-variant
-            statusStyle: basic
             widget:
               type: opendtu
               url: http://192.168.1.60
+        - Heizung:
+            href: http://ems-esp.local
+            ping: http://192.168.1.60 # TODO
+            icon: mdi-water-boiler
       widgets:
         - openweathermap:
             label: Zuhause
@@ -87,6 +90,7 @@ spec:
         backgroundOpacity: 0.3
         target: _self
         language: de
+        statusStyle: 'dot'
         quicklaunch:
             searchDescriptions: true
             hideInternetSearch: true
