@@ -47,6 +47,22 @@ spec:
               path: /var/lib/grafana/dashboards/unpoller
             orgId: 1
             type: file
+          - name: Solar
+            disableDeletion: false
+            editable: true
+            folder: "Solar"
+            options:
+              path: /var/lib/grafana/dashboards/solar
+            orgId: 1
+            type: file
+          - name: Infra
+            disableDeletion: false
+            editable: true
+            folder: "Infra"
+            options:
+              path: /var/lib/grafana/dashboards/infra
+            orgId: 1
+            type: file
 
     dashboards:
       default:
