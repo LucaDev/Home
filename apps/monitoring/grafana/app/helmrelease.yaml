@@ -167,7 +167,8 @@ spec:
       auth.generic_oauth.group_mapping:
         org_id: 1
         role_attribute_path: |
-          contains(groups[*], 'admins@idm.home.lucadev.de') && 'Admin' || contains(groups[*], 'idm_all_persons@idm.home.lucadev.de') && 'Viewer'
+          contains(info.groups[*], 'admins@idm.home.lucadev.de') && 'GrafanaAdmin' || contains(info.groups[*], 'idm_all_persons@idm.home.lucadev.de') && 'Viewer'
+        allow_assign_grafana_admin: true
       dashboards:
         default_home_dashboard_path: /tmp/dashboards/home.json
       date_formats:
@@ -178,6 +179,7 @@ spec:
         url: https://grafana.net
       log:
         mode: console
+        filters: oauth.generic_oauth:debug
       news:
         news_feed_enabled: false
       panels:
