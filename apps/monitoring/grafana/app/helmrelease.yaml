@@ -151,7 +151,7 @@ spec:
       auth.generic_oauth.group_mapping:
         org_id: 1
         role_attribute_path: |
-          contains(groups[*], 'admins') && 'Admin' || contains(groups[*], 'people') && 'Viewer'
+          contains(groups[*], 'admins@idm.home.lucadev.de') && 'Admin' || contains(groups[*], 'idm_all_persons@idm.home.lucadev.de') && 'Viewer'
       dashboards:
         default_home_dashboard_path: /tmp/dashboards/home.json
       date_formats:
