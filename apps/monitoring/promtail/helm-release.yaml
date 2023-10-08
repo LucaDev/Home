@@ -46,7 +46,7 @@ spec:
               - *host
 
     extraVolumes:
-      - name: jounral
+      - name: journal
         hostPath:
           path: /var/log/journal
 
