@@ -38,8 +38,7 @@ spec:
       replicas: 1
 
     gateway:
-      enabled: true
-      replicas: 1
+      enabled: false
 
     monitoring:
       dashboards:
