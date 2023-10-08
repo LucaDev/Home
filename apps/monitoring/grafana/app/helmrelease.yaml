@@ -80,6 +80,24 @@ spec:
             - name: "DS_PROMETHEUS"
               value: Prometheus
 
+      infra:
+        # Ref: https://grafana.com/grafana/dashboards/15406
+        nut:
+          gnetId: 15406
+          revision: 2
+          datasource:
+            - name: "DS_PROMETHEUS"
+              value: Prometheus
+
+      solar:
+        # Ref: https://grafana.com/grafana/dashboards/19666
+        opendtu:
+          gnetId: 19666
+          revision: 1
+          datasource:
+            - name: "DS_PROMETHEUS"
+              value: Prometheus
+
     datasources:
       datasources.yaml:
         apiVersion: 1

@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: instantlinux
+  namespace: flux-system
+spec:
+  interval: 30m
+  url: https://instantlinux.github.io/docker-tools
+  timeout: 3m

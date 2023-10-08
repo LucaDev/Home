@@ -20,3 +20,4 @@ resources:
   - ./lucadev.yaml
   - ./appscode.yaml
   - ./cnpg.yaml
+  - ./instantlinux.yaml

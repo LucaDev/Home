@@ -1,0 +1,42 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: node-red
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 2.7.0
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: instantlinux
+        namespace: flux-system
+
+  values:
+    serviceAccount:
+      enabled: true
+      name: nut-upsd
+
+    deployment:
+      env:
+        serial: TODO
+      securityContext:
+        privileged: true
+      strategy:
+        type: Recreate
+    volumeMounts:
+    - name: usb
+      hostPath: { path: /dev/ttyUSB0 }
+    - name: secret
+      mountPath: /run/secrets/nut-upsd-password
+      readOnly: true
+      subPath: nut-upsd-password
+    volumes:
+    - name: usb
+      hostPath: { path: /dev/ttyUSB0 }
+    - name: secret
+      secret:
+        secretName: nut-upsd-password
