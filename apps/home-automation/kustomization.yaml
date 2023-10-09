@@ -7,4 +7,4 @@ resources:
   - ./node-red/ks.yaml
   - ./mosquitto
   - ./homeassistant
-  - ./zigebee2mqtt/ks.yaml
+  - ./zigbee2mqtt/ks.yaml
