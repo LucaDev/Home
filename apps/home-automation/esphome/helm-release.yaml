@@ -1,4 +1,5 @@
 ---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -9,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -17,19 +18,44 @@ spec:
         namespace: flux-system
 
   values:
-    podAnnotations:
-      reloader.stakater.com/auto: "true"
+    controllers:
+      main:
+        type: statefulset
+        annotations:
+          secret.reloader.stakater.com/auto: "true"
 
-    image:
-      repository: ghcr.io/esphome/esphome
-      tag: 2023.9.3@sha256:07cbbe0cc9d82d505dedbd40238fd9b800be6f1683d71e1a637456c474f2857e
+        statefulset:
+          volumeClaimTemplates:
+            - name: config
+              accessMode: ReadWriteOnce
+              size: 2Gi
+              globalMounts:
+                - path: /config
+
+        containers:
+          main:
+            image:
+              repository: ghcr.io/esphome/esphome
+              tag: 2023.9.3@sha256:07cbbe0cc9d82d505dedbd40238fd9b800be6f1683d71e1a637456c474f2857e
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
+            resources:
+              requests:
+                cpu: 5m
+                memory: 1374M
+              limits:
+                memory: 2048M
 
     service:
       main:
         ports:
           http:
             port: 6052
-            protocol: HTTP
 
     ingress:
       main:
@@ -38,6 +64,9 @@ spec:
           - host: &host "esphome.home.lucadev.de"
             paths:
               - path: /
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
@@ -50,33 +79,12 @@ spec:
 
     persistence:
       secrets:
-        enabled: true
         type: secret
         name: esphome-secrets
-        mountPath: /config
-        subPath: secrets.yaml
+        globalMounts:
+          - path: /config/secrets.yaml
+            subPath: secrets.yaml
       esphome-cache:
-        enabled: true
         type: emptyDir
-        mountPath: /config/.esphome
-      config:
-        enabled: true
-        type: pvc
-        mountPath: /config
-        accessMode: ReadWriteOnce
-        size: 2Gi
-
-    probes:
-      liveness:
-        enabled: false
-      readiness:
-        enabled: false
-      startup:
-        enabled: false
-
-    resources:
-      requests:
-        cpu: 5m
-        memory: 512M
-      limits:
-        memory: 1024M
+        globalMounts:
+          - path: /config/.esphome
