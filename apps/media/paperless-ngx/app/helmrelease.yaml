@@ -51,7 +51,8 @@ spec:
           gethomepage.dev/name: PaperlessNGX
           gethomepage.dev/widget.type: paperlessngx
           gethomepage.dev/widget.url: https://paperless.home.lucadev.de
-          gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_PAPERLESS_APIKEY}}"
+          gethomepage.dev/widget.username: "{{HOMEPAGE_VAR_PAPERLESS_USERNAME}}"
+          gethomepage.dev/widget.password: "{{HOMEPAGE_VAR_PAPERLESS_PASSWORD}}"
 
     persistence:
       consume:

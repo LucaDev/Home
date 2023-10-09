@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -18,24 +18,33 @@ spec:
         namespace: flux-system
 
   values:
-    controller:
-      replicas: 1
-      strategy: Recreate
-
-    image:
-      repository: docker.io/kanidm/radius-server
-      tag: 1.1.0-rc.14-dev
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: docker.io/kanidm/radius
+              tag: 1.1.0-rc.14-dev
+            resources:
+              requests:
+                cpu: 50m
+                memory: 128Mi
+              limits:
+                cpu: 500m
+                memory: 512Mi
 
     service:
       main:
         ports:
-          radius:
-            port: 8443
-            protocol: TCP # TODO
+          radius_tcp:
+            port: 1812
+            protocol: TCP
+          radius_udp:
+            port: 1812
+            protocol: UDP
 
     persistence:
       config:
-        enabled: true
         type: custom
         volumeSpec:
           configMap:
@@ -44,15 +53,6 @@ spec:
           - path: server.toml
             mountPath: /data/server.toml
       certs:
-        enabled: true
         type: secret
         name: home-lucadev-de-wildcard-cert
         mountPath: /data/certs/
-
-    resources:
-      requests:
-        cpu: 50m
-        memory: 128Mi
-      limits:
-        cpu: 500m
-        memory: 512Mi
