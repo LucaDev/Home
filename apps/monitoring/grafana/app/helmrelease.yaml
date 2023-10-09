@@ -179,7 +179,7 @@ spec:
         url: https://grafana.net
       log:
         mode: console
-        filters: oauth.generic_oauth:debug
+        #filters: oauth.generic_oauth:debug
       news:
         news_feed_enabled: false
       panels:
