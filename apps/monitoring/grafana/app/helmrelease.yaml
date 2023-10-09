@@ -167,7 +167,7 @@ spec:
       auth.generic_oauth.group_mapping:
         org_id: 1
         role_attribute_path: |
-          contains(info.groups[*], 'admins@idm.home.lucadev.de') && 'GrafanaAdmin' || contains(info.groups[*], 'idm_all_persons@idm.home.lucadev.de') && 'Viewer'
+          contains(info.groups[*], '5a34f43b-6cdc-4881-993c-063c2e6329c3') && 'GrafanaAdmin' || 'Viewer'
         allow_assign_grafana_admin: true
       dashboards:
         default_home_dashboard_path: /tmp/dashboards/home.json
