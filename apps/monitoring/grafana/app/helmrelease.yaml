@@ -126,13 +126,17 @@ spec:
           - access: proxy
             name: Loki
             type: loki
-            url: http://loki-headless.monitoring:80 # TODO
+            url: http://loki.monitoring.svc.cluster.local:3100
           - name: Alertmanager
             type: alertmanager
             access: proxy
-            url: http://kube-prometheus-stack-alertmanager.monitoring:9093
+            url: http://kube-prometheus-stack-alertmanager.monitoring.svc.cluster.local:9093
             jsonData:
               implementation: prometheus
+          - name: Sun
+            type: fetzerch-sunandmoon-datasource
+            Latitude: 8888
+            Longitude: 8888
 
     deploymentStrategy:
       type: Recreate
@@ -219,6 +223,7 @@ spec:
       - natel-discrete-panel
       - grafana-piechart-panel
       - grafana-clock-panel
+      - fetzerch-sunandmoon-datasource
 
     podAnnotations:
       configmap.reloader.stakater.com/reload: grafana
