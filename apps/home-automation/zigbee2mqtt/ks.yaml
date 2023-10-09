@@ -12,6 +12,6 @@ spec:
     kind: GitRepository
     name: github-repo
   wait: false # no flux ks dependents
-  dependsOn:
-    - name: mosquitto
-    - name: external-secrets-stores
+#  dependsOn:
+#    - name: mosquitto
+#    - name: external-secrets-stores
