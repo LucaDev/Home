@@ -27,8 +27,8 @@ spec:
     envFrom:
       - secretRef:
           name: secret-homeassistant-db-user
-#      - secretRef:
-#          name: home-assistant-secret
+      - secretRef:
+          name: home-assistant-secret
 
     service:
       main:
