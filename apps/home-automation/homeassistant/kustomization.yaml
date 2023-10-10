@@ -4,4 +4,4 @@ namespace: home-automation
 resources:
   - ./helm-release.yaml
   - ./database.yaml
-#  - ./external-secret.yaml
+  - ./external-secret.yaml
