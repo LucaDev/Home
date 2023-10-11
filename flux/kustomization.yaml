@@ -6,3 +6,4 @@ resources:
   - ./FluxGitRepo.yaml
   - ./helmRepos
   - ./cluster-apps.yaml
+  - ./notifications.yaml
