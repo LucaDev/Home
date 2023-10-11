@@ -23,6 +23,28 @@ spec:
       enabled: false
       forceDeployDashboards: true
 
+    alertmanager:
+      ingress:
+        enabled: true
+        pathType: Prefix
+        hosts:
+          - &host_alertmanager alerts.home.lucadev.de
+        tls:
+          - hosts:
+              - *host_alertmanager
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: TSDB
+          gethomepage.dev/group: Monitoring
+          gethomepage.dev/icon: alertmanager
+          gethomepage.dev/name: Alertmanager
+
+      alertmanagerSpec:
+        secrets:
+          - alertmanager-secret
+        configMaps:
+          - alertmanager-config
+
     ###
     ### Prometheus instance values
     ###
