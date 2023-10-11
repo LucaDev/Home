@@ -1,0 +1,28 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachineInstance
+metadata:
+  name: router
+spec:
+  terminationGracePeriodSeconds: 60
+  domain:
+    resources:
+      requests:
+        memory: 1024M
+    devices:
+      disks:
+        - name: ISO
+          cdrom:
+            bus: virtio
+        - name: cloudinitdisk
+          disk:
+            bus: virtio
+  volumes:
+    - name: ISO
+      persistentVolumeClaim:
+        claimName: vyos-iso
+    - name: cloudinitdisk
+      cloudInitNoCloud:
+        userData: |-
+          #cloud-config
+          password: fedora
+          chpasswd: { expire: False }
