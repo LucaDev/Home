@@ -1,6 +1,5 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: vms
 resources:
-  - https://github.com/kubevirt/kubevirt/releases/download/1.0.0/kubevirt-operator.yaml
-  - https://github.com/kubevirt/kubevirt/releases/download/1.0.0/kubevirt-cr.yaml
+  - https://github.com/kubevirt/kubevirt/releases/download/v1.0.0/kubevirt-operator.yaml
+  - https://github.com/kubevirt/kubevirt/releases/download/v1.0.0/kubevirt-cr.yaml
