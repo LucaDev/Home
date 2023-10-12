@@ -4,11 +4,11 @@ namespace: monitoring
 resources:
   - ./helm-release.yaml
   - ./alertmanager-secret.yaml
-configMapGenerator:
-- name: alertmanager-config
-  files:
-    - alertmanager-config.yaml
-generatorOptions:
-  disableNameSuffixHash: true
-  annotations:
-    kustomize.toolkit.fluxcd.io/substitute: disabled
+# configMapGenerator:
+# - name: alertmanager-config
+#   files:
+#     - alertmanager-config.yaml
+# generatorOptions:
+#   disableNameSuffixHash: true
+#   annotations:
+#     kustomize.toolkit.fluxcd.io/substitute: disabled

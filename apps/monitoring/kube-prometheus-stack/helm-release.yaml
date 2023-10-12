@@ -101,7 +101,6 @@ spec:
               - severity = "warning"
             equal: ["alertname", "namespace"]
 
-
     ###
     ### Prometheus instance values
     ###
