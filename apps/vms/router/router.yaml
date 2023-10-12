@@ -3,6 +3,7 @@ kind: VirtualMachine
 metadata:
   name: router
 spec:
+  running: true
   template:
     spec:
       terminationGracePeriodSeconds: 60
