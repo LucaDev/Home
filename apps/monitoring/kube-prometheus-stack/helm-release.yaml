@@ -49,8 +49,8 @@ spec:
           - name: "pushover"
             pushover_configs:
               - html: true
-                token_file: /etc/secrets/pushover_api_token
-                user_key_file: /etc/secrets/pushover_api_userkey
+                token_file: /etc/alertmanager/secrets/alertmanager-secret/pushover_api_token
+                user_key_file: /etc/alertmanager/secrets/alertmanager-secret/pushover_api_userkey
                 send_resolved: true
                 priority: |-
                   {{ if eq .Status "firing" }}1{{ else }}0{{ end }}
