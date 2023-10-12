@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: kubevirt
 resources:
   - ./dv.yaml
-#  - ./router.yaml
+  - ./router.yaml
