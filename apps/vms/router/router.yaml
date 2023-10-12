@@ -22,7 +22,7 @@ spec:
       volumes:
         - name: iso
           dataVolume:
-            name: vyos-iso
+            name: vyos
         - name: cloudinitdisk
           cloudInitNoCloud:
             userData: |-
