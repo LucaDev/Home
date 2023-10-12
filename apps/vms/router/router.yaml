@@ -20,7 +20,7 @@ spec:
               disk:
                 bus: virtio
       volumes:
-        - name: ISO
+        - name: iso
           dataVolume:
             name: vyos-iso
         - name: cloudinitdisk
