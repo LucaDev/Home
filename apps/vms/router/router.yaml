@@ -29,28 +29,28 @@ spec:
             userData: |-
               #cloud-config
               vyos_config_commands:
-              - set interfaces ethernet eth0 description 'LAN'
-              - set interfaces ethernet eth0 address '192.168.1.1/24'
+                - set interfaces ethernet eth0 description 'LAN'
+                - set interfaces ethernet eth0 address '192.168.1.4/24'
 
-              - set interfaces ethernet eth1 description 'WAN - Cable'
-              - set interfaces ethernet eth1 address 'dhcp'
+                - set interfaces ethernet eth1 description 'WAN - Cable'
+                - set interfaces ethernet eth1 address 'dhcp'
 
-              - set system login user vyos authentication public-keys personal key 'AAAAC3NzaC1lZDI1NTE5AAAAILjUx5YA3RwdM0xfXY7KMZb3N3BrK1tDyJ/qcQQvBWJE'
-              - set system login user vyos authentication public-keys personal type 'ssh-ed25519'
-              - set service ssh disable-password-authentication
-              - set service ssh port '22'
+                - set system login user vyos authentication public-keys personal key 'AAAAC3NzaC1lZDI1NTE5AAAAILjUx5YA3RwdM0xfXY7KMZb3N3BrK1tDyJ/qcQQvBWJE'
+                - set system login user vyos authentication public-keys personal type 'ssh-ed25519'
+                - set service ssh disable-password-authentication
+                - set service ssh port '22'
 
-              - delete system host-name
-              - set system host-name 'vrouter'
-              - set system domain-name 'home.lucadev.de'
+                - delete system host-name
+                - set system host-name 'vrouter'
+                - set system domain-name 'home.lucadev.de'
 
-              - set system ipv6 disable-forwarding
+                - set system ipv6 disable-forwarding
 
-              - set system name-server '1.1.1.1'
+                - set system name-server '1.1.1.1'
 
-              - set system sysctl parameter kernel.pty.max value '24000'
+                - set system sysctl parameter kernel.pty.max value '24000'
 
-              - set system time-zone 'Europe/Berlin'
+                - set system time-zone 'Europe/Berlin'
               write_files:
                 - path: /opt/vyatta/etc/config/scripts/vyos-postconfig-bootup.script
                   owner: root:vyattacfg
