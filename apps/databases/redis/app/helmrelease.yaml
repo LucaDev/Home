@@ -26,10 +26,10 @@ spec:
             resources:
               requests:
                 cpu: 5m
-                memory: 12Mi
+                memory: 25Mi
               limits:
                 cpu: 500m
-                memory: 12Mi
+                memory: 50Mi
 
     service:
       main:
