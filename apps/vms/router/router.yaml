@@ -14,6 +14,7 @@ spec:
         devices:
           disks:
             - name: iso
+              bootOrder: 1
               cdrom:
                 bus: sata
             - name: cloudinitdisk
