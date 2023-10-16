@@ -45,7 +45,7 @@ spec:
               - *host
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Document Management System
+          gethomepage.dev/description: Dokumenten Verwaltungs System
           gethomepage.dev/group: Medien
           gethomepage.dev/icon: paperless-ngx
           gethomepage.dev/name: PaperlessNGX

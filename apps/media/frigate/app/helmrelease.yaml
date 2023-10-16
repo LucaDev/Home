@@ -77,7 +77,7 @@ spec:
               - *host
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Cameras
+          gethomepage.dev/description: Kamera-Überwachung
           gethomepage.dev/group: Medien
           gethomepage.dev/icon: frigate
           gethomepage.dev/name: Frigate

@@ -48,7 +48,7 @@ spec:
               - *host
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Smarthome Control
+          gethomepage.dev/description: Smarthome Zentrale
           gethomepage.dev/group: Heimautomation
           gethomepage.dev/icon: home-assistant
           gethomepage.dev/name: HomeAssistant

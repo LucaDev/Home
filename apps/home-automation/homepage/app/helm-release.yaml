@@ -102,22 +102,22 @@ spec:
         title: Home
         disableCollapse: true
         layout:
-          Heimautomation:
-            style: row
-            columns: 4
-          Medien:
-            style: row
-            columns: 4
-          Netzwerk:
-            columns: 1
-          Nutzermanagement:
-            columns: 1
-          Überwachung:
-            style: row
-            columns: 4
-          Extern:
-            style: row
-            columns: 3
+          - Heimautomation:
+              style: row
+              columns: 4
+          - Medien:
+              style: row
+              columns: 4
+          - Netzwerk:
+              columns: 2
+          - Überwachung:
+              style: row
+              columns: 4
+          - Extern:
+              style: row
+              columns: 3
+          - Nutzermanagement:
+              columns: 1
     envFrom:
       - secretRef:
           name: homepage-secret

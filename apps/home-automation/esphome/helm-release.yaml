@@ -72,7 +72,7 @@ spec:
               - *host
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: DIY Smart Device Manager
+          gethomepage.dev/description: Geräte-Verwaltung
           gethomepage.dev/group: Heimautomation
           gethomepage.dev/icon: esphome
           gethomepage.dev/name: ESPHome

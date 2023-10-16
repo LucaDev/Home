@@ -212,7 +212,7 @@ spec:
             - *host
       annotations:
         gethomepage.dev/enabled: "true"
-        gethomepage.dev/description: Monitoring
+        gethomepage.dev/description: Dashboards
         gethomepage.dev/group: Überwachung
         gethomepage.dev/icon: grafana
         gethomepage.dev/name: Grafana

@@ -34,7 +34,7 @@ spec:
               - *host_alertmanager
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: TSDB
+          gethomepage.dev/description: Alarmzentrale
           gethomepage.dev/group: Überwachung
           gethomepage.dev/icon: alertmanager
           gethomepage.dev/name: Alertmanager
@@ -115,7 +115,7 @@ spec:
               - *host_prometheus
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: TSDB
+          gethomepage.dev/description: Metrik-Datenbank
           gethomepage.dev/group: Überwachung
           gethomepage.dev/icon: prometheus
           gethomepage.dev/name: Prometheus
