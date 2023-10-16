@@ -107,12 +107,13 @@ spec:
               columns: 4
           - Medien:
               style: row
-              columns: 4
+              columns: 3
           - Netzwerk:
+              style: row
               columns: 2
           - Überwachung:
               style: row
-              columns: 4
+              columns: 3
           - Extern:
               style: row
               columns: 3
