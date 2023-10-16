@@ -104,17 +104,20 @@ spec:
         layout:
           Heimautomation:
             style: row
+            columns: 4
           Medien:
             style: row
             columns: 4
           Netzwerk:
             columns: 1
           Nutzermanagement:
-            style: row
+            columns: 1
           Überwachung:
             style: row
+            columns: 4
           Extern:
             style: row
+            columns: 3
     envFrom:
       - secretRef:
           name: homepage-secret
