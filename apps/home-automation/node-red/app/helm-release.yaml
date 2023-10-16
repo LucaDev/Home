@@ -47,7 +47,7 @@ spec:
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Automations
-          gethomepage.dev/group: Home Automation
+          gethomepage.dev/group: Heimautomation
           gethomepage.dev/icon: node-red
           gethomepage.dev/name: NodeRed
 

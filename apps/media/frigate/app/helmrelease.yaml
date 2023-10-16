@@ -78,7 +78,7 @@ spec:
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Cameras
-          gethomepage.dev/group: Media
+          gethomepage.dev/group: Medien
           gethomepage.dev/icon: frigate
           gethomepage.dev/name: Frigate
     securityContext:

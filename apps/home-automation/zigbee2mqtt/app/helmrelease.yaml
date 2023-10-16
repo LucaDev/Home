@@ -130,6 +130,6 @@ spec:
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Zigbee Manager
-          gethomepage.dev/group: home-automation
+          gethomepage.dev/group: Heimautomation
           gethomepage.dev/icon: zigbee2mqtt
           gethomepage.dev/name: Zigbee2MQTT

@@ -7,7 +7,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.middlewares: kube-system-traefik-dashboard@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Traefik Dashboard
-    gethomepage.dev/group: System
+    gethomepage.dev/group: Netzwerk
     gethomepage.dev/icon: traefik
     gethomepage.dev/name: Traefik
     gethomepage.dev/widget.type: traefik

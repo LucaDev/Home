@@ -35,7 +35,7 @@ spec:
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: TSDB
-          gethomepage.dev/group: Monitoring
+          gethomepage.dev/group: Überwachung
           gethomepage.dev/icon: alertmanager
           gethomepage.dev/name: Alertmanager
 
@@ -116,7 +116,7 @@ spec:
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: TSDB
-          gethomepage.dev/group: Monitoring
+          gethomepage.dev/group: Überwachung
           gethomepage.dev/icon: prometheus
           gethomepage.dev/name: Prometheus
           gethomepage.dev/widget.type: prometheus

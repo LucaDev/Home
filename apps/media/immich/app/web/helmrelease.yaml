@@ -67,7 +67,7 @@ spec:
           traefik.ingress.kubernetes.io/router.middlewares: media-immich-prefixstrip@kubernetescrd
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Immich photo management
-          gethomepage.dev/group: Media
+          gethomepage.dev/group: Medien
           gethomepage.dev/icon: immich
           gethomepage.dev/name: Photos
           gethomepage.dev/widget.type: immich

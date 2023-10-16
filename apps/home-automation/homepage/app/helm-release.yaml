@@ -43,7 +43,7 @@ spec:
     config:
       bookmarks:
       services:
-      - Spielzeug:
+      - Extern:
         - 3D Drucker:
             href: http://3ddrucker.local
             icon: mainsail.svg
@@ -97,7 +97,24 @@ spec:
             hideInternetSearch: true
             hideVisitURL: true
         hideVersion: true
-
+        color: slate
+        iconStyle: theme
+        title: Home
+        disableCollapse: true
+        layout:
+          Heimautomation:
+            style: row
+          Medien:
+            style: row
+            columns: 4
+          Netzwerk:
+            columns: 1
+          Nutzermanagement:
+            style: row
+          Überwachung:
+            style: row
+          Extern:
+            style: row
     envFrom:
       - secretRef:
           name: homepage-secret
