@@ -8,3 +8,5 @@ resources:
   - ./mosquitto
   - ./homeassistant
   - ./zigbee2mqtt/ks.yaml
+  - ./nut
+  - ./spoolman/ks.yaml

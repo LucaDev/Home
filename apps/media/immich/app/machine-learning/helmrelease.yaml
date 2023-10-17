@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -21,72 +21,57 @@ spec:
     - name: immich-server
 
   values:
-    controller:
-      strategy: RollingUpdate
+    controllers:
+      main:
+        strategy: RollingUpdate
+        annotations:
+          reloader.stakater.com/auto: "true"
 
-    image:
-      repository: ghcr.io/immich-app/immich-machine-learning
-      tag: v1.82.0
+        pod:
+          enableServiceLinks: false
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
+            supplementalGroups:
+              - 65541
 
-    env:
-      DB_HOSTNAME:
-        value: "immich-rw.media.svc.cluster.local"
-      DB_USERNAME:
-        valueFrom:
-          secretKeyRef:
-            name: immich-app
-            key: username
-      DB_PASSWORD:
-        valueFrom:
-          secretKeyRef:
-            name: immich-app
-            key: password
-      DB_DATABASE_NAME:
-        value: "app"
-
-    envFrom:
-      - secretRef:
-          name: immich-secret
-      - configMapRef:
-          name: immich-configmap
+        containers:
+          main:
+            image:
+              repository: ghcr.io/immich-app/immich-machine-learning
+              tag: v1.82.0
+            env:
+              # General
+              IMMICH_MEDIA_LOCATION: &mediaLocation /usr/src/app/upload
+              # Ports
+              MACHINE_LEARNING_HOST: 0.0.0.0
+              MACHINE_LEARNING_PORT: &port 3003
+              # Machine learning
+              MACHINE_LEARNING_CACHE_FOLDER: /cache
+              TRANSFORMERS_CACHE: /cache
+            resources:
+              requests:
+                cpu: 100m
+                memory: 256M
+              limits:
+                memory: 4092M
 
     service:
       main:
         ports:
           http:
-            port: 3003
+            port: *port
 
     persistence:
       library:
-        enabled: true
+        type: persistentVolumeClaim
         existingClaim: immich-data
-        mountPath: /usr/src/app/upload
+        globalMounts:
+          - path: *mediaLocation
       cache:
-        enabled: true
-        type: pvc
+        type: persistentVolumeClaim
         existingClaim: immich-machine-learning-cache
-        mountPath: /cache
-
-    podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: OnRootMismatch
-      supplementalGroups:
-        - 65541
-
-    resources:
-      requests:
-        cpu: 100m
-        memory: 274M
-      limits:
-        cpu: 4000m
-        memory: 3949M
-
-    #topologySpreadConstraints:
-    #  - maxSkew: 1
-    #    topologyKey: kubernetes.io/hostname
-    #    whenUnsatisfiable: DoNotSchedule
-    #    labelSelector:
-    #      matchLabels:
-    #        app.kubernetes.io/name: immich-machine-learning
+        globalMounts:
+          - path: /cache

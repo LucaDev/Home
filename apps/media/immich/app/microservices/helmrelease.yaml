@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -22,37 +22,96 @@ spec:
     - name: immich-typesense
 
   values:
-    controller:
-      strategy: RollingUpdate
+    controllers:
+      main:
+        strategy: RollingUpdate
+        annotations:
+          reloader.stakater.com/auto: "true"
 
-    image:
-      repository: ghcr.io/immich-app/immich-server
-      tag: v1.82.0
+        pod:
+          enableServiceLinks: false
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
+            supplementalGroups:
+              - 44
+              - 109
+              - 65541
 
-    args:
-      - start-microservices.sh
-
-    env:
-      DB_HOSTNAME:
-        value: "immich-rw.media.svc.cluster.local"
-      DB_USERNAME:
-        valueFrom:
-          secretKeyRef:
-            name: immich-app
-            key: username
-      DB_PASSWORD:
-        valueFrom:
-          secretKeyRef:
-            name: immich-app
-            key: password
-      DB_DATABASE_NAME:
-        value: "app"
-
-    envFrom:
-      - secretRef:
-          name: immich-secret
-      - configMapRef:
-          name: immich-configmap
+        containers:
+          main:
+            image:
+              repository: ghcr.io/immich-app/immich-server
+              tag: v1.82.0
+            args:
+              - start-microservices.sh
+            env:
+              # General
+              LOG_LEVEL: log
+              IMMICH_MEDIA_LOCATION: &mediaLocation /usr/src/app/upload
+              # Geocoding
+              DISABLE_REVERSE_GEOCODING: "true"
+              # Ports
+              MICROSERVICES_PORT: 3002
+              # Database
+              DB_HOSTNAME: "immich-rw.media.svc.cluster.local"
+              DB_PORT: 5432
+              DB_USERNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-app
+                    key: username
+              DB_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-app
+                    key: password
+              DB_DATABASE_NAME: "app"
+              # Redis
+              REDIS_HOSTNAME:
+                valueFrom:
+                  configMapKeyRef:
+                    name: immich-configmap
+                    key: REDIS_HOSTNAME
+              REDIS_PORT:
+                valueFrom:
+                  configMapKeyRef:
+                    name: immich-configmap
+                    key: REDIS_PORT
+              # Typesense
+              TYPESENSE_ENABLED:
+                valueFrom:
+                  configMapKeyRef:
+                    name: immich-configmap
+                    key: TYPESENSE_ENABLED
+              TYPESENSE_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-secret
+                    key: TYPESENSE_API_KEY
+              TYPESENSE_HOST:
+                valueFrom:
+                  configMapKeyRef:
+                    name: immich-configmap
+                    key: TYPESENSE_HOST
+              TYPESENSE_PORT:
+                valueFrom:
+                  configMapKeyRef:
+                    name: immich-configmap
+                    key: TYPESENSE_PORT
+              TYPESENSE_PROTOCOL:
+                valueFrom:
+                  configMapKeyRef:
+                    name: immich-configmap
+                    key: TYPESENSE_PROTOCOL
+            resources:
+              requests:
+                cpu: 100m
+                memory: 512Mi
+              limits:
+                memory: 8000Mi
 
     service:
       main:
@@ -71,30 +130,3 @@ spec:
         enabled: true
         type: emptyDir
         mountPath: /usr/src/app/node_modules/local-reverse-geocoder/geonames_dump
-
-    podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: OnRootMismatch
-      supplementalGroups:
-        - 44
-        - 109
-        - 65541
-
-    resources:
-      requests:
-        cpu: 100m
-        #gpu.intel.com/i915: 1 ToDo AMD
-        memory: 512Mi
-      limits:
-        #gpu.intel.com/i915: 1
-        memory: 8000Mi
-
-    #topologySpreadConstraints:
-    #  - maxSkew: 1
-    #    topologyKey: kubernetes.io/hostname
-    #    whenUnsatisfiable: DoNotSchedule
-    #    labelSelector:
-    #      matchLabels:
-    #        app.kubernetes.io/name: immich-microservices
