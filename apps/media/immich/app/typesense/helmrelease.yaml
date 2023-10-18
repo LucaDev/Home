@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -18,78 +18,70 @@ spec:
         namespace: flux-system
 
   values:
-    controller:
-      type: statefulset
-      replicas: 1
-      strategy: RollingUpdate
+    controllers:
+      main:
+        type: statefulset
+        strategy: RollingUpdate
 
-    image:
-      repository: docker.io/typesense/typesense
-      tag: 0.25.1
+        annotations:
+          reloader.stakater.com/auto: "true"
 
-    env:
-      DB_HOSTNAME:
-        value: "immich-rw.media.svc.cluster.local"
-      DB_USERNAME:
-        valueFrom:
-          secretKeyRef:
-            name: immich-app
-            key: username
-      DB_PASSWORD:
-        valueFrom:
-          secretKeyRef:
-            name: immich-app
-            key: password
-      DB_DATABASE_NAME:
-        value: "app"
+        statefulset:
+          volumeClaimTemplates:
+            - name: config
+              accessMode: ReadWriteOnce
+              size: 10Gi
+              globalMounts:
+                - path: /config
 
-    envFrom:
-      - secretRef:
-          name: immich-secret
-      - configMapRef:
-          name: immich-configmap
+        pod:
+          enableServiceLinks: false
+
+        containers:
+          main:
+            image:
+              repository: docker.io/typesense/typesense
+              tag: 0.25.1
+            env:
+              TYPESENSE_DATA_DIR: /config
+              TYPESENSE_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-secret
+                    key: TYPESENSE_API_KEY
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: &port 8108
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: *port
+                  failureThreshold: 30
+                  periodSeconds: 5
+                  successThreshold: 1
+                  timeoutSeconds: 1
+            resources:
+              requests:
+                cpu: 5m
+                memory: 315M
+              limits:
+                memory: 1443M
 
     service:
       main:
         ports:
           http:
-            port: &port 8108
-
-    probes:
-      liveness: &probes
-        enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: /health
             port: *port
-          initialDelaySeconds: 0
-          periodSeconds: 10
-          timeoutSeconds: 1
-          failureThreshold: 3
-      readiness: *probes
-      startup:
-        enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: /health
-            port: *port
-          failureThreshold: 30
-          periodSeconds: 5
-          successThreshold: 1
-          timeoutSeconds: 1
-
-    volumeClaimTemplates:
-      - name: config
-        mountPath: /config
-        accessMode: ReadWriteOnce
-        size: 10Gi
-
-    resources:
-      requests:
-        cpu: 5m
-        memory: 315M
-      limits:
-        cpu: 500m
-        memory: 1443M

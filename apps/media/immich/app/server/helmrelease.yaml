@@ -81,11 +81,3 @@ spec:
         memory: 256Mi
       limits:
         memory: 512Mi
-
-#    topologySpreadConstraints:
-#      - maxSkew: 1
-#        topologyKey: kubernetes.io/hostname
-#        whenUnsatisfiable: DoNotSchedule
-#        labelSelector:
-#          matchLabels:
-#            app.kubernetes.io/name: immich-server
