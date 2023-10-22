@@ -10,6 +10,7 @@
     ":skipStatusChecks"
   ],
   "timezone": "Europe/Berlin",
+  "automergeSchedule": "after 3am before 6am"
   "flux": {
     "fileMatch": ["apps/.+\\.ya?ml$", "bootstrap/.+\\.ya?ml$", "flux/.+\\.ya?ml$"]
   },
