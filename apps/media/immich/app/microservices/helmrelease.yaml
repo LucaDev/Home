@@ -121,12 +121,15 @@ spec:
       library:
         enabled: true
         existingClaim: immich-data
-        mountPath: /usr/src/app/upload
+        globalMounts:
+          - path: *mediaLocation
       geocoding-dump:
         enabled: true
         type: emptyDir
-        mountPath: /usr/src/app/.reverse-geocoding-dump
+        globalMounts:
+          - path: /usr/src/app/.reverse-geocoding-dump
       geoname-dump:
         enabled: true
         type: emptyDir
-        mountPath: /usr/src/app/node_modules/local-reverse-geocoder/geonames_dump
+        globalMounts:
+          - path: /usr/src/app/node_modules/local-reverse-geocoder/geonames_dump
