@@ -120,4 +120,4 @@ spec:
         type: persistentVolumeClaim
         existingClaim: immich-data
         globalMounts:
-          - path:: /usr/src/app/upload
+          - path: *mediaLocation
