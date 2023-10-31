@@ -110,4 +110,4 @@ spec:
         size: 5Gi
         globalMounts:
           - path: /config
-        storageClassName: cached-dualreplica
+        storageClass: cached-dualreplica
