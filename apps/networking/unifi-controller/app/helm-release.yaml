@@ -104,7 +104,6 @@ spec:
 
     persistence:
       data:
-        name: unifi-data
         type: persistentVolumeClaim
         accessMode: ReadWriteOnce
         size: 5Gi
