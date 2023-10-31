@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -17,19 +17,31 @@ spec:
         namespace: flux-system
   interval: 30m
   values:
-    controller:
-      strategy: Recreate
-
-    image:
-      repository: docker.io/linuxserver/unifi-controller
-      tag: 7.5.187
+    controllers:
+      main:
+        strategy: Recreate
+        containers:
+          main:
+            image:
+              repository: docker.io/linuxserver/unifi-controller
+              tag: 7.5.187
+            env:
+              PUID: "1000"
+              PGID: "1000"
+              TZ: Europe/Berlin
+            resources:
+              requests:
+                cpu: 100m
+                memory: 256M
+              limits:
+                cpu: 1000m
+                memory: 1024M
 
     service:
       main:
         type: LoadBalancer
         annotations:
           traefik.ingress.kubernetes.io/service.serverstransport: networking-unifi@kubernetescrd
-          #traefik.ingress.kubernetes.io/service.serversscheme: https
         ports:
           http:
             port: 8443
@@ -62,6 +74,7 @@ spec:
             enabled: true
             port: 10001
             protocol: UDP
+
     ingress:
       main:
         enabled: true
@@ -70,6 +83,9 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
@@ -85,25 +101,12 @@ spec:
           gethomepage.dev/widget.password: "{{HOMEPAGE_VAR_UNIFI_MONITORING_PASSWORD}}"
           gethomepage.dev/widget.fields: "[\"wlan_users\"]"
 
-
-    resources:
-      requests:
-        cpu: 100m
-        memory: 256M
-      limits:
-        cpu: 1000m
-        memory: 1024M
-
     persistence:
       data:
-        enabled: true
         name: unifi-data
-        mountPath: /config
-        type: pvc
+        type: persistentVolumeClaim
         accessMode: ReadWriteOnce
         size: 5Gi
-
-    env:
-      PUID: "1000"
-      PGID: "1000"
-      TZ: Europe/Berlin
+        globalMounts:
+          - path: /config
+        storageClassName: cached-dualreplica
