@@ -4,6 +4,6 @@ metadata:
   name: ssd-dualreplica
 provisioner: rancher.io/local-path
 parameters:
-  nodePath: /mnt/data/ssd/dual/
+  nodePath: /mnt/data/ssd/dual
 volumeBindingMode: WaitForFirstConsumer
 reclaimPolicy: Delete

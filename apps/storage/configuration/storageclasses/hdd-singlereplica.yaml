@@ -4,6 +4,6 @@ metadata:
   name: hdd-singlereplica
 provisioner: rancher.io/local-path
 parameters:
-  nodePath: /mnt/data/hdd/single/
+  nodePath: /mnt/data/hdd/single
 volumeBindingMode: WaitForFirstConsumer
 reclaimPolicy: Delete

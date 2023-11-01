@@ -4,6 +4,6 @@ metadata:
   name: cached-singlereplica
 provisioner: rancher.io/local-path
 parameters:
-  nodePath: /mnt/data/cached/single/
+  nodePath: /mnt/data/cached/single
 volumeBindingMode: WaitForFirstConsumer
 reclaimPolicy: Delete

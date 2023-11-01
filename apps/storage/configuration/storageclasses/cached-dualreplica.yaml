@@ -4,6 +4,6 @@ metadata:
   name: cached-dualreplica
 provisioner: rancher.io/local-path
 parameters:
-  nodePath: /mnt/data/cached/dual/
+  nodePath: /mnt/data/cached/dual
 volumeBindingMode: WaitForFirstConsumer
 reclaimPolicy: Delete

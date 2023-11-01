@@ -4,6 +4,6 @@ metadata:
   name: hdd-dualreplica
 provisioner: rancher.io/local-path
 parameters:
-  nodePath: /mnt/data/hdd/dual/
+  nodePath: /mnt/data/hdd/dual
 volumeBindingMode: WaitForFirstConsumer
 reclaimPolicy: Delete
