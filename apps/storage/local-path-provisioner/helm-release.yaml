@@ -26,9 +26,9 @@ spec:
       - node: DEFAULT_PATH_FOR_NON_LISTED_NODES
         paths:
           - "/var/lib/rancher/k3s/storage"
-          - "/mnt/data/cached/dual/"
-          - "/mnt/data/cached/single/"
-          - "/mnt/data/hdd/dual/"
-          - "/mnt/data/hdd/single/"
-          - "/mnt/data/ssd/dual/"
-          - "/mnt/data/ssd/single/"
+          - "/mnt/data/cached/dual"
+          - "/mnt/data/cached/single"
+          - "/mnt/data/hdd/dual"
+          - "/mnt/data/hdd/single"
+          - "/mnt/data/ssd/dual"
+          - "/mnt/data/ssd/single"
