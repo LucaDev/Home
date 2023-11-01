@@ -3,8 +3,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: immich-data
 spec:
+  storageClassName: cached-singlereplica
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 20Gi # Size does not matter
+      storage: 50Gi # Size does not matter
