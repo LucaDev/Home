@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -18,13 +18,22 @@ spec:
         namespace: flux-system
 
   values:
-    controller:
-      replicas: 1
-      strategy: Recreate
-
-    image:
-      repository: docker.io/kanidm/server
-      tag: 1.1.0-rc.14-dev
+    controllers:
+      main:
+        replicas: 1
+        strategy: Recreate
+        containers:
+          main:
+            image:
+              repository: docker.io/kanidm/server
+              tag: 1.1.0-rc.15-dev
+            resources:
+              requests:
+                cpu: 50m
+                memory: 128Mi
+              limits:
+                cpu: 500m
+                memory: 512Mi
 
     service:
       main:
@@ -46,12 +55,15 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: zentrale Nutzerverwaltung
+          gethomepage.dev/description: Zentrale Nutzerverwaltung
           gethomepage.dev/group: Nutzermanagement
           gethomepage.dev/icon: mdi-account-lock
           gethomepage.dev/name: kanidm
@@ -59,30 +71,28 @@ spec:
     persistence:
       data:
         enabled: true
-        type: pvc
+        type: persistentVolumeClaim
         name: data-kanidm
         size: 1Gi
         accessMode: ReadWriteOnce
-        mountPath: /data/persistent/
+        storageClass: ssd-dualreplica
+        globalMounts:
+          - path: /data/persistent/
       config:
         enabled: true
         type: custom
         volumeSpec:
           configMap:
             name: kanidm-configuration
-        subPath:
-          - path: server.toml
-            mountPath: /data/server.toml
+        advancedMounts:
+          main:
+            main:
+              - path: /data/server.toml
+                readOnly: true
+                subPath: server.toml
       certs:
         enabled: true
         type: secret
         name: home-lucadev-de-wildcard-cert
-        mountPath: /data/certs/
-
-    resources:
-      requests:
-        cpu: 50m
-        memory: 128Mi
-      limits:
-        cpu: 500m
-        memory: 512Mi
+        globalMounts:
+          - path: /data/certs/
