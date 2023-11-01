@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -28,19 +28,39 @@ spec:
   #  - name: mosquitto
   #    namespace: default
   values:
-    controller:
-      type: statefulset
-      annotations:
-        reloader.stakater.com/auto: "true"
-    image:
-      repository: ghcr.io/blakeblackshear/frigate
-      tag: 0.12.1
-    env:
-      TZ: Europe/Berlin
-      #LIBVA_DRIVER_NAME: i965 #TODO
-    envFrom:
-      - secretRef:
-          name: frigate-secret
+    controllers:
+      main:
+        type: statefulset
+        annotations:
+          reloader.stakater.com/auto: "true"
+      image:
+        repository: ghcr.io/blakeblackshear/frigate
+        tag: 0.12.1
+      env:
+        TZ: Europe/Berlin
+        #LIBVA_DRIVER_NAME: i965 #TODO
+      envFrom:
+        - secretRef:
+            name: frigate-secret
+      resources:
+        requests:
+          cpu: 10m
+          memory: 1000Mi
+          #gpu.intel.com/i915: "1"
+        limits:
+          cpu: 3000m
+          memory: 4000Mi
+          #gpu.intel.com/i915: "1"
+      securityContext:
+        privileged: true
+      volumeClaimTemplates:
+        - name: config
+          globalMounts:
+            - path: /data
+          accessMode: ReadWriteOnce
+          size: 5Gi
+          storageClass: ssd-dualreplica
+
     service:
       main:
         ports:
@@ -49,6 +69,7 @@ spec:
           rtsp:
             enabled: true
             port: 8554
+
     probes:
       liveness: &probes
         enabled: true
@@ -64,6 +85,7 @@ spec:
       readiness: *probes
       startup:
         enabled: false
+
     ingress:
       main:
         enabled: true
@@ -72,6 +94,9 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
@@ -81,25 +106,21 @@ spec:
           gethomepage.dev/group: Medien
           gethomepage.dev/icon: frigate
           gethomepage.dev/name: Frigate
-    securityContext:
-      privileged: true
-    volumeClaimTemplates:
-      - name: config
-        mountPath: /data
-        accessMode: ReadWriteOnce
-        size: 5Gi
+
     persistence:
       config-file:
         enabled: true
         type: configMap
         name: frigate-configmap
         subPath: config.yml
-        mountPath: /config/config.yml
+        globalMounts:
+          - path:  /config/config.yml
         readOnly: true
       media:
         enabled: true
         existingClaim: frigate
-        mountPath: /media
+        globalMounts:
+          - path: /media
       cache:
         enabled: true
         type: emptyDir
@@ -112,15 +133,3 @@ spec:
         hostPath: /dev/bus/usb
         hostPathType: Directory
         mountPath: /dev/bus/usb
-    #nodeSelector:
-    #  google.feature.node.kubernetes.io/coral: "true"
-    #  intel.feature.node.kubernetes.io/gpu: "true"
-    resources:
-      requests:
-        cpu: 10m
-        memory: 1000Mi
-        #gpu.intel.com/i915: "1"
-      limits:
-        cpu: 3000m
-        memory: 4000Mi
-        #gpu.intel.com/i915: "1"

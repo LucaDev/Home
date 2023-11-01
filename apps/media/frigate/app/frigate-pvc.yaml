@@ -5,6 +5,7 @@ metadata:
   name: frigate
 spec:
   accessModes: ["ReadWriteOnce"]
+  storageClassName: hdd-singlereplica
   resources:
     requests:
       storage: 100Gi
