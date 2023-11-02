@@ -31,11 +31,6 @@ spec:
               storageClass: ssd-singlereplica
               globalMounts:
                 - path: /config
-            - name: cache
-              type: emptyDir
-              size: 10Gi
-              globalMounts:
-                - path: /cache
 
         pod:
           enableServiceLinks: false
@@ -104,3 +99,7 @@ spec:
         globalMounts:
           - path: /media/
         size: 100G
+      cache:
+        type: emptyDir
+        globalMounts:
+          - path: /cache
