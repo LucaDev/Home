@@ -30,7 +30,7 @@ spec:
               size: 512Mi
               storageClass: ssd-dualreplica
               globalMounts:
-                - path: /data
+                - path: /mosquitto/data
         initContainers:
           init-config:
             image:
