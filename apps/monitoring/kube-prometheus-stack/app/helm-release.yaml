@@ -141,10 +141,18 @@ spec:
             static_configs:
               - targets:
                   - "192.168.1.87"
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: cached-singlereplica
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 50Gi
 
         enableAdminAPI: true
         #retention: 10d
-        #retentionSize: "10GB"
+        retentionSize: "50GB"
         scrapeInterval: 1m
 
   postRenderers:
