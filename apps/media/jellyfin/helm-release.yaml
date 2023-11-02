@@ -99,6 +99,7 @@ spec:
         enabled: true
         type: pvc
         accessMode: ReadWriteOnce
+        storageClass: hdd-singlereplica
         globalMounts:
           - path: /media/
         size: 100G
