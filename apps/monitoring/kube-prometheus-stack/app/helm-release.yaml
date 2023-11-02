@@ -39,22 +39,13 @@ spec:
           gethomepage.dev/icon: alertmanager
           gethomepage.dev/name: Alertmanager
 
-      alertmanagerSpec:
-        secrets:
-          - alertmanager-secret
-
       config:
         receivers:
           - name: "null"
-          - name: "pushover"
+          - name: "Discord"
             pushover_configs:
-              - html: true
-                token_file: /etc/alertmanager/secrets/alertmanager-secret/pushover_api_token
-                user_key_file: /etc/alertmanager/secrets/alertmanager-secret/pushover_api_userkey
+              - webhook_url: ${discord_alert_webhook}
                 send_resolved: true
-                priority: |-
-                  {{ if eq .Status "firing" }}1{{ else }}0{{ end }}
-                url_title: View in Alert Manager
                 title: |-
                   [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }}
                 message: |-
@@ -85,12 +76,12 @@ spec:
           group_wait: 30s
           group_interval: 5m
           repeat_interval: 6h
-          receiver: "pushover"
+          receiver: "discord"
           routes:
             - receiver: "null"
               matchers:
                 - alertname =~ "InfoInhibitor|Watchdog"
-            - receiver: "pushover"
+            - receiver: "discord"
               matchers:
                 - severity = critical
               continue: true

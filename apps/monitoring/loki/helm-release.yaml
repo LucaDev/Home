@@ -37,6 +37,8 @@ spec:
 
     singleBinary:
       replicas: 1
+      persistence:
+        storageClass: cached-singlereplica
 
     gateway:
       enabled: false
