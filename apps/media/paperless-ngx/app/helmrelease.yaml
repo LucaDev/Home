@@ -27,9 +27,10 @@ spec:
               tag: 1.17.4@sha256:f0c59f0e4e9e3b5cd37e0e548deb2551df9462920590fef117e79dec7e3347f0
             envFrom:
               - secretRef:
-                name: paperless-secret
+                  name: paperless-secret
               - configMapRef:
-                name: paperless-configmap
+                  name: paperless-configmap
+
         annotations:
           reloader.stakater.com/auto: "true"
 
