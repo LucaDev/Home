@@ -28,6 +28,7 @@ spec:
             - name: data
               accessMode: ReadWriteOnce
               size: 512Mi
+              storageClass: ssd-dualreplica
               globalMounts:
                 - path: /data
         initContainers:
