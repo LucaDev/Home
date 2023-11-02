@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -17,16 +17,57 @@ spec:
         namespace: flux-system
   interval: 30m
   values:
-    image:
-      repository: jellyfin/jellyfin
-      tag: latest # ToDo
-    env:
-      TZ: Europe/Berlin
+    controllers:
+      main:
+        type: statefulset
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        statefulset:
+          volumeClaimTemplates:
+            - name: config
+              accessMode: ReadWriteOnce
+              size: 2Gi
+              storageClass: ssd-singlereplica
+              globalMounts:
+                - path: /config
+            - name: cache
+              type: emptyDir
+              globalMounts:
+                - path: /cache
+
+        pod:
+          enableServiceLinks: false
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: "OnRootMismatch"
+            supplementalGroups:
+              - 44
+              - 109
+              - 65542 # gladius:external-services
+
+        containers:
+          main:
+            image:
+              repository: jellyfin/jellyfin
+              tag: "10.8.11"
+            env:
+              TZ: Europe/Berlin
+            resources:
+              requests:
+                cpu: 100m
+                memory: 1Gi
+              limits:
+                memory: 6Gi
+
     service:
       main:
         ports:
           http:
             port: 8096
+
     ingress:
       main:
         enabled: true
@@ -46,32 +87,18 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
+
     persistence:
-      config:
-        enabled: true
-        type: pvc
-        accessMode: ReadWriteOnce
-        mountPath: /config/
-        size: 1G
       media:
         enabled: true
         type: pvc
         accessMode: ReadWriteOnce
-        mountPath: /media/
+        globalMounts:
+          - path: /media/
         size: 100G
-      cache:
-        enabled: true
-        type: emptyDir
-        mountPath: /cache
-    resources:
-      requests:
-        #gpu.intel.com/i915: 1
-        cpu: 100m
-        memory: 1Gi
-      limits:
-        #gpu.intel.com/i915: 1
-        cpu: 5000m
-        memory: 6Gi
