@@ -8,6 +8,7 @@ spec:
 
   storage:
     size: 2Gi
+    storageClass: cached-dualreplica
 
   monitoring:
     enablePodMonitor: true
