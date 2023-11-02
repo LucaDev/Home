@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -17,16 +17,44 @@ spec:
         namespace: flux-system
 
   values:
-    image:
-      repository: docker.io/nodered/node-red
-      tag: 3.1.0@sha256:0e3b590064a6bb32996aaa4ca63f0c17e63c877cc5219de501820e6457a616f1
+    controllers:
+      main:
+        type: statefulset
+        strategy: RollingUpdate
 
-    podAnnotations:
-      reloader.stakater.com/auto: "true"
+        containers:
+          main:
+            image:
+              repository: docker.io/nodered/node-red
+              tag: 3.1.0
+            envFrom:
+              - secretRef:
+                  name: node-red-secret
+            resources:
+              requests:
+                cpu: 5m
+                memory: 256Mi
+              limits:
+                memory: 512Mi
 
-    envFrom:
-      - secretRef:
-          name: node-red-secret
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        statefulset:
+          volumeClaimTemplates:
+            - name: data
+              accessMode: ReadWriteOnce
+              size: 1Gi
+              storageClass: ssd-singlereplica
+              globalMounts:
+                - path: /data
+
+        pod:
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
+            fsGroupChangePolicy: "OnRootMismatch"
 
     service:
       main:
@@ -41,6 +69,9 @@ spec:
           - host: &host "nodered.home.lucadev.de"
             paths:
               - path: /
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
@@ -53,29 +84,9 @@ spec:
 
     persistence:
       config-file:
-        enabled: true
         type: configMap
         name: node-red-configmap
-        mountPath: "/data/settings.js"
-        subPath: "settings.js"
-        readOnly: true
-      data:
-        enabled: true
-        type: pvc
-        mountPath: /data
-        accessMode: ReadWriteOnce
-        size: 1Gi
-
-    podSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
-      fsGroup: 1000
-      fsGroupChangePolicy: "OnRootMismatch"
-
-    resources:
-      requests:
-        cpu: 5m
-        memory: 256Mi
-      limits:
-        cpu: 500m
-        memory: 512Mi
+        globalMounts:
+          - path: /data/settings.js
+            subPath: settings.js
+            readOnly: true
