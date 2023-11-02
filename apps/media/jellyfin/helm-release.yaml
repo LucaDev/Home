@@ -93,7 +93,7 @@ spec:
     persistence:
       media:
         enabled: true
-        type: pvc
+        type: persistentVolumeClaim
         accessMode: ReadWriteOnce
         storageClass: hdd-singlereplica
         globalMounts:
