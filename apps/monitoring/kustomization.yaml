@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./kube-prometheus-stack/ks.yaml
+  - ./alertmanager/ks.yaml
   - ./loki
   - ./unpoller
   - ./grafana/ks.yaml
