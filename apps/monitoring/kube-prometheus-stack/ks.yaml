@@ -12,7 +12,3 @@ spec:
     kind: GitRepository
     name: github-repo
   wait: false # no flux ks dependents
-  postBuild:
-    substituteFrom:
-      - kind: Secret
-        name: alert-manager-secret
