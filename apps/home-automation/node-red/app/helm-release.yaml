@@ -23,7 +23,7 @@ spec:
         strategy: RollingUpdate
 
         initContainers:
-          main:
+          init:
             image:
               repository: docker.io/nodered/node-red
               tag: 3.1.0
