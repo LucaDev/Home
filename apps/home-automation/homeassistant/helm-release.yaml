@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.3
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -17,18 +17,44 @@ spec:
         namespace: flux-system
 
   values:
-    podAnnotations:
-      reloader.stakater.com/auto: "true"
+    controllers:
+      main:
+        type: statefulset
+        annotations:
+          reloader.stakater.com/auto: "true"
 
-    image:
-      repository: ghcr.io/home-assistant/home-assistant
-      tag: 2023.11.1@sha256:de25f0ad773b54d1c0e5a63147e23417055f3056b0ef24cf4a5ac8019bb33df3
+        statefulset:
+          volumeClaimTemplates:
+            - name: config
+              accessMode: ReadWriteOnce
+              size: 1Gi
+              storageClass: ssd-dual
+              globalMounts:
+                - path: /config
 
-    envFrom:
-      - secretRef:
-          name: secret-homeassistant-db-user
-      - secretRef:
-          name: home-assistant-secret
+        containers:
+          main:
+            image:
+              repository: ghcr.io/home-assistant/home-assistant
+              tag: 2023.11.1@sha256:de25f0ad773b54d1c0e5a63147e23417055f3056b0ef24cf4a5ac8019bb33df3
+            envFrom:
+              - secretRef:
+                  name: home-assistant-secret
+              - secretRef:
+                  name: secret-homeassistant-db-user
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
+            resources:
+              requests:
+                cpu: 47m
+                memory: 1254M
+              limits:
+                memory: 1254M
 
     service:
       main:
@@ -43,6 +69,9 @@ spec:
           - host: &host "smart.home.lucadev.de"
             paths:
               - path: /
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
@@ -52,27 +81,3 @@ spec:
           gethomepage.dev/group: Heimautomation
           gethomepage.dev/icon: home-assistant
           gethomepage.dev/name: HomeAssistant
-
-    probes:
-      liveness:
-        enabled: false
-      readiness:
-        enabled: false
-      startup:
-        enabled: false
-
-    resources:
-      requests:
-        cpu: 50m
-        memory: 1254M
-      limits:
-        cpu: 1000m
-        memory: 1254M
-
-    persistence:
-      config:
-        enabled: true
-        type: pvc
-        mountPath: /config
-        accessMode: ReadWriteOnce
-        size: 2Gi
