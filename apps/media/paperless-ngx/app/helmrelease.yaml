@@ -65,8 +65,8 @@ spec:
             paths:
               - path: /
                 service:
-                  port: main
-                  name: http
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
