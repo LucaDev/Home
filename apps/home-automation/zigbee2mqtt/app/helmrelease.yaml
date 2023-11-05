@@ -28,6 +28,7 @@ spec:
           volumeClaimTemplates:
             - name: data
               accessMode: ReadWriteOnce
+              storageClass: ssd-singlereplica
               size: 1Gi
               globalMounts:
                 - path: /data
