@@ -16,12 +16,14 @@ spec:
         name: prometheus-community
         namespace: flux-system
   values:
-    # Disable Monitoring of kubernetes core components not available in k3s
+    # Disable monitoring of kubernetes core components not available in k3s
     kubeEtcd:
       enabled: false
     kubeControllerManager:
       enabled: false
     kubeScheduler:
+      enabled: false
+    kubeProxy:
       enabled: false
 
     grafana:
