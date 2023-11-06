@@ -57,7 +57,7 @@ spec:
       main:
         enabled: true
         hosts:
-          - host: &host alertmanager.home.lucadev.de
+          - host: &host alerts.home.lucadev.de
             paths:
               - path: /
                 service:
