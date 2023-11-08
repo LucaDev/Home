@@ -57,3 +57,17 @@ spec:
                   permissions: '0775'
                   content: |
                     #!/bin/vbash
+  dataVolumeTemplates:
+  - metadata:
+      name: vyos
+    spec:
+      pvc:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 512Mi
+        storageClassName: ssd-singlereplica
+      source:
+        http:
+          url: "https://github.com/onedr0p/vyos-build/releases/download/v1.4-rolling-202311070306/vyos-1.4-rolling-202311070306-amd64.iso"
