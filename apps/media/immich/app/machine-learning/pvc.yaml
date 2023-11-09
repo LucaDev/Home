@@ -6,6 +6,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: ssd-singlereplica
   resources:
     requests:
       storage: 10Gi

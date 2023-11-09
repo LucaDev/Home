@@ -30,6 +30,7 @@ spec:
           volumeClaimTemplates:
             - name: config
               accessMode: ReadWriteOnce
+              storageClass: ssd-singlereplica
               size: 10Gi
               globalMounts:
                 - path: /config
