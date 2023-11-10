@@ -38,6 +38,10 @@ spec:
               limits:
                 memory: 200Mi
 
+            pod:
+              securityContext:
+                privileged: true
+
         annotations:
           reloader.stakater.com/auto: "true"
 
