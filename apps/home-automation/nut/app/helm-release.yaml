@@ -55,7 +55,7 @@ spec:
             port: 3493
 
     persistence:
-      UPS:
+      ups:
         enabled: true
         type: hostPath
         hostPath: /dev/ttyUSB0
