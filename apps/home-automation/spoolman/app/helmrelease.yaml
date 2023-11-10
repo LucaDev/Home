@@ -61,6 +61,12 @@ spec:
         tls:
           - hosts:
               - *host
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Spulenmanager für den 3D Drucker
+          gethomepage.dev/group: Extern
+          gethomepage.dev/icon: spoolman
+          gethomepage.dev/name: Spoolman
 
     persistence:
       config:
