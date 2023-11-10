@@ -88,6 +88,15 @@ spec:
           gethomepage.dev/widget.url: https://photos.home.lucadev.de
           gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_IMMICH_APIKEY}}"
           gethomepage.dev/widget.fields: "[\"photos\", \"videos\", \"storage\"]"
+          gethomepage.dev/podSelector: >-
+            app.kubernetes.io/instance in (
+                immich-server,
+                immich-microservices,
+                immich-typesense,
+                immich-machine-learning,
+                immich-web
+            )
+
         hosts:
           - host: &host photos.home.lucadev.de
             paths:
