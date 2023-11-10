@@ -53,7 +53,7 @@ spec:
           gethomepage.dev/name: Prometheus
           gethomepage.dev/widget.type: prometheus
           gethomepage.dev/widget.url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
-          gethomepage.dev/podSelector: app.kubernetes.io/instance=prometheus
+          gethomepage.dev/pod-selector: app.kubernetes.io/instance=prometheus
 
       prometheusSpec:
         ruleSelectorNilUsesHelmValues: false
