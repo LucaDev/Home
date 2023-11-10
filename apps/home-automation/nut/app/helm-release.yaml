@@ -39,6 +39,15 @@ spec:
                 memory: 200Mi
             securityContext:
               privileged: true
+          exporter:
+            image:
+              repository: druggeri/nut_exporter
+              tag: 3.0.0
+            env:
+              NUT_EXPORTER_USERNAME: upsmon
+            envFrom:
+              - secretRef:
+                  name: nut-upsd-password
 
         annotations:
           reloader.stakater.com/auto: "true"
