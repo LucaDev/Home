@@ -27,7 +27,7 @@ spec:
               repository: instantlinux/nut-upsd
               tag: 2.8.0-r4
             env:
-              serial: TODO
+              PORT: /dev/ttyUSB0
             envFrom:
               - secretRef:
                   name: nut-upsd-password
