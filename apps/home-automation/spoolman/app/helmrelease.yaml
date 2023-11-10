@@ -65,7 +65,7 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Spulenmanager für den 3D Drucker
           gethomepage.dev/group: Extern
-          gethomepage.dev/icon: spoolman
+          gethomepage.dev/icon: mdi-library-shelves
           gethomepage.dev/name: Spoolman
 
     persistence:
