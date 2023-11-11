@@ -1,0 +1,87 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: nut.rules
+spec:
+  groups:
+    - name: nut.rules
+      rules:
+        - alert: UPSonBattery
+          annotations:
+            description: It seems like the power cut out. The UPS is now on battery.
+            summary: UPS is on Battery
+          expr: |
+            network_ups_tools_ups_status{flag="OB"} == 1
+          for: 0m
+          labels:
+            severity: critical
+        - alert: BatteryUnder50Percent
+          annotations:
+            description: >-
+              The UPS Battery is currently under 50% and not charging
+            summary: UPS Battery < 50%
+          expr: |
+            network_ups_tools_battery_charge < 50 and network_ups_tools_ups_status{flag="CHRG"} == 0
+          for: 0m
+          labels:
+            severity: warning
+        - alert: BatteryUnder25Percent
+          annotations:
+            description: >-
+              The UPS Battery is currently under 25% and not charging
+            summary: UPS Battery < 25%
+          expr: |
+            network_ups_tools_battery_charge < 25 and network_ups_tools_ups_status{flag="CHRG"} == 0
+          for: 0m
+          labels:
+            severity: critical
+        - alert: ReplaceBattery
+          annotations:
+            description: >-
+              The UPS Battery needs replacement as soon as possible. It might not work in case of a cutoff
+            summary: UPS Battery needs replacement
+          expr: |
+            network_ups_tools_ups_status{flag="RB"} == 1
+          for: 0m
+          labels:
+            severity: critical
+        - alert: Overload
+          annotations:
+            description: >-
+              The UPS is overloaded and might not be able to keep attached devices online
+            summary: UPS is overloaded
+          expr: |
+            network_ups_tools_ups_status{flag="OVER"} == 1
+          for: 0m
+          labels:
+            severity: critical
+        - alert: InputVoltageTrimmed
+          annotations:
+            description: >-
+              The input voltage is not as expected and needs to be trimmed
+            summary: Input voltage is being trimmed
+          expr: |
+            network_ups_tools_ups_status{flag="TRIM"} == 1
+          for: 0m
+          labels:
+            severity: critical
+        - alert: InputVoltageBoosted
+          annotations:
+            description: >-
+              The input voltage is not as expected and needs to be boosted
+            summary: Input voltage is being boosted
+          expr: |
+            network_ups_tools_ups_status{flag="BOOST"} == 1
+          for: 0m
+          labels:
+            severity: critical
+        - alert: InputVoltageBoosted
+          annotations:
+            description: >-
+              The UPS battery is beeing bypassed. No protection available.
+            summary: UPS battery is bypassed
+          expr: |
+            network_ups_tools_ups_status{flag="BYPASS"} == 1
+          for: 0m
+          labels:
+            severity: warning
