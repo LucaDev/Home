@@ -70,8 +70,9 @@ spec:
         hostPath: /dev/ttyUSB0
 
     serviceMonitor:
-      exporter:
+      main:
         enabled: true
+        serviceName: exporter
         endpoints:
           - port: http
             scheme: http
