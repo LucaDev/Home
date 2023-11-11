@@ -58,7 +58,7 @@ spec:
           http:
             port: 3493
       exporter:
-        controller: exporter
+        controller: main
         ports:
           http:
             port: 9199
