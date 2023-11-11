@@ -71,8 +71,6 @@ spec:
 
     serviceMonitor:
       main:
-        enabled: false
-      exporter:
         enabled: true
         endpoints:
           - port: http
