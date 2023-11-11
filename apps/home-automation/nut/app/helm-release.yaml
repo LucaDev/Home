@@ -68,3 +68,13 @@ spec:
         enabled: true
         type: hostPath
         hostPath: /dev/ttyUSB0
+
+    serviceMonitor:
+      exporter:
+        enabled: true
+        endpoints:
+          - port: http
+            scheme: http
+            path: /ups_metrics
+            interval: 30s
+            scrapeTimeout: 5s
