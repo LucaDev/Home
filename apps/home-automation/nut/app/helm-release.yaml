@@ -72,7 +72,7 @@ spec:
     serviceMonitor:
       exporter:
         enabled: true
-        serviceName: exporter
+        serviceName: nut-exporter
         endpoints:
           - port: http
             scheme: http
