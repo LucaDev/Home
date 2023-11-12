@@ -136,8 +136,8 @@ spec:
               implementation: prometheus
           - name: Sun
             type: fetzerch-sunandmoon-datasource
-            Latitude: 8888
-            Longitude: 8888
+            Latitude: 52.1
+            Longitude: 8.7
 
     deploymentStrategy:
       type: Recreate

@@ -6,3 +6,14 @@ resources:
   - ./external-secret.yaml
   - ./helm-release.yaml
   - ./alerts.yaml
+configMapGenerator:
+  - name: nut-dashboard
+    files:
+      - dashboard.json
+generatorOptions:
+  disableNameSuffixHash: true
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
+  labels:
+    grafana_dashboard: "true"
+    grafana_folder: "Infra"

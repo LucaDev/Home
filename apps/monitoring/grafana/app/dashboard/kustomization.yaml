@@ -6,6 +6,9 @@ configMapGenerator:
   - name: grafana-dashboard
     files:
       - home.json
+  - name: power-dashboard
+    files:
+      - power.json
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
