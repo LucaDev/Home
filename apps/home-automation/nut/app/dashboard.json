@@ -25,7 +25,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 46,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -86,7 +85,7 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 3,
+        "w": 5,
         "x": 0,
         "y": 1
       },
@@ -161,8 +160,8 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 21,
-        "x": 3,
+        "w": 19,
+        "x": 5,
         "y": 1
       },
       "id": 20,
@@ -380,9 +379,11 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "expr": "network_ups_tools_battery_runtime{ups=\"$ups\"}",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{ups}} Runtime Left",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -477,9 +478,11 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "expr": "network_ups_tools_ups_load{ups=\"$ups\"}",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{ups}} Load",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -584,7 +587,8 @@
                 "value": 242
               }
             ]
-          }
+          },
+          "unit": "volt"
         },
         "overrides": []
       },
@@ -621,7 +625,7 @@
           "refId": "A"
         }
       ],
-      "title": "Line Volts",
+      "title": "Line Voltage",
       "transparent": true,
       "type": "gauge"
     },
@@ -630,10 +634,11 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "thresholds"
           },
           "custom": {
             "axisCenteredZero": false,
@@ -667,22 +672,34 @@
             }
           },
           "mappings": [],
-          "max": 140,
-          "min": 90,
+          "max": 250,
+          "min": 190,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "semi-dark-red",
                 "value": null
               },
               {
+                "color": "semi-dark-yellow",
+                "value": 199
+              },
+              {
+                "color": "green",
+                "value": 210
+              },
+              {
+                "color": "semi-dark-yellow",
+                "value": 231
+              },
+              {
                 "color": "red",
-                "value": 80
+                "value": 242
               }
             ]
           },
-          "unit": "short"
+          "unit": "volt"
         },
         "overrides": []
       },
@@ -713,12 +730,15 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "expr": "network_ups_tools_input_voltage{ups=\"$ups\"}",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{ups}} Line Voltage",
+          "range": true,
           "refId": "A"
         }
       ],
+      "title": "Line Voltage",
       "transparent": true,
       "type": "timeseries"
     },
@@ -759,7 +779,7 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "volt"
         },
         "overrides": []
       },
@@ -796,7 +816,7 @@
           "refId": "A"
         }
       ],
-      "title": "Battery Volts",
+      "title": "Battery Voltage",
       "transparent": true,
       "type": "gauge"
     },
@@ -808,7 +828,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "thresholds"
           },
           "custom": {
             "axisCenteredZero": false,
@@ -842,21 +862,26 @@
             }
           },
           "mappings": [],
+          "max": 32,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "semi-dark-red",
                 "value": null
               },
               {
+                "color": "green",
+                "value": 22
+              },
+              {
                 "color": "red",
-                "value": 80
+                "value": 27
               }
             ]
           },
-          "unit": "short"
+          "unit": "volt"
         },
         "overrides": []
       },
@@ -887,12 +912,15 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "expr": "network_ups_tools_battery_voltage{ups=\"$ups\"}",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{ups}} Battery Voltage",
+          "range": true,
           "refId": "A"
         }
       ],
+      "title": "Battery Voltage",
       "transparent": true,
       "type": "timeseries"
     }
@@ -974,6 +1002,6 @@
   "timezone": "",
   "title": "UPS statistics",
   "uid": "j4a-DMWRk",
-  "version": 12,
+  "version": 2,
   "weekStart": ""
 }
