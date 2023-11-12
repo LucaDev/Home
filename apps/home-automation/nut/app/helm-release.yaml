@@ -79,3 +79,7 @@ spec:
             path: /ups_metrics
             interval: 30s
             scrapeTimeout: 5s
+            relabelings:
+              - action: replace
+                replacement: Value 2200E
+                target_label: ups
