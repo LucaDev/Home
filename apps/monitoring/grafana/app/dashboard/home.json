@@ -50,8 +50,8 @@
         "uid": "PBFA97CFB590B2093"
       },
       "gridPos": {
-        "h": 15,
-        "w": 24,
+        "h": 16,
+        "w": 12,
         "x": 0,
         "y": 3
       },
@@ -69,7 +69,7 @@
         "showStarred": true,
         "tags": []
       },
-      "pluginVersion": "10.0.1",
+      "pluginVersion": "10.1.5",
       "tags": [],
       "targets": [
         {
@@ -82,6 +82,38 @@
       ],
       "title": "Dashboards",
       "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "gridPos": {
+        "h": 16,
+        "w": 12,
+        "x": 12,
+        "y": 3
+      },
+      "id": 4,
+      "options": {
+        "alertInstanceLabelFilter": "{severity!=\"none\"}",
+        "alertName": "",
+        "dashboardAlerts": false,
+        "groupBy": [],
+        "groupMode": "default",
+        "maxItems": 20,
+        "sortOrder": 3,
+        "stateFilter": {
+          "error": true,
+          "firing": true,
+          "noData": false,
+          "normal": false,
+          "pending": true
+        },
+        "viewMode": "list"
+      },
+      "title": "Alerts",
+      "type": "alertlist"
     }
   ],
   "refresh": "",
@@ -109,7 +141,17 @@
       "2h",
       "1d"
     ],
-    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ],
     "type": "timepicker"
   },
   "timezone": "browser",
