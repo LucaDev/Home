@@ -136,8 +136,9 @@ spec:
               implementation: prometheus
           - name: Sun
             type: fetzerch-sunandmoon-datasource
-            Latitude: 52.1
-            Longitude: 8.7
+            jsonData:
+              latitude: 52.1
+              longitude: 8.7
 
     deploymentStrategy:
       type: Recreate
