@@ -37,7 +37,7 @@ spec:
               tag: v0.1.7
             envFrom:
               - secretRef:
-                  name: mqtt-exporter
+                  name: mqtt-exporter-secret
             resources:
               requests:
                 cpu: 10m
