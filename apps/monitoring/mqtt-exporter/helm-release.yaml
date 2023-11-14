@@ -33,7 +33,7 @@ spec:
         containers:
           main:
             image:
-              repository: mqtt2prometheus
+              repository: ghcr.io/hikhvar/mqtt2prometheus
               tag: 0.1.7
             envFrom:
               - secretRef:
