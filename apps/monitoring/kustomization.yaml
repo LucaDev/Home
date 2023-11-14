@@ -8,4 +8,4 @@ resources:
   - ./unpoller
   - ./grafana/ks.yaml
   - ./promtail
-  - ./mqtt-exporter.yaml
+  - ./mqtt-exporter
