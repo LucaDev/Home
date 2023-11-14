@@ -1,0 +1,15 @@
+mqtt:
+ server: tcp://mosquitto.home-automation.svc.cluster.local:1883
+ client_id: mqtt2prometheus
+ topic_path: ems-esp/+
+ device_id_regex: "(.*/)?(?P<deviceid>.*)"
+ qos: 0
+ metric_per_topic_config:
+  metric_name_regex: "(.*/)?(?P<metricname>.*)"
+ object_per_topic_config:
+  encoding: json
+cache:
+ timeout: 24h
+json_parsing:
+ separator: .
+metrics:
