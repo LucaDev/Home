@@ -65,8 +65,6 @@ spec:
       config:
         type: configMap
         name: mqtt-exporter-configmap
-        advancedMounts:
-          main:
-            main:
-              - path: /config.yaml
-                subPath: config.yaml
+        globalMounts:
+          - path: /config.yaml
+            subPath: config.yaml
