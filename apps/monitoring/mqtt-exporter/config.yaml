@@ -1,7 +1,7 @@
 mqtt:
   server: tcp://mosquitto.home-automation.svc.cluster.local:1883
   client_id: mqtt2prometheus
-  topic_path: ems-esp/+
+  topic_path: ems-esp/boiler_data
   qos: 0
   object_per_topic_config:
    encoding: JSON
@@ -11,46 +11,46 @@ json_parsing:
   separator: .
 metrics:
   - prom_name: curflowtemp
-    mqtt_name: boiler_data.curflowtemp
+    mqtt_name: curflowtemp
     help: Vorlauftemperatur
     type: gauge
   - prom_name: rettemp
-    mqtt_name: boiler_data.rettemp
+    mqtt_name: rettemp
     help: Rücklauftemperatur
     type: gauge
   - prom_name: flamecurr
-    mqtt_name: boiler_data.flamecurr
+    mqtt_name: flamecurr
     help: Flammanestrom
     type: gauge
   - prom_name: servicecode
-    mqtt_name: boiler_data.servicecode
+    mqtt_name: servicecode
     help: Service Code
     type: gauge
   - prom_name: servicecodenumber
-    mqtt_name: boiler_data.servicecodenumber
+    mqtt_name: servicecodenumber
     help: Servicecode Nummer
     type: gauge
   - prom_name: outdoortemp
-    mqtt_name: boiler_data.outdoortemp
+    mqtt_name: outdoortemp
     help: Außentemperatur
     type: gauge
   - prom_name: boiltemp
-    mqtt_name: boiler_data.boiltemp
+    mqtt_name: boiltemp
     help: Außentemperatur
     type: gauge
   - prom_name: curburnpow
-    mqtt_name: boiler_data.curburnpow
+    mqtt_name: curburnpow
     help: Aktuelle Brennerleistung
     type: gauge
   - prom_name: wwactive
-    mqtt_name: boiler_data.wwactive
+    mqtt_name: wwactive
     help: Warmwasser Aktiv
     type: gauge
   - prom_name: heatingactive
-    mqtt_name: boiler_data.heatingactive
+    mqtt_name: heatingactive
     help: Heizen Aktiv
     type: gauge
   - prom_name: syspress
-    mqtt_name: boiler_data.syspress
+    mqtt_name: syspress
     help: Systemdruck
     type: gauge
