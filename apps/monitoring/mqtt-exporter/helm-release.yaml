@@ -62,9 +62,10 @@ spec:
             scrapeTimeout: 5s
 
     persistence:
-      config:
+      config-file:
         type: configMap
         name: mqtt-exporter-configmap
         globalMounts:
           - path: /config.yaml
             subPath: config.yaml
+            read-only: true

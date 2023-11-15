@@ -9,3 +9,7 @@ configMapGenerator:
   - name: mqtt-exporter-configmap
     files:
       - config.yaml
+generatorOptions:
+  disableNameSuffixHash: true
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
