@@ -1,12 +1,56 @@
 mqtt:
- server: tcp://mosquitto.home-automation.svc.cluster.local:1883
- client_id: mqtt2prometheus
- topic_path: ems-esp/+
- qos: 0
- object_per_topic_config:
-  encoding: json
+  server: tcp://mosquitto.home-automation.svc.cluster.local:1883
+  client_id: mqtt2prometheus
+  topic_path: ems-esp/+
+  qos: 0
+  object_per_topic_config:
+   encoding: JSON
 cache:
- timeout: 24h
+  timeout: 24h
 json_parsing:
- separator: .
+  separator: .
 metrics:
+  - prom_name: curflowtemp
+    mqtt_name: boiler_data.curflowtemp
+    help: Vorlauftemperatur
+    type: gauge
+  - prom_name: rettemp
+    mqtt_name: boiler_data.rettemp
+    help: Rücklauftemperatur
+    type: gauge
+  - prom_name: flamecurr
+    mqtt_name: boiler_data.flamecurr
+    help: Flammanestrom
+    type: gauge
+  - prom_name: servicecode
+    mqtt_name: boiler_data.servicecode
+    help: Service Code
+    type: gauge
+  - prom_name: servicecodenumber
+    mqtt_name: boiler_data.servicecodenumber
+    help: Servicecode Nummer
+    type: gauge
+  - prom_name: outdoortemp
+    mqtt_name: boiler_data.outdoortemp
+    help: Außentemperatur
+    type: gauge
+  - prom_name: boiltemp
+    mqtt_name: boiler_data.boiltemp
+    help: Außentemperatur
+    type: gauge
+  - prom_name: curburnpow
+    mqtt_name: boiler_data.curburnpow
+    help: Aktuelle Brennerleistung
+    type: gauge
+  - prom_name: wwactive
+    mqtt_name: boiler_data.wwactive
+    help: Warmwasser Aktiv
+    type: gauge
+  - prom_name: heatingactive
+    mqtt_name: boiler_data.heatingactive
+    help: Heizen Aktiv
+    type: gauge
+  - prom_name: syspress
+    mqtt_name: boiler_data.syspress
+    help: Systemdruck
+    type: gauge
