@@ -22,14 +22,6 @@ metrics:
     mqtt_name: flamecurr
     help: Flammanestrom
     type: gauge
-  - prom_name: servicecode
-    mqtt_name: servicecode
-    help: Service Code
-    type: gauge
-  - prom_name: servicecodenumber
-    mqtt_name: servicecodenumber
-    help: Servicecode Nummer
-    type: gauge
   - prom_name: outdoortemp
     mqtt_name: outdoortemp
     help: Außentemperatur
@@ -46,10 +38,16 @@ metrics:
     mqtt_name: wwactive
     help: Warmwasser Aktiv
     type: gauge
+    map:
+      an: 1
+      aus: 0
   - prom_name: heatingactive
     mqtt_name: heatingactive
     help: Heizen Aktiv
     type: gauge
+    map:
+      an: 1
+      aus: 0
   - prom_name: syspress
     mqtt_name: syspress
     help: Systemdruck
