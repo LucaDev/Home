@@ -24,7 +24,7 @@ spec:
           main:
             image:
               repository: docker.io/linuxserver/unifi-controller
-              tag: 7.5.187
+              tag: 8.0.7
             env:
               PUID: "1000"
               PGID: "1000"
