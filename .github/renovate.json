@@ -45,7 +45,6 @@
       "groupName": "Immich",
       "matchPackageNames": [
         "ghcr.io/immich-app/immich-server",
-        "ghcr.io/immich-app/immich-web",
         "ghcr.io/immich-app/immich-machine-learning"
       ],
       "matchDatasources": ["docker"],
