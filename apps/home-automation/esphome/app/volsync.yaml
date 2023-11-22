@@ -50,6 +50,6 @@ spec:
   restic:
     copyMethod: Direct
     pruneIntervalDays: 14
-    repository: esphome
+    repository: esphome-restic
     retain:
       daily: 14
