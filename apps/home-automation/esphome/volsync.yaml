@@ -1,0 +1,55 @@
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: esphome-restic
+spec:
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: bitwarden-fields
+  target:
+    name: esphome-restic
+    creationPolicy: Owner
+    template:
+      engineVersion: v2
+      data:
+        RESTIC_REPOSITORY: rclone:storagebox:/homeserver/esphome
+        RESTIC_PASSWORD: ${RESTIC_PASSWORD}
+        RCLONE_CONFIG_STORAGEBOX_TYPE: sftp
+        RCLONE_CONFIG_STORAGEBOX_HOST: ${STORAGEBOX_HOST}
+        RCLONE_CONFIG_STORAGEBOX_USER: ${STORAGEBOX_USER}
+        RCLONE_CONFIG_STORAGEBOX_PORT: "22"
+        RCLONE_CONFIG_STORAGEBOX_PASS: ${STORAGEBOX_PASSWORD}
+        RCLONE_CONFIG_STORAGEBOX_SHELL_TYPE: unix
+  data:
+    - secretKey: RESTIC_PASSWORD
+      remoteRef:
+        key: Backupstorage
+        property: RESTIC_PASSWORD
+    - secretKey: STORAGEBOX_HOST
+      remoteRef:
+        key: Backupstorage
+        property: STORAGEBOX_HOST
+    - secretKey: STORAGEBOX_USER
+      remoteRef:
+        key: Backupstorage
+        property: STORAGEBOX_USER
+    - secretKey: STORAGEBOX_PASSWORD
+      remoteRef:
+        key: Backupstorage
+        property: STORAGEBOX_PASSWORD
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: esphome
+spec:
+  sourcePVC: config-esphome-0
+  trigger:
+    schedule: "0 */12 * * *"
+  restic:
+    copyMethod: Direct
+    pruneIntervalDays: 14
+    repository: esphome
+    retain:
+      daily: 14

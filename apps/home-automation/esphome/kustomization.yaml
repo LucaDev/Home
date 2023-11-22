@@ -4,3 +4,4 @@ namespace: home-automation
 resources:
   - ./helm-release.yaml
   - ./esphome-secrets.yaml
+  - ./volsync.yaml

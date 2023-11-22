@@ -21,3 +21,4 @@ resources:
   - ./appscode.yaml
   - ./cnpg.yaml
   - ./instantlinux.yaml
+  - ./backube.yaml
