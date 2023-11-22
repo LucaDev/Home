@@ -6,7 +6,7 @@ metadata:
   name: &appname volsync
   namespace: flux-system
 spec:
-  targetNamespace: system
+  targetNamespace: storage
   commonMetadata:
     labels:
       app.kubernetes.io/name: *appname
