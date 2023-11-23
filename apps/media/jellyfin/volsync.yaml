@@ -68,7 +68,7 @@ spec:
     template:
       engineVersion: v2
       data:
-        RESTIC_REPOSITORY: rclone:storagebox:/homeserver/jellyfin
+        RESTIC_REPOSITORY: rclone:storagebox:/homeserver/jellyfin-config
         RESTIC_PASSWORD: "{{ .restic_password }}"
         RCLONE_CONFIG_STORAGEBOX_TYPE: sftp
         RCLONE_CONFIG_STORAGEBOX_HOST: "{{ .storagebox_host }}"
