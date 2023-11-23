@@ -5,6 +5,7 @@ namespace: home-automation
 resources:
   - ./pvc.yaml
   - ./helmrelease.yaml
+  - ./volsync.yaml
 commonLabels:
   app.kubernetes.io/name: spoolman
   app.kubernetes.io/instance: spoolman
