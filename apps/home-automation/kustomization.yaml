@@ -5,7 +5,7 @@ resources:
   - ./esphome/ks.yaml
   - ./homepage/ks.yaml
   - ./node-red/ks.yaml
-  - ./mosquitto
+  - ./mosquitto/ks.yaml
   - ./homeassistant
   - ./zigbee2mqtt/ks.yaml
   - ./nut/ks.yaml
