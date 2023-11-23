@@ -44,7 +44,7 @@ kind: ReplicationSource
 metadata:
   name: immich-typesense
 spec:
-  sourcePVC: immich-typesense
+  sourcePVC: config-immich-typesense-0
   trigger:
     schedule: "0 */12 * * *"
   restic:

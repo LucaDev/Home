@@ -44,7 +44,7 @@ kind: ReplicationSource
 metadata:
   name: spoolman
 spec:
-  sourcePVC: config-spoolman-0
+  sourcePVC: spoolman-config
   trigger:
     schedule: "0 */12 * * *"
   restic:

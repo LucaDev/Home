@@ -44,7 +44,7 @@ kind: ReplicationSource
 metadata:
   name: zigbee2mqtt
 spec:
-  sourcePVC: config-zigbee2mqtt-0
+  sourcePVC: data-zigbee2mqtt-0
   trigger:
     schedule: "0 */12 * * *"
   restic:
