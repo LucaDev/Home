@@ -29,6 +29,11 @@ spec:
               PUID: "1000"
               PGID: "1000"
               TZ: Europe/Berlin
+              #MONGO_USER: unifi
+              #MONGO_PASS:
+              #MONGO_HOST: unifi-db
+              #MONGO_PORT: 27017
+              #MONGO_DBNAME: unifi
             resources:
               requests:
                 cpu: 100m

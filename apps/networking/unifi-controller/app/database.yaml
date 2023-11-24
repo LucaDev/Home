@@ -1,0 +1,31 @@
+---
+apiVersion: mongodbcommunity.mongodb.com/v1
+kind: MongoDBCommunity
+metadata:
+  name: unifi-mongodb
+spec:
+  members: 1
+  type: ReplicaSet
+  version: "4.4.25"
+  security:
+    authentication:
+      modes: ["SCRAM"]
+  users:
+    - name: admin
+      db: admin
+      passwordSecretRef:
+        name: mongodb-unifi-admin-password
+      roles:
+        - name: clusterAdmin
+          db: admin
+        - name: userAdminAnyDatabase
+          db: admin
+      scramCredentialsSecretName: mongodb-unifi-admin-scram
+    - name: unifi
+      db: unifi
+      passwordSecretRef:
+        name: mongodb-unifi-unifi-password
+      roles:
+        - name: userAdmin
+          db: unifi
+      scramCredentialsSecretName: mongodb-unifi-unifi-scram

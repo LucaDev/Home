@@ -22,3 +22,4 @@ resources:
   - ./cnpg.yaml
   - ./instantlinux.yaml
   - ./backube.yaml
+  - ./mongodb.yaml
