@@ -4,3 +4,4 @@ resources:
   - ./namespace.yaml
   - ./redis/ks.yaml
   - ./cloudnative-pg
+  - ./mongodb-operator/ks.yaml
