@@ -3,6 +3,7 @@ apiVersion: mongodbcommunity.mongodb.com/v1
 kind: MongoDBCommunity
 metadata:
   name: unifi-mongodb
+  namespace: databases
 spec:
   members: 1
   type: ReplicaSet
