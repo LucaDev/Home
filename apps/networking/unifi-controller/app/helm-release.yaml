@@ -23,17 +23,20 @@ spec:
         containers:
           main:
             image:
-              repository: docker.io/linuxserver/unifi-controller
+              repository: lscr.io/linuxserver/unifi-network-application
               tag: 8.0.7
             env:
               PUID: "1000"
               PGID: "1000"
               TZ: Europe/Berlin
-              #MONGO_USER: unifi
-              #MONGO_PASS:
-              #MONGO_HOST: unifi-db
-              #MONGO_PORT: 27017
-              #MONGO_DBNAME: unifi
+              MONGO_USER: unifi
+              MONGO_HOST: unifi-mongodb-svc.databses.svc.cluster.local
+              MONGO_PORT: 27017
+              MONGO_DBNAME: unifi
+            envFrom:
+              - secretKeyRef:
+                  name: mongodb-unifi
+                  key: password
             resources:
               requests:
                 cpu: 100m
