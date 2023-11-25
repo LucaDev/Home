@@ -36,7 +36,6 @@ spec:
             envFrom:
               - secretKeyRef:
                   name: mongodb-unifi
-                  key: password
             resources:
               requests:
                 cpu: 100m
