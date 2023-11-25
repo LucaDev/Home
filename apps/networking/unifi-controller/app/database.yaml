@@ -40,3 +40,22 @@ spec:
         - name: dbOwner
           db: unifi
       scramCredentialsSecretName: mongodb-unifi-unifi-stats-scram
+  statefulSet:
+    spec:
+      volumeClaimTemplates:
+        - metadata:
+            name: data-volume
+          spec:
+            accessModes: ["ReadWriteOnce"]
+            storageClassName: ssd-singlereplica
+            resources:
+              requests:
+                storage: 2G
+        - metadata:
+            name: logs-volume
+          spec:
+            accessModes: [ "ReadWriteOnce" ]
+            storageClassName: ssd-singlereplica
+            resources:
+              requests:
+                storage: 2G
