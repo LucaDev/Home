@@ -27,6 +27,14 @@ spec:
       passwordSecretRef:
         name: mongodb-unifi-unifi-password
       roles:
-        - name: userAdmin
+        - name: dbOwner
           db: unifi
       scramCredentialsSecretName: mongodb-unifi-unifi-scram
+    - name: unifi_stats
+      db: unifi_stats
+      passwordSecretRef:
+        name: mongodb-unifi-unifi-password
+      roles:
+        - name: dbOwner
+          db: unifi_stats
+      scramCredentialsSecretName: mongodb-unifi-unifi-stats-scram
