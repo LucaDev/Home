@@ -34,7 +34,7 @@ spec:
               MONGO_PORT: 27017
               MONGO_DBNAME: unifi
             envFrom:
-              - secretKeyRef:
+              - secretRef:
                   name: mongodb-unifi
             resources:
               requests:
