@@ -29,6 +29,8 @@ spec:
       roles:
         - name: dbOwner
           db: unifi
+        - name: dbOwner
+          db: unifi_stat
       scramCredentialsSecretName: mongodb-unifi-unifi-scram
     - name: unifi_stat
       db: unifi_stat
