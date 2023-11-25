@@ -30,7 +30,7 @@ spec:
               PGID: "1000"
               TZ: Europe/Berlin
               MONGO_USER: unifi
-              MONGO_HOST: unifi-mongodb-svc.databses.svc.cluster.local
+              MONGO_HOST: unifi-mongodb-svc.databases.svc.cluster.local
               MONGO_PORT: 27017
               MONGO_DBNAME: unifi
             envFrom:
