@@ -12,6 +12,7 @@ resources:
   - ./machine-learning
   - ./typesense
   - ./volsync.yaml
+  - ./volsync-db.yaml
 labels:
   - pairs:
       app.kubernetes.io/name: immich

@@ -5,3 +5,5 @@ resources:
   - ./unifi-transport.yaml
   - ./externalsecret.yaml
   - ./database.yaml
+  - ./volsync.yaml
+  - ./volsync-db.yaml

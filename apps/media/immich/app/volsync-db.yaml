@@ -1,0 +1,55 @@
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: immich-db-restic
+spec:
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: bitwarden-fields
+  target:
+    name: immich-db-restic
+    creationPolicy: Owner
+    template:
+      engineVersion: v2
+      data:
+        RESTIC_REPOSITORY: rclone:storagebox:/homeserver/immich-db
+        RESTIC_PASSWORD: "{{ .restic_password }}"
+        RCLONE_CONFIG_STORAGEBOX_TYPE: sftp
+        RCLONE_CONFIG_STORAGEBOX_HOST: "{{ .storagebox_host }}"
+        RCLONE_CONFIG_STORAGEBOX_USER: "{{ .storagebox_user }}"
+        RCLONE_CONFIG_STORAGEBOX_PORT: "22"
+        RCLONE_CONFIG_STORAGEBOX_PASS: "{{ .storagebox_password }}"
+        RCLONE_CONFIG_STORAGEBOX_SHELL_TYPE: unix
+  data:
+    - secretKey: restic_password
+      remoteRef:
+        key: Backupstorage
+        property: RESTIC_PASSWORD
+    - secretKey: storagebox_host
+      remoteRef:
+        key: Backupstorage
+        property: STORAGEBOX_HOST
+    - secretKey: storagebox_user
+      remoteRef:
+        key: Backupstorage
+        property: STORAGEBOX_USER
+    - secretKey: storagebox_password
+      remoteRef:
+        key: Backupstorage
+        property: STORAGEBOX_PASSWORD
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: immich-db
+spec:
+  sourcePVC: immich-3
+  trigger:
+    schedule: "0 */12 * * *"
+  restic:
+    copyMethod: Direct
+    pruneIntervalDays: 14
+    repository: immich-db-restic
+    retain:
+      daily: 14
