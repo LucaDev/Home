@@ -1,0 +1,64 @@
+---
+version: "3"
+
+tasks:
+  mount:
+    desc: Mount a PersistentVolumeClaim to a pod temporarily
+    interactive: true
+    vars:
+      claim: '{{ or .claim (fail "PersistentVolumeClaim `claim` is required") }}'
+      namespace: '{{.namespace | default "default"}}'
+    cmds:
+      - |
+        kubectl run -n {{.namespace}} debug-{{.claim}} -i --tty --rm --image=null --privileged --overrides='
+          {
+            "apiVersion": "v1",
+            "spec": {
+              "containers": [
+                {
+                  "name": "debug",
+                  "image": "ghcr.io/onedr0p/alpine:rolling",
+                  "command": [
+                    "/bin/bash"
+                  ],
+                  "stdin": true,
+                  "stdinOnce": true,
+                  "tty": true,
+                  "volumeMounts": [
+                    {
+                      "name": "config",
+                      "mountPath": "/data/config"
+                    }
+                  ]
+                }
+              ],
+              "volumes": [
+                {
+                  "name": "config",
+                  "persistentVolumeClaim": {
+                    "claimName": "{{.claim}}"
+                  }
+                }
+              ],
+              "restartPolicy": "Never"
+            }
+          }'
+    preconditions:
+      - kubectl -n {{.namespace}} get pvc {{.claim}}
+
+  debug:
+    desc: Debugs a container with an ephermemal one
+    interactive: true
+    vars:
+      pod: '{{ or .pod (fail "`pod` is required") }}'
+      namespace: '{{.namespace | default "default"}}'
+    cmds:
+      # ToDo: optimize
+      - zsh ephermeral-container.sh {{.pod}} main {{.namespace}}
+    preconditions:
+      - kubectl -n {{.namespace}} get pod {{.pod}}
+
+  delete-failed-pods:
+    desc: Deletes failed pods
+    cmds:
+      - kubectl delete pods --field-selector status.phase=Failed -A --ignore-not-found=true
