@@ -227,10 +227,10 @@ spec:
 
     resources:
       limits:
-        memory: 200M
+        memory: 512M
       requests:
-        cpu: 20m
-        memory: 100M
+        cpu: 55m
+        memory: 350M
 
     serviceMonitor:
       enabled: true
