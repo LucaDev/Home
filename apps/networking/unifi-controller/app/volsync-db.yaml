@@ -55,3 +55,7 @@ spec:
     repository: unifi-db-restic
     retain:
       daily: 14
+    moverSecurityContext:
+      runAsUser: 2000
+      runAsGroup: 2000
+      fsGroup: 2000
