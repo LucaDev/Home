@@ -33,7 +33,7 @@ spec:
           main:
             image:
               repository: ghcr.io/donkie/spoolman
-              tag: "0.13.1"
+              tag: "0.14.0"
 
             resources:
               requests:
