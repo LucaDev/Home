@@ -41,12 +41,12 @@ spec:
 
     service:
       main:
+        type: LoadBalancer
         ports:
           http:
             enabled: false
           smb:
             enabled: true
-            type: LoadBalancer
             port: 445
             protocol: TCP
 
