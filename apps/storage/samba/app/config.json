@@ -23,9 +23,10 @@
     },
     "homeshare": {
       "options": {
-        "path": "/homes/%S",
+        "path": "/homes/%U",
         "valid users": "luca",
-        "writeable": "true"
+        "writeable": "true",
+        "root preexec": "mkdir /homes/%U"
       }
     },
     "public": {
