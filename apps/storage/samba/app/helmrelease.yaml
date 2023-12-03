@@ -65,10 +65,10 @@ spec:
             subPath: config.json
             readOnly: true
       timemachine-luca:
-        type: persistentVolume
+        type: persistentVolumeClaim
         globalMounts:
           - path: /luca-timemachine
       homes:
-        type: persistentVolume
+        type: persistentVolumeClaim
         globalMounts:
           - path: /homes
