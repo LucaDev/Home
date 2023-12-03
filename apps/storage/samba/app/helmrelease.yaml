@@ -68,6 +68,7 @@ spec:
         type: persistentVolumeClaim
         enabled: true
         storageClass: cached-singlereplica
+        accessMode: ReadWriteOnce
         size: 250Gi
         globalMounts:
           - path: /luca-timemachine
