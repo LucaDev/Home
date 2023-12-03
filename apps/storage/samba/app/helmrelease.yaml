@@ -51,7 +51,7 @@ spec:
             protocol: TCP
 
     persistence:
-      config:
+      config-file:
         type: configMap
         name: samba-config
         globalMounts:
