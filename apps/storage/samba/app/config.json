@@ -16,7 +16,8 @@
     "luca-timemachine": {
       "options": {
         "path": "/luca-timemachine",
-        "valid users": "luca"
+        "valid users": "luca",
+        "fruit:time machine": "yes"
       }
     },
     "homeshare": {
@@ -35,7 +36,15 @@
         "printing": "bsd",
         "printcap name": "/dev/null",
         "disable spoolss": "yes",
-        "guest ok": "no"
+        "guest ok": "no",
+        "vfs objects": "fruit streams_xattr",
+        "fruit:metadata": "stream",
+        "fruit:model": "MacSamba",
+        "fruit:posix_rename": "yes",
+        "fruit:veto_appledouble": "no",
+        "fruit:nfs_aces": "no",
+        "fruit:wipe_intentionally_left_blank_rfork": "yes",
+        "fruit:delete_empty_adfiles": "yes"
       }
     }
   },
