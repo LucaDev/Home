@@ -74,3 +74,11 @@ spec:
         size: 100Gi
         globalMounts:
           - path: /homes
+      public:
+        type: persistentVolumeClaim
+        enabled: true
+        storageClass: cached-singlereplica
+        accessMode: ReadWriteOnce
+        size: 100Gi
+        globalMounts:
+          - path: /public

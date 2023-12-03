@@ -17,13 +17,22 @@
       "options": {
         "path": "/luca-timemachine",
         "valid users": "luca",
+        "writeable": "true",
         "fruit:time machine": "yes"
       }
     },
     "homeshare": {
       "options": {
-        "path": "/homes",
-        "valid users": "luca"
+        "path": "/homes/%S",
+        "valid users": "luca",
+        "writeable": "true"
+      }
+    },
+    "public": {
+      "options": {
+        "path": "/public",
+        "public": "yes",
+        "writeable": "true"
       }
     }
   },
