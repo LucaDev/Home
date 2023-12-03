@@ -68,11 +68,14 @@ spec:
         type: persistentVolumeClaim
         enabled: true
         storageClass: cached-singlereplica
+        size: 250Gi
         globalMounts:
           - path: /luca-timemachine
       homes:
         type: persistentVolumeClaim
         enabled: true
         storageClass: cached-singlereplica
+        accessMode: ReadWriteOnce
+        size: 100Gi
         globalMounts:
           - path: /homes
