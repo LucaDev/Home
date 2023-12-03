@@ -1,0 +1,74 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: samba
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 2.3.0
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+
+  values:
+    controllers:
+      main:
+        strategy: RollingUpdate
+
+        containers:
+          main:
+            image:
+              repository: quay.io/samba.org/samba-server
+              tag: 0.4
+            env:
+              SAMBACC_CONFIG: /config.json
+              SAMBA_CONTAINER_ID: SAMBA
+            resources:
+              requests:
+                cpu: 5m
+                memory: 256Mi
+              limits:
+                memory: 512Mi
+
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        pod:
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
+            fsGroupChangePolicy: "OnRootMismatch"
+
+    service:
+      main:
+        ports:
+          http:
+            enabled: false
+          smb:
+            enabled: true
+            port: 445
+            protocol: TCP
+
+    persistence:
+      config:
+        type: configMap
+        name: samba-config
+        globalMounts:
+          - path: /config.json
+            subPath: config.json
+            readOnly: true
+      timemachine-luca:
+        type: persistentVolume
+        globalMounts:
+          - path: /luca-timemachine
+      homes:
+        type: persistentVolume
+        globalMounts:
+          - path: /homes

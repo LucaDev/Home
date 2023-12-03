@@ -108,3 +108,7 @@ spec:
     repository: jellyfin-restic
     retain:
       daily: 14
+    moverSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568

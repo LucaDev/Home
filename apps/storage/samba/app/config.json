@@ -1,0 +1,51 @@
+{
+  "samba-container-config": "v0",
+  "configs": {
+    "SAMBA": {
+      "shares": [
+        "luca-timemachine",
+        "homeshare"
+      ],
+      "globals": [
+        "default"
+      ],
+      "instance_name": "SAMBA"
+    }
+  },
+  "shares": {
+    "luca-timemachine": {
+      "options": {
+        "path": "/luca-timemachine",
+        "valid users": "luca"
+      }
+    },
+    "homeshare": {
+      "options": {
+        "path": "/homes",
+        "valid users": "luca"
+      }
+    }
+  },
+  "globals": {
+    "default": {
+      "options": {
+        "security": "user",
+        "server min protocol": "SMB2",
+        "load printers": "no",
+        "printing": "bsd",
+        "printcap name": "/dev/null",
+        "disable spoolss": "yes",
+        "guest ok": "no"
+      }
+    }
+  },
+  "users": {
+    "all_entries": [
+      {
+        "name": "luca",
+        "password": "test"
+      }
+    ]
+  },
+  "_footer": 1
+}
