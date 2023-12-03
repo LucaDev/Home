@@ -7,3 +7,5 @@ configMapGenerator:
   - name: samba-config
     files:
       - config.json
+generatorOptions:
+  disableNameSuffixHash: true
