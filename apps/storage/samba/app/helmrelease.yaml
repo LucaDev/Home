@@ -66,9 +66,13 @@ spec:
             readOnly: true
       timemachine-luca:
         type: persistentVolumeClaim
+        enabled: true
+        storageClass: cached-singlereplica
         globalMounts:
           - path: /luca-timemachine
       homes:
         type: persistentVolumeClaim
+        enabled: true
+        storageClass: cached-singlereplica
         globalMounts:
           - path: /homes
