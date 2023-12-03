@@ -3,3 +3,7 @@ kind: Kustomization
 namespace: storage
 resources:
   - helmrelease.yaml
+configMapGenerator:
+  - name: samba-config
+    files:
+      - config.json
