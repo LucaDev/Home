@@ -31,10 +31,8 @@ spec:
               SAMBA_CONTAINER_ID: SAMBA
             resources:
               requests:
-                cpu: 5m
+                cpu: 50m
                 memory: 256Mi
-              limits:
-                memory: 512Mi
 
         annotations:
           reloader.stakater.com/auto: "true"
