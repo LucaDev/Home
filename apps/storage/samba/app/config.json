@@ -55,8 +55,7 @@
         "fruit:veto_appledouble": "no",
         "fruit:nfs_aces": "no",
         "fruit:wipe_intentionally_left_blank_rfork": "yes",
-        "fruit:delete_empty_adfiles": "yes",
-        "log level": "3"
+        "fruit:delete_empty_adfiles": "yes"
       }
     }
   },
