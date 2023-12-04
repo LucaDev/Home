@@ -56,7 +56,7 @@
         "fruit:nfs_aces": "no",
         "fruit:wipe_intentionally_left_blank_rfork": "yes",
         "fruit:delete_empty_adfiles": "yes",
-        "log level": "5"
+        "log level": "3"
       }
     }
   },
