@@ -43,8 +43,7 @@
         "path": "/paperless-ingest",
         "public": "yes",
         "writeable": "true",
-        "valid users": "luca printer",
-        "min protocol": "NT1"
+        "valid users": "luca printer"
       }
     }
   },
@@ -52,7 +51,7 @@
     "default": {
       "options": {
         "security": "user",
-        "server min protocol": "SMB2",
+        "server min protocol": "NT1",
         "load printers": "no",
         "printing": "bsd",
         "printcap name": "/dev/null",
