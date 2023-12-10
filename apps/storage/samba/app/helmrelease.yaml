@@ -80,3 +80,10 @@ spec:
         size: 100Gi
         globalMounts:
           - path: /public
+      paperless-ingest:
+        enabled: true
+        type: hostPath
+        hostPath: /tmp/paperless-ingest
+        hostPathType: DirectoryOrCreate
+        globalMounts:
+          - path: /paperless-ingest

@@ -82,14 +82,13 @@ spec:
           gethomepage.dev/widget.password: "{{HOMEPAGE_VAR_PAPERLESS_PASSWORD}}"
 
     persistence:
-      consume:
+      paperless-ingest:
         enabled: true
+        type: hostPath
+        hostPath: /tmp/paperless-ingest
+        hostPathType: DirectoryOrCreate
         globalMounts:
           - path: /data/consume
-        type: persistentVolumeClaim
-        accessMode: ReadWriteOnce
-        storageClass: ssd-singlereplica
-        size: 1G
       export:
         enabled: true
         globalMounts:
