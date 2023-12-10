@@ -4,8 +4,9 @@
     "SAMBA": {
       "shares": [
         "luca-timemachine",
-        "homeshare",
-        "public"
+        "home",
+        "public",
+        "paperless-ingest"
       ],
       "globals": [
         "default"
