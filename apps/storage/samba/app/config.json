@@ -35,7 +35,8 @@
       "options": {
         "path": "/public",
         "public": "yes",
-        "writeable": "true"
+        "writeable": "true",
+        "guest ok": "yes"
       }
     },
     "paperless-ingest": {
@@ -43,7 +44,7 @@
         "path": "/paperless-ingest",
         "public": "yes",
         "writeable": "true",
-        "valid users": "luca printer"
+        "guest ok": "yes"
       }
     }
   },
