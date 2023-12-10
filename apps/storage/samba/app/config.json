@@ -22,7 +22,7 @@
         "fruit:time machine": "yes"
       }
     },
-    "homeshare": {
+    "home": {
       "options": {
         "path": "/homes/%U",
         "valid users": "luca",
@@ -35,6 +35,14 @@
         "path": "/public",
         "public": "yes",
         "writeable": "true"
+      }
+    },
+    "paperless-ingest": {
+      "options": {
+        "path": "/paperless-ingest",
+        "public": "yes",
+        "writeable": "true",
+        "valid users": "luca printer"
       }
     }
   },
@@ -63,6 +71,10 @@
     "all_entries": [
       {
         "name": "luca",
+        "password": "test"
+      },
+      {
+        "name": "printer",
         "password": "test"
       }
     ]
