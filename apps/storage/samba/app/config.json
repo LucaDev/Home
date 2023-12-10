@@ -43,7 +43,8 @@
         "path": "/paperless-ingest",
         "public": "yes",
         "writeable": "true",
-        "valid users": "luca printer"
+        "valid users": "luca printer",
+        "min protocol": "NT1"
       }
     }
   },
