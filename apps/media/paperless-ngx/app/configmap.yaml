@@ -37,6 +37,7 @@ data:
   # Configure OCR
   PAPERLESS_OCR_LANGUAGES: deu eng
   PAPERLESS_OCR_LANGUAGE: deu
+  PAPERLESS_OCR_USER_ARGS={"invalidate_digital_signatures": true}
 
   # Configure redis integration
   PAPERLESS_REDIS: redis://shared-redis.databases.svc.cluster.local:6379
