@@ -17,9 +17,6 @@ spec:
         name: bjw-s
         namespace: flux-system
 
-  dependsOn:
-    - name: immich-typesense
-
   values:
     controllers:
       main:
@@ -119,7 +116,6 @@ spec:
             app.kubernetes.io/instance in (
                 immich-server,
                 immich-microservices,
-                immich-typesense,
                 immich-machine-learning
             )
 
