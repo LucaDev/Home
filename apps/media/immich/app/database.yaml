@@ -4,6 +4,7 @@ metadata:
   name: immich
 spec:
   instances: 1
+  imageName: ghcr.io/bo0tzz/cnpgvecto.rs:15.4
   primaryUpdateStrategy: unsupervised
 
   storage:
@@ -12,3 +13,7 @@ spec:
 
   monitoring:
     enablePodMonitor: true
+
+  postgresql:
+    shared_preload_libraries:
+      - "vectors.so"
