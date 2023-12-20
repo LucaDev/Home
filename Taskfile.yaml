@@ -17,6 +17,9 @@ includes:
   volsync:
     taskfile: ".taskfiles/volsync"
     dir: .taskfiles/volsync
+  net:
+    taskfile: ".taskfiles/net"
+    dir: .taskfiles/net
 
 tasks:
   default:

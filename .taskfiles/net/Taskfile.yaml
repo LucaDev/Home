@@ -1,0 +1,10 @@
+---
+version: "3"
+
+tasks:
+  sniff:
+    desc: Sniff network traffic
+    vars:
+      interface: '{{ or .interface (fail "Argument (interface) is required") }}'
+    cmds:
+      - ssh ubnt@192.168.1.1 'sudo tcpdump -f -i "{{ .interface}}" -w -' | wireshark -k -i -
