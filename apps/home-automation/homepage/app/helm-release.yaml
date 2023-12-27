@@ -47,22 +47,27 @@ spec:
         - 3D Drucker:
             href: http://3ddrucker.local
             icon: mainsail.svg
-            ping: http://192.168.1.90
-            description: Steuerung des 3d Druckers
+            ping: http://192.168.100.60
+            description: Steuerung des 3D Druckers
             widget:
               type: moonraker
-              url: http://192.168.1.59
+              url: http://192.168.100.60
+        - 3D Drucker Steckdose:
+            href: http://192.168.100.61
+            icon: tasmota.svg
+            ping: http://192.168.100.61
+            description: 3D Drucker Steckdose
         - Solaranlage:
             href: http://pv-anlage.local
-            ping: http://192.168.1.60
+            ping: http://192.168.100.40
             icon: mdi-solar-power-variant
             description: Steuerung der Solaranlage
             widget:
               type: opendtu
-              url: http://192.168.1.60
+              url: http://192.168.100.40
         - Heizung:
             href: http://ems-esp.local
-            ping: http://192.168.1.60 # TODO
+            ping: http://192.168.100.50
             icon: mdi-water-boiler
             description: Hiezungssteuerung
         - Drucker:
@@ -81,13 +86,13 @@ spec:
             icon: mdi-zigbee
             description: Steuerung des ZigBee Coordinators
       widgets:
-        - openweathermap:
-            label: Zuhause
-            latitude: "{{HOMEPAGE_VAR_OPENWEATHERMAP_LAT}}"
-            longitude: "{{HOMEPAGE_VAR_OPENWEATHERMAP_LONG}}"
-            units: metric
-            apiKey: "{{HOMEPAGE_VAR_OPENWEATHERMAP_APIKEY}}"
-            cache: 30
+        #- openweathermap:
+        #    label: Zuhause
+        #    latitude: "{{HOMEPAGE_VAR_OPENWEATHERMAP_LAT}}"
+        #    longitude: "{{HOMEPAGE_VAR_OPENWEATHERMAP_LONG}}"
+        #    units: metric
+        #    apiKey: "{{HOMEPAGE_VAR_OPENWEATHERMAP_APIKEY}}"
+        #    cache: 30
         - kubernetes:
             cluster:
               show: true
