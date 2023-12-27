@@ -26,7 +26,7 @@ spec:
         containers:
           main:
             image:
-              repository: docker.io/frooodle/s-pdf:latest
+              repository: docker.io/frooodle/s-pdf
               tag: 0.17.2
             resources:
               requests:
