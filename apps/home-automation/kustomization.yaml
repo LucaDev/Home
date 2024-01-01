@@ -9,4 +9,3 @@ resources:
   - ./homeassistant
   - ./zigbee2mqtt/ks.yaml
   - ./nut/ks.yaml
-  - ./spoolman/ks.yaml
