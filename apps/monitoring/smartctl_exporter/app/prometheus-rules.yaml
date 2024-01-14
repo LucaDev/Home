@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: smart.rules
+spec:
+  groups:
+    - name: smart.rules
+      rules:
+        - alert: DiskNotHealthy
+          annotations:
+            description: It seems like disk {{device}} is not healty anymore!
+            summary: Disk Not Healty
+          expr: |
+            smartctl_device_smart_status != 1
+          for: 0s
+          labels:
+            severity: critical
