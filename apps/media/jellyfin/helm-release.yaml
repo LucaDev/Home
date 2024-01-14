@@ -40,8 +40,8 @@ spec:
             fsGroup: 568
             fsGroupChangePolicy: "OnRootMismatch"
             supplementalGroups:
-              - 44
-              - 109
+              - 44 # video
+              - 104 # renderer
               - 65542 # gladius:external-services
 
         containers:
