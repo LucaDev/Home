@@ -36,6 +36,8 @@ spec:
                 memory: 25Mi
             securityContext:
               privileged: true
+              runAsUser: 1
+              runAsGroup: 1
 
     service:
       main:
