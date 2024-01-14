@@ -4,8 +4,9 @@ resources:
   - ./namespace.yaml
   - ./kube-prometheus-stack/ks.yaml
   - ./alertmanager/ks.yaml
-  - ./loki
-  - ./unpoller
+  - ./loki/ks.yaml
+  - ./unpoller/ks.yaml
   - ./grafana/ks.yaml
-  - ./promtail
-  - ./mqtt-exporter
+  - ./promtail/ks.yaml
+  - ./mqtt-exporter/ks.yaml
+  - ./smartctl_exporter/ks.yaml
