@@ -57,6 +57,7 @@ spec:
                 memory: 1Gi
               limits:
                 memory: 6Gi
+                amd.com/gpu: 1
 
     service:
       main:

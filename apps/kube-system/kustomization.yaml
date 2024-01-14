@@ -4,3 +4,4 @@ resources:
   - ./node-feature-discovery/ks.yaml
   - ./reloader/ks.yaml
   - ./traefik/ks.yaml
+  - ./amd-k8s-plugin/ks.yaml
