@@ -55,3 +55,4 @@ spec:
     repository: unifi-config-restic
     retain:
       daily: 14
+    cacheStorageClassName: local-path

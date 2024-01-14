@@ -53,3 +53,4 @@ spec:
     repository: paperless-restic
     retain:
       daily: 14
+    cacheStorageClassName: local-path

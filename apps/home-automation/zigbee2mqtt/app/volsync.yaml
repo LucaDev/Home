@@ -53,3 +53,4 @@ spec:
     repository: zigbee2mqtt-restic
     retain:
       daily: 14
+    cacheStorageClassName: local-path

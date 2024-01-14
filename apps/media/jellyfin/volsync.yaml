@@ -53,6 +53,7 @@ spec:
     repository: jellyfin-media-restic
     retain:
       daily: 14
+    cacheStorageClassName: local-path
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -112,3 +113,4 @@ spec:
       runAsUser: 568
       runAsGroup: 568
       fsGroup: 568
+    cacheStorageClassName: local-path

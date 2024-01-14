@@ -53,3 +53,4 @@ spec:
     repository: esphome-restic
     retain:
       daily: 14
+    cacheStorageClassName: local-path

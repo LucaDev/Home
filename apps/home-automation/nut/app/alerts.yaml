@@ -12,7 +12,7 @@ spec:
             summary: UPS is on Battery
           expr: |
             network_ups_tools_ups_status{flag="OB"} == 1
-          for: 0m
+          for: 30s
           labels:
             severity: critical
         - alert: BatteryUnder50Percent
