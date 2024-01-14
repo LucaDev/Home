@@ -21,4 +21,5 @@ spec:
   upgrade:
     crds: CreateReplace
   values:
-    nfd: true
+    nfd:
+      enabled: true
