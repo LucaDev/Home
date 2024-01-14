@@ -86,19 +86,12 @@ spec:
             icon: mdi-zigbee
             description: Steuerung des ZigBee Coordinators
       widgets:
-        #- openweathermap:
-        #    label: Zuhause
-        #    latitude: "{{HOMEPAGE_VAR_OPENWEATHERMAP_LAT}}"
-        #    longitude: "{{HOMEPAGE_VAR_OPENWEATHERMAP_LONG}}"
-        #    units: metric
-        #    apiKey: "{{HOMEPAGE_VAR_OPENWEATHERMAP_APIKEY}}"
-        #    cache: 30
         - kubernetes:
             cluster:
               show: true
               cpu: true
               memory: true
-              showLabel: true
+              showLabel: false
               label: "cluster"
             nodes:
               show: false
