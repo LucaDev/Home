@@ -52,3 +52,9 @@ spec:
             path: /metrics
             interval: 1m
             scrapeTimeout: 5s
+
+    persistence:
+      dev:
+        enabled: true
+        type: hostPath
+        hostPath: /dev
