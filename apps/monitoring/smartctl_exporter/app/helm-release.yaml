@@ -34,8 +34,8 @@ spec:
                 memory: 10Mi
               limits:
                 memory: 25Mi
-              securityContext:
-                privileged: true
+            securityContext:
+              privileged: true
 
     service:
       main:
