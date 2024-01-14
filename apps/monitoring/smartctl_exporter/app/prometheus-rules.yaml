@@ -8,7 +8,7 @@ spec:
       rules:
         - alert: DiskNotHealthy
           annotations:
-            description: It seems like disk {{device}} is not healty anymore!
+            description: A disk is not healty anymore!
             summary: Disk Not Healty
           expr: |
             smartctl_device_smart_status != 1
