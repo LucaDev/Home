@@ -86,3 +86,6 @@ spec:
       enabled: true
     podMonitor:
       enabled: true
+    securityContext:
+      supplementalGroups:
+        - 999 # systemd-jounal
