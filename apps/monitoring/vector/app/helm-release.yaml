@@ -1,0 +1,87 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: vector-aggregator
+  namespace: logs
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: vector
+      version: 0.30.0
+      sourceRef:
+        kind: HelmRepository
+        name: vector
+        namespace: flux-system
+  values:
+    image:
+      repository: timberio/vector
+      tag: 0.35.0-distroless-static
+    role: Agent
+    customConfig:
+      data_dir: /vector-data-dir
+      api:
+        enabled: false
+      sources:
+        syslog:
+          type: syslog
+          address: 0.0.0.0:1514
+          mode: tcp
+        journal_logs:
+          type: journald
+          journal_directory: /var/log/journal
+        kubernetes_logs:
+          type: kubernetes_logs
+          pod_annotation_fields:
+            container_image: "container_image"
+            container_name: "container_name"
+            pod_annotations: "pod_annotations"
+            pod_labels: "pod_labels"
+            pod_name: "pod_name"
+        vector_metrics:
+          type: internal_metrics
+      sinks:
+        loki_journal:
+          type: loki
+          inputs:
+            - journal_logs
+          endpoint: http://loki.monitoring.svc.cluster.local:3100
+          encoding:
+            codec: json
+          batch:
+            max_bytes: 2049000
+          out_of_order_action: accept
+          remove_label_fields: true
+          remove_timestamp: true
+          labels:
+            hostname: >-
+              {{`{{ host }}`}}
+        loki_kubernetes:
+          type: loki
+          inputs:
+            - kubernetes_logs_remap
+          endpoint: http://loki.monitoring.svc.cluster.local:3100
+          encoding:
+            codec: json
+          batch:
+            max_bytes: 2049000
+          out_of_order_action: accept
+          remove_label_fields: true
+          remove_timestamp: true
+          labels:
+            app: >-
+              {{`{{ custom_app_name }}`}}
+            namespace: >-
+              {{`{{ kubernetes.pod_namespace }}`}}
+            node: >-
+              {{`{{ kubernetes.pod_node_name }}`}}
+        prom_exporter:
+          type: prometheus_exporter
+          inputs:
+            - vector_metrics
+          address: 0.0.0.0:9090
+    service:
+      enabled: true
+    podMonitor:
+      enabled: true

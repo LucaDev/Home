@@ -1,0 +1,96 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: victoria-metrics-k8s-stack
+  namespace: monitoring
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: victoria-metrics-k8s-stack
+      version: 0.18.11
+      sourceRef:
+        kind: HelmRepository
+        name: victoriametrics
+        namespace: flux-system
+  values:
+    # Disable monitoring of kubernetes core components not available in k3s
+    kubeEtcd:
+      enabled: false
+    kubeControllerManager:
+      enabled: false
+    kubeScheduler:
+      enabled: false
+    kubeProxy:
+      enabled: false
+
+    # Disable default grafana depoyment
+    grafana:
+      enabled: false
+      forceDeployDashboards: true
+
+    alertmanager:
+      enabled: false
+
+#    prometheus:
+#      ingress:
+#        enabled: true
+#        pathType: Prefix
+#        hosts:
+#          - &host_prometheus prometheus.home.lucadev.de
+#        tls:
+#          - hosts:
+#              - *host_prometheus
+#        annotations:
+#          gethomepage.dev/enabled: "true"
+#          gethomepage.dev/description: Metrik-Datenbank
+#          gethomepage.dev/group: Überwachung
+#          gethomepage.dev/icon: prometheus
+#          gethomepage.dev/name: Prometheus
+#          gethomepage.dev/widget.type: prometheus
+#          gethomepage.dev/widget.url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+#          gethomepage.dev/pod-selector: app.kubernetes.io/name=prometheus
+
+#      prometheusSpec:
+#        ruleSelectorNilUsesHelmValues: false
+#        scrapeConfigSelectorNilUsesHelmValues: false
+#        serviceMonitorSelectorNilUsesHelmValues: false
+#        podMonitorSelectorNilUsesHelmValues: false
+#        probeSelectorNilUsesHelmValues: false
+#        alertingEndpoints:
+#          - namespace: monitoring
+#            name: alertmanager
+#            port: 9093
+#            apiVersion: v2
+#        additionalScrapeConfigs:
+#          - job_name: solar
+#            scrape_interval: 1m
+#            scrape_timeout: 10s
+#            honor_timestamps: true
+#            metrics_path: /api/prometheus/metrics
+#            static_configs:
+#              - targets:
+#                  - "192.168.100.40"
+#          - job_name: power-meter
+#            scrape_interval: 1m
+#            scrape_timeout: 10s
+#            honor_timestamps: true
+#            metrics_path: /metrics
+#            static_configs:
+#              - targets:
+#                  - "192.168.1.87"
+#        storageSpec:
+#          volumeClaimTemplate:
+#            spec:
+#              storageClassName: cached-singlereplica
+#              accessModes: ["ReadWriteOnce"]
+#              resources:
+#                requests:
+#                  storage: 50Gi
+#
+#        enableAdminAPI: true
+#        #retention: 10d
+#        retentionSize: "50GB"
+#        scrapeInterval: 1m

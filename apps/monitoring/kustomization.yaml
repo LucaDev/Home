@@ -10,3 +10,4 @@ resources:
   - ./promtail/ks.yaml
   - ./mqtt-exporter/ks.yaml
   - ./smartctl_exporter/ks.yaml
+  - ./victoria-metrics/ks.yaml

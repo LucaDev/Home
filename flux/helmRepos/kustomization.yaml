@@ -24,3 +24,5 @@ resources:
   - ./backube.yaml
   - ./mongodb.yaml
   - ./amd-gpu.yaml
+  - ./vector.yaml
+  - ./victoriametrics.yaml
