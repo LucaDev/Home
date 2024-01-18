@@ -34,6 +34,11 @@ spec:
     alertmanager:
       enabled: false
 
+    # Enable Prometheus Object Sync
+    victoria-metrics-operator:
+      operator:
+        disable_prometheus_converter: false
+
 #    prometheus:
 #      ingress:
 #        enabled: true
