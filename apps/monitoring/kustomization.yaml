@@ -7,7 +7,6 @@ resources:
   - ./loki/ks.yaml
   - ./unpoller/ks.yaml
   - ./grafana/ks.yaml
-  - ./promtail/ks.yaml
   - ./mqtt-exporter/ks.yaml
   - ./smartctl_exporter/ks.yaml
   - ./vector/ks.yaml
