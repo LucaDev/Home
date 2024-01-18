@@ -26,6 +26,7 @@ spec:
         type: 'filesystem'
       limits_config:
         retention_period: 14d
+        reject_old_samples: false
       ruler:
         enable_api: true
         enable_alertmanager_v2: true
