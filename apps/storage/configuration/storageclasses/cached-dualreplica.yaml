@@ -2,6 +2,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: cached-dualreplica
+  namespace: storage
 provisioner: rancher.io/local-path
 parameters:
   nodePath: /mnt/data/cached/dual
