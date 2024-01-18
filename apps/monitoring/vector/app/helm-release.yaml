@@ -42,10 +42,11 @@ spec:
         vector_metrics:
           type: internal_metrics
       sinks:
-        loki_journal:
+        loki_syslog:
           type: loki
           inputs:
             - journal_logs
+            - syslog
           endpoint: http://loki.monitoring.svc.cluster.local:3100
           encoding:
             codec: json
@@ -60,7 +61,7 @@ spec:
         loki_kubernetes:
           type: loki
           inputs:
-            - kubernetes_logs_remap
+            - kubernetes_logs
           endpoint: http://loki.monitoring.svc.cluster.local:3100
           encoding:
             codec: json
