@@ -9,6 +9,9 @@ configMapGenerator:
   - name: power-dashboard
     files:
       - power.json
+  - name: opendtu
+    files:
+      - opendtu.json
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
