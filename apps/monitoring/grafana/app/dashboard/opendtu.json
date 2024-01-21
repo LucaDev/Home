@@ -941,7 +941,7 @@
       "options": {
         "colorMode": "value",
         "graphMode": "none",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -962,7 +962,7 @@
           "editorMode": "code",
           "expr": "opendtu_last_update{instance=\"$instance\", serial=~\"$serial\"}",
           "hide": true,
-          "legendFormat": "__auto",
+          "legendFormat": "{{name}}",
           "range": true,
           "refId": "last_update"
         },
@@ -974,7 +974,7 @@
           "editorMode": "builder",
           "expr": "opendtu_uptime{instance=\"$instance\"}",
           "hide": true,
-          "legendFormat": "__auto",
+          "legendFormat": "{{name}}",
           "range": true,
           "refId": "uptime"
         },
@@ -1030,7 +1030,7 @@
       "options": {
         "colorMode": "value",
         "graphMode": "area",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -1051,7 +1051,7 @@
           "editorMode": "builder",
           "expr": "opendtu_Temperature{instance=\"$instance\", serial=~\"$serial\"}",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{name}}",
           "range": true,
           "refId": "A"
         }
@@ -1093,7 +1093,7 @@
       "options": {
         "colorMode": "value",
         "graphMode": "area",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -1114,7 +1114,7 @@
           "editorMode": "builder",
           "expr": "opendtu_YieldDay{instance=\"$instance\", serial=~\"$serial\", type=\"AC\"}",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{name}}",
           "range": true,
           "refId": "A"
         }
@@ -1156,7 +1156,7 @@
       "options": {
         "colorMode": "value",
         "graphMode": "none",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -1177,7 +1177,7 @@
           "editorMode": "builder",
           "expr": "opendtu_YieldTotal{instance=\"$instance\", serial=~\"$serial\", type=\"AC\"}",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{name}}",
           "range": true,
           "refId": "A"
         }
@@ -1219,7 +1219,7 @@
       "options": {
         "colorMode": "value",
         "graphMode": "none",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -1240,7 +1240,7 @@
           "editorMode": "builder",
           "expr": "opendtu_Power{instance=\"$instance\", serial=~\"$serial\", type=\"AC\"}",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{name}}",
           "range": true,
           "refId": "A"
         }
@@ -1283,7 +1283,7 @@
       "options": {
         "colorMode": "value",
         "graphMode": "none",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -1304,7 +1304,7 @@
           "editorMode": "code",
           "expr": "max_over_time(opendtu_Power{instance=\"$instance\", serial=~\"$serial\", type=\"AC\"}[$__range])",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{name}}",
           "range": true,
           "refId": "A"
         }
@@ -1347,7 +1347,7 @@
       "options": {
         "colorMode": "value",
         "graphMode": "none",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -1368,7 +1368,7 @@
           "editorMode": "code",
           "expr": "sum(max_over_time(opendtu_Power{instance=\"$instance\", serial=~\"$serial\", type=\"DC\"}[$__range]))",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{name}}",
           "range": true,
           "refId": "A"
         }
@@ -3753,6 +3753,20 @@
   ],
   "templating": {
     "list": [
+      {
+        "current": {},
+        "hide": 0,
+        "includeAll": false,
+        "label": "DS",
+        "multi": false,
+        "name": "DS_PROMETHEUS",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
       {
         "current": {},
         "datasource": {

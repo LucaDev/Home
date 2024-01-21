@@ -85,6 +85,11 @@ spec:
             ping: http://192.168.1.157
             icon: mdi-zigbee
             description: Steuerung des ZigBee Coordinators
+        - Router:
+            href: http://192.168.1.1
+            ping: http://192.168.1.1
+            icon: mdi-router-network
+            description: Verwaltungsoberfläche des Routers
       widgets:
         - kubernetes:
             cluster:
