@@ -1,0 +1,94 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta2.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: calibre-web
+spec:
+  chart:
+    spec:
+      chart: app-template
+      version: 2.5.0
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  interval: 30m
+  values:
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        pod:
+          enableServiceLinks: false
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: "OnRootMismatch"
+
+        containers:
+          main:
+            image:
+              repository: ghcr.io/bjw-s/calibre-web
+              tag: 0.6.21@sha256:1a738c3e89df1e855643fcc341f166152df7b191a833367c6537130973676913
+            env:
+              CACHE_DIR: /cache
+            resources:
+              requests:
+                cpu: 5m
+                memory: 450M
+              limits:
+                memory: 500M
+
+    service:
+      main:
+        ports:
+          http:
+            port: 8083
+
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Filme und Serien
+          gethomepage.dev/group: Medien
+          gethomepage.dev/icon: calibre-web
+          gethomepage.dev/name: Calibre
+        hosts:
+          - host: "calibre.home.lucadev.de"
+            paths:
+              - path: /
+                service:
+                  name: main
+                  port: http
+        tls:
+          - hosts:
+              - "calibre.home.lucadev.de"
+
+    persistence:
+      config:
+        enabled: true
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        storageClass: ssd-singlereplica
+        advancedMounts:
+          main:
+            main:
+              - path: /config
+
+      media:
+        enabled: true
+        existingClaim: "jellyfin-media"
+        advancedMounts:
+          main:
+            main:
+              - path: /data/media
+
+      cache:
+        type: emptyDir
+        globalMounts:
+          - path: /cache
