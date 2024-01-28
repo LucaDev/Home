@@ -7,4 +7,5 @@ resources:
   - ./immich/ks.yaml
   - ./stirling-pdf/ks.yaml
   - ./calibre-web/ks.yaml
+  - ./tandoor/ks.yaml
 #  - ./frigate/ks.yaml
