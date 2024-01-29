@@ -29,7 +29,7 @@ spec:
             order: 2
             image:
               repository: vabene1111/recipes
-              tag: 1.5.10
+              tag: 1.5.11
             envFrom: &envFrom
               - secretRef:
                   name: tandoor-secret
@@ -47,7 +47,7 @@ spec:
           main:
             image:
               repository: vabene1111/recipes
-              tag: 1.5.10
+              tag: 1.5.11
             envFrom: *envFrom
             env:
               DEBUG: "0"
