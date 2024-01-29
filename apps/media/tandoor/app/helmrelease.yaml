@@ -157,7 +157,7 @@ spec:
             apiVersion: apps/v1
             metadata:
               name: tandoor
-              namespace: *ns
+              namespace: media
             spec:
               template:
                 spec:
