@@ -52,6 +52,10 @@ spec:
           http:
             port: 8888
 
+    probes:
+      startup:
+        enabled: false
+
     ingress:
       main:
         enabled: true
