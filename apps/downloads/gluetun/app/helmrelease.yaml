@@ -42,6 +42,10 @@ spec:
             probes:
               startup:
                 enabled: false
+              readiness:
+                enabled: false
+              liveness:
+                enabled: false
             resources:
               requests:
                 cpu: 100m
