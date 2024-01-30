@@ -39,10 +39,10 @@ spec:
               TZ: Europe/Berlin
             resources:
               requests:
-                cpu: 14m
-                memory: 50M
+                cpu: 20m
+                memory: 100M
               limits:
-                memory: 150M
+                memory: 400M
             securityContext:
               allowPrivilegeEscalation: false
               capabilities:
