@@ -63,8 +63,8 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Filme & Serien Anfragen
           gethomepage.dev/group: Medien
-          gethomepage.dev/icon: jellyseer
-          gethomepage.dev/name: Jellyseer
+          gethomepage.dev/icon: jellyseerr
+          gethomepage.dev/name: Jellyseerr
           gethomepage.dev/widget.type: jellyseerr
           gethomepage.dev/widget.url: https://jellyseer.home.lucadev.de
           gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_JELLSEER_APIKEY}}"
