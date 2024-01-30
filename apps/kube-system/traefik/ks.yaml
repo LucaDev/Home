@@ -61,3 +61,18 @@ spec:
     kind: GitRepository
     name: github-repo
   wait: true
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: traefik-config
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: "./apps/kube-system/traefik/config"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: github-repo
+  wait: true
