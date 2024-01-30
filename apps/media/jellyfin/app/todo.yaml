@@ -1,19 +1,20 @@
+#TODO: media backups
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: jellyfin-restic
+  name: jellyfin-media-restic
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
     name: bitwarden-fields
   target:
-    name: jellyfin-restic
+    name: jellyfin-media-restic
     creationPolicy: Owner
     template:
       engineVersion: v2
       data:
-        RESTIC_REPOSITORY: rclone:storagebox:/homeserver/jellyfin-config
+        RESTIC_REPOSITORY: rclone:storagebox:/homeserver/jellyfin
         RESTIC_PASSWORD: "{{ .restic_password }}"
         RCLONE_CONFIG_STORAGEBOX_TYPE: sftp
         RCLONE_CONFIG_STORAGEBOX_HOST: "{{ .storagebox_host }}"
@@ -42,19 +43,15 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: jellyfin
+  name: jellyfin-media
 spec:
-  sourcePVC: config-jellyfin-0
+  sourcePVC: jellyfin-media
   trigger:
     schedule: "0 */12 * * *"
   restic:
     copyMethod: Direct
     pruneIntervalDays: 14
-    repository: jellyfin-restic
+    repository: jellyfin-media-restic
     retain:
       daily: 14
-    moverSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
     cacheStorageClassName: local-path
