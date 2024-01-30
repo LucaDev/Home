@@ -2,6 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./namespace.yaml
-  - ./external-dns/app/ # ToDo: ks.yaml
+  - ./external-dns/ks.yaml
   - ./unifi-controller/ks.yaml
   - ./cert-manager/ks.yaml
