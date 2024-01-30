@@ -73,7 +73,7 @@ spec:
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Seriendownloader
-          gethomepage.dev/group: Medien
+          gethomepage.dev/group: Downloads
           gethomepage.dev/icon: radarr
           gethomepage.dev/name: Radarr
           gethomepage.dev/widget.type: radarr

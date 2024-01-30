@@ -132,6 +132,8 @@ spec:
           - Netzwerk:
               style: row
               columns: 2
+          - Downloads:
+              columns: 3
           - Überwachung:
               style: row
               columns: 3
