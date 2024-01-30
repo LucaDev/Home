@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./replicationsource.yaml
   - ./externalsecret.yaml
+  - ./pvc.yaml
