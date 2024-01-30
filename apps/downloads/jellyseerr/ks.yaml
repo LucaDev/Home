@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: *appname
   interval: 10m
-  path: "./apps/downloads/jellyseer/app"
+  path: "./apps/downloads/jellyseerr/app"
   prune: true
   sourceRef:
     kind: GitRepository
