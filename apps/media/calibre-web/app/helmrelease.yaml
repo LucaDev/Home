@@ -82,11 +82,10 @@ spec:
 
       media:
         enabled: true
-        existingClaim: "jellyfin-media"
-        advancedMounts:
-          main:
-            main:
-              - path: /data/media
+        type: hostPath
+        hostPath: /mnt/data/hdd/single/media
+        globalMounts:
+          - path: /data/media
 
       cache:
         type: emptyDir

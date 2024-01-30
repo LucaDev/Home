@@ -94,12 +94,10 @@ spec:
     persistence:
       media:
         enabled: true
-        type: persistentVolumeClaim
-        accessMode: ReadWriteOnce
-        storageClass: hdd-singlereplica
+        type: hostPath
+        hostPath: /mnt/data/hdd/single/media
         globalMounts:
           - path: /media/
-        size: 100G
       cache:
         type: emptyDir
         globalMounts:
