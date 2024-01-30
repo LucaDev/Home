@@ -85,3 +85,8 @@ spec:
         existingClaim: "${VOLSYNC_CLAIM}"
         globalMounts:
           - path: /app/config
+      cache:
+        enabled: true
+        type: emptyDir
+        globalMounts:
+          - path: /.cache/yarn
