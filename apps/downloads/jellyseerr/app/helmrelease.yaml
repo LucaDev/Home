@@ -33,7 +33,7 @@ spec:
         containers:
           main:
             image:
-              repository: fallenbagel/jellyseerr:latest
+              repository: fallenbagel/jellyseerr
               tag: 1.7.0
             env:
               TZ: Europe/Berlin
