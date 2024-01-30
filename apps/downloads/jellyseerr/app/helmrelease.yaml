@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: radarr
+  name: jellyseerr
 spec:
   interval: 30m
   chart:
@@ -66,7 +66,7 @@ spec:
           gethomepage.dev/icon: jellyseerr
           gethomepage.dev/name: Jellyseerr
           gethomepage.dev/widget.type: jellyseerr
-          gethomepage.dev/widget.url: https://jellyseer.home.lucadev.de
+          gethomepage.dev/widget.url: https://jellyseerr.home.lucadev.de
           gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_JELLSEER_APIKEY}}"
         hosts:
           - host: "${HOSTNAME}"
