@@ -45,7 +45,6 @@ spec:
                 memory: 150M
             securityContext:
               allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
               capabilities:
                 drop:
                   - ALL
@@ -85,8 +84,3 @@ spec:
         existingClaim: "${VOLSYNC_CLAIM}"
         globalMounts:
           - path: /app/config
-      cache:
-        enabled: true
-        type: emptyDir
-        globalMounts:
-          - path: /.cache/yarn
