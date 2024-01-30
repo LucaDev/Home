@@ -23,7 +23,7 @@ spec:
           main:
             image:
               repository: ghcr.io/qdm12/gluetun
-              tag: 3.35.0
+              tag: 3.37.0
             securityContext:
               capabilities:
                 add:
@@ -38,7 +38,7 @@ spec:
                 value: "privado"
             envFrom:
               - secretRef:
-                name: gluetun-secret
+                  name: gluetun-secret
             resources:
               requests:
                 cpu: 100m
