@@ -54,7 +54,7 @@ spec:
       main:
         ports:
           http:
-            port: *port
+            port: 5055
 
     ingress:
       main:
