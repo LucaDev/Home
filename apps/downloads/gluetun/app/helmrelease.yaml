@@ -39,6 +39,9 @@ spec:
             envFrom:
               - secretRef:
                   name: gluetun-secret
+            probes:
+              startup:
+                enabled: false
             resources:
               requests:
                 cpu: 100m
@@ -51,10 +54,6 @@ spec:
         ports:
           http:
             port: 8888
-
-    probes:
-      startup:
-        enabled: false
 
     ingress:
       main:
