@@ -1,0 +1,64 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: gluetun
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 2.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  values:
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          main:
+            image:
+              repository: ghcr.io/qdm12/gluetun
+              tag: 3.35.0
+            securityContext:
+              capabilities:
+                add:
+                  - NET_ADMIN
+              allowPrivilegeEscalation: false
+            env:
+              - name: TZ
+                value: "Europe/Berlin"
+              - name: HTTPPROXY
+                value: "on"
+              - name: VPN_SERVICE_PROVIDER
+                value: "privado"
+            envFrom:
+              - secretRef:
+                name: gluetun-secret
+            resources:
+              requests:
+                cpu: 100m
+                memory: 100Mi
+              limits:
+                memory: 200Mi
+
+    service:
+      main:
+        ports:
+          http:
+            port: 8888
+
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: "proxy.home.lucadev.de"
+            paths:
+              - path: /
+                service:
+                  name: main
+                  port: http
