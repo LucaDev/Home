@@ -5,3 +5,5 @@ resources:
   - ./gluetun/ks.yaml
   - ./jellyseerr/ks.yaml
   - ./sabnzbd/ks.yaml
+  - ./sonarr/ks.yaml
+  - ./radarr/ks.yaml

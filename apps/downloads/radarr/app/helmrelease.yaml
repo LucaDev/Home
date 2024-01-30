@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: sabnzbd
+  name: radarr
 spec:
   interval: 30m
   chart:
@@ -28,38 +28,32 @@ spec:
             runAsGroup: ${APP_GID}
             runAsNonRoot: true
             fsGroup: ${APP_GID}
-            fsGroupChangePolicy: OnRootMismatch
+            fsGroupChangePolicy: "OnRootMismatch"
 
         containers:
           main:
             image:
-              repository: ghcr.io/onedr0p/sabnzbd
-              tag: 4.2.1@sha256:c9f2577a9483ed1a53295ed6315f4ebfcf9e99507c1095f49b5bc2f0cf080179
+              repository: ghcr.io/onedr0p/radarr-develop
+              tag: 5.3.2.8504@sha256:d87bccdcac992e5d43f93f355ee714e137b21b77df21e250bc9b3ac4d14708db
             env:
-              SABNZBD__PORT: &port 8080
-              SABNZBD__HOST_WHITELIST_ENTRIES: >-
-                sabnzbd,
-                sabnzbd.downloads,
-                sabnzbd.downloads.svc,
-                sabnzbd.downloads.svc.cluster,
-                sabnzbd.downloads.svc.cluster.local,
-                ${HOSTNAME}
-              SABNZBD__API_KEY:
+              COMPlus_EnableDiagnostics: "0"
+              RADARR__INSTANCE_NAME: Radarr
+              RADARR__PORT: &port 7878
+              RADARR__AUTHENTICATION_METHOD: External
+              RADARR__AUTHENTICATION_REQUIRED: DisabledForLocalAddresses
+              RADARR__APPLICATION_URL: &url "https://radarr.home.lucadev.de"
+              RADARR__LOG_LEVEL: info
+              RADARR__API_KEY:
                 valueFrom:
                   secretKeyRef:
-                    name: sabnzbd-secret
+                    name: radarr-secret
                     key: api_key
-              SABNZBD__NZB_KEY:
-                valueFrom:
-                  secretKeyRef:
-                    name: sabnzbd-secret
-                    key: nzb_key
             resources:
               requests:
-                cpu: 5m
-                memory: 1024Mi
+                cpu: 14m
+                memory: 150M
               limits:
-                memory: 6144Mi
+                memory: 431M
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
@@ -78,13 +72,13 @@ spec:
         enabled: true
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Downloadmanager
-          gethomepage.dev/group: Downloads
-          gethomepage.dev/icon: sabnzbd
-          gethomepage.dev/name: Sabnzbd
-          gethomepage.dev/widget.type: sabnzbd
-          gethomepage.dev/widget.url: "https://sabnzbd.home.lucadev.de"
-          gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_SABNZBD_APIKEY}}"
+          gethomepage.dev/description: Seriendownloader
+          gethomepage.dev/group: Medien
+          gethomepage.dev/icon: radarr
+          gethomepage.dev/name: Radarr
+          gethomepage.dev/widget.type: radarr
+          gethomepage.dev/widget.url: *url
+          gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_RADARR_APIKEY}}"
         hosts:
           - host: "${HOSTNAME}"
             paths:
@@ -100,20 +94,9 @@ spec:
       config:
         enabled: true
         existingClaim: "${VOLSYNC_CLAIM}"
-        advancedMounts:
-          main:
-            main:
-              - path: /config
       media:
         enabled: true
         type: hostPath
         hostPath: /mnt/data/hdd/single/media
         globalMounts:
           - path: /media/
-
-      temp:
-        type: emptyDir
-        advancedMounts:
-          main:
-            main:
-              - path: /tmp
