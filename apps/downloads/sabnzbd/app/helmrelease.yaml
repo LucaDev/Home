@@ -66,6 +66,40 @@ spec:
               capabilities:
                 drop:
                   - ALL
+      gluetun:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          main:
+            image:
+              repository: ghcr.io/qdm12/gluetun
+              tag: v3.37.0
+            securityContext:
+              capabilities:
+                add:
+                  - NET_ADMIN
+              allowPrivilegeEscalation: false
+            env:
+              - name: TZ
+                value: "Europe/Berlin"
+              - name: VPN_SERVICE_PROVIDER
+                value: "privado"
+            envFrom:
+              - secretRef:
+                  name: gluetun-secret
+            probes:
+              startup:
+                enabled: false
+              readiness:
+                enabled: false
+              liveness:
+                enabled: false
+            resources:
+              requests:
+                cpu: 100m
+                memory: 100Mi
+              limits:
+                memory: 200Mi
 
     service:
       main:

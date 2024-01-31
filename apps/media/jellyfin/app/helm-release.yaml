@@ -77,7 +77,7 @@ spec:
           gethomepage.dev/widget.url: https://jellyfin.home.lucadev.de
           gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_JELLYFIN_APIKEY}}"
           gethomepage.dev/widget.enableBlocks: "true"
-          gethomepage.dev/widget.enableNowPlaying: "true"
+          gethomepage.dev/widget.enableNowPlaying: "false"
         hosts:
           - host: &host "jellyfin.home.lucadev.de"
             paths:
