@@ -133,6 +133,7 @@ spec:
               style: row
               columns: 2
           - Downloads:
+              style: row
               columns: 3
           - Überwachung:
               style: row
