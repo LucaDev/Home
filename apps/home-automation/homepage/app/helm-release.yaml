@@ -134,7 +134,7 @@ spec:
               columns: 2
           - Downloads:
               style: row
-              columns: 3
+              columns: 4
           - Überwachung:
               style: row
               columns: 3
