@@ -63,6 +63,8 @@ spec:
         enabled: true
         hosts:
           - host: &host "esphome.home.lucadev.de"
+            annotations:
+              traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
             paths:
               - path: /
                 service:

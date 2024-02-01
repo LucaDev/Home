@@ -1,0 +1,10 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: local-iot-ips
+  namespace: networking
+spec:
+  ipWhiteList:
+    sourceRange:
+    - 192.168.100.0/24

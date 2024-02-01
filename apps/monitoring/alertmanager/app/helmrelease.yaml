@@ -67,6 +67,7 @@ spec:
           - hosts:
               - *host
         annotations:
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Alarmzentrale
           gethomepage.dev/group: Überwachung

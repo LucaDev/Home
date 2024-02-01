@@ -51,7 +51,7 @@ spec:
                 cpu: 100m
                 memory: 100Mi
               limits:
-                memory: 500Mi
+                memory: 600Mi
 
     service:
       main:
@@ -64,6 +64,8 @@ spec:
         enabled: true
         hosts:
           - host: "proxy.home.lucadev.de"
+            annotations:
+              traefik.ingress.kubernetes.io/router.middlewares: networking-local-home-ips@kubernetescrd
             paths:
               - path: /
                 service:
