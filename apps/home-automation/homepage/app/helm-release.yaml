@@ -118,6 +118,7 @@ spec:
             hideInternetSearch: true
             hideVisitURL: true
         hideVersion: true
+        hideErrors: true
         color: slate
         iconStyle: theme
         title: Home
