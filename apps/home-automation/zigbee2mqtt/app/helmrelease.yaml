@@ -120,8 +120,6 @@ spec:
         enabled: true
         hosts:
           - host: &host "zigbee.home.lucadev.de"
-            annotations:
-              traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
             paths:
               - path: /
                 service:
@@ -136,3 +134,4 @@ spec:
           gethomepage.dev/group: Heimautomation
           gethomepage.dev/icon: zigbee2mqtt
           gethomepage.dev/name: Zigbee2MQTT
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd

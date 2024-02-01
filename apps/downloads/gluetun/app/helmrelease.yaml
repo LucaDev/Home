@@ -62,10 +62,10 @@ spec:
     ingress:
       main:
         enabled: true
+        annotations:
+          traefik.ingress.kubernetes.io/router.middlewares: networking-local-home-ips@kubernetescrd
         hosts:
           - host: "proxy.home.lucadev.de"
-            annotations:
-              traefik.ingress.kubernetes.io/router.middlewares: networking-local-home-ips@kubernetescrd
             paths:
               - path: /
                 service:
