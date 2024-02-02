@@ -75,8 +75,6 @@ spec:
           gethomepage.dev/group: Downloads
           gethomepage.dev/icon: prowlarr
           gethomepage.dev/name: Prowlarr
-          gethomepage.dev/widget.type: prowlarr
-          gethomepage.dev/widget.url: *url
         hosts:
           - host: "${HOSTNAME}"
             paths:
