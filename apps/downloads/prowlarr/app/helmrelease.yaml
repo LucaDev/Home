@@ -69,6 +69,14 @@ spec:
     ingress:
       main:
         enabled: true
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Index Manager
+          gethomepage.dev/group: Downloads
+          gethomepage.dev/icon: prowlarr
+          gethomepage.dev/name: Prowlarr
+          gethomepage.dev/widget.type: prowlarr
+          gethomepage.dev/widget.url: *url
         hosts:
           - host: "${HOSTNAME}"
             paths:
