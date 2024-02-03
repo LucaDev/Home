@@ -4,6 +4,7 @@ namespace: media
 resources:
   - ./helm-release.yaml
   - ./volsync.yaml
+  - ./networkpolicy.yaml
   - ../../../../templates/netpol/dns-traefik
   - ../../../../templates/netpol/egress-internet
   - ../../../../templates/netpol/kanidm-ldap
