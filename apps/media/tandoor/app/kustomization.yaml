@@ -6,6 +6,8 @@ namespace: media
 resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
+  - ../../../../templates/netpol/dns-traefik
+  - ../../../../templates/netpol/egress-internet
 configMapGenerator:
   - name: tandoor-configmap
     files:

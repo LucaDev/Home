@@ -7,6 +7,9 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
   - ./volsync.yaml
+  - ../../../../templates/netpol/dns-traefik
+  - ../../../../templates/netpol/egress-internet
+  - ../../../../templates/netpol/ingress-homepage
 labels:
   - pairs:
       app.kubernetes.io/name: paperless

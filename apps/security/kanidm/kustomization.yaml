@@ -6,3 +6,4 @@ resources:
   - ./helm-release.yaml
   - ./configuration.yaml
   - ./kanidm-transport.yaml
+  - ../../../../templates/netpol/dns-traefik
