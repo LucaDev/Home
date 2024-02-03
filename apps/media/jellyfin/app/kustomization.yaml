@@ -6,4 +6,4 @@ resources:
   - ./volsync.yaml
   - ../../../../templates/netpol/dns-traefik
   - ../../../../templates/netpol/egress-internet
-  - ../../../../templates/netpol/ingress-hompeage
+  - ../../../../templates/netpol/ingress-homepage

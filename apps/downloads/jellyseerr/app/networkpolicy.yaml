@@ -31,5 +31,5 @@ spec:
             matchLabels:
               app.kubernetes.io/name: jellyfin
       ports:
-        - port: TODO
+        - port: 5055
           protocol: TCP
