@@ -9,6 +9,8 @@ resources:
   - ./volsync.yaml
   - ../../../../templates/netpol/dns-traefik
   - ../../../../templates/netpol/egress-internet
+  - ../../../../templates/netpol/egress-redis
+  - ../../../../templates/netpol/kanidm-ldap
   - ../../../../templates/netpol/ingress-homepage
 labels:
   - pairs:

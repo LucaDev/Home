@@ -16,7 +16,7 @@ data:
   PAPERLESS_LDAP_AUTH_URL: "ldaps://kanidm.security.svc.cluster.local:636"
   PAPERLESS_LDAP_AUTH_SEARCH_BASE: "dc=idm,dc=home,dc=lucadev,dc=de"
   PAPERLESS_LDAP_UID_FORMAT: "spn=%s,dc=idm,dc=home,dc=lucadev,dc=de"
-  PAPERLESS_LDAP_USER_GROUP: "spn=idm_all_persons@idm.home.lucadev.de,dc=idm,dc=home,dc=lucadev,dc =de"
+  PAPERLESS_LDAP_USER_GROUP: "spn=idm_all_persons@idm.home.lucadev.de,dc=idm,dc=home,dc=lucadev,dc=de"
   PAPERLESS_LDAP_ADMIN_GROUP: "spn=admins@idm.home.lucadev.de,dc=idm,dc=home,dc=lucadev,dc=de"
   PAPERLESS_LDAP_AUTH_CONNECTION_USERNAME: "token"
   #PAPERLESS_LDAP_LLDAP_FIX: "true"
