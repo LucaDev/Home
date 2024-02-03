@@ -54,7 +54,7 @@ spec:
           gethomepage.dev/name: Stirling PDF
           traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
         hosts:
-          - host: &host stirling-pdf.home.lucadev.de
+          - host: ${HOSTNAME}
             paths:
               - path: /
                 pathType: Prefix
@@ -63,4 +63,4 @@ spec:
                   port: http
         tls:
           - hosts:
-              - *host
+              - ${HOSTNAME}

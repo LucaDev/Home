@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: paperless
+  name: &appname paperless
   namespace: flux-system
 spec:
   interval: 10m
@@ -12,5 +12,12 @@ spec:
     kind: GitRepository
     name: github-repo
   wait: false # no flux ks dependents
-#  dependsOn:
-#    - name: paperless-redis ToDo
+  dependsOn:
+    - name: redis
+  postBuild:
+    substitute:
+      APP: *appname
+      HOSTNAME: paperless.home.lucadev.de
+      APP_UID: "568" #TODO
+      APP_GID: "568"
+      VOLSYNC_CLAIM: paperless-config #TODO

@@ -24,9 +24,9 @@ spec:
         pod:
           enableServiceLinks: false
           securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            fsGroup: 568
+            runAsUser: ${APP_UID}
+            runAsGroup: ${APP_GID}
+            fsGroup: ${APP_UID}
             fsGroupChangePolicy: "OnRootMismatch"
 
         containers:
@@ -59,7 +59,7 @@ spec:
           gethomepage.dev/icon: calibre-web
           gethomepage.dev/name: Calibre
         hosts:
-          - host: "calibre.home.lucadev.de"
+          - host: ${HOSTNAME}
             paths:
               - path: /
                 service:
@@ -67,7 +67,7 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "calibre.home.lucadev.de"
+              - ${HOSTNAME}
 
     persistence:
       config:

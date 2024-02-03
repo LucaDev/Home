@@ -35,9 +35,9 @@ spec:
         pod:
           enableServiceLinks: false
           securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            fsGroup: 568
+            runAsUser: ${APP_UID}
+            runAsGroup: ${APP_GID}
+            fsGroup: ${APP_UID}
             fsGroupChangePolicy: "OnRootMismatch"
             supplementalGroups:
               - 44 # video
@@ -79,7 +79,7 @@ spec:
           gethomepage.dev/widget.enableBlocks: "true"
           gethomepage.dev/widget.enableNowPlaying: "false"
         hosts:
-          - host: &host "jellyfin.home.lucadev.de"
+          - host: ${HOSTNAME}
             paths:
               - path: /
                 pathType: Prefix
@@ -88,7 +88,7 @@ spec:
                   port: http
         tls:
           - hosts:
-              - *host
+              - ${HOSTNAME}
 
     persistence:
       media:
