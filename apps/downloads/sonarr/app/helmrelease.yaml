@@ -72,7 +72,7 @@ spec:
         enabled: true
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Filmdownloader
+          gethomepage.dev/description: Seriendownloader
           gethomepage.dev/group: Downloads
           gethomepage.dev/icon: sonarr
           gethomepage.dev/name: Sonarr

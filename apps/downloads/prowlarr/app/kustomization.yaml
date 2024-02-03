@@ -4,5 +4,7 @@ kind: Kustomization
 resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
-#  - ./networkpolicy.yaml TODO
+  - ./networkpolicy.yaml TODO
   - ../../../../templates/volsync/hetzner
+  - ../../../../templates/netpol/dns-traefik
+  - ../../../../templates/netpol/egress-internet

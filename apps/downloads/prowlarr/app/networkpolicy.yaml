@@ -13,13 +13,6 @@ spec:
     - from:
         - podSelector:
             matchLabels:
-              app.kubernetes.io/name: traefik
-      ports:
-        - port: 9696
-          protocol: TCP
-    - from:
-        - podSelector:
-            matchLabels:
               app.kubernetes.io/name: sonarr
       ports:
         - port: 9696

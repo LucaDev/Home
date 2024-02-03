@@ -69,7 +69,7 @@ spec:
             href: http://ems-esp.local
             ping: http://192.168.100.50
             icon: mdi-water-boiler
-            description: Hiezungssteuerung
+            description: Heizungssteuerung
         - Drucker:
             href: http://drucker-eg.local
             ping: http://192.168.1.43
