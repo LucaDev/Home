@@ -23,6 +23,6 @@ spec:
     substitute:
       APP: *appname
       HOSTNAME: jellyseerr.home.lucadev.de
-      APP_UID: "568"
-      APP_GID: "568"
+      APP_UID: "0"
+      APP_GID: "0" # TODO
       VOLSYNC_CLAIM: jellyseerr-config
