@@ -7,7 +7,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./apps/media/mealia/app"
+  path: "./apps/media/mealie/app"
   prune: true
   sourceRef:
     kind: GitRepository
