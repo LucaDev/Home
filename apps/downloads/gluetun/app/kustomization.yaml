@@ -4,3 +4,6 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
+  - ../../../../templates/netpol/dns-traefik
+  - ../../../../templates/netpol/egress-internet
+  - ../../../../templates/netpol/egress-local
