@@ -15,14 +15,14 @@ spec:
             matchLabels:
               app.kubernetes.io/name: prowlarr
       ports:
-        - port: 7878
+        - port: &port 8989
           protocol: TCP
     - from:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: jellyseerr
       ports:
-        - port: 7878
+        - port: *port
           protocol: TCP
   egress:
     - to:
