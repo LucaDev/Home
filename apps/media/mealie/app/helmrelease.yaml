@@ -36,20 +36,16 @@ spec:
               PGID: ${APP_GID}
               BASE_URL: https://${HOSTNAME}
               LDAP_AUTH_ENABLED: "true"
-              LDAP_SERVER_URL: ldap://kanidm.security.svc.cluster.local
-              LDAP_BASE_DN: "dc=home,dc=lucadev,dc=de"
-              LDAP_QUERY_BIND:
-                valueFrom:
-                  secretKeyRef:
-                    name: mealie-secret
-                    key: LDAP_QUERY_BIND
+              LDAP_SERVER_URL: ldap://kanidm.security.svc.cluster.local:636
+              LDAP_BASE_DN: "dc=idm,dc=home,dc=lucadev,dc=de"
+              LDAP_QUERY_BIND: "dn=token,dc=idm,dc=home,dc=lucadev,dc=de"
               LDAP_QUERY_PASSWORD:
                 valueFrom:
                   secretKeyRef:
                     name: mealie-secret
                     key: LDAP_QUERY_PASSWORD
-              LDAP_USER_FILTER: "(memberOf=cn=Members,ou=groups,dc=home,dc=lucadev,dc=de)"
-              LDAP_ADMIN_FILTER: "(memberOf=cn=Admins,ou=groups,dc=home,dc=lucadev,dc=de)"
+              LDAP_USER_FILTER: "(memberOf=spn=idm_all_persons@idm.home.lucadev.de,dc=idm,dc=home,dc=lucadev,dc=de)"
+              LDAP_ADMIN_FILTER: "(memberOf=spn=admins@idm.home.lucadev.de,dc=idm,dc=home,dc=lucadev,dc=de)"
               LDAP_ID_ATTRIBUTE: cn
               LDAP_NAME_ATTRIBUTE: name
               LDAP_MAIL_ATTRIBUTE: mail
