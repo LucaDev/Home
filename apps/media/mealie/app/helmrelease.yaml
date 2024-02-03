@@ -70,6 +70,12 @@ spec:
     ingress:
       main:
         enabled: true
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Rezepte
+          gethomepage.dev/group: Medien
+          gethomepage.dev/icon: mealie
+          gethomepage.dev/name: Mealie
         hosts:
           - host: ${HOSTNAME}
             paths:
