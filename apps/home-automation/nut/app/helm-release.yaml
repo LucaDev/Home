@@ -21,6 +21,10 @@ spec:
       main:
         strategy: Recreate
 
+        pod:
+          nodeSelector:
+            feature.node.kubernetes.io/ups-connected: "true"
+
         containers:
           main:
             image:
@@ -81,5 +85,5 @@ spec:
             scrapeTimeout: 5s
             relabelings:
               - action: replace
-                replacement: Value 2200E
+                replacement: APC Smart-UPS 750
                 targetLabel: ups

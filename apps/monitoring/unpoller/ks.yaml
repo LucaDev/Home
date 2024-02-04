@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: unpoller
+  name: &appname unpoller
   namespace: flux-system
 spec:
   interval: 10m
@@ -12,3 +12,8 @@ spec:
     kind: GitRepository
     name: github-repo
   wait: false # no flux ks dependents
+  postBuild:
+    substitute:
+      APP: *appname
+      APP_UID: "568"
+      APP_GID: "568"

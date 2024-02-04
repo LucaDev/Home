@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: vector
+  name: &appname vector
   namespace: flux-system
 spec:
   interval: 10m
@@ -12,3 +12,6 @@ spec:
     kind: GitRepository
     name: github-repo
   wait: false # no flux ks dependents
+  postBuild:
+    substitute:
+      APP: *appname
