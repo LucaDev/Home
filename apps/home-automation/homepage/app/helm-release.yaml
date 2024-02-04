@@ -35,61 +35,61 @@ spec:
       main:
         enabled: true
         hosts:
-        - host: home.lucadev.de
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: home.lucadev.de
+            paths:
+              - path: /
+                pathType: Prefix
 
     config:
       bookmarks:
       services:
-      - Extern:
-        - 3D Drucker:
-            href: http://3ddrucker.local
-            icon: mainsail.svg
-            ping: http://192.168.100.60
-            description: Steuerung des 3D Druckers
-            widget:
-              type: moonraker
-              url: http://192.168.100.60
-        - 3D Drucker Steckdose:
-            href: http://192.168.100.61
-            icon: tasmota.svg
-            ping: http://192.168.100.61
-            description: 3D Drucker Steckdose
-        - Solaranlage:
-            href: http://pv-anlage.local
-            ping: http://192.168.100.40
-            icon: mdi-solar-power-variant
-            description: Steuerung der Solaranlage
-            widget:
-              type: opendtu
-              url: http://192.168.100.40
-        - Heizung:
-            href: http://ems-esp.local
-            ping: http://192.168.100.50
-            icon: mdi-water-boiler
-            description: Heizungssteuerung
-        - Drucker:
-            href: http://drucker-eg.local
-            ping: http://192.168.1.43
-            icon: mdi-printer
-            description: Laserdrucker im Erdgeschoss
-        - Stromzähler:
-            href: http://power-meter.local
-            ping: http://192.168.1.87
-            icon: mdi-meter-electric-outline
-            description: Weboberfläche des Stromzählers
-        - Zigbee Bridge:
-            href: http://192.168.1.157
-            ping: http://192.168.1.157
-            icon: mdi-zigbee
-            description: Steuerung des ZigBee Coordinators
-        - Router:
-            href: http://192.168.1.1
-            ping: http://192.168.1.1
-            icon: mdi-router-network
-            description: Verwaltungsoberfläche des Routers
+        - Extern:
+            - 3D Drucker:
+                href: http://3ddrucker.local
+                icon: mainsail.svg
+                ping: http://192.168.100.60
+                description: Steuerung des 3D Druckers
+                widget:
+                  type: moonraker
+                  url: http://192.168.100.60
+            - 3D Drucker Steckdose:
+                href: http://192.168.100.61
+                icon: tasmota.svg
+                ping: http://192.168.100.61
+                description: 3D Drucker Steckdose
+            - Solaranlage:
+                href: http://pv-anlage.local
+                ping: http://192.168.100.40
+                icon: mdi-solar-power-variant
+                description: Steuerung der Solaranlage
+                widget:
+                  type: opendtu
+                  url: http://192.168.100.40
+            - Heizung:
+                href: http://ems-esp.local
+                ping: http://192.168.100.50
+                icon: mdi-water-boiler
+                description: Heizungssteuerung
+            - Drucker:
+                href: http://drucker-eg.local
+                ping: http://192.168.1.43
+                icon: mdi-printer
+                description: Laserdrucker im Erdgeschoss
+            - Stromzähler:
+                href: http://power-meter.local
+                ping: http://192.168.1.87
+                icon: mdi-meter-electric-outline
+                description: Weboberfläche des Stromzählers
+            - Zigbee Bridge:
+                href: http://192.168.1.157
+                ping: http://192.168.1.157
+                icon: mdi-zigbee
+                description: Steuerung des ZigBee Coordinators
+            - Router:
+                href: http://192.168.1.1
+                ping: http://192.168.1.1
+                icon: mdi-router-network
+                description: Verwaltungsoberfläche des Routers
       widgets:
         - kubernetes:
             cluster:
@@ -114,9 +114,9 @@ spec:
         language: de
         statusStyle: 'dot'
         quicklaunch:
-            searchDescriptions: true
-            hideInternetSearch: true
-            hideVisitURL: true
+          searchDescriptions: true
+          hideInternetSearch: true
+          hideVisitURL: true
         hideVersion: true
         hideErrors: true
         color: slate
@@ -135,7 +135,7 @@ spec:
               columns: 2
           - Downloads:
               style: row
-              columns: 4
+              columns: 3
           - Überwachung:
               style: row
               columns: 3
