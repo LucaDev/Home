@@ -76,6 +76,7 @@ spec:
           gethomepage.dev/group: Downloads
           gethomepage.dev/icon: sonarr
           gethomepage.dev/name: Sonarr
+          gethomepage.dev/weight: 90
           gethomepage.dev/widget.type: sonarr
           gethomepage.dev/widget.url: "https://sonarr.home.lucadev.de"
           gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_SONARR_APIKEY}}"
