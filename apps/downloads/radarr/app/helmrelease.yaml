@@ -76,7 +76,7 @@ spec:
           gethomepage.dev/group: Downloads
           gethomepage.dev/icon: radarr
           gethomepage.dev/name: Radarr
-          gethomepage.dev/weight: "80"
+          gethomepage.dev/weight: "-80"
           gethomepage.dev/widget.type: radarr
           gethomepage.dev/widget.url: *url
           gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_RADARR_APIKEY}}"
