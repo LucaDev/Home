@@ -5,6 +5,8 @@ namespace: monitoring
 resources:
   - ./external-secret.yaml
   - ./helm-release.yaml
+  - ./networkpolicy.yaml
+  - ../../../../templates/netpol/ingress-prometheus
 configMapGenerator:
   - name: mqtt-exporter-configmap
     files:

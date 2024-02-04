@@ -4,57 +4,65 @@ This repo is the heart of my homeserver setup. It contains all data needed to re
 It's fully managed by FluxCD and kept up to date with Renovate Bot.
 
 ## Tool & Apps
+Todo: eza --tree --icons -D -L 2 ./apps/
 ```
 > tree -d -L 2 apps/
-apps/
+./apps
 ├── databases
-│   ├── cloudnative-pg
-│   └── redis
+│  ├── cloudnative-pg
+│  ├── mongodb-operator
+│  └── redis
 ├── downloads
-├── flux-system
-│   ├── tf-controller
-│   └── weave-gitops
+│  ├── gluetun
+│  ├── jellyseerr
+│  ├── prowlarr
+│  ├── radarr
+│  ├── sabnzbd
+│  └── sonarr
 ├── home-automation
-│   ├── esphome
-│   ├── homeassistant
-│   ├── homepage
-│   ├── mosquitto
-│   ├── node-red
-│   ├── nut
-│   ├── spoolman
-│   └── zigbee2mqtt
+│  ├── esphome
+│  ├── homeassistant
+│  ├── homepage
+│  ├── mosquitto
+│  ├── node-red
+│  ├── nut
+│  └── zigbee2mqtt
 ├── kube-system
-│   ├── node-feature-discovery
-│   ├── reloader
-│   └── traefik
+│  ├── amd-k8s-plugin
+│  ├── node-feature-discovery
+│  ├── reloader
+│  └── traefik
 ├── media
-│   ├── frigate
-│   ├── immich
-│   ├── jellyfin
-│   └── paperless-ngx
+│  ├── calibre-web
+│  ├── frigate
+│  ├── immich
+│  ├── jellyfin
+│  ├── mealie
+│  ├── paperless-ngx
+│  └── stirling-pdf
 ├── monitoring
-│   ├── grafana
-│   ├── kube-prometheus-stack
-│   ├── loki
-│   ├── promtail
-│   └── unpoller
+│  ├── alertmanager
+│  ├── grafana
+│  ├── kube-prometheus-stack
+│  ├── loki
+│  ├── mqtt-exporter
+│  ├── smartctl_exporter
+│  ├── unpoller
+│  └── vector
 ├── networking
-│   ├── cert-manager
-│   ├── external-dns
-│   └── unifi-controller
+│  ├── cert-manager
+│  ├── external-dns
+│  └── unifi-controller
 ├── secrets
-│   ├── bitwarden-cli
-│   ├── external-secrets
-│   └── kubed
+│  ├── bitwarden-cli
+│  ├── external-secrets
+│  └── kubed
 ├── security
-│   ├── kanidm
-│   └── kanidm-radius
-├── storage
-│   ├── configuration
-│   └── samba-operator
-├── system-upgrade
-│   └── system-upgrade-controller
-└── vms
-    ├── kubevirt
-    └── router
+│  ├── kanidm
+│  └── kanidm-radius
+└── storage
+   ├── configuration
+   ├── samba
+   ├── snapshot
+   └── volsync
 ```

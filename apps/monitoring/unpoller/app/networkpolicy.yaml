@@ -1,0 +1,22 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: unpoller
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: unpoller
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: networking
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: unifi-controller
+      ports:
+        - port: 8443
+          protocol: TCP

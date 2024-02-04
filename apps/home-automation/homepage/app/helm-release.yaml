@@ -130,15 +130,15 @@ spec:
           - Medien:
               style: row
               columns: 3
-          - Netzwerk:
-              style: row
-              columns: 2
           - Downloads:
               style: row
               columns: 3
           - Überwachung:
               style: row
               columns: 3
+          - Netzwerk:
+              style: row
+              columns: 2
           - Extern:
               style: row
               columns: 3

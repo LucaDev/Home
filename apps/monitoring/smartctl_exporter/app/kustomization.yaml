@@ -5,6 +5,7 @@ namespace: monitoring
 resources:
   - ./helm-release.yaml
   - ./prometheus-rules.yaml
+  - ../../../../templates/netpol/ingress-prometheus
 configMapGenerator:
   - name: smart-dashboard
     files:
