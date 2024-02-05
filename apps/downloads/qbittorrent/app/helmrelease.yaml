@@ -52,7 +52,7 @@ spec:
       main:
         enabled: true
         annotations:
-          traefik.ingress.kubernetes.io/router.middlewares: networking-local-home-ips@kubernetescrd
+          #traefik.ingress.kubernetes.io/router.middlewares: networking-local-home-ips@kubernetescrd
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Downloadmanager
           gethomepage.dev/group: Downloads
@@ -68,3 +68,13 @@ spec:
         tls:
           - hosts:
               - "${HOSTNAME}"
+
+    persistence:
+      config:
+        enabled: true
+        existingClaim: ${VOLSYNC_CLAIM}
+
+      # TODO
+      data:
+        enabled: true
+        type: emptyDir

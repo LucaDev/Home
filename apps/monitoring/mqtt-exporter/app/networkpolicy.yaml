@@ -18,7 +18,7 @@ spec:
             matchLabels:
               app.kubernetes.io/name: mosquitto
       ports:
-        - port: 8443
+        - port: 1883
           protocol: TCP
     # Kube-DNS
     - to:
