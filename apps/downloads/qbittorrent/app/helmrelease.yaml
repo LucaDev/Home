@@ -53,6 +53,11 @@ spec:
         enabled: true
         annotations:
           traefik.ingress.kubernetes.io/router.middlewares: networking-local-home-ips@kubernetescrd
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Downloadmanager
+          gethomepage.dev/group: Downloads
+          gethomepage.dev/icon: qbittorrent
+          gethomepage.dev/name: QBittorrent
         hosts:
           - host: "${HOSTNAME}"
             paths:
