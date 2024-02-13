@@ -12,8 +12,9 @@ data:
   PAPERLESS_TASK_WORKERS: "1"
 
   # Configure OIDC
+  PAPERLESS_APPS: allauth.socialaccount.providers.openid_connect
   PAPERLESS_ACCOUNT_ALLOW_SIGNUPS: "false"
-  PAPERLESS_SOCIALACCOUNT_ALLOW_SIGNUPS: "false"
+  PAPERLESS_SOCIALACCOUNT_ALLOW_SIGNUPS: "true"
 
   # Configure folders
   PAPERLESS_CONSUMPTION_DIR: /data/consume
