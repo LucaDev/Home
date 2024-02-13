@@ -15,6 +15,7 @@ data:
   PAPERLESS_APPS: allauth.socialaccount.providers.openid_connect
   PAPERLESS_ACCOUNT_ALLOW_SIGNUPS: "false"
   PAPERLESS_SOCIALACCOUNT_ALLOW_SIGNUPS: "true"
+  PAPERLESS_SOCIALACCOUNT_AUTO_SIGNUP: "true"
 
   # Configure folders
   PAPERLESS_CONSUMPTION_DIR: /data/consume
