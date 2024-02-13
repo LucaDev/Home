@@ -8,4 +8,5 @@ resources:
   - ./stirling-pdf/ks.yaml
   - ./calibre-web/ks.yaml
   - ./mealie/ks.yaml
+  - ./memos/ks.yaml
 #  - ./frigate/ks.yaml
