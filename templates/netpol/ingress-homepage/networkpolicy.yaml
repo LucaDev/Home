@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: ${APP}-egress-local
+  name: ${APP}-ingress-homepage
 spec:
   podSelector:
     matchLabels:
@@ -10,9 +10,9 @@ spec:
     - Ingress
   ingress:
     - from:
-      - namespaceSelector:
-          matchLabels:
-            kubernetes.io/metadata.name: home-automation
-        podSelector:
-          matchLabels:
-            app.kubernetes.io/name: homepage
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: home-automation
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: homepage
