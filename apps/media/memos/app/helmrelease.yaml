@@ -29,7 +29,7 @@ spec:
           main:
             image:
               repository: neosmemo/memos:stable
-              tag:
+              tag: 0.20.0
             env:
             resources:
               requests:
