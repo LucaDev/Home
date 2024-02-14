@@ -7,4 +7,5 @@ resources:
   - ./helmrelease.yaml
   - ../../../../templates/volsync/hetzner
   - ../../../../templates/netpol/dns-traefik
+  - ../../../../templates/netpol/egress-local
   - ../../../../templates/netpol/kanidm-ldap
