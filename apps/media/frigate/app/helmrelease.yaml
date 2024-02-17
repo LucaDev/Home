@@ -35,7 +35,7 @@ spec:
           reloader.stakater.com/auto: "true"
       image:
         repository: ghcr.io/blakeblackshear/frigate
-        tag: 0.13.1
+        tag: 0.13.2
       env:
         TZ: Europe/Berlin
         #LIBVA_DRIVER_NAME: i965 #TODO
