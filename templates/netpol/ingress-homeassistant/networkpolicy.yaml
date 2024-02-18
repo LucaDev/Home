@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: ${APP}-ingress-prometheus
+  name: ${APP}-ingress-homeassistant
 spec:
   podSelector:
     matchLabels:
@@ -13,7 +13,7 @@ spec:
     - from:
         - namespaceSelector:
             matchLabels:
-              kubernetes.io/metadata.name: monitoring
+              kubernetes.io/metadata.name: home-automation
           podSelector:
             matchLabels:
-              app.kubernetes.io/name: prometheus
+              app.kubernetes.io/name: home-assistant
