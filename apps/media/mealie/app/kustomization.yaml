@@ -8,4 +8,5 @@ resources:
   - ./helmrelease.yaml
   - ../../../../templates/volsync/hetzner
   - ../../../../templates/netpol/dns-traefik
+  - ../../../../templates/netpol/egress-internet
   - ../../../../templates/netpol/kanidm-ldap
