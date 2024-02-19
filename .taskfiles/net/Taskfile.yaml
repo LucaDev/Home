@@ -8,3 +8,11 @@ tasks:
       interface: '{{ or .interface (fail "Argument (interface) is required") }}'
     cmds:
       - ssh ubnt@192.168.1.1 'sudo tcpdump -f -i "{{ .interface}}" -w -' | wireshark -k -i -
+  local-routes:
+    desc: shows routes of interest
+    cmds:
+      - ssh ubnt@192.168.1.1 'sudo route | grep -E "(eth2.(2|3|100)|wg(1|2))$"'
+  routes:
+    desc: shows routes of interest
+    cmds:
+      - ssh ubnt@192.168.1.1 'sudo route'

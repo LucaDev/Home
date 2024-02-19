@@ -36,7 +36,7 @@ spec:
               PGID: ${APP_GID}
               BASE_URL: https://${HOSTNAME}
               LDAP_AUTH_ENABLED: "true"
-              LDAP_SERVER_URL: ldap://kanidm.security.svc.cluster.local:636
+              LDAP_SERVER_URL: ldaps://kanidm.security.svc.cluster.local:636
               LDAP_BASE_DN: "dc=idm,dc=home,dc=lucadev,dc=de"
               LDAP_QUERY_BIND: "dn=token,dc=idm,dc=home,dc=lucadev,dc=de"
               LDAP_QUERY_PASSWORD:
