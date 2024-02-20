@@ -39,7 +39,7 @@ spec:
               LDAP_SERVER_URL: ldaps://kanidm.security.svc.cluster.local:636
               LDAP_TLS_INSECURE: "true"
               LDAP_BASE_DN: "dc=idm,dc=home,dc=lucadev,dc=de"
-              LDAP_QUERY_BIND: "dn=token,dc=idm,dc=home,dc=lucadev,dc=de"
+              LDAP_QUERY_BIND: "dn=token"
               LDAP_QUERY_PASSWORD:
                 valueFrom:
                   secretKeyRef:
