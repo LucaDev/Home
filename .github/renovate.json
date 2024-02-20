@@ -10,7 +10,6 @@
     ":skipStatusChecks"
   ],
   "timezone": "Europe/Berlin",
-  "automergeSchedule": "after 3am before 6am",
   "flux": {
     "fileMatch": ["apps/.+\\.ya?ml$", "bootstrap/.+\\.ya?ml$", "flux/.+\\.ya?ml$"]
   },
@@ -25,9 +24,19 @@
   },
   "packageRules": [
     {
-      "description": "Automerge patch updates",
-      "matchUpdateTypes": ["patch"],
-      "automerge": true
+      "description": "Auto merge KPS minors and patches",
+      "matchDatasources": ["helm"],
+      "automerge": true,
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": ["kube-prometheus-stack"]
+    },
+    {
+      "description": "Auto merge container digests",
+      "matchDatasources": ["docker"],
+      "automerge": true,
+      "automergeType": "branch",
+      "matchUpdateTypes": ["digest"],
+      "matchPackagePrefixes": ["ghcr.io/onedr0p", "ghcr.io/bjw-s", "ghcr.io/lucadev"]
     },
     {
       "description": "Flux Group",
