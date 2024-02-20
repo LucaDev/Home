@@ -48,6 +48,10 @@ spec:
             image:
               repository: jellyfin/jellyfin
               tag: "10.8.13"
+#            lifecycle:
+#              postStart:
+#                exec:
+#                  command: ['sed', '-i', 's;</body>;<script plugin="Jellyscrub" version="1.0.0.0" src="/Trickplay/ClientScript"></script></body>;', 'jellyfin/jellyfin-web/index.html']
             env:
               TZ: Europe/Berlin
             resources:
