@@ -37,7 +37,9 @@ Todo: eza --tree --icons -D -L 2 ./apps/
 │  ├── frigate
 │  ├── immich
 │  ├── jellyfin
+│  ├── mailbackup
 │  ├── mealie
+│  ├── memos
 │  ├── paperless-ngx
 │  └── stirling-pdf
 ├── monitoring
