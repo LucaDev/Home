@@ -19,7 +19,8 @@ spec:
   timeout: 20m
   values:
     replicas: 1
-
+    serviceAccount:
+      autoMount: true
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
