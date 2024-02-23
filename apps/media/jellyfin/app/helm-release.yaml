@@ -91,9 +91,17 @@ spec:
                 service:
                   name: main
                   port: http
+          - host: jellyfin.pub.lucadev.de
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - ${HOSTNAME}
+              - jellyfin.pub.lucadev.de
 
     persistence:
       media:
