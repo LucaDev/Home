@@ -1,10 +1,11 @@
+---
 mqtt:
   server: tcp://mosquitto.home-automation.svc.cluster.local:1883
   client_id: mqtt2prometheus
   topic_path: ems-esp/boiler_data
   qos: 0
   object_per_topic_config:
-   encoding: JSON
+    encoding: JSON
 cache:
   timeout: 24h
 json_parsing:

@@ -54,7 +54,7 @@ spec:
         - metadata:
             name: logs-volume
           spec:
-            accessModes: [ "ReadWriteOnce" ]
+            accessModes: ["ReadWriteOnce"]
             storageClassName: ssd-singlereplica
             resources:
               requests:

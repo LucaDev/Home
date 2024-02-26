@@ -1,6 +1,6 @@
 ---
 extends: default
-
+ignore-from-file: [.gitignore, .yamlignore]
 rules:
   truthy:
     allowed-values: ["true", "false", "on"]

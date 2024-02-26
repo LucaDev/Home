@@ -21,4 +21,4 @@ spec:
       HOSTNAME: calibre.home.lucadev.de
       APP_UID: "568"
       APP_GID: "568"
-      VOLSYNC_CLAIM: calibre-config #TODO
+      VOLSYNC_CLAIM: calibre-config # TODO

@@ -93,7 +93,7 @@ spec:
                   storage: 50Gi
 
         enableAdminAPI: true
-        #retention: 10d
+        # retention: 10d
         retentionSize: "50GB"
         scrapeInterval: 1m
 

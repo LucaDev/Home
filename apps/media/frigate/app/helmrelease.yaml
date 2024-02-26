@@ -24,9 +24,9 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
-  #dependsOn:
-  #  - name: mosquitto
-  #    namespace: default
+  # dependsOn:
+  #   - name: mosquitto
+  #     namespace: default
   values:
     controllers:
       main:
@@ -38,7 +38,7 @@ spec:
         tag: 0.13.2
       env:
         TZ: Europe/Berlin
-        #LIBVA_DRIVER_NAME: i965 #TODO
+        # LIBVA_DRIVER_NAME: i965 #TODO
       envFrom:
         - secretRef:
             name: frigate-secret
@@ -46,11 +46,11 @@ spec:
         requests:
           cpu: 10m
           memory: 1000Mi
-          #gpu.intel.com/i915: "1"
+          # gpu.intel.com/i915: "1"
         limits:
           cpu: 3000m
           memory: 4000Mi
-          #gpu.intel.com/i915: "1"
+          # gpu.intel.com/i915: "1"
       securityContext:
         privileged: true
       volumeClaimTemplates:
@@ -114,7 +114,7 @@ spec:
         name: frigate-configmap
         subPath: config.yml
         globalMounts:
-          - path:  /config/config.yml
+          - path: /config/config.yml
         readOnly: true
       media:
         enabled: true

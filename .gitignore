@@ -16,3 +16,6 @@ kubeconfig
 
 # TF
 .terraform/
+
+# Bootstrap
+bootstrap/bootstrap*.yaml

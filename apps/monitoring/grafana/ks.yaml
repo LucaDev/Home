@@ -13,5 +13,5 @@ spec:
     name: github-repo
   wait: false # no flux ks dependents
   dependsOn:
-  #  - name: kube-prometheus-stack
+    #  - name: kube-prometheus-stack
     - name: external-secrets-stores

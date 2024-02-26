@@ -23,4 +23,4 @@ spec:
       HOSTNAME: jellyfin.home.lucadev.de
       APP_UID: "568"
       APP_GID: "568"
-      VOLSYNC_CLAIM: jellyfin-config #TODO
+      VOLSYNC_CLAIM: jellyfin-config # TODO

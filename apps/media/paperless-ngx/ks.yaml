@@ -18,6 +18,6 @@ spec:
     substitute:
       APP: *appname
       HOSTNAME: paperless.home.lucadev.de
-      APP_UID: "568" #TODO
+      APP_UID: "568" # TODO
       APP_GID: "568"
-      VOLSYNC_CLAIM: paperless-config #TODO
+      VOLSYNC_CLAIM: paperless-config # TODO
