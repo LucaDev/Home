@@ -7,7 +7,6 @@ resources:
   - ./kubernetes-sigs-feature-discovery.yaml
   - ./prometheus-community.yaml
   - ./ext-postgres-operator.yaml
-  - ./weave-gitops.yaml
   - ./grafana.yaml
   - ./ingress-nginx.yaml
   - ./bitnami.yaml
