@@ -24,7 +24,7 @@ spec:
           main:
             image:
               repository: ghcr.io/bjw-s/paperless-ngx
-              tag: 2.5.4@sha256:1cbe891200e80ebcf40018edf9181ad729568553579d46de92e92f8a97f48870
+              tag: 2.5.4@sha256:99ae7aa9a7032bdec7ab6e539ff6ea2991b9dd8029ae0f741c68f8790b52b6d4
             envFrom:
               - secretRef:
                   name: paperless-secret
