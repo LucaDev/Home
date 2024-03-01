@@ -1,10 +1,14 @@
 # Home
-This repo is the heart of my homeserver setup. It contains all data needed to recreate it from scratch.
+This repository contains the configuration files and scripts for my personal homelab setup.
 
-It's fully managed by FluxCD and kept up to date with Renovate Bot.
+I use k3s as my lightweight Kubernetes distribution for running containerized applications. FluxCD is employed for continuous deployment and GitOps workflows, while Renovate Bot helps in automating dependency updates.
 
-## Tool & Apps
-Todo: eza --tree --icons -D -L 2 ./apps/
+## Core Components
+1. k3s: Lightweight Kubernetes distribution optimized for edge and IoT devices.
+2. FluxCD: GitOps operator for Kubernetes.
+3. Renovate Bot: Automated dependency update tool.
+
+## Current Applications
 ```
 > tree -d -L 2 apps/
 ./apps
@@ -53,7 +57,6 @@ Todo: eza --tree --icons -D -L 2 ./apps/
 │  └── vector
 ├── networking
 │  ├── cert-manager
-│  ├── external-dns
 │  └── unifi-controller
 ├── secrets
 │  ├── bitwarden-cli
@@ -68,3 +71,12 @@ Todo: eza --tree --icons -D -L 2 ./apps/
    ├── snapshot
    └── volsync
 ```
+## Contributing
+Contributions are welcome! If you have any suggestions, improvements, or fixes, feel free to open an issue or submit a pull request. Please bare in mind that my homelab is constanly changing and never close to what I'd call "production ready".
+
+## License
+This project is licensed under the MIT License.
+
+---
+
+Happy Homelabbing! 🚀
