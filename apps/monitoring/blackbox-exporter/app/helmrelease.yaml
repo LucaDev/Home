@@ -35,6 +35,15 @@ spec:
             valid_http_versions: ["HTTP/1.1", "HTTP/2.0"]
             follow_redirects: true
             preferred_ip_protocol: "ip4"
+        http_2xx_ignore:
+          prober: http
+          timeout: 5s
+          http:
+            valid_http_versions: ["HTTP/1.1", "HTTP/2.0"]
+            follow_redirects: true
+            preferred_ip_protocol: "ip4"
+            tls_config:
+              insecure_skip_verify: false
         icmp:
           prober: icmp
           timeout: 30s
@@ -108,13 +117,13 @@ spec:
           url: "http://192.168.1.243"
 
         # WG Tunnels
-        - module: http_2xx
+        - module: http_2xx_ignore
           name: wg-opa
           url: "https://192.168.178.1"
         - module: icmp
           name: wg-opa-icmp
           url: "192.168.178.1"
-        - module: http_2xx
+        - module: http_2xx_ignore
           name: wg-maria
           url: "https://192.168.46.1"
         - module: icmp
