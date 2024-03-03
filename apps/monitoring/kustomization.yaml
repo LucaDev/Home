@@ -12,3 +12,4 @@ resources:
   - ./mqtt-exporter/ks.yaml
   - ./smartctl_exporter/ks.yaml
   - ./vector/ks.yaml
+  - ./blackbox-exporter/ks.yaml
