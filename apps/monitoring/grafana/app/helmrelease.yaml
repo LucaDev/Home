@@ -78,6 +78,12 @@ spec:
           revision: 34
           datasource: Prometheus
 
+        blackbox-exporter:
+          # renovate: dashboardName="Blackbox Exporter (HTTP prober)"
+          gnetId: 13659
+          revision: 1
+          datasource: Prometheus
+
         node-feature-discovery:
           url: https://raw.githubusercontent.com/kubernetes-sigs/node-feature-discovery/master/examples/grafana-dashboard.json
           datasource: Prometheus
