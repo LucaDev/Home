@@ -20,6 +20,9 @@ spec:
   values:
     loki:
       auth_enabled: false
+      server:
+        grpc_server_max_recv_msg_size: 8388608
+        grpc_server_max_send_msg_size: 8388608
       commonConfig:
         replication_factor: 1
       storage:
