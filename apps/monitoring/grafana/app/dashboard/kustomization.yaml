@@ -13,6 +13,9 @@ configMapGenerator:
   - name: opendtu
     files:
       - opendtu.json
+  - name: ups
+    files:
+      - ups.json
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
