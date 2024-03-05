@@ -6,3 +6,10 @@ namespace: monitoring
 resources:
   - ./helm-release.yaml
   - ./networkpolicy.yaml
+  - ./externalsecret.yaml
+configMapGenerator:
+  - name: vector-configmap
+    files:
+      - vector.yaml=./config/vector.yaml
+generatorOptions:
+  disableNameSuffixHash: true
