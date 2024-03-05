@@ -10,6 +10,7 @@
     ":skipStatusChecks"
   ],
   "timezone": "Europe/Berlin",
+  "ignorePaths": ["^archive/**"],
   "flux": {
     "fileMatch": ["apps/.+\\.ya?ml$", "bootstrap/.+\\.ya?ml$", "flux/.+\\.ya?ml$"]
   },
