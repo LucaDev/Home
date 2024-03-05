@@ -63,12 +63,11 @@ spec:
             codec: json
           batch:
             max_bytes: 2049000
-          out_of_order_action: accept
+          out_of_order_action: rewrite_timestamp
           remove_label_fields: true
           remove_timestamp: true
           labels:
-            hostname: >-
-              {{`{{ host }}`}}
+            hostname: "{{ host }}"
         loki_kubernetes:
           type: loki
           inputs:
@@ -78,7 +77,7 @@ spec:
             codec: json
           batch:
             max_bytes: 2049000
-          out_of_order_action: accept
+          out_of_order_action: rewrite_timestamp
           remove_label_fields: true
           remove_timestamp: true
           labels:
