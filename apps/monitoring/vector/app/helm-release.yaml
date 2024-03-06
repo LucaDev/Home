@@ -109,9 +109,9 @@ spec:
         globalMounts:
           - path: /host/sys
             readOnly: true
-      var-lib:
-        type: hostPath
-        hostPath: /var/lib
-        hostPathType: Directory
-        globalMounts:
-          - readOnly: true
+#      var-lib:
+#        type: hostPath
+#        hostPath: /var/lib
+#        hostPathType: Directory
+#        globalMounts:
+#          - readOnly: true
