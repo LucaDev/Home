@@ -23,8 +23,8 @@ sources:
     mode: tcp
   edgeos_source:
     type: syslog
-    address: 0.0.0.0:1515
-    mode: tcp
+    address: 0.0.0.0:514
+    mode: udp
   journal_logs:
     type: journald
     journal_directory: /var/log/journal

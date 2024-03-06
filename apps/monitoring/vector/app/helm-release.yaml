@@ -68,7 +68,8 @@ spec:
           syslog:
             port: 1514
           edgeos:
-            port: 1515
+            port: 514
+            protocol: UDP
     serviceAccount:
       create: true
       name: vector
