@@ -5,7 +5,7 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - ./helm-release.yaml
-  - ./networkpolicy.yaml
+#  - ./networkpolicy.yaml
   - ./externalsecret.yaml
   - ./rbac.yaml
 configMapGenerator:
