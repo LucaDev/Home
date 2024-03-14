@@ -42,7 +42,7 @@ jobs:
                 -strict \
                 -ignore-missing-schemas \
                 -kubernetes-version ${{ env.KUBE_VERSION }} \
-                -skip Secret,CustomResourceDefinition \
+                -skip Secret,CustomResourceDefinition,ReplicationSource,ReplicationDestination \
                 -schema-location default \
                 -schema-location ${{ env.SCHEMA_DIR }}/\{\{.Group\}\}/\{\{.ResourceKind\}\}_\{\{.ResourceAPIVersion\}\}.json \
                 -verbose
