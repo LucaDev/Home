@@ -6,8 +6,7 @@
     ":disableRateLimiting",
     "docker:enableMajor",
     ":automergeDigest",
-    ":enablePreCommit",
-    ":skipStatusChecks"
+    ":enablePreCommit"
   ],
   "timezone": "Europe/Berlin",
   "ignorePaths": ["^archive/**"],
