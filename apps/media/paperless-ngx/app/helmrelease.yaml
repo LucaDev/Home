@@ -23,8 +23,8 @@ spec:
         containers:
           main:
             image:
-              repository: ghcr.io/bjw-s/paperless-ngx
-              tag: 2.6.1@sha256:8f13f296ccccf944654ec4ea6ec26610ac605e888435341e264eacb8ebf257d0
+              repository: ghcr.io/paperless-ngx/paperless-ngx
+              tag: 2.6.1
             envFrom:
               - secretRef:
                   name: paperless-secret
