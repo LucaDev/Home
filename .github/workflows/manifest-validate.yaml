@@ -11,7 +11,7 @@ on:
     paths: ['apps/**']
 
 env:
-  KUBERNETES_DIR: ./cluster
+  KUBERNETES_DIR: ./apps
   SCHEMA_DIR: /home/runner/.datree/crdSchemas
   KUBE_VERSION: 1.26.0
 
