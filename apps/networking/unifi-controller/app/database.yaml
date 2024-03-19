@@ -8,7 +8,7 @@ spec:
   members: 1
   type: ReplicaSet
   version: "5.0.25"
-  featureCompatibilityVersion: "4.4"
+  featureCompatibilityVersion: "5.0"
   security:
     authentication:
       modes: ["SCRAM"]
