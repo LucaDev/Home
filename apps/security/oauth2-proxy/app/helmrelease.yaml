@@ -19,17 +19,19 @@ spec:
       main:
         annotations:
           reloader.stakater.com/auto: "true"
-      image:
-        repository: quay.io/oauth2-proxy/oauth2-proxy
-        tag: v7.6.0
-        args: ["--config=/config.yaml"]
-      resources:
-        requests:
-          cpu: 10m
-          memory: 20Mi
-        limits:
-          cpu: 100m
-          memory: 100Mi
+        containers:
+          main:
+            image:
+              repository: quay.io/oauth2-proxy/oauth2-proxy
+              tag: v7.6.0
+              args: ["--config=/config.yaml"]
+            resources:
+              requests:
+                cpu: 10m
+                memory: 20Mi
+              limits:
+                cpu: 100m
+                memory: 100Mi
 
     service:
       main:
