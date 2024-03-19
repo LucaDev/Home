@@ -7,7 +7,7 @@ metadata:
 spec:
   members: 1
   type: ReplicaSet
-  version: "5.0.25"
+  version: "6.0.14"
   featureCompatibilityVersion: "5.0"
   security:
     authentication:
