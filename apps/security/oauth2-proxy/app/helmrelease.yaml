@@ -58,7 +58,7 @@ spec:
       config-file:
         enabled: true
         type: secret
-        name: oauthproxy_secret
+        name: oauthproxy-secret
         subPath: config.yaml
         globalMounts:
           - path: /config.yaml
