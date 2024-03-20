@@ -60,6 +60,6 @@ spec:
         type: secret
         name: oauthproxy-secret
         globalMounts:
-          - path: /config.yaml
-            subPath: config.yaml
+          - path: /config.toml
+            subPath: config.toml
             read-only: true
