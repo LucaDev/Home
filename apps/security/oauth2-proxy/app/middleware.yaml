@@ -1,0 +1,21 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: oauth-proxy
+  namespace: default
+spec:
+  apiVersion: traefik.containo.us/v1alpha1
+  errors:
+    status:
+      - "401-403"
+    service:
+      name: oauthproxy
+      port: 80
+    query: "/oauth2/sign_in"
+  forwardAuth:
+    address: http://oauthproxy.security.svc.cluster.local:80/oauth2/auth
+    trustForwardHeader: true
+    authResponseHeaders:
+      - X-Auth-Request-User
+      - Set-Cookie
