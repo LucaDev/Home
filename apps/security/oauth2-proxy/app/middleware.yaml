@@ -5,6 +5,31 @@ metadata:
   name: oauth-proxy
   namespace: security
 spec:
+  chain:
+    middlewares:
+      - name: oauth-proxy-error
+      - name: oauth-proxy-forward
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: oauth-proxy-error
+  namespace: security
+spec:
+  errors:
+    status:
+      - "401-403"
+    service:
+      name: oauthproxy
+      port: 80
+    query: "/oauth2/sign_in"
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: oauth-proxy-forward
+  namespace: security
+spec:
   errors:
     status:
       - "401-403"
