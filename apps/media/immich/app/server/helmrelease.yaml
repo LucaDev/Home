@@ -91,6 +91,16 @@ spec:
         ports:
           http:
             port: *port
+          metrics:
+            port: 8081
+
+    serviceMonitor:
+      main:
+        enabled: true
+        endpoints:
+          - port: metrics
+            scheme: http
+            path: /metrics
 
     persistence:
       library:
