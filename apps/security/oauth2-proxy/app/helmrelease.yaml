@@ -4,6 +4,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: oauthproxy
+  namespace: security
 spec:
   interval: 30m
   chart:
@@ -37,7 +38,7 @@ spec:
       main:
         ports:
           http:
-            port: &port 4180
+            port: &port 80
 
     ingress:
       main:
