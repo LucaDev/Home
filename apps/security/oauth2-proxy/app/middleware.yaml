@@ -9,7 +9,7 @@ spec:
     status:
       - "401-403"
     service:
-      name: oauthproxy
+      name: security-oauthproxy
       port: 80
     query: "/oauth2/sign_in"
   forwardAuth:
