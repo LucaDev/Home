@@ -3,13 +3,13 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: oauth-proxy
-  namespace: default
+  namespace: security
 spec:
   errors:
     status:
       - "401-403"
     service:
-      name: security/oauthproxy
+      name: oauthproxy
       port: 80
     query: "/oauth2/sign_in"
   forwardAuth:
