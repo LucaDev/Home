@@ -18,7 +18,7 @@ metadata:
 spec:
   errors:
     status:
-      - "401-403"
+      - "401"
     service:
       name: oauthproxy
       port: 80
