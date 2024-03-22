@@ -22,7 +22,7 @@ spec:
     service:
       name: oauthproxy
       port: 80
-    query: "/oauth2/start"
+    query: "/oauth2/sign_in"
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
