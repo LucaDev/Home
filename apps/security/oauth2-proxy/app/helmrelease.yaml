@@ -51,12 +51,6 @@ spec:
                 service:
                   name: main
                   port: http
-          - paths:
-              - path: /oauth2/
-                pathType: Prefix
-                service:
-                  name: main
-                  port: http
         tls:
           - hosts:
               - *host
