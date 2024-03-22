@@ -14,7 +14,7 @@ jobs:
       pull-requests: write
     strategy:
       matrix:
-        path: ["apps"]
+        path: [""]
         resource: ["helmrelease", "kustomization"]
     steps:
       - name: Generate token
