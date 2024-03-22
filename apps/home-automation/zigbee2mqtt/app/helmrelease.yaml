@@ -134,4 +134,4 @@ spec:
           gethomepage.dev/group: Heimautomation
           gethomepage.dev/icon: zigbee2mqtt
           gethomepage.dev/name: Zigbee2MQTT
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd

@@ -75,6 +75,7 @@ spec:
           gethomepage.dev/group: Downloads
           gethomepage.dev/icon: prowlarr
           gethomepage.dev/name: Prowlarr
+          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd
         hosts:
           - host: "${HOSTNAME}"
             paths:

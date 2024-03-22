@@ -80,6 +80,7 @@ spec:
           gethomepage.dev/widget.type: sonarr
           gethomepage.dev/widget.url: "https://sonarr.home.lucadev.de"
           gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_SONARR_APIKEY}}"
+          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd
         hosts:
           - host: "${HOSTNAME}"
             paths:
