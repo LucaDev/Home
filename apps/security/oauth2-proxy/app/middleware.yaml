@@ -7,7 +7,6 @@ metadata:
 spec:
   chain:
     middlewares:
-      - name: oauth-proxy-redirect
       - name: oauth-proxy-error
       - name: oauth-proxy-forward
 ---
@@ -37,13 +36,3 @@ spec:
     authResponseHeaders:
       - X-Auth-Request-User
       - Set-Cookie
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: oauth-proxy-redirect
-  namespace: security
-spec:
-  redirectRegex:
-    regex: ^.*/oauth2/(.*)
-    replacement: https://oauth.lucadev.de/oauth2/${1}
