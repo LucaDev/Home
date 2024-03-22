@@ -9,6 +9,7 @@ spec:
   routes:
     - match: PathPrefix(`/oauth2/`)
       kind: Rule
+      priority: 100
       services:
         - name: oauthproxy
           port: 80

@@ -36,3 +36,4 @@ spec:
     authResponseHeaders:
       - X-Auth-Request-User
       - Set-Cookie
+      - X-Auth-Request-Preferred-Username
