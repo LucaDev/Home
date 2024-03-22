@@ -9,3 +9,7 @@ spec:
     providers:
       kubernetesCRD:
         allowCrossNamespace: true
+    ports:
+      web:
+        redirectTo:
+          port: websecure
