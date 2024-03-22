@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: oauth2-proxy-prefix
+  namespace: security
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: PathPrefix(`/oauth2/`)
+      kind: Rule
+      services:
+        - name: oauthproxy
+          port: 80
