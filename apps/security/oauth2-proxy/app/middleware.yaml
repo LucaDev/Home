@@ -7,9 +7,9 @@ metadata:
 spec:
   chain:
     middlewares:
+      - name: oauth-proxy-redirect
       - name: oauth-proxy-error
       - name: oauth-proxy-forward
-      - name: oauth-proxy-redirect
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
