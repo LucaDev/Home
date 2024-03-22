@@ -46,7 +46,7 @@ spec:
         hosts:
           - host: &host "oauth.home.lucadev.de"
             paths:
-              - path: /
+              - path: /oauth2/
                 pathType: Prefix
                 service:
                   name: main
