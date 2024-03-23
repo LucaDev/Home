@@ -25,3 +25,4 @@ resources:
   - ./amd-gpu.yaml
   - ./vector.yaml
   - ./victoriametrics.yaml
+  - ./dragonfly.yaml
