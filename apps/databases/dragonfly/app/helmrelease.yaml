@@ -16,6 +16,9 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    extraArgs:
+      - "--maxmemory=128Mi"
+      - "--proactor_threads=2"
     securityContext:
       capabilities:
         drop:
