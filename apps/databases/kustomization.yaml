@@ -7,4 +7,3 @@ resources:
   - ./redis/ks.yaml
   - ./cloudnative-pg
   - ./mongodb-operator/ks.yaml
-  - ./dragonfly/ks.yaml
