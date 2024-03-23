@@ -17,7 +17,7 @@ spec:
       interval: 5m
   values:
     extraArgs:
-      - "--maxmemory=128Mi"
+      - "--maxmemory=512Mi"
       - "--proactor_threads=2"
     securityContext:
       capabilities:
