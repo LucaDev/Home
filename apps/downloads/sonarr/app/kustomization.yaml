@@ -8,4 +8,4 @@ resources:
   - ./networkpolicy.yaml
   - ../../../../templates/volsync/hetzner
   - ../../../../templates/netpol/dns-traefik
-  - ../../../../templates/netpol/egress-internet # ToDo: really needed?
+  - ../../../../templates/netpol/egress-internet
