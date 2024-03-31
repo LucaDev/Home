@@ -1,0 +1,24 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: healthcheck
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: curl
+              image: quay.io/curl/curl:8.7.1
+              imagePullPolicy: IfNotPresent
+              command:
+                - curl
+                - -m
+                - "10"
+                - --retry
+                - "5"
+                - https://hc-ping.com/5e725dea-0780-402b-bc24-b15ecdf6509f
+          restartPolicy: Never
+          concurrencyPolicy: Never
