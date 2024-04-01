@@ -53,14 +53,14 @@ spec:
                 memory: 2048M
 
     service:
-      main:
+      app:
         controller: esphome
         ports:
           http:
             port: 6052
 
     ingress:
-      main:
+      app:
         enabled: true
         hosts:
           - host: &host "esphome.home.lucadev.de"

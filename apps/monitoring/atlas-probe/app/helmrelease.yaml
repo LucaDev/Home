@@ -34,6 +34,10 @@ spec:
               limits:
                 memory: 100M
             securityContext:
+              runAsUser: 101
+              runAsGroup: 999
+              fsGroup: 999
+              fsGroupChangePolicy: "OnRootMismatch"
               capabilities:
                 drop: ["ALL"]
                 add: ["NET_RAW", "DAC_OVERIDE", "SETGID", "SETUID", "CHOWN"]

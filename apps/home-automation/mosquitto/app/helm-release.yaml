@@ -54,7 +54,7 @@ spec:
                 memory: 10M
 
     service:
-      main:
+      app:
         controller: mosquitto
         type: LoadBalancer
         annotations:
@@ -68,15 +68,15 @@ spec:
         type: configMap
         name: mosquitto-configmap
         advancedMounts:
-          main:
-            main:
+          mosquitto:
+            app:
               - path: /mosquitto/config/mosquitto.conf
                 subPath: mosquitto.conf
       mosquitto-secret:
         type: secret
         name: mosquitto-secret
         advancedMounts:
-          main:
+          mosquitto:
             init-config:
               - path: /tmp/secret
       mosquitto-externalconfig:

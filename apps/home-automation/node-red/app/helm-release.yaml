@@ -65,21 +65,21 @@ spec:
             fsGroupChangePolicy: "OnRootMismatch"
 
     service:
-      main:
+      app:
         controller: nodered
         ports:
           http:
             port: 1880
 
     ingress:
-      main:
+      app:
         enabled: true
         hosts:
           - host: &host "nodered.home.lucadev.de"
             paths:
               - path: /
                 service:
-                  identifier: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
