@@ -41,7 +41,7 @@ spec:
     persistence:
       etc:
         enabled: true
-        type: persistentVolume
+        type: persistentVolumeClaim
         storageClass: ssd-singlereplica
         globalMounts:
           - path: /var/atlas-probe/etc
