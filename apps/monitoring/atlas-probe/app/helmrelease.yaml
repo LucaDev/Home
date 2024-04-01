@@ -43,6 +43,7 @@ spec:
         enabled: true
         type: persistentVolumeClaim
         storageClass: ssd-singlereplica
+        accessMode: ReadWriteOnce
         globalMounts:
           - path: /var/atlas-probe/etc
       status:
