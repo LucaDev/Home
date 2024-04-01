@@ -35,7 +35,7 @@ spec:
           reloader.stakater.com/auto: "true"
 
     service:
-      main:
+      app:
         type: LoadBalancer
         controller: samba
         ports:
