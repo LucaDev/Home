@@ -48,6 +48,6 @@ spec:
         globalMounts:
           - path: /var/atlas-probe/etc
       status:
-        type: emtpyDir
+        type: emptyDir
         globalMounts:
           - path: /var/atlas-probe/status
