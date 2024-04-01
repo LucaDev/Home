@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -18,11 +18,11 @@ spec:
 
   values:
     controllers:
-      main:
+      samba:
         strategy: RollingUpdate
 
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/lucadev/samba
               tag: 4.19.4
@@ -37,12 +37,11 @@ spec:
     service:
       main:
         type: LoadBalancer
+        controller: samba
         ports:
-          http:
-            enabled: false
           smb:
             enabled: true
-            port: 445
+            port: 4455
             protocol: TCP
 
     persistence:
