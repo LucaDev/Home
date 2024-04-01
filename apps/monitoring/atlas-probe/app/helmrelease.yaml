@@ -1,0 +1,51 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: alertmanager
+  namespace: monitoring
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 2.6.0
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  values:
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        containers:
+          main:
+            image:
+              repository: jamesits/ripe-atlas
+              tag: latest
+            resources:
+              requests:
+                cpu: 15m
+                memory: 50M
+              limits:
+                memory: 100M
+            securityContext:
+              capabilities:
+                drop: ["ALL"]
+                add: ["NET_RAW", "DAC_OVERIDE", "SETGID", "SETUID", "CHOWN"]
+
+    persistence:
+      etc:
+        enabled: true
+        type: persistentVolume
+        storageClass: ssd-singlereplica
+        globalMounts:
+          - path: /var/atlas-probe/etc
+      status:
+        type: emtpyDir
+        globalMounts:
+          - path: /var/atlas-probe/status

@@ -14,3 +14,4 @@ resources:
   - ./vector/ks.yaml
   - ./blackbox-exporter/ks.yaml
   - ./healthcheck
+  - ./atlas-probe/ks.yaml
