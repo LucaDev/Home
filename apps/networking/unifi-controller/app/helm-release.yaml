@@ -52,6 +52,7 @@ spec:
           traefik.ingress.kubernetes.io/service.serversscheme: https
         ports:
           http:
+            enabled: false
             port: 8443
             protocol: HTTPS
           controller:
@@ -79,7 +80,7 @@ spec:
             port: 5514
             protocol: UDP
           discovery:
-            enabled: true
+            enabled: false
             port: 10001
             protocol: UDP
 

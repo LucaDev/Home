@@ -25,12 +25,19 @@ spec:
           app:
             image:
               repository: ghcr.io/lucadev/samba
-              tag: 4.19.4
+              tag: 4.19.4@sha256:be1ff66f4a309dd7ca5f426129dac7a7955f6f39b15540b9faa7fbfa8ec0a4ec
             resources:
               requests:
                 cpu: 50m
                 memory: 256Mi
-
+          wsdd:
+            image:
+              repository: ghcr.io/lucadev/wsdd2
+              tag: 1.0.31
+            resources:
+              requests:
+                cpu: 5m
+                memory: 25Mi
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -43,6 +50,26 @@ spec:
             enabled: true
             port: 4455
             protocol: TCP
+      wsdd: # TODO
+        type: LoadBalancer
+        controller: samba
+        ports:
+          multicast:
+            enabled: true
+            port: 3702
+            protocol: UDP
+          http:
+            enabled: true
+            port: 3702
+            protocol: TCP
+          LLMNR_MULTICAST:
+            enabled: true
+            port: 5355
+            protocol: TCP
+          LLMNR_UNICAST:
+            enabled: true
+            port: 5355
+            protocol: UDP
 
     persistence:
       config-file:
