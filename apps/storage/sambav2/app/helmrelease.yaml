@@ -50,10 +50,6 @@ spec:
             enabled: true
             port: 4455
             protocol: TCP
-      wsdd: # TODO
-        type: LoadBalancer
-        controller: samba
-        ports:
           multicast:
             enabled: true
             port: 3702
