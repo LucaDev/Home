@@ -48,7 +48,6 @@ spec:
       internal:
         ports:
           http:
-            enabled: false
             port: 8443
             protocol: HTTPS
         annotations:
