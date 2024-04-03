@@ -25,11 +25,14 @@ spec:
           app:
             image:
               repository: ghcr.io/lucadev/samba
-              tag: 4.19.4@sha256:1b63fce166b027024107191b176054d816503e93c2ed13209aaecee537835cb7
+              tag: 4.19.4@sha256:b298684bca39a91205d3e68983f1f69386b28064d28974220e8c5130fb5cf05a
             resources:
               requests:
                 cpu: 50m
                 memory: 256Mi
+            envFrom:
+              - secretRef:
+                  name: samba-ldap
           wsdd:
             image:
               repository: ghcr.io/lucadev/wsdd2
