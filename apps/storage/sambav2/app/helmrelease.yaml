@@ -61,11 +61,11 @@ spec:
             enabled: true
             port: 3702
             protocol: TCP
-          LLMNR_MULTICAST:
+          llmnr-multicast:
             enabled: true
             port: 5355
             protocol: TCP
-          LLMNR_UNICAST:
+          llmnr-unicast:
             enabled: true
             port: 5355
             protocol: UDP
