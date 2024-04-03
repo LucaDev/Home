@@ -25,7 +25,7 @@ spec:
           app:
             image:
               repository: ghcr.io/lucadev/samba
-              tag: 4.19.4@sha256:b298684bca39a91205d3e68983f1f69386b28064d28974220e8c5130fb5cf05a
+              tag: 4.19.4@sha256:dd31a9504d2227634118964af1db742fba0a420fab2080ccb6bbeb854ef8c36b
             resources:
               requests:
                 cpu: 50m
