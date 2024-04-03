@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.4
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -18,7 +18,7 @@ spec:
         namespace: flux-system
   values:
     controllers:
-      main:
+      alertmanager:
         type: statefulset
         annotations:
           reloader.stakater.com/auto: "true"
@@ -33,7 +33,7 @@ spec:
                 - path: /alertmanager
 
         containers:
-          main:
+          app:
             image:
               repository: quay.io/prometheus/alertmanager
               tag: main
@@ -48,20 +48,21 @@ spec:
                 memory: 100M
 
     service:
-      main:
+      app:
+        controller: alertmanager
         ports:
           http:
             port: 9093
 
     ingress:
-      main:
+      app:
         enabled: true
         hosts:
           - host: &host alerts.home.lucadev.de
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:

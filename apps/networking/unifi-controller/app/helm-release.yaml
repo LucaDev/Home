@@ -19,7 +19,19 @@ spec:
   values:
     controllers:
       unifi:
-        strategy: Recreate
+        type: statefulset
+
+        replicas: 0
+
+        statefulset:
+          volumeClaimTemplates:
+            - name: data
+              accessMode: ReadWriteOnce
+              size: 5Gi
+              globalMounts:
+                - path: /config
+              storageClass: cached-dualreplica
+
         containers:
           app:
             image:
@@ -113,13 +125,3 @@ spec:
           gethomepage.dev/widget.username: "monitoring"
           gethomepage.dev/widget.password: "{{HOMEPAGE_VAR_UNIFI_MONITORING_PASSWORD}}"
           gethomepage.dev/widget.fields: "[\"wlan_users\"]"
-
-    persistence:
-      data:
-        enabled: true
-        type: persistentVolumeClaim
-        accessMode: ReadWriteOnce
-        size: 5Gi
-        globalMounts:
-          - path: /config
-        storageClass: cached-dualreplica
