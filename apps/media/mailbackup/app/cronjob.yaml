@@ -1,0 +1,55 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mailbackup
+spec:
+  schedule: "7 2 * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          automountServiceAccountToken: false
+
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: "OnRootMismatch"
+
+          containers:
+            - name: mailbackup
+              image: ghcr.io/bjw-s/getmail:6.18.13@sha256:4ff622280509e00c1111de8388c1b9729a18331ca9f704de634bec1c6380c4da
+              imagePullPolicy: IfNotPresent
+              command:
+                - "/scripts/mailbackup.sh"
+              volumeMounts:
+                - name: mailbackup-script
+                  mountPath: /scripts/mailbackup.sh
+                  subPath: mailbackup.sh
+                  readOnly: true
+                - name: secrets
+                  mountPath: /config
+                  readOnly: true
+                - mountPath: /data/backup
+                  name: mailbackup
+
+          restartPolicy: OnFailure
+
+          volumes:
+            - name: mailbackup-script
+              projected:
+                defaultMode: 0775
+                sources:
+                  - configMap:
+                      name: mailbackup
+                      items:
+                        - key: mailbackup.sh
+                          path: mailbackup.sh
+            - name: secrets
+              secret:
+                secretName: mailbackup-secrets
+            - name: mailbackup
+              persistentVolumeClaim:
+                claimName: "mailbackup"

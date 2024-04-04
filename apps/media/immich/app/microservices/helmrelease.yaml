@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.4
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -22,7 +22,7 @@ spec:
 
   values:
     controllers:
-      main:
+      immich-microservices:
         strategy: RollingUpdate
         annotations:
           reloader.stakater.com/auto: "true"
@@ -40,7 +40,7 @@ spec:
               - 65541
 
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/immich-app/immich-server
               tag: v1.100.0
@@ -85,16 +85,27 @@ spec:
                 memory: 512Mi
               limits:
                 memory: 8000Mi
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
 
     service:
-      main:
+      app:
+        controller: immich-microservices
         ports:
           http:
             port: 8081
 
     serviceMonitor:
-      main:
-        enabled: true
+      app:
+        serviceName: app
         endpoints:
           - port: http
             scheme: http
@@ -102,17 +113,14 @@ spec:
 
     persistence:
       library:
-        enabled: true
         existingClaim: immich-data
         globalMounts:
           - path: *mediaLocation
       geocoding-dump:
-        enabled: true
         type: emptyDir
         globalMounts:
           - path: /usr/src/app/.reverse-geocoding-dump
       geoname-dump:
-        enabled: true
         type: emptyDir
         globalMounts:
           - path: /usr/src/app/node_modules/local-reverse-geocoder/geonames_dump

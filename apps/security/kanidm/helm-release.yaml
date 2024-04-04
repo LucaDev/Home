@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.4
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -19,11 +19,11 @@ spec:
 
   values:
     controllers:
-      main:
+      kanidm:
         replicas: 1
         strategy: Recreate
         containers:
-          main:
+          app:
             image:
               repository: docker.io/kanidm/server
               tag: 1.1.0-rc.16
@@ -34,9 +34,20 @@ spec:
               limits:
                 cpu: 500m
                 memory: 1024Mi
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
 
     service:
-      main:
+      app:
+        controller: kanidm
         ports:
           http:
             port: 8443
@@ -49,15 +60,14 @@ spec:
           traefik.ingress.kubernetes.io/service.serversscheme: https
 
     ingress:
-      main:
-        enabled: true
+      app:
         hosts:
           - host: &host "idm.home.lucadev.de"
             paths:
               - path: /
                 pathType: Prefix
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
@@ -71,16 +81,13 @@ spec:
 
     persistence:
       data:
-        enabled: true
         type: persistentVolumeClaim
-        name: data-kanidm
         size: 1Gi
         accessMode: ReadWriteOnce
         storageClass: ssd-dualreplica
         globalMounts:
           - path: /data/persistent/
       config:
-        enabled: true
         type: custom
         volumeSpec:
           configMap:
@@ -92,7 +99,6 @@ spec:
                 readOnly: true
                 subPath: server.toml
       certs:
-        enabled: true
         type: secret
         name: home-lucadev-de-wildcard-cert
         globalMounts:

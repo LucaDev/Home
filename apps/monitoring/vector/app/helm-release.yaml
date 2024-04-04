@@ -1,4 +1,5 @@
 ---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -8,14 +9,14 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.4
       sourceRef:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
   values:
     controllers:
-      main:
+      vector:
         strategy: Recreate
         annotations:
           reloader.stakater.com/auto: "true"
@@ -32,7 +33,7 @@ spec:
               - secretRef:
                   name: vector-aggregator-secret
         containers:
-          main:
+          app:
             image:
               repository: docker.io/timberio/vector
               tag: 0.36.1-debian
@@ -60,7 +61,8 @@ spec:
               supplementalGroups:
                 - 999 # systemd-jounal
     service:
-      main:
+      app:
+        controller: vector
         type: LoadBalancer
         ports:
           http:

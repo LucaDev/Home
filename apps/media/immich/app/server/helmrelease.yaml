@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.4
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -19,7 +19,7 @@ spec:
 
   values:
     controllers:
-      main:
+      immich-server:
         strategy: RollingUpdate
         annotations:
           reloader.stakater.com/auto: "true"
@@ -35,7 +35,7 @@ spec:
               - 65542
 
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/immich-app/immich-server
               tag: v1.100.0
@@ -85,9 +85,20 @@ spec:
                 memory: 256Mi
               limits:
                 memory: 512Mi
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
 
     service:
-      main:
+      app:
+        controller: immich-server
         ports:
           http:
             port: *port
@@ -95,8 +106,8 @@ spec:
             port: 8081
 
     serviceMonitor:
-      main:
-        enabled: true
+      app:
+        serviceName: app
         endpoints:
           - port: metrics
             scheme: http
@@ -110,8 +121,7 @@ spec:
           - path: *mediaLocation
 
     ingress:
-      main:
-        enabled: true
+      app:
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Fotos
@@ -136,7 +146,7 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:

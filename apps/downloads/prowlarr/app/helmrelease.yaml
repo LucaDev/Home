@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.4
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -31,7 +31,7 @@ spec:
             fsGroupChangePolicy: OnRootMismatch
 
         containers:
-          main:
+          prowlarr:
             image:
               repository: ghcr.io/onedr0p/prowlarr-nightly
               tag: 1.16.0.4386@sha256:be47d02261b9342afa570d645627aef700bd08e85abf48d77e7eddab49d73ce0
@@ -59,15 +59,26 @@ spec:
               capabilities:
                 drop:
                   - ALL
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
 
     service:
-      main:
+      app:
+        controller: prowlarr
         ports:
           http:
             port: *port
 
     ingress:
-      main:
+      app:
         enabled: true
         annotations:
           gethomepage.dev/enabled: "true"
@@ -81,7 +92,7 @@ spec:
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
@@ -89,5 +100,4 @@ spec:
 
     persistence:
       config:
-        enabled: true
         existingClaim: ${VOLSYNC_CLAIM}
