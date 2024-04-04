@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.4
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -18,7 +18,7 @@ spec:
 
   values:
     controllers:
-      main:
+      mealie:
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -26,30 +26,22 @@ spec:
           enableServiceLinks: false
 
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/mealie-recipes/mealie
-              tag: v1.3.2
+              tag: v1.4.0
             env:
               ALLOW_SIGNUP: "false"
               PUID: ${APP_UID}
               PGID: ${APP_GID}
               BASE_URL: https://${HOSTNAME}
-              LDAP_AUTH_ENABLED: "true"
-              LDAP_SERVER_URL: ldaps://kanidm.security.svc.cluster.local:636
-              LDAP_TLS_INSECURE: "true"
-              LDAP_BASE_DN: "dc=idm,dc=home,dc=lucadev,dc=de"
-              LDAP_QUERY_BIND: "dn=token"
-              LDAP_QUERY_PASSWORD:
-                valueFrom:
-                  secretKeyRef:
-                    name: mealie-secret
-                    key: LDAP_QUERY_PASSWORD
-              LDAP_USER_FILTER: "(memberOf=spn=idm_all_persons@idm.home.lucadev.de,dc=idm,dc=home,dc=lucadev,dc=de)"
-              LDAP_ADMIN_FILTER: "(memberOf=spn=admins@idm.home.lucadev.de,dc=idm,dc=home,dc=lucadev,dc=de)"
-              LDAP_ID_ATTRIBUTE: cn
-              LDAP_NAME_ATTRIBUTE: name
-              LDAP_MAIL_ATTRIBUTE: mail
+              OIDC_AUTH_ENABLED: "True"
+              OIDC_CONFIGURATION_URL: "https://idm.home.lucadev.de/oauth2/openid/mealie-oauth/.well-known/openid-configuration"
+              OIDC_USER_GROUP: "idm_all_persons@idm.home.lucadev.de"
+              OIDC_ADMIN_GROUP: "admins@idm.home.lucadev.de"
+              OIDC_CLIENT_ID: "mealie-oauth"
+              OIDC_AUTO_REDIRECT: "True"
+              OIDC_PROVIDER_NAME: "Kanidm"
               DB_ENGINE: sqlite
             resources:
               requests:
@@ -59,7 +51,8 @@ spec:
                 memory: 512Mi
 
     service:
-      main:
+      app:
+        controller: mealie
         ports:
           http:
             port: 9000
@@ -78,7 +71,7 @@ spec:
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
