@@ -111,19 +111,14 @@ spec:
     persistence:
       config:
         existingClaim: "${VOLSYNC_CLAIM}"
-        advancedMounts:
-          sabnzbd:
-            app:
-              - path: /config
+        globalMounts:
+          - path: /config
       media:
         type: hostPath
         hostPath: /mnt/data/hdd/single/media
         globalMounts:
           - path: /media/
-
       temp:
         type: emptyDir
-        advancedMounts:
-          sabnzbd:
-            app:
-              - path: /tmp
+        globalMounts:
+          - path: /tmp

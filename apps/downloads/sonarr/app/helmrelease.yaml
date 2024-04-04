@@ -72,15 +72,14 @@ spec:
                   periodSeconds: 5
 
     service:
-      main:
+      app:
         controller: sonarr
         ports:
           http:
             port: *port
 
     ingress:
-      main:
-        enabled: true
+      app:
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Seriendownloader

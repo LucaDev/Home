@@ -18,7 +18,7 @@ spec:
 
   values:
     controllers:
-      main:
+      radarr:
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -31,7 +31,7 @@ spec:
             fsGroupChangePolicy: "OnRootMismatch"
 
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/onedr0p/radarr-develop
               tag: 5.4.4.8688@sha256:b244fe8b9062f088eb3ef509e18819424c618406da3ec215a1aa85a068c912fd

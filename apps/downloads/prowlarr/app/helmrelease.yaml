@@ -18,7 +18,7 @@ spec:
 
   values:
     controllers:
-      main:
+      prowlarr:
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -31,7 +31,7 @@ spec:
             fsGroupChangePolicy: OnRootMismatch
 
         containers:
-          prowlarr:
+          app:
             image:
               repository: ghcr.io/onedr0p/prowlarr-nightly
               tag: 1.16.0.4386@sha256:be47d02261b9342afa570d645627aef700bd08e85abf48d77e7eddab49d73ce0
@@ -79,7 +79,6 @@ spec:
 
     ingress:
       app:
-        enabled: true
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Index Manager
