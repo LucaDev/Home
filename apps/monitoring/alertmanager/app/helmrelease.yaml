@@ -56,7 +56,6 @@ spec:
 
     ingress:
       app:
-        enabled: true
         hosts:
           - host: &host alerts.home.lucadev.de
             paths:
@@ -77,7 +76,6 @@ spec:
 
     persistence:
       config:
-        enabled: true
         type: configMap
         name: alertmanager-configmap
         globalMounts:

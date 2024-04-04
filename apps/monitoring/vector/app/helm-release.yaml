@@ -77,7 +77,6 @@ spec:
       name: vector
     persistence:
       config:
-        enabled: true
         type: configMap
         name: vector-configmap
         globalMounts:

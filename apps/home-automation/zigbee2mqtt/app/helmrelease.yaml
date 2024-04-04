@@ -113,7 +113,6 @@ spec:
           http:
             port: 8080
           metrics:
-            enabled: true
             port: 9000
 
     ingress:

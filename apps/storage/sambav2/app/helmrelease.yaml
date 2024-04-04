@@ -50,23 +50,18 @@ spec:
         controller: samba
         ports:
           smb:
-            enabled: true
             port: 4455
             protocol: TCP
           multicast:
-            enabled: true
             port: 3702
             protocol: UDP
           http:
-            enabled: true
             port: 3702
             protocol: TCP
           llmnr-multicast:
-            enabled: true
             port: 5355
             protocol: TCP
           llmnr-unicast:
-            enabled: true
             port: 5355
             protocol: UDP
 
@@ -80,11 +75,9 @@ spec:
             readOnly: true
       homes:
         type: emptyDir
-        enabled: true
         globalMounts:
           - path: /homes
       public:
         type: emptyDir
-        enabled: true
         globalMounts:
           - path: /public

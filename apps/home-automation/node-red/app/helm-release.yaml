@@ -73,7 +73,6 @@ spec:
 
     ingress:
       app:
-        enabled: true
         hosts:
           - host: &host "nodered.home.lucadev.de"
             paths:

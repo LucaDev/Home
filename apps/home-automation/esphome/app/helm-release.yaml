@@ -61,7 +61,6 @@ spec:
 
     ingress:
       app:
-        enabled: true
         hosts:
           - host: &host "esphome.home.lucadev.de"
             paths:

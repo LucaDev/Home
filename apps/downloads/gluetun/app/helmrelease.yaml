@@ -54,8 +54,7 @@ spec:
             port: 8888
 
     ingress:
-      main:
-        enabled: true
+      app:
         annotations:
           traefik.ingress.kubernetes.io/router.middlewares: networking-local-home-ips@kubernetescrd
         hosts:

@@ -55,8 +55,7 @@ spec:
             port: 9000
 
     ingress:
-      main:
-        enabled: true
+      app:
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Rezepte

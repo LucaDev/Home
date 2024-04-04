@@ -70,13 +70,11 @@ spec:
 
     persistence:
       ups:
-        enabled: true
         type: hostPath
         hostPath: /dev/ttyUSB0
 
     serviceMonitor:
       exporter:
-        enabled: true
         serviceName: nut-exporter
         endpoints:
           - port: http
