@@ -11,4 +11,5 @@ resources:
   - ./calibre-web/ks.yaml
   - ./mealie/ks.yaml
   - ./memos/ks.yaml
+# TODO: mailbackup
 #  - ./frigate/ks.yaml
