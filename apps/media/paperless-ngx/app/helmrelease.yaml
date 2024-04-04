@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.4
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -18,10 +18,10 @@ spec:
 
   values:
     controllers:
-      main:
+      paperless:
         type: statefulset
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/paperless-ngx/paperless-ngx
               tag: 2.6.3
@@ -30,6 +30,13 @@ spec:
                   name: paperless-secret
               - configMapRef:
                   name: paperless-configmap
+            resources:
+              requests:
+                cpu: 11m
+                memory: 1024M
+              limits:
+                cpu: 1000m
+                memory: 2048M
 
         annotations:
           reloader.stakater.com/auto: "true"
@@ -43,29 +50,21 @@ spec:
               globalMounts:
                 - path: /data/local
 
-        resources:
-          requests:
-            cpu: 11m
-            memory: 1024M
-          limits:
-            cpu: 1000m
-            memory: 2048M
-
     service:
-      main:
+      app:
+        controller: paperless
         ports:
           http:
             port: 8000
 
     ingress:
-      main:
-        enabled: true
+      app:
         hosts:
           - host: ${HOSTNAME}
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
@@ -84,14 +83,12 @@ spec:
 
     persistence:
       paperless-ingest:
-        enabled: true
         type: hostPath
         hostPath: /tmp/paperless-ingest
         hostPathType: DirectoryOrCreate
         globalMounts:
           - path: /data/consume
       export:
-        enabled: true
         globalMounts:
           - path: /data/export
         type: persistentVolumeClaim
