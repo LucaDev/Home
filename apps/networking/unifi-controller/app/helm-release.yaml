@@ -21,8 +21,6 @@ spec:
       unifi:
         type: statefulset
 
-        replicas: 0
-
         statefulset:
           volumeClaimTemplates:
             - name: data
