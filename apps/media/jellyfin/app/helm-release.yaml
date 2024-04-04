@@ -46,7 +46,7 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/LucaDev/jellyfin
+              repository: ghcr.io/lucadev/jellyfin
               tag: "10.8.13"
             env:
               TZ: Europe/Berlin
