@@ -17,8 +17,8 @@ spec:
         name: bjw-s
         namespace: flux-system
   values:
-    stirling-pdf:
-      main:
+    controllers:
+      stirling-pdf:
         strategy: RollingUpdate
         annotations:
           reloader.stakater.com/auto: "true"

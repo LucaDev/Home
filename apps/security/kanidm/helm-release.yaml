@@ -93,8 +93,8 @@ spec:
           configMap:
             name: kanidm-configuration
         advancedMounts:
-          main:
-            main:
+          kanidm:
+            app:
               - path: /data/server.toml
                 readOnly: true
                 subPath: server.toml

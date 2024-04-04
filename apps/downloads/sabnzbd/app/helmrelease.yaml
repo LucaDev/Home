@@ -78,14 +78,14 @@ spec:
                   periodSeconds: 5
 
     service:
-      main:
+      app:
         controller: sabnzbd
         ports:
           http:
             port: *port
 
     ingress:
-      main:
+      app:
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Downloadmanager

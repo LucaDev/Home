@@ -65,7 +65,7 @@ spec:
 
     service:
       app:
-        controller: app
+        controller: unpoller
         ports:
           http:
             port: 9130
