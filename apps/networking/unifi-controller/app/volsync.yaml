@@ -47,7 +47,7 @@ metadata:
   name: unifi-config
   namespace: networking
 spec:
-  sourcePVC: unifi-controller-data
+  sourcePVC: data-unifi-controller-0
   trigger:
     schedule: "0 */12 * * *"
   restic:
