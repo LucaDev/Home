@@ -50,12 +50,12 @@ spec:
               POSTGRES_USER:
                 valueFrom:
                   secretKeyRef:
-                    name: immich-app
+                    name: tandoor-app
                     key: username
               POSTGRES_PASSWORD:
                 valueFrom:
                   secretKeyRef:
-                    name: immich-app
+                    name: tandoor-app
                     key: password
               POSTGRES_DB: app
             envFrom:
