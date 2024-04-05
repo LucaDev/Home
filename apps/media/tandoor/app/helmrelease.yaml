@@ -44,6 +44,7 @@ spec:
               MAX_OWNED_SPACES_PREF_DEFAULT: 0
               SHOPPING_MIN_AUTOSYNC_INTERVAL: 5
               TANDOOR_PORT: &tandoorPort 8000
+              DB_ENGINE: django.db.backends.postgresql
               POSTGRES_HOST: tandoor-rw.media.svc.cluster.local
               POSTGRES_PORT: 5432
               POSTGRES_USER:
