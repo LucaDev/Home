@@ -26,7 +26,7 @@ spec:
           app:
             image:
               repository: ghcr.io/mealie-recipes/mealie
-              tag: v1.4.0
+              tag: notexistent
             env:
               ALLOW_SIGNUP: "false"
               PUID: ${APP_UID}
@@ -72,9 +72,3 @@ spec:
         tls:
           - hosts:
               - ${HOSTNAME}
-
-    persistence:
-      data:
-        existingClaim: "${VOLSYNC_CLAIM}"
-        globalMounts:
-          - path: /app/data

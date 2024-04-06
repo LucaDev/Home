@@ -5,8 +5,3 @@ kind: Kustomization
 namespace: media
 resources:
   - ./helmrelease.yaml
-  - ../../../../templates/volsync/hetzner
-  - ../../../../templates/netpol/dns-traefik
-  - ../../../../templates/netpol/egress-internet
-  - ../../../../templates/netpol/egress-local
-  - ../../../../templates/netpol/ingress-homeassistant
