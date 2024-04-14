@@ -25,7 +25,7 @@ spec:
           app:
             image:
               repository: ghcr.io/lucadev/samba
-              tag: 4.19.5@sha256:fed62eefb0dc6b51687f477d3157e914cfb08228a4a6bedab8ad2508ee455aa7
+              tag: 4.19.5@sha256:00801b67167726c337fe398de719c613b30f2683b59c095cf6044e37c9fcb9cc
             resources:
               requests:
                 cpu: 50m
@@ -97,6 +97,14 @@ spec:
         retain: true
         globalMounts:
           - path: /public
+      passdb:
+        type: persistentVolumeClaim
+        storageClass: ssd-singlereplica
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        retain: true
+        globalMounts:
+          - path: /passdb
       paperless-ingest:
         type: hostPath
         hostPath: /tmp/paperless-ingest
