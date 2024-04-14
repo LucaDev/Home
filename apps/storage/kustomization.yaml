@@ -5,6 +5,5 @@ resources:
   - ./namespace.yaml
   - ./configuration/ks.yaml
   - ./samba/ks.yaml
-  - ./sambav2/ks.yaml
   - ./snapshot
   - ./volsync/ks.yaml

@@ -5,9 +5,10 @@ kind: Kustomization
 namespace: storage
 resources:
   - helmrelease.yaml
+  - externalsecret.yaml
 configMapGenerator:
-  - name: samba-config
+  - name: samba2-config
     files:
-      - config.json
+      - config.conf
 generatorOptions:
   disableNameSuffixHash: true

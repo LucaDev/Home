@@ -19,21 +19,28 @@ spec:
   values:
     controllers:
       samba:
-        strategy: RollingUpdate
+        strategy: Recreate
 
         containers:
           app:
             image:
-              repository: quay.io/samba.org/samba-server
-              tag: v0.4
-            env:
-              SAMBACC_CONFIG: /config.json
-              SAMBA_CONTAINER_ID: SAMBA
+              repository: ghcr.io/lucadev/samba
+              tag: 4.19.5@sha256:fed62eefb0dc6b51687f477d3157e914cfb08228a4a6bedab8ad2508ee455aa7
             resources:
               requests:
                 cpu: 50m
                 memory: 256Mi
-
+            envFrom:
+              - secretRef:
+                  name: samba-ldap
+          wsdd:
+            image:
+              repository: ghcr.io/lucadev/wsdd2
+              tag: 1.0.31
+            resources:
+              requests:
+                cpu: 5m
+                memory: 25Mi
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -45,20 +52,33 @@ spec:
           smb:
             port: 445
             protocol: TCP
+          multicast:
+            port: 3702
+            protocol: UDP
+          http:
+            port: 3702
+            protocol: TCP
+          llmnr-multicast:
+            port: 5355
+            protocol: TCP
+          llmnr-unicast:
+            port: 5355
+            protocol: UDP
 
     persistence:
       config-file:
         type: configMap
-        name: samba-config
+        name: samba2-config
         globalMounts:
-          - path: /config.json
-            subPath: config.json
+          - path: /etc/smb.d/config.conf
+            subPath: config.conf
             readOnly: true
       timemachine-luca:
         type: persistentVolumeClaim
         storageClass: cached-singlereplica
         accessMode: ReadWriteOnce
         size: 250Gi
+        retain: true
         globalMounts:
           - path: /luca-timemachine
       homes:
@@ -66,6 +86,7 @@ spec:
         storageClass: cached-singlereplica
         accessMode: ReadWriteOnce
         size: 100Gi
+        retain: true
         globalMounts:
           - path: /homes
       public:
@@ -73,6 +94,7 @@ spec:
         storageClass: cached-singlereplica
         accessMode: ReadWriteOnce
         size: 100Gi
+        retain: true
         globalMounts:
           - path: /public
       paperless-ingest:
