@@ -6,4 +6,4 @@ resources:
   - ./namespace.yaml
   - ./unifi-controller/ks.yaml
   - ./cert-manager/ks.yaml
-  - ./multus/ks.yaml
+#  - ./multus/ks.yaml
