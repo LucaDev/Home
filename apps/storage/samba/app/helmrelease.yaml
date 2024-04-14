@@ -70,7 +70,7 @@ spec:
         type: configMap
         name: samba2-config
         globalMounts:
-          - path: /etc/smb.d/config.conf
+          - path: /etc/samba/smb.conf
             subPath: config.conf
             readOnly: true
       timemachine-luca:
