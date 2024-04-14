@@ -51,6 +51,7 @@ spec:
         ports:
           smb:
             port: 4455
+            targetPort: 445
             protocol: TCP
           multicast:
             port: 3702
