@@ -13,4 +13,5 @@ resources:
   - ./smartctl_exporter/ks.yaml
   - ./vector/ks.yaml
   - ./blackbox-exporter/ks.yaml
+  - ./snmp-exporter/ks.yaml
   - ./healthcheck
