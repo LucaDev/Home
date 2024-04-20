@@ -19,9 +19,7 @@ spec:
 
   values:
     controllers:
-      smartctl-exporter:
-        type: daemonset
-
+      snmp-exporter:
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -36,10 +34,6 @@ spec:
                 memory: 10Mi
               limits:
                 memory: 25Mi
-            securityContext:
-              privileged: true
-              runAsUser: 0
-              runAsGroup: 0
             probes:
               liveness:
                 enabled: true
