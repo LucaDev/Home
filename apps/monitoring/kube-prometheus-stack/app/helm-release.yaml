@@ -95,7 +95,7 @@ spec:
             metrics_path: /snmp?module=if_mib&target=192.168.1.209
             static_configs:
               - targets:
-                  - "snmp-exporter.monitoring.svc.cluster.local"
+                  - "snmp-exporter.monitoring.svc.cluster.local:9114"
         storageSpec:
           volumeClaimTemplate:
             spec:
