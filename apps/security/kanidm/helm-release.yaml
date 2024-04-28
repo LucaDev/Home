@@ -58,6 +58,13 @@ spec:
         annotations:
           traefik.ingress.kubernetes.io/service.serverstransport: security-kanidm@kubernetescrd
           traefik.ingress.kubernetes.io/service.serversscheme: https
+      ldap-lb:
+        controller: kanidm
+        type: LoadBalancer
+        ports:
+          ldaps:
+            port: 636
+            protocol: TCP
 
     ingress:
       app:
