@@ -6,12 +6,12 @@ resources:
   - ./namespace.yaml
   - ./kube-prometheus-stack/ks.yaml
   - ./alertmanager/ks.yaml
-  - ./loki/ks.yaml
+#  - ./loki/ks.yaml
   - ./unpoller/ks.yaml
   - ./grafana/ks.yaml
   - ./mqtt-exporter/ks.yaml
   - ./smartctl_exporter/ks.yaml
-  - ./vector/ks.yaml
+#  - ./vector/ks.yaml
   - ./blackbox-exporter/ks.yaml
   - ./snmp-exporter/ks.yaml
   - ./healthcheck
