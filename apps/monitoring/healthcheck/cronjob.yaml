@@ -12,7 +12,7 @@ spec:
         spec:
           containers:
             - name: curl
-              image: quay.io/curl/curl:8.7.1
+              image: quay.io/curl/curl:8.8.0
               imagePullPolicy: IfNotPresent
               command:
                 - curl
