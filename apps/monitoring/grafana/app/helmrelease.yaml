@@ -261,6 +261,7 @@ spec:
       - grafana-piechart-panel
       - grafana-clock-panel
       - fetzerch-sunandmoon-datasource
+      - knightss27-weathermap-panel
 
     podAnnotations:
       configmap.reloader.stakater.com/reload: grafana
