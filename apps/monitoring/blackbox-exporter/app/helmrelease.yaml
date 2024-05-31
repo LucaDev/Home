@@ -121,16 +121,22 @@ spec:
         # WG Tunnels
         - module: http_2xx_ignore
           name: wg-opa
-          url: "https://192.168.178.1"
+          url: "https://192.168.13.1"
         - module: icmp
           name: wg-opa-icmp
-          url: "192.168.178.1"
+          url: "192.168.13.1"
         - module: http_2xx_ignore
           name: wg-maria
           url: "https://192.168.46.1"
         - module: icmp
           name: wg-maria-icmp
           url: "192.168.46.1"
+        - module: http_2xx_ignore
+          name: wg-dirk
+          url: "https://192.168.178.1"
+        - module: icmp
+          name: wg-dirk-icmp
+          url: "192.168.178.1"
 
         # Other devices
         - module: icmp
