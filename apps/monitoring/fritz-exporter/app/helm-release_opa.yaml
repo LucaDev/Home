@@ -50,7 +50,7 @@ spec:
 
     service:
       app:
-        controller: fritz-exporter-opa
+        controller: fritz-exporter
         ports:
           http:
             port: 9787

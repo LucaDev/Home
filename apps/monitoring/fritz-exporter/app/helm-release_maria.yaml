@@ -50,7 +50,7 @@ spec:
 
     service:
       app:
-        controller: fritz-exporter-maria
+        controller: fritz-exporter
         ports:
           http:
             port: 9787
