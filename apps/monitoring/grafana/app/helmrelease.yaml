@@ -71,25 +71,26 @@ spec:
         external-secrets:
           url: https://raw.githubusercontent.com/external-secrets/external-secrets/main/docs/snippets/dashboard.json
           datasource: Prometheus
-
         node-exporter-full:
           # renovate: dashboardName="Node Exporter Full"
           gnetId: 1860
           revision: 34
           datasource: Prometheus
-
         blackbox-exporter:
           # renovate: dashboardName="Blackbox Exporter (HTTP prober)"
           gnetId: 13659
           revision: 1
           datasource: Prometheus
-
         node-feature-discovery:
           url: https://raw.githubusercontent.com/kubernetes-sigs/node-feature-discovery/master/examples/grafana-dashboard.json
           datasource: Prometheus
-
         cert-manager:
           url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
+          datasource: Prometheus
+        fritz:
+          # renovate: dashboardName="Fritz!Exporter Dash"
+          gnetId: 17751
+          revision: 1
           datasource: Prometheus
 
       flux:

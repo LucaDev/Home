@@ -1,0 +1,11 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: monitoring
+resources:
+  - ./helm-release_maria.yaml
+  - ./helm-release_opa.yaml
+  - ./externalsecret_opa.yaml
+  - ./externalsecret_maria.yaml
+  - ../../../../templates/netpol/ingress-prometheus
