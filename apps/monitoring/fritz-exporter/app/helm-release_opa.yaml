@@ -30,7 +30,7 @@ spec:
               tag: "2"
             envFrom:
               - secretRef:
-                  name: fritz_opa_secret
+                  name: fritz-opa-secret
             resources:
               requests:
                 cpu: 10m

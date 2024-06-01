@@ -30,7 +30,7 @@ spec:
               tag: "2"
             envFrom:
               - secretRef:
-                  name: fritz_maria_secret
+                  name: fritz-maria-secret
             resources:
               requests:
                 cpu: 10m
