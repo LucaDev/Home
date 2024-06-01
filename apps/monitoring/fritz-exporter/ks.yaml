@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./apps/monitoring/fritz_exporter/app"
+  path: "./apps/monitoring/fritz-exporter/app"
   prune: true
   sourceRef:
     kind: GitRepository
