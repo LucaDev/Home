@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 3.1.0
+      version: 3.2.1
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -131,7 +131,7 @@ spec:
           gethomepage.dev/weight: "-90"
           gethomepage.dev/widget.type: immich
           gethomepage.dev/widget.url: https://photos.home.lucadev.de
-          gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_IMMICH_APIKEY}}"
+          gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_IMMICH_APIKEY}}`}}"
           gethomepage.dev/widget.fields: "[\"photos\", \"videos\", \"storage\"]"
           gethomepage.dev/pod-selector: >-
             app.kubernetes.io/instance in (

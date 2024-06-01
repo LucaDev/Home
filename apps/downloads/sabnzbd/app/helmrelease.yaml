@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 3.1.0
+      version: 3.2.1
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -95,7 +95,7 @@ spec:
           gethomepage.dev/weight: "-100"
           gethomepage.dev/widget.type: sabnzbd
           gethomepage.dev/widget.url: "https://sabnzbd.home.lucadev.de"
-          gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_SABNZBD_APIKEY}}"
+          gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_SABNZBD_APIKEY}}`}}"
           traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd
         hosts:
           - host: "${HOSTNAME}"

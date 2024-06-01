@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 3.1.0
+      version: 3.2.1
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -78,8 +78,8 @@ spec:
           gethomepage.dev/weight: "-80"
           gethomepage.dev/widget.type: paperlessngx
           gethomepage.dev/widget.url: https://paperless.home.lucadev.de
-          gethomepage.dev/widget.username: "{{HOMEPAGE_VAR_PAPERLESS_USERNAME}}"
-          gethomepage.dev/widget.password: "{{HOMEPAGE_VAR_PAPERLESS_PASSWORD}}"
+          gethomepage.dev/widget.username: "{{`{{HOMEPAGE_VAR_PAPERLESS_USERNAME}}`}}"
+          gethomepage.dev/widget.password: "{{`{{HOMEPAGE_VAR_PAPERLESS_PASSWORD}}`}}"
 
     persistence:
       paperless-ingest:

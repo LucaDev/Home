@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 3.1.0
+      version: 3.2.1
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -89,7 +89,7 @@ spec:
           gethomepage.dev/weight: "-90"
           gethomepage.dev/widget.type: sonarr
           gethomepage.dev/widget.url: "https://sonarr.home.lucadev.de"
-          gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_SONARR_APIKEY}}"
+          gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_SONARR_APIKEY}}`}}"
           traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd
         hosts:
           - host: "${HOSTNAME}"
