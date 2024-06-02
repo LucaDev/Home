@@ -9,3 +9,14 @@ resources:
   - ./externalsecret_opa.yaml
   - ./externalsecret_maria.yaml
   - ../../../../templates/netpol/ingress-prometheus
+configMapGenerator:
+  - name: fritz-dashboard
+    files:
+      - FritzExporter.json
+generatorOptions:
+  disableNameSuffixHash: true
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
+  labels:
+    grafana_dashboard: "true"
+    grafana_folder: "Infra"

@@ -87,11 +87,6 @@ spec:
         cert-manager:
           url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
           datasource: Prometheus
-        fritz:
-          # renovate: dashboardName="Fritz!Exporter Dash"
-          gnetId: 17751
-          revision: 1
-          datasource: Prometheus
 
       flux:
         flux-cluster:
