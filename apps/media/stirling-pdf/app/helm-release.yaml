@@ -27,7 +27,7 @@ spec:
           app:
             image:
               repository: docker.io/frooodle/s-pdf
-              tag: 0.25.0
+              tag: 0.25.1
             env:
               SYSTEM_DEFAULTLOCALE: de-DE
             resources:
