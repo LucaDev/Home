@@ -57,10 +57,8 @@ spec:
 
     serviceMonitor:
       app:
-        serviceName: app
+        serviceName: fritz-exporter-maria
         endpoints:
           - port: http
             scheme: http
             path: /
-            interval: 1m
-            scrapeTimeout: 5s
