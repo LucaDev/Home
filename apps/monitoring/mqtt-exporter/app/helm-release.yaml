@@ -54,7 +54,7 @@ spec:
 
     serviceMonitor:
       app:
-        serviceName: app
+        serviceName: mqttexporter
         enabled: true
         endpoints:
           - port: http
