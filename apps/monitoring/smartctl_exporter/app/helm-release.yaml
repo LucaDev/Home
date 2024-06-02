@@ -60,7 +60,7 @@ spec:
 
     serviceMonitor:
       app:
-        serviceName: app
+        serviceName: smartctl-exporter
         endpoints:
           - port: http
             scheme: http
