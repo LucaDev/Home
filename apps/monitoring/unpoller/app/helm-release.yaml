@@ -72,7 +72,7 @@ spec:
 
     serviceMonitor:
       app:
-        serviceName: app
+        serviceName: unpoller
         endpoints:
           - port: http
             scheme: http
