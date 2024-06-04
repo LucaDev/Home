@@ -79,7 +79,7 @@ spec:
             metrics_path: /api/prometheus/metrics
             static_configs:
               - targets:
-                  - "192.168.100.40"
+                  - "pv-anlage.local"
           - job_name: power-meter
             scrape_interval: 1m
             scrape_timeout: 10s
@@ -87,7 +87,7 @@ spec:
             metrics_path: /metrics
             static_configs:
               - targets:
-                  - "192.168.1.87"
+                  - "power-meter.local"
           - job_name: snmp-exporter
             scrape_interval: 1m
             scrape_timeout: 10s
