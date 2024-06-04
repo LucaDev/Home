@@ -45,6 +45,8 @@ spec:
                 enabled: false
               startup:
                 enabled: false
+            env:
+              ESPHOME_DASHBOARD_USE_PING: "true"
             resources:
               requests:
                 cpu: 5m
