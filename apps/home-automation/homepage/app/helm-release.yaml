@@ -43,7 +43,7 @@ spec:
     config:
       bookmarks:
       services:
-        - Extern:
+        - Weitere:
             - 3D Drucker:
                 href: http://3ddrucker.local
                 icon: mainsail.svg
@@ -75,6 +75,7 @@ spec:
                 ping: http://192.168.1.157
                 icon: mdi-zigbee
                 description: Steuerung des ZigBee Coordinators
+        - Netzwerk:
             - POE Switch:
                 href: http://192.168.1.158
                 ping: http://192.168.1.158
@@ -146,12 +147,13 @@ spec:
               columns: 3
           - Netzwerk:
               style: row
-              columns: 2
-          - Extern:
+              columns: 4
+          - Weitere:
               style: row
               columns: 3
-          - Nutzermanagement:
-              columns: 1
+          - Gekoppelte Netze:
+              style: row
+              columns: 3
     envFrom:
       - secretRef:
           name: homepage-secret
