@@ -80,6 +80,19 @@ spec:
                 ping: http://192.168.1.1
                 icon: mdi-router-network
                 description: Verwaltungsoberfläche des Routers
+        - Gekoppelte Netze:
+            - Maria:
+                href: http://192.168.46.1
+                ping: http://192.168.46.1
+                icon: avmfritzbox.svg
+            - Opa:
+                href: http://192.168.13.1
+                ping: http://192.168.13.1
+                icon: avmfritzbox.svg
+            - Dirk:
+                href: http://192.168.178.1
+                ping: http://192.168.178.1
+                icon: avmfritzbox.svg
       widgets:
         - kubernetes:
             cluster:
