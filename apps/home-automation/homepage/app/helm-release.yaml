@@ -47,19 +47,14 @@ spec:
             - 3D Drucker:
                 href: http://3ddrucker.local
                 icon: mainsail.svg
-                ping: http://192.168.100.60
+                ping: http://3ddrucker.local
                 description: Steuerung des 3D Druckers
                 widget:
                   type: moonraker
-                  url: http://192.168.100.60
-            - 3D Drucker Steckdose:
-                href: http://192.168.100.61
-                icon: tasmota.svg
-                ping: http://192.168.100.61
-                description: 3D Drucker Steckdose
+                  url: http://3ddrucker.local
             - Solaranlage:
                 href: http://pv-anlage.local
-                ping: http://192.168.100.40
+                ping: http://pv-anlage.local
                 icon: mdi-solar-power-variant
                 description: Steuerung der Solaranlage
                 widget:
@@ -67,19 +62,14 @@ spec:
                   url: http://192.168.100.40
             - Heizung:
                 href: http://ems-esp.local
-                ping: http://192.168.100.50
+                ping: http://ems-esp.local
                 icon: mdi-water-boiler
                 description: Heizungssteuerung
             - Drucker:
                 href: http://drucker-eg.local
-                ping: http://192.168.1.43
+                ping: http://drucker-eg.local
                 icon: mdi-printer
                 description: Laserdrucker im Erdgeschoss
-            - Stromzähler:
-                href: http://power-meter.local
-                ping: http://192.168.1.87
-                icon: mdi-meter-electric-outline
-                description: Weboberfläche des Stromzählers
             - Zigbee Bridge:
                 href: http://192.168.1.157
                 ping: http://192.168.1.157
