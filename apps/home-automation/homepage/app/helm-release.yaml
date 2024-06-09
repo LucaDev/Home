@@ -68,17 +68,22 @@ spec:
             - Drucker:
                 href: http://drucker-eg.local
                 ping: http://drucker-eg.local
-                icon: mdi-printer
+                icon: hp.svg
                 description: Laserdrucker im Erdgeschoss
             - Zigbee Bridge:
                 href: http://192.168.1.157
                 ping: http://192.168.1.157
                 icon: mdi-zigbee
                 description: Steuerung des ZigBee Coordinators
+            - POE Switch:
+                href: http://192.168.1.158
+                ping: http://192.168.1.158
+                icon: mdi-switch
+                description: Verwaltungsoberfläche des POE Switches
             - Router:
                 href: http://192.168.1.1
                 ping: http://192.168.1.1
-                icon: mdi-router-network
+                icon: edgeos-light
                 description: Verwaltungsoberfläche des Routers
         - Gekoppelte Netze:
             - Maria:
