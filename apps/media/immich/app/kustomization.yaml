@@ -9,7 +9,6 @@ resources:
   - ./pvc.yaml
   - ./database.yaml
   - ./server
-  - ./microservices
   - ./machine-learning
   - ./volsync.yaml
   - ./volsync-db.yaml

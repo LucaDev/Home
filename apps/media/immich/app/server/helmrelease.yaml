@@ -38,15 +38,15 @@ spec:
           app:
             image:
               repository: ghcr.io/immich-app/immich-server
-              tag: v1.105.1
-            args:
-              - start-server.sh
+              tag: v1.106.1
             env:
               # General
               LOG_LEVEL: log
               IMMICH_MEDIA_LOCATION: &mediaLocation /usr/src/app/upload
               # Ports
               SERVER_PORT: &port 3001
+              # Geocoding
+              DISABLE_REVERSE_GEOCODING: "true"
               # Database
               DB_HOSTNAME:
                 value: "immich-rw.media.svc.cluster.local"
@@ -84,7 +84,7 @@ spec:
                 cpu: 100m
                 memory: 256Mi
               limits:
-                memory: 512Mi
+                memory: 8000Mi
             probes:
               liveness:
                 enabled: true
@@ -119,6 +119,14 @@ spec:
         existingClaim: immich-data
         globalMounts:
           - path: *mediaLocation
+      geocoding-dump:
+        type: emptyDir
+        globalMounts:
+          - path: /usr/src/app/.reverse-geocoding-dump
+      geoname-dump:
+        type: emptyDir
+        globalMounts:
+          - path: /usr/src/app/node_modules/local-reverse-geocoder/geonames_dump
 
     ingress:
       app:
