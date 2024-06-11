@@ -31,13 +31,11 @@ spec:
               tag: v1.106.2
             env:
               # General
-              LOG_LEVEL: debug
+              LOG_LEVEL: verbose
               TZ: "Europe/Berlin"
               IMMICH_MEDIA_LOCATION: &mediaLocation /usr/src/app/upload
               # Ports
               SERVER_PORT: &port 3001
-              # Geocoding
-              DISABLE_REVERSE_GEOCODING: "true"
               # Database
               DB_HOSTNAME:
                 value: "immich-rw.media.svc.cluster.local"
