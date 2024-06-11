@@ -41,7 +41,8 @@ spec:
               tag: v1.106.1
             env:
               # General
-              LOG_LEVEL: log
+              LOG_LEVEL: debug
+              TZ: "Europe/Berlin"
               IMMICH_MEDIA_LOCATION: &mediaLocation /usr/src/app/upload
               # Ports
               SERVER_PORT: &port 3001
@@ -79,6 +80,7 @@ spec:
                   configMapKeyRef:
                     name: immich-configmap
                     key: PUBLIC_IMMICH_SERVER_URL
+              IMMICH_METRICS: true
             resources:
               requests:
                 cpu: 100m
@@ -86,28 +88,38 @@ spec:
               limits:
                 memory: 8000Mi
             probes:
-              liveness:
+              liveness: &probes
                 enabled: false
-              readiness:
-                enabled: false
+                custom: true
+                spec:
+                  httpGet:
+                    path: /api/server-info/ping
+                    port: http
+              readiness: *probes
               startup:
                 enabled: false
-                spec:
-                  failureThreshold: 30
-                  periodSeconds: 5
 
     service:
       app:
         controller: immich-server
+        primary: true
         ports:
           http:
             port: *port
+            primary: true
+          metrics-api:
+            port: 8081
+          metrics-ms:
+            port: 8082
 
     serviceMonitor:
       app:
         serviceName: app
         endpoints:
-          - port: http
+          - port: metrics-api
+            scheme: http
+            path: /metrics
+          - port: metrics-ms
             scheme: http
             path: /metrics
 
@@ -145,7 +157,6 @@ spec:
                 immich-microservices,
                 immich-machine-learning
             )
-
         hosts:
           - host: &host photos.home.lucadev.de
             paths:
