@@ -5,7 +5,6 @@ kind: Kustomization
 namespace: media
 resources:
   - ./externalsecret.yaml
-  - ./configmap.yaml
   - ./pvc.yaml
   - ./database.yaml
   - ./server

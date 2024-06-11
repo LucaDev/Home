@@ -52,22 +52,9 @@ spec:
               DB_DATABASE_NAME:
                 value: "app"
               # Redis
-              REDIS_HOSTNAME:
-                valueFrom:
-                  configMapKeyRef:
-                    name: immich-configmap
-                    key: REDIS_HOSTNAME
-              REDIS_PORT:
-                valueFrom:
-                  configMapKeyRef:
-                    name: immich-configmap
-                    key: REDIS_PORT
-              # Immich
-              PUBLIC_IMMICH_SERVER_URL:
-                valueFrom:
-                  configMapKeyRef:
-                    name: immich-configmap
-                    key: PUBLIC_IMMICH_SERVER_URL
+              REDIS_HOSTNAME: shared-redis.databases.svc.cluster.local
+              REDIS_PORT: "6379"
+              # Metrics
               IMMICH_METRICS: true
             resources:
               requests:
