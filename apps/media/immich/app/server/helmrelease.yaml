@@ -102,14 +102,12 @@ spec:
         ports:
           http:
             port: *port
-          metrics:
-            port: 8081
 
     serviceMonitor:
       app:
         serviceName: app
         endpoints:
-          - port: metrics
+          - port: http
             scheme: http
             path: /metrics
 
