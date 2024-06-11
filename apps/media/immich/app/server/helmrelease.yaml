@@ -24,16 +24,6 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
 
-        pod:
-          enableServiceLinks: false
-          securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            fsGroup: 568
-            fsGroupChangePolicy: OnRootMismatch
-            supplementalGroups:
-              - 65542
-
         containers:
           app:
             image:
@@ -129,14 +119,6 @@ spec:
         existingClaim: immich-data
         globalMounts:
           - path: *mediaLocation
-      geocoding-dump:
-        type: emptyDir
-        globalMounts:
-          - path: /usr/src/app/.reverse-geocoding-dump
-      geoname-dump:
-        type: emptyDir
-        globalMounts:
-          - path: /usr/src/app/node_modules/local-reverse-geocoder/geonames_dump
 
     ingress:
       app:
