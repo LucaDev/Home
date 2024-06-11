@@ -31,7 +31,7 @@ spec:
               tag: v1.106.2
             env:
               # General
-              LOG_LEVEL: verbose
+              IMMICH_LOG_LEVEL: verbose
               TZ: "Europe/Berlin"
               IMMICH_MEDIA_LOCATION: &mediaLocation /usr/src/app/upload
               # Ports
