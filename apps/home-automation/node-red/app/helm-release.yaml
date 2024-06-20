@@ -26,7 +26,7 @@ spec:
           init:
             image:
               repository: docker.io/nodered/node-red
-              tag: 3.1.10
+              tag: 4.0.0
             workingDir: /data
             command: ["npm", "install", "passport-openidconnect"] # ToDo: Outdated - replace
 
@@ -34,7 +34,7 @@ spec:
           app:
             image:
               repository: docker.io/nodered/node-red
-              tag: 3.1.10
+              tag: 4.0.0
             envFrom:
               - secretRef:
                   name: node-red-secret
