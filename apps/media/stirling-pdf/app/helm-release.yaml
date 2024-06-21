@@ -27,9 +27,10 @@ spec:
           app:
             image:
               repository: docker.io/frooodle/s-pdf
-              tag: 0.26.0
+              tag: 0.26.1
             env:
               SYSTEM_DEFAULTLOCALE: de-DE
+              SYSTEM_SHOWUPDATE: "false"
             resources:
               requests:
                 cpu: 100m
