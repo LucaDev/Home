@@ -2,7 +2,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: immich
+  name: maybe
 spec:
   instances: 1
   primaryUpdateStrategy: unsupervised
