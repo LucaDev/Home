@@ -7,6 +7,6 @@ resources:
   - ./pvc.yaml
 labels:
   - pairs:
-      app.kubernetes.io/name: immich-microservices
-      app.kubernetes.io/instance: immich-microservices
+      app.kubernetes.io/name: immich-machine-learning
+      app.kubernetes.io/instance: immich-machine-learning
       app.kubernetes.io/part-of: immich
