@@ -87,3 +87,12 @@ spec:
         tls:
           - hosts:
               - *host
+
+    persistence:
+      rails-data:
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        storageClass: ssd-dualreplica
+        size: 2Gi
+        globalMounts:
+          - /rails/storage
