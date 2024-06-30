@@ -95,4 +95,4 @@ spec:
         storageClass: ssd-dualreplica
         size: 2Gi
         globalMounts:
-          - /rails/storage
+          - path: /rails/storage
