@@ -28,7 +28,7 @@ spec:
           app:
             image:
               repository: ghcr.io/maybe-finance/maybe
-              tag: 0.1.0-alpha.8
+              tag: 0.1.0-alpha.9
             env:
               SELF_HOSTING_ENABLED: "true"
               RAILS_FORCE_SSL: "false"
