@@ -30,6 +30,7 @@ spec:
               repository: ghcr.io/maybe-finance/maybe
               tag: 0.1.0-alpha.9
             env:
+              TZ: "Europe/Berlin"
               SELF_HOSTING_ENABLED: "true"
               RAILS_FORCE_SSL: "false"
               RAILS_ASSUME_SSL: "false"
