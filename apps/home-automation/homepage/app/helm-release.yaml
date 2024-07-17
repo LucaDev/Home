@@ -20,7 +20,7 @@ spec:
     image:
       # renovate: datasource=github-releases depName=gethomepage/homepage
       repository: ghcr.io/gethomepage/homepage
-      tag: v0.9.3
+      tag: v0.9.4
 
     podAnnotations:
       reloader.stakater.com/auto: "true"
