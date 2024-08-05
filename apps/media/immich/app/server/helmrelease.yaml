@@ -131,7 +131,7 @@ spec:
                 service:
                   identifier: app
                   port: http
-          - host: &host2 photos.lucadev.de
+          - host: &host2 photos.pub.lucadev.de
             paths:
               - path: /
                 pathType: Prefix
