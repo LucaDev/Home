@@ -10,6 +10,7 @@ spec:
     - "*.home.lucadev.de"
     - "pub.lucadev.de"
     - "*.pub.lucadev.de"
+    - "link.lucadev.de"
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
