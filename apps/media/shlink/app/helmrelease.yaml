@@ -42,7 +42,7 @@ spec:
         controller: shlink
         ports:
           http:
-            port: 8000
+            port: 8080
 
     ingress:
       app:
