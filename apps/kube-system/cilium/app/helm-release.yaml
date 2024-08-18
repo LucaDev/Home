@@ -19,7 +19,7 @@ spec:
   values:
     ipam:
       operator:
-        clusterPoolIPv4PodCIDRList="10.42.0.0/16"
+        clusterPoolIPv4PodCIDRList: "10.42.0.0/16"
 
     #kubeProxyReplacement: true
     #k8sServiceHost: home.lucadev.de
