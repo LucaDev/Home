@@ -5,6 +5,8 @@ kind: Kustomization
 namespace: media
 resources:
   - ./helmrelease.yaml
+  - ./database.yaml
+  - ./externalsecret.yaml
 labels:
   - pairs:
       app.kubernetes.io/name: shlink

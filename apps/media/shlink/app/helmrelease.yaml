@@ -35,6 +35,24 @@ spec:
               IS_HTTPS_ENABLED: "true"
               DEFAULT_DOMAIN: ${HOSTNAME}
               TIMEZONE: "Europe/Berlin"
+              DB_DRIVER: postgres
+              DB_NAME: app
+              DB_USER:
+                valueFrom:
+                  secretKeyRef:
+                    name: shlink-app
+                    key: username
+              DB_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: shlink-app
+                    key: password
+              DB_HOST: "shlink.media.svc.cluster.local"
+              INITIAL_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: shlink
+                    key: APIKEY
         annotations:
           reloader.stakater.com/auto: "true"
     service:

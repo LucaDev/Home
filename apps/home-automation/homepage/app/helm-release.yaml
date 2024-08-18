@@ -75,6 +75,11 @@ spec:
                 ping: http://192.168.1.157
                 icon: mdi-zigbee
                 description: Steuerung des ZigBee Coordinators
+            - Link Shortener:
+                href: https://app.shlink.io/
+                ping: https://link.lucadev.de
+                icon: shlink
+                description: Shlink Link Shortener
         - Netzwerk:
             - POE Switch:
                 href: http://192.168.1.158
