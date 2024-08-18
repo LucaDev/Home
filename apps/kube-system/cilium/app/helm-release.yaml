@@ -30,8 +30,11 @@ spec:
     operator:
       replicas: 1 # singlenode
 
+    envoy:
+      enabled: false
+
     #routingMode: native
 
     kubeProxyReplacement: true
-    k8sServiceHost: home.lucadev.de
+    k8sServiceHost: homeserver.local
     k8sServicePort: 6443
