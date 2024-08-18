@@ -22,7 +22,7 @@ spec:
         clusterPoolIPv4PodCIDRList: "10.42.0.0/16"
     bpf:
       masquerade: true
-      atapathMode: netkit
+      datapathMode: netkit
 
     routingMode: native
 
