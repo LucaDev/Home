@@ -27,3 +27,4 @@ resources:
   - ./victoriametrics.yaml
   - ./dragonfly.yaml
   - ./angelnu.yaml
+  - ./cilium.yaml
