@@ -20,6 +20,11 @@ spec:
     ipam:
       operator:
         clusterPoolIPv4PodCIDRList: "10.42.0.0/16"
+    bpf:
+      masquerade: true
+      atapathMode: netkit
+
+    routingMode: native
 
     #kubeProxyReplacement: true
     #k8sServiceHost: home.lucadev.de
