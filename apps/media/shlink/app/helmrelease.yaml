@@ -47,7 +47,7 @@ spec:
                   secretKeyRef:
                     name: shlink-app
                     key: password
-              DB_HOST: "shlink.media.svc.cluster.local"
+              DB_HOST: "shlink-rw.media.svc.cluster.local"
               INITIAL_API_KEY:
                 valueFrom:
                   secretKeyRef:
