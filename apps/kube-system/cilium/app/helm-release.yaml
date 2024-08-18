@@ -24,7 +24,10 @@ spec:
       masquerade: true
       datapathMode: netkit
 
-    routingMode: native
+    nodePort:
+      enabled: true
+
+    #routingMode: native
 
     #kubeProxyReplacement: true
     #k8sServiceHost: home.lucadev.de
