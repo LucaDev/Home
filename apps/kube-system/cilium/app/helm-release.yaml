@@ -1,0 +1,26 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cilium
+  namespace: kube-system
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: cilium
+      version: 1.16.1
+      sourceRef:
+        kind: HelmRepository
+        name: cilium
+        namespace: flux-system
+      interval: 30m
+  values:
+    ipam:
+      operator:
+        clusterPoolIPv4PodCIDRList="10.42.0.0/16"
+
+    #kubeProxyReplacement: true
+    #k8sServiceHost: home.lucadev.de
+    #k8sServicePort: 6443
