@@ -13,3 +13,7 @@ spec:
       web:
         redirectTo:
           port: websecure
+
+    controller:
+      service:
+        loadBalancerClass: "io.cilium/node"
