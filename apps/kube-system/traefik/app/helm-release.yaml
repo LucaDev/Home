@@ -1,0 +1,53 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: traefik
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: traefik
+      version: v30.1.0
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+        namespace: flux-system
+
+  values:
+    providers:
+      kubernetesCRD:
+        allowCrossNamespace: true
+      kubernetesIngress:
+        publishedService:
+          enabled: true
+
+    ports:
+      web:
+        redirectTo:
+          port: websecure
+
+    controller:
+      service:
+        loadBalancerClass: "io.cilium/node"
+
+    deployment:
+      podAnnotations:
+        prometheus.io/port: "8082"
+        prometheus.io/scrape: "true"
+
+    priorityClassName: "system-cluster-critical"
+
+    tolerations:
+      - key: "CriticalAddonsOnly"
+        operator: "Exists"
+      - key: "node-role.kubernetes.io/control-plane"
+        operator: "Exists"
+        effect: "NoSchedule"
+      - key: "node-role.kubernetes.io/master"
+        operator: "Exists"
+        effect: "NoSchedule"
+
+    service:
+      ipFamilyPolicy: "PreferDualStack"

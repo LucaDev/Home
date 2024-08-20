@@ -66,11 +66,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: traefik-config
+  name: traefik
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./apps/kube-system/traefik/config"
+  path: "./apps/kube-system/traefik/app"
   prune: true
   sourceRef:
     kind: GitRepository
