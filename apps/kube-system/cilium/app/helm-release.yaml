@@ -27,6 +27,7 @@ spec:
 
     bpf:
       masquerade: true
+      tproxy: true
       datapathMode: netkit
 
     nodePort:
@@ -44,6 +45,9 @@ spec:
     nodeIPAM:
       enabled: true
 
+    rollOutCiliumPods: true
+
+    #ipv4NativeRoutingCIDR: 10.0.0.0/16 TODO
     #routingMode: native
 
     kubeProxyReplacement: true
