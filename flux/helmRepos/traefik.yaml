@@ -8,5 +8,5 @@ metadata:
 spec:
   type: oci
   interval: 30m
-  url: oci://ghcr.io/traefik/helm/traefik
+  url: oci://ghcr.io/traefik/helm/
   timeout: 3m

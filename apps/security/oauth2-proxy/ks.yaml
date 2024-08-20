@@ -8,6 +8,7 @@ metadata:
 spec:
   dependsOn:
     - name: external-secrets-stores
+    - name: traefik
   path: ./apps/security/oauth2-proxy/app
   prune: true
   sourceRef:
