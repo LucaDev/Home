@@ -23,10 +23,17 @@ spec:
         publishedService:
           enabled: true
 
+    ingressRoute:
+      dashboard:
+        enabled: true
+
     ports:
       web:
         redirectTo:
           port: websecure
+      websecure:
+        http3:
+          enabled: true
 
     priorityClassName: "system-cluster-critical"
 
