@@ -28,3 +28,4 @@ resources:
   - ./dragonfly.yaml
   - ./angelnu.yaml
   - ./cilium.yaml
+  - ./traefik.yaml
