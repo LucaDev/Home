@@ -69,7 +69,7 @@ spec:
     ingress:
       app:
         hosts:
-          - host: &host "idm.home.lucadev.de"
+          - host: &host "idm.lucadev.de"
             paths:
               - path: /
                 pathType: Prefix

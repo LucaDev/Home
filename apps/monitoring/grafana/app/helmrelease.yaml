@@ -199,9 +199,9 @@ spec:
         use_pkce: true
         client_id: grafana
         # client_secret: # Set by env vars
-        auth_url: https://idm.home.lucadev.de/ui/oauth2
-        token_url: https://idm.home.lucadev.de/oauth2/token
-        api_url: https://idm.home.lucadev.de/oauth2/openid/grafana/userinfo
+        auth_url: https://idm.lucadev.de/ui/oauth2
+        token_url: https://idm.lucadev.de/oauth2/token
+        api_url: https://idm.lucadev.de/oauth2/openid/grafana/userinfo
       auth.generic_oauth.group_mapping:
         org_id: 1
         role_attribute_path: |

@@ -54,7 +54,7 @@ spec:
     ingress:
       app:
         hosts:
-          - host: &host "oauth.home.lucadev.de"
+          - host: &host "oauth.lucadev.de"
             paths:
               - path: /oauth2/
                 pathType: Prefix
