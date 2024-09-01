@@ -87,7 +87,7 @@ spec:
                 service:
                   identifier: app
                   port: http
-          - host: jellyfin.pub.lucadev.de
+          - host: lucaflix.lucadev.de
             paths:
               - path: /
                 pathType: Prefix
@@ -97,7 +97,7 @@ spec:
         tls:
           - hosts:
               - ${HOSTNAME}
-              - jellyfin.pub.lucadev.de
+              - lucaflix.lucadev.de
 
     persistence:
       media:
