@@ -35,7 +35,7 @@ spec:
       main:
         enabled: true
         annotations:
-          - traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
         hosts:
           - host: home.lucadev.de
             paths:
