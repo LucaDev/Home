@@ -45,7 +45,7 @@ spec:
         enabled: true
         pathType: Prefix
         hosts:
-          - &host_prometheus prometheus.home.lucadev.de
+          - &host_prometheus prometheus.lucadev.de
         tls:
           - hosts:
               - *host_prometheus

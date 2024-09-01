@@ -72,6 +72,13 @@ spec:
                 service:
                   identifier: app
                   port: http
+          - host: spdf.lucadev.de
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: app
+                  port: http
         tls:
           - hosts:
               - ${HOSTNAME}
