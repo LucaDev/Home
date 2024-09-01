@@ -6,9 +6,7 @@ metadata:
 spec:
   secretName: home-lucadev-de-wildcard-cert
   dnsNames:
-    - home.lucadev.de
     - "*.home.lucadev.de"
-    - "pub.lucadev.de"
     - "*.pub.lucadev.de"
     - "*.lucadev.de"
   issuerRef:
