@@ -15,7 +15,6 @@ spec:
   postBuild:
     substitute:
       APP: *appname
-      HOSTNAME: link.lucadev.de
       APP_UID: "568"
       APP_GID: "568"
       VOLSYNC_CLAIM: shlink

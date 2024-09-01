@@ -75,7 +75,7 @@ spec:
           gethomepage.dev/name: Jellyfin
           gethomepage.dev/weight: "-100"
           gethomepage.dev/widget.type: jellyfin
-          gethomepage.dev/widget.url: https://jellyfin.home.lucadev.de
+          gethomepage.dev/widget.url: https://lucaflix.lucadev.de
           gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_JELLYFIN_APIKEY}}`}}"
           gethomepage.dev/widget.enableBlocks: "true"
           gethomepage.dev/widget.enableNowPlaying: "false"

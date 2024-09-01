@@ -7,4 +7,3 @@ resources:
   - ./rfc1918.yaml
   - ./local-IOT.yaml
   - ./local-home.yaml
-  - ./secure-headers.yaml

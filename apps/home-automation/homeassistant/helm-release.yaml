@@ -70,6 +70,12 @@ spec:
                 service:
                   identifier: app
                   port: http
+          - host: "ha.lucadev.de"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
         tls:
           - hosts:
               - *host
@@ -79,3 +85,4 @@ spec:
           gethomepage.dev/group: Heimautomation
           gethomepage.dev/icon: home-assistant
           gethomepage.dev/name: HomeAssistant
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd

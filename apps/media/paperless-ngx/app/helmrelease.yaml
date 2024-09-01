@@ -60,7 +60,7 @@ spec:
     ingress:
       app:
         hosts:
-          - host: ${HOSTNAME}
+          - host: &host paperless.lucadev.de
             paths:
               - path: /
                 service:
@@ -68,7 +68,7 @@ spec:
                   port: http
         tls:
           - hosts:
-              - ${HOSTNAME}
+              - *host
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Dokumenten Verwaltungs System
@@ -77,7 +77,7 @@ spec:
           gethomepage.dev/name: PaperlessNGX
           gethomepage.dev/weight: "-80"
           gethomepage.dev/widget.type: paperlessngx
-          gethomepage.dev/widget.url: https://paperless.home.lucadev.de
+          gethomepage.dev/widget.url: https://paperless.lucadev.de
           gethomepage.dev/widget.username: "{{`{{HOMEPAGE_VAR_PAPERLESS_USERNAME}}`}}"
           gethomepage.dev/widget.password: "{{`{{HOMEPAGE_VAR_PAPERLESS_PASSWORD}}`}}"
 

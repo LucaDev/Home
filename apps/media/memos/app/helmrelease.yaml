@@ -50,7 +50,7 @@ spec:
           gethomepage.dev/icon: memos
           gethomepage.dev/name: Notes
         hosts:
-          - host: ${HOSTNAME}
+          - host: notes.lucadev.de
             paths:
               - path: /
                 service:
@@ -58,7 +58,7 @@ spec:
                   port: http
         tls:
           - hosts:
-              - ${HOSTNAME}
+              - notes.lucadev.de
 
     persistence:
       data:

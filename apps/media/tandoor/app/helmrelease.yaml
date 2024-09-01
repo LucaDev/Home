@@ -118,8 +118,9 @@ spec:
           gethomepage.dev/group: Medien
           gethomepage.dev/icon: tandoor
           gethomepage.dev/name: Tandoor
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
         hosts:
-          - host: &hostName tandoor.home.lucadev.de
+          - host: &hostName tandoor.lucadev.de
             paths:
               - path: /
                 service:

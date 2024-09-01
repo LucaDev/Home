@@ -57,7 +57,7 @@ spec:
     ingress:
       app:
         hosts:
-          - host: &host alerts.home.lucadev.de
+          - host: &host alerts.lucadev.de
             paths:
               - path: /
                 service:
@@ -67,13 +67,12 @@ spec:
           - hosts:
               - *host
         annotations:
-          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Alarmzentrale
           gethomepage.dev/group: Überwachung
           gethomepage.dev/icon: alertmanager
           gethomepage.dev/name: Alertmanager
-
     persistence:
       config:
         type: configMap

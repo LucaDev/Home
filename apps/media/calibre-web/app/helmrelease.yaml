@@ -64,12 +64,13 @@ spec:
       app:
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Filme und Serien
+          gethomepage.dev/description: Bücher
           gethomepage.dev/group: Medien
           gethomepage.dev/icon: calibre-web
           gethomepage.dev/name: Calibre
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
         hosts:
-          - host: ${HOSTNAME}
+          - host: calibre.lucadev.de
             paths:
               - path: /
                 service:
@@ -77,7 +78,7 @@ spec:
                   port: http
         tls:
           - hosts:
-              - ${HOSTNAME}
+              - calibre.lucadev.de
 
     persistence:
       config:

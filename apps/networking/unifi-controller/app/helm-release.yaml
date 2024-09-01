@@ -108,6 +108,13 @@ spec:
                 service:
                   identifier: internal
                   port: http
+          - host: unifi.lucadev.de
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: internal
+                  port: http
         tls:
           - hosts:
               - *host
@@ -122,3 +129,4 @@ spec:
           gethomepage.dev/widget.username: "monitoring"
           gethomepage.dev/widget.password: "{{`{{HOMEPAGE_VAR_UNIFI_MONITORING_PASSWORD}}`}}"
           gethomepage.dev/widget.fields: "[\"wlan_users\"]"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd

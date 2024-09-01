@@ -74,7 +74,7 @@ spec:
     ingress:
       app:
         hosts:
-          - host: &host "nodered.home.lucadev.de"
+          - host: &host "nodered.lucadev.de"
             paths:
               - path: /
                 service:
@@ -89,6 +89,7 @@ spec:
           gethomepage.dev/group: Heimautomation
           gethomepage.dev/icon: node-red
           gethomepage.dev/name: NodeRed
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
 
     persistence:
       config-file:

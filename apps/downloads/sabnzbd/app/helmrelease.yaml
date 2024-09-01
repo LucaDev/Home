@@ -96,7 +96,7 @@ spec:
           gethomepage.dev/widget.type: sabnzbd
           gethomepage.dev/widget.url: "https://sabnzbd.home.lucadev.de"
           gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_SABNZBD_APIKEY}}`}}"
-          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
         hosts:
           - host: "${HOSTNAME}"
             paths:

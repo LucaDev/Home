@@ -79,7 +79,7 @@ spec:
           gethomepage.dev/group: Heimautomation
           gethomepage.dev/icon: esphome
           gethomepage.dev/name: ESPHome
-          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
 
     persistence:
       secrets:

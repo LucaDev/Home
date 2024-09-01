@@ -61,6 +61,13 @@ spec:
                 service:
                   identifier: app
                   port: http
+          - host: &host "oauth.lucadev.de"
+            paths:
+              - path: /oauth2/
+                pathType: Prefix
+                service:
+                  identifier: app
+                  port: http
         tls:
           - hosts:
               - *host

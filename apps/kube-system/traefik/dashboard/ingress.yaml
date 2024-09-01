@@ -5,14 +5,14 @@ metadata:
   name: traefik
   namespace: kube-system
   annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: kube-system-traefik-dashboard@kubernetescrd,security-oauth-proxy@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: kube-system-traefik-dashboard@kubernetescrd,security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Traefik Dashboard
     gethomepage.dev/group: Netzwerk
     gethomepage.dev/icon: traefik
     gethomepage.dev/name: Traefik
     gethomepage.dev/widget.type: traefik
-    gethomepage.dev/widget.url: https://traefik.home.lucadev.de
+    gethomepage.dev/widget.url: https://traefik.lucadev.de
 spec:
   rules:
     - host: traefik.home.lucadev.de
