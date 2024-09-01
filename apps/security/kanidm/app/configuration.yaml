@@ -18,8 +18,9 @@ data:
 
     # Common
     log_level = "info"
-    domain = "idm.lucadev.de"
-    origin = "https://idm.lucadev.de"
+    # TODO
+    domain = "idm.home.lucadev.de"
+    origin = "https://idm.home.lucadev.de"
 
     # Backups
     [online_backup]
