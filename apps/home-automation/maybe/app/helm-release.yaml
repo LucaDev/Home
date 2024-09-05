@@ -79,7 +79,7 @@ spec:
           gethomepage.dev/name: Maybe
           traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
         hosts:
-          - host: &host maybe.home.lucadev.de
+          - host: &host maybe.lucadev.de
             paths:
               - path: /
                 pathType: Prefix

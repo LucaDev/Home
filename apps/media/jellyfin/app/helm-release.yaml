@@ -80,14 +80,7 @@ spec:
           gethomepage.dev/widget.enableBlocks: "true"
           gethomepage.dev/widget.enableNowPlaying: "false"
         hosts:
-          - host: ${HOSTNAME}
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  identifier: app
-                  port: http
-          - host: lucaflix.lucadev.de
+          - host: &host lucaflix.lucadev.de
             paths:
               - path: /
                 pathType: Prefix
@@ -96,8 +89,7 @@ spec:
                   port: http
         tls:
           - hosts:
-              - ${HOSTNAME}
-              - lucaflix.lucadev.de
+              - *host
 
     persistence:
       media:

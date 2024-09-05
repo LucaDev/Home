@@ -18,7 +18,7 @@ module.exports = {
         userInfoURL: "https://idm.lucadev.de/oauth2/openid/node-red/userinfo",
         clientID: "node-red",
         clientSecret: process.env.NODE_RED_OAUTH_CLIENT_SECRET,
-        callbackURL: "https://nodered.home.lucadev.de/auth/strategy/callback",
+        callbackURL: "https://nodered.lucadev.de/auth/strategy/callback",
         scope: ["email", "profile", "openid"],
         proxy: true,
         verify: function (issuer, profile, done) {

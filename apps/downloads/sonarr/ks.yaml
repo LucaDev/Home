@@ -22,7 +22,6 @@ spec:
   postBuild:
     substitute:
       APP: *appname
-      HOSTNAME: sonarr.home.lucadev.de
       APP_UID: "568"
       APP_GID: "568"
       VOLSYNC_CLAIM: sonarr-config

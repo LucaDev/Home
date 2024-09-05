@@ -64,7 +64,7 @@ spec:
     ingress:
       app:
         hosts:
-          - host: &host "esphome.home.lucadev.de"
+          - host: &host "esphome.lucadev.de"
             paths:
               - path: /
                 service:

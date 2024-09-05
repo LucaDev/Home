@@ -43,7 +43,7 @@ spec:
                 sabnzbd.downloads.svc,
                 sabnzbd.downloads.svc.cluster,
                 sabnzbd.downloads.svc.cluster.local,
-                ${HOSTNAME}
+                sabnzbd.lucadev.de
               SABNZBD__API_KEY:
                 valueFrom:
                   secretKeyRef:
@@ -94,11 +94,11 @@ spec:
           gethomepage.dev/name: Sabnzbd
           gethomepage.dev/weight: "-100"
           gethomepage.dev/widget.type: sabnzbd
-          gethomepage.dev/widget.url: "https://sabnzbd.home.lucadev.de"
+          gethomepage.dev/widget.url: "https://sabnzbd.lucadev.de"
           gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_SABNZBD_APIKEY}}`}}"
           traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
         hosts:
-          - host: "${HOSTNAME}"
+          - host: &host sabnzbd.lucadev.de
             paths:
               - path: /
                 service:
@@ -106,7 +106,7 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "${HOSTNAME}"
+              - *host
 
     persistence:
       config:

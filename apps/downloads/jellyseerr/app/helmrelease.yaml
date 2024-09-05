@@ -67,11 +67,11 @@ spec:
           gethomepage.dev/icon: jellyseerr
           gethomepage.dev/name: Jellyseerr
           gethomepage.dev/widget.type: jellyseerr
-          gethomepage.dev/widget.url: https://jellyseerr.home.lucadev.de
+          gethomepage.dev/widget.url: https://jellyseerr.lucadev.de
           gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_JELLYSEERR_APIKEY}}`}}"
           traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
         hosts:
-          - host: "${HOSTNAME}"
+          - host: &host jellyseerr.lucadev.de
             paths:
               - path: /
                 service:
@@ -79,7 +79,7 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "${HOSTNAME}"
+              - *host
 
     persistence:
       config:

@@ -230,7 +230,7 @@ spec:
         allow_embedding: true
         cookie_samesite: grafana
       server:
-        root_url: https://grafana.home.lucadev.de
+        root_url: https://grafana.lucadev.de
 
     imageRenderer:
       enabled: false

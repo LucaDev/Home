@@ -68,6 +68,7 @@ spec:
       main:
         controller: unifi
         type: LoadBalancer
+        loadBalancerClass: "io.cilium/node"
         ports:
           controller:
             enabled: true
@@ -101,14 +102,7 @@ spec:
     ingress:
       main:
         hosts:
-          - host: &host unifi.home.lucadev.de
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  identifier: internal
-                  port: http
-          - host: unifi.lucadev.de
+          - host: &host unifi.lucadev.de
             paths:
               - path: /
                 pathType: Prefix
@@ -125,7 +119,7 @@ spec:
           gethomepage.dev/icon: unifi
           gethomepage.dev/name: Unifi
           gethomepage.dev/widget.type: "unifi"
-          gethomepage.dev/widget.url: "https://unifi.home.lucadev.de"
+          gethomepage.dev/widget.url: "https://unifi.lucadev.de"
           gethomepage.dev/widget.username: "monitoring"
           gethomepage.dev/widget.password: "{{`{{HOMEPAGE_VAR_UNIFI_MONITORING_PASSWORD}}`}}"
           gethomepage.dev/widget.fields: "[\"wlan_users\"]"

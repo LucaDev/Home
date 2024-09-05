@@ -41,7 +41,7 @@ spec:
               SONARR__PORT: &port 8989
               SONARR__AUTHENTICATION_METHOD: External
               SONARR__AUTHENTICATION_REQUIRED: DisabledForLocalAddresses
-              SONARR__APPLICATION_URL: "https://sonarr.home.lucadev.de"
+              SONARR__APPLICATION_URL: "https://sonarr.lucadev.de"
               SONARR__LOG_LEVEL: info
               SONARR__API_KEY:
                 valueFrom:
@@ -88,11 +88,11 @@ spec:
           gethomepage.dev/name: Sonarr
           gethomepage.dev/weight: "-90"
           gethomepage.dev/widget.type: sonarr
-          gethomepage.dev/widget.url: "https://sonarr.home.lucadev.de"
+          gethomepage.dev/widget.url: "https://sonarr.lucadev.de"
           gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_SONARR_APIKEY}}`}}"
           traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
         hosts:
-          - host: "${HOSTNAME}"
+          - host: &host sonarr.lucadev.de
             paths:
               - path: /
                 service:
@@ -100,7 +100,7 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "${HOSTNAME}"
+              - *host
 
     persistence:
       config:

@@ -33,7 +33,7 @@ spec:
                 memory: 600M
             env:
               IS_HTTPS_ENABLED: "true"
-              DEFAULT_DOMAIN: ${HOSTNAME}
+              DEFAULT_DOMAIN: &host link.lucadev.de
               TIMEZONE: "Europe/Berlin"
               DB_DRIVER: postgres
               DB_NAME: app
@@ -65,7 +65,7 @@ spec:
     ingress:
       app:
         hosts:
-          - host: &link link.lucadev.de
+          - host: *host
             paths:
               - path: /
                 service:
@@ -73,4 +73,4 @@ spec:
                   port: http
         tls:
           - hosts:
-              - *link
+              - *host

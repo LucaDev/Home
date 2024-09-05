@@ -22,7 +22,6 @@ spec:
   postBuild:
     substitute:
       APP: *appname
-      HOSTNAME: jellyseerr.home.lucadev.de
       APP_UID: "0"
       APP_GID: "0" # TODO
       VOLSYNC_CLAIM: jellyseerr-config

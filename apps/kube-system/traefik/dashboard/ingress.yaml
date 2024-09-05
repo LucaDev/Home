@@ -15,7 +15,7 @@ metadata:
     gethomepage.dev/widget.url: https://traefik.lucadev.de
 spec:
   rules:
-    - host: traefik.home.lucadev.de
+    - host: traefik.lucadev.de
       http:
         paths:
           - path: /

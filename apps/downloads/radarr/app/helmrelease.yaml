@@ -41,7 +41,7 @@ spec:
               RADARR__PORT: &port 7878
               RADARR__AUTHENTICATION_METHOD: External
               RADARR__AUTHENTICATION_REQUIRED: DisabledForLocalAddresses
-              RADARR__APPLICATION_URL: &url "https://radarr.home.lucadev.de"
+              RADARR__APPLICATION_URL: &url "https://radarr.lucadev.de"
               RADARR__LOG_LEVEL: info
               RADARR__API_KEY:
                 valueFrom:
@@ -92,7 +92,7 @@ spec:
           gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_RADARR_APIKEY}}`}}"
           traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
         hosts:
-          - host: "${HOSTNAME}"
+          - host: &host radarr.lucadev.de
             paths:
               - path: /
                 service:
@@ -100,7 +100,7 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "${HOSTNAME}"
+              - *host
 
     persistence:
       config:

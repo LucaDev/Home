@@ -5,7 +5,7 @@ metadata:
   name: paperless-configmap
 data:
   # Configure application
-  PAPERLESS_URL: https://paperless.home.lucadev.de
+  PAPERLESS_URL: https://paperless.lucadev.de
   PAPERLESS_PORT: "8000"
   PAPERLESS_TIME_ZONE: "Europe/Berlin"
   PAPERLESS_WEBSERVER_WORKERS: "1"
