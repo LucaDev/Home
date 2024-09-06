@@ -10,7 +10,7 @@ resources:
   - ./grafana.yaml
   - ./ingress-nginx.yaml
   - ./bitnami.yaml
-  - ./bjw-s.yaml
+  - ./bernd-schorgers.yaml
   - ./external-secrets.yaml
   - ./homepage.yaml
   - ./stakater.yaml
