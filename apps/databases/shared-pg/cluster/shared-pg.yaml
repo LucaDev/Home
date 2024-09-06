@@ -18,3 +18,20 @@ spec:
   postgresql:
     shared_preload_libraries:
       - "vectors.so"
+    parameters:
+      max_connections: "400"
+      shared_buffers: 256MB
+
+  superuserSecret:
+    name: cloudnative-pg-secret
+  enableSuperuserAccess: true
+
+  nodeMaintenanceWindow:
+    inProgress: false
+    reusePVC: true
+
+  resources:
+    requests:
+      cpu: 500m
+    limits:
+      memory: 4Gi
