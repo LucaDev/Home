@@ -74,15 +74,12 @@ spec:
     ingress:
       app:
         hosts:
-          - host: &host "nodered.lucadev.de"
+          - host: "nodered.lucadev.de"
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Automatisierungen

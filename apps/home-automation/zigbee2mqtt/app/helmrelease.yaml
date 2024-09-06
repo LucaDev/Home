@@ -119,15 +119,12 @@ spec:
     ingress:
       app:
         hosts:
-          - host: &host "z2m.lucadev.de"
+          - host: "z2m.lucadev.de"
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Zigbee Geräteverwaltung

@@ -56,9 +56,6 @@ spec:
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - notes.lucadev.de
 
     persistence:
       data:

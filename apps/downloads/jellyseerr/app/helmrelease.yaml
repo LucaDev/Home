@@ -71,15 +71,12 @@ spec:
           gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_JELLYSEERR_APIKEY}}`}}"
           traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
         hosts:
-          - host: &host jellyseerr.lucadev.de
+          - host: jellyseerr.lucadev.de
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
 
     persistence:
       config:

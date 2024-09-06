@@ -55,13 +55,10 @@ spec:
       annotations:
         traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
       hosts:
-        - host: &host "blackbox-exporter.lucadev.de"
+        - host: "blackbox-exporter.lucadev.de"
           paths:
             - path: /
               pathType: Prefix
-      tls:
-        - hosts:
-            - *host
 
     prometheusRule:
       enabled: true

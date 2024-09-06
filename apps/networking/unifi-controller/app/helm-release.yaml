@@ -102,16 +102,13 @@ spec:
     ingress:
       main:
         hosts:
-          - host: &host unifi.lucadev.de
+          - host: unifi.lucadev.de
             paths:
               - path: /
                 pathType: Prefix
                 service:
                   identifier: internal
                   port: http
-        tls:
-          - hosts:
-              - *host
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: WLAN Verwaltung

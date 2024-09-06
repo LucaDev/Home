@@ -76,9 +76,6 @@ spec:
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - calibre.lucadev.de
 
     persistence:
       config:

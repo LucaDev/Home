@@ -238,10 +238,7 @@ spec:
     ingress:
       enabled: true
       hosts:
-        - &host grafana.lucadev.de
-      tls:
-        - hosts:
-            - *host
+        - grafana.lucadev.de
       annotations:
         gethomepage.dev/enabled: "true"
         gethomepage.dev/description: Dashboards

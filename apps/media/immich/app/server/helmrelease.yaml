@@ -124,21 +124,17 @@ spec:
                 immich-machine-learning
             )
         hosts:
-          - host: &host photos.home.lucadev.de
+          - host: photos.home.lucadev.de
             paths:
               - path: /
                 pathType: Prefix
                 service:
                   identifier: app
                   port: http
-          - host: &host2 photos.lucadev.de
+          - host: photos.lucadev.de
             paths:
               - path: /
                 pathType: Prefix
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
-              - *host2

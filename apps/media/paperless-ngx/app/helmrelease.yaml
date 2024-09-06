@@ -60,15 +60,12 @@ spec:
     ingress:
       app:
         hosts:
-          - host: &host paperless.lucadev.de
+          - host: paperless.lucadev.de
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Dokumenten Verwaltungs System

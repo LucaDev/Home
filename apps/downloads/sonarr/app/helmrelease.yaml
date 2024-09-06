@@ -92,15 +92,12 @@ spec:
           gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_SONARR_APIKEY}}`}}"
           traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
         hosts:
-          - host: &host sonarr.lucadev.de
+          - host: sonarr.lucadev.de
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
 
     persistence:
       config:

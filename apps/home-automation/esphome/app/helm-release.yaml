@@ -64,15 +64,12 @@ spec:
     ingress:
       app:
         hosts:
-          - host: &host "esphome.lucadev.de"
+          - host: "esphome.lucadev.de"
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Geräte-Verwaltung

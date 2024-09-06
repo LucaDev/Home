@@ -87,15 +87,12 @@ spec:
           gethomepage.dev/name: Prowlarr
           traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
         hosts:
-          - host: &host prowlarr.lucadev.de
+          - host: prowlarr.lucadev.de
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
 
     persistence:
       config:

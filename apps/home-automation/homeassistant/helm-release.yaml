@@ -64,7 +64,7 @@ spec:
     ingress:
       main:
         hosts:
-          - host: &host "smart.home.lucadev.de"
+          - host: "smart.home.lucadev.de"
             paths:
               - path: /
                 service:
@@ -76,9 +76,6 @@ spec:
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Smarthome Zentrale
