@@ -5,7 +5,6 @@ kind: Kustomization
 namespace: media
 resources:
   - ./helmrelease.yaml
-  - ./database.yaml
   - ./externalsecret.yaml
   - ./configmap.yaml
   - ../../../../templates/volsync/hetzner
