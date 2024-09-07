@@ -38,17 +38,10 @@ spec:
               DB_DRIVER: postgres
               DB_NAME: app
               DB_USER: shlink
-              DB_PASSWORD:
-                valueFrom:
-                  secretKeyRef:
-                    name: shlink
-                    key: postgres_password
               DB_HOST: "shared-pg-rw.databases.svc.cluster.local"
-              INITIAL_API_KEY:
-                valueFrom:
-                  secretKeyRef:
-                    name: shlink
-                    key: APIKEY
+            envFrom:
+              - secretRef:
+                  name: shlink
         annotations:
           reloader.stakater.com/auto: "true"
     service:
