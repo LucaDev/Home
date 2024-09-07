@@ -36,7 +36,7 @@ spec:
               DEFAULT_DOMAIN: &host link.lucadev.de
               TIMEZONE: "Europe/Berlin"
               DB_DRIVER: postgres
-              DB_NAME: app
+              DB_NAME: shlink
               DB_USER: shlink
               DB_HOST: "shared-pg-rw.databases.svc.cluster.local"
             envFrom:
