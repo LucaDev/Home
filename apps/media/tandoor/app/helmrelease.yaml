@@ -50,6 +50,7 @@ spec:
               POSTGRES_HOST: shared-pg-rw.databases.svc.cluster.local
               POSTGRES_PORT: 5432
               POSTGRES_DB: tandoor
+              POSTGRES_USER: "tandoor"
             envFrom:
               - secretRef:
                   name: tandoor-secret
