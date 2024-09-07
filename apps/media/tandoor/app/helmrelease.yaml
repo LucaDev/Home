@@ -47,7 +47,7 @@ spec:
               SOCIAL_DEFAULT_ACCESS: 1
               SOCIAL_DEFAULT_GROUP: user
               DB_ENGINE: django.db.backends.postgresql
-              POSTGRES_HOST: shared-pg.databases.svc.cluster.local
+              POSTGRES_HOST: shared-pg-rw.databases.svc.cluster.local
               POSTGRES_PORT: 5432
               POSTGRES_DB: tandoor
             envFrom:
