@@ -6,4 +6,4 @@ namespace: home-automation
 resources:
   - ./helm-release.yaml
   - ./volsync.yaml
-#  - ./external-secret.yaml
+  - ./external-secret.yaml
