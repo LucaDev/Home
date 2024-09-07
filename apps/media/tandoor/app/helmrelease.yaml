@@ -47,19 +47,9 @@ spec:
               SOCIAL_DEFAULT_ACCESS: 1
               SOCIAL_DEFAULT_GROUP: user
               DB_ENGINE: django.db.backends.postgresql
-              POSTGRES_HOST: tandoor-rw.media.svc.cluster.local
+              POSTGRES_HOST: shared-pg.databases.svc.cluster.local
               POSTGRES_PORT: 5432
-              POSTGRES_USER:
-                valueFrom:
-                  secretKeyRef:
-                    name: tandoor-app
-                    key: username
-              POSTGRES_PASSWORD:
-                valueFrom:
-                  secretKeyRef:
-                    name: tandoor-app
-                    key: password
-              POSTGRES_DB: app
+              POSTGRES_DB: tandoor
             envFrom:
               - secretRef:
                   name: tandoor-secret
