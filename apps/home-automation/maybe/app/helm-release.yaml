@@ -37,19 +37,9 @@ spec:
               GOOD_JOB_EXECUTION_MODE: async
               # Database
               DB_HOST:
-                value: "maybe-rw.home-automation.svc.cluster.local"
-              POSTGRES_USER:
-                valueFrom:
-                  secretKeyRef:
-                    name: maybe-app
-                    key: username
-              POSTGRES_PASSWORD:
-                valueFrom:
-                  secretKeyRef:
-                    name: maybe-app
-                    key: password
-              POSTGRES_DB:
-                value: "app"
+                value: "shared-pg-rw.databases.svc.cluster.local"
+              POSTGRES_USER: "maybe"
+              POSTGRES_DB: "maybe"
             envFrom:
               - secretRef:
                   name: maybe-secret
