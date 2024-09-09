@@ -94,7 +94,8 @@ spec:
       config:
         type: persistentVolumeClaim
         accessMode: ReadWriteOnce
-        size: 1GiB
+        size: 1Gi
+        storageClass: ssd-dualreplica
         globalMounts:
           - path: /config
       homes:
