@@ -6,3 +6,4 @@ resources:
   - ./configuration/ks.yaml
   - ./snapshot
   - ./volsync/ks.yaml
+  - ./filebrowser/ks.yaml
