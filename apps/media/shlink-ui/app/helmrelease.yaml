@@ -1,0 +1,65 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: shlink-ui
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.4.0
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  values:
+    controllers:
+      shlink:
+        containers:
+          app:
+            image:
+              repository: ghcr.io/shlinkio/shlink-web-client
+              tag: 4.1.2
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128M
+              limits:
+                cpu: 1000m
+                memory: 256M
+            # TODO secure
+        annotations:
+          reloader.stakater.com/auto: "true"
+    service:
+      app:
+        controller: shlink
+        ports:
+          http:
+            port: 8080
+
+    ingress:
+      app:
+        hosts:
+          - host: shlink.lucadev.de
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Shlink Link Shortener
+          gethomepage.dev/group: Weitere
+          gethomepage.dev/icon: shlink
+          gethomepage.dev/name: Link Shortener
+          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
+    persistence:
+      config:
+        type: secret
+        name: shlink-ui
+        globalMounts:
+          - path: /usr/share/nginx/html/servers.json
+            subPath: servers.json
