@@ -119,8 +119,10 @@ spec:
         mode: cluster
       docker:
       settings:
-        background: https://i.imgur.com/hOzzkCY.jpeg
-        backgroundOpacity: 0.3
+        background:
+          image: url("https://raw.githubusercontent.com/gethomepage/homepage/main/docs/assets/blossom_valley.jpg")
+          blur: 3xl
+          opacity: 50
         target: _self
         language: de
         statusStyle: 'dot'
@@ -149,7 +151,7 @@ spec:
               columns: 3
           - Netzwerk:
               style: row
-              columns: 4
+              columns: 3
           - Weitere:
               style: row
               columns: 3

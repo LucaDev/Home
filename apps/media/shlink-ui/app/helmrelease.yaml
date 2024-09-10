@@ -51,6 +51,7 @@ spec:
                   port: http
         annotations:
           gethomepage.dev/enabled: "true"
+          gethomepage.dev/href: "https://shlink.lucadev.de/server/4e6a5233-2ed3-4821-80ba-2b8c51efb842"
           gethomepage.dev/description: Shlink Link Shortener
           gethomepage.dev/group: Weitere
           gethomepage.dev/icon: shlink
