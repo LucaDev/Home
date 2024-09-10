@@ -147,15 +147,19 @@ spec:
               style: row
               columns: 3
           - Überwachung:
+              tab: Technik
               style: row
               columns: 3
           - Netzwerk:
+              tab: Technik
               style: row
               columns: 3
           - Weitere:
+              tab: Technik
               style: row
               columns: 3
           - Gekoppelte Netze:
+              tab: Technik
               style: row
               columns: 3
     envFrom:
