@@ -121,8 +121,7 @@ spec:
       settings:
         background:
           image: https://raw.githubusercontent.com/gethomepage/homepage/main/docs/assets/blossom_valley.jpg
-          blur: sm
-          opacity: 50
+          opacity: 30
         cardBlur: xl
         target: _self
         language: de
