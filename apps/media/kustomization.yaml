@@ -12,5 +12,6 @@ resources:
   - ./memos/ks.yaml
   - ./tandoor/ks.yaml
   - ./shlink/ks.yaml
+  - ./shlink-ui/ks.yaml
 # TODO: mailbackup
 #  - ./frigate/ks.yaml
