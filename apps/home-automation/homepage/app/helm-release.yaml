@@ -138,12 +138,15 @@ spec:
         disableCollapse: true
         layout:
           - Heimautomation:
+              tab: Allgemeines
               style: row
               columns: 4
           - Medien:
+              tab: Allgemeines
               style: row
               columns: 3
           - Downloads:
+              tab: Allgemeines
               style: row
               columns: 3
           - Überwachung:
