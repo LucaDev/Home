@@ -73,7 +73,7 @@ spec:
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Geräte-Verwaltung
-          gethomepage.dev/group: Heimautomation
+          gethomepage.dev/group: Weiteres
           gethomepage.dev/icon: esphome
           gethomepage.dev/name: ESPHome
           traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd

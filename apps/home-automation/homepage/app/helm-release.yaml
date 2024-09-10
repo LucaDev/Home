@@ -46,6 +46,17 @@ spec:
       bookmarks:
       services:
         - Weitere:
+            - Zigbee Bridge:
+                href: http://192.168.1.157
+                ping: http://192.168.1.157
+                icon: mdi-zigbee
+                description: Steuerung des ZigBee Coordinators
+        - Externe Geräte:
+            - Drucker:
+                href: http://drucker-eg.local
+                ping: http://drucker-eg.local
+                icon: hp.svg
+                description: Laserdrucker im Erdgeschoss
             - 3D Drucker:
                 href: http://3ddrucker.local
                 icon: mainsail.svg
@@ -67,16 +78,6 @@ spec:
                 ping: http://ems-esp.local
                 icon: mdi-water-boiler
                 description: Heizungssteuerung
-            - Drucker:
-                href: http://drucker-eg.local
-                ping: http://drucker-eg.local
-                icon: hp.svg
-                description: Laserdrucker im Erdgeschoss
-            - Zigbee Bridge:
-                href: http://192.168.1.157
-                ping: http://192.168.1.157
-                icon: mdi-zigbee
-                description: Steuerung des ZigBee Coordinators
         - Netzwerk:
             - POE Switch:
                 href: http://192.168.1.158
@@ -134,13 +135,14 @@ spec:
         hideErrors: true
         color: slate
         iconStyle: theme
+        theme: dark
         title: Home
         disableCollapse: true
         layout:
           - Heimautomation:
               tab: Allgemeines
               style: row
-              columns: 4
+              columns: 3
           - Medien:
               tab: Allgemeines
               style: row
@@ -165,6 +167,10 @@ spec:
               tab: Technik
               style: row
               columns: 3
+          - Externe Geräte:
+              tab: Technik
+              style: row
+              columns: 4
     envFrom:
       - secretRef:
           name: homepage-secret
