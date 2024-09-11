@@ -31,31 +31,21 @@ spec:
               tag: v1.114.0
             env:
               # General
-              #IMMICH_LOG_LEVEL: verbose
               TZ: "Europe/Berlin"
               IMMICH_MEDIA_LOCATION: &mediaLocation /usr/src/app/upload
               # Ports
               IMMICH_PORT: &port 3001
               # Database
-              DB_HOSTNAME:
-                value: "immich-rw.media.svc.cluster.local"
-              DB_USERNAME:
-                valueFrom:
-                  secretKeyRef:
-                    name: immich-app
-                    key: username
-              DB_PASSWORD:
-                valueFrom:
-                  secretKeyRef:
-                    name: immich-app
-                    key: password
-              DB_DATABASE_NAME:
-                value: "app"
+              DB_HOSTNAME: "shared-db-rw.databases.svc.cluster.local"
+              DB_USERNAME: "immich"
+              DB_DATABASE_NAME: "immich"
               # Redis
               REDIS_HOSTNAME: shared-redis.databases.svc.cluster.local
               REDIS_PORT: "6379"
               # Metrics
               IMMICH_METRICS: true
+            envFrom:
+              - secret: immich
             resources:
               requests:
                 cpu: 100m
