@@ -45,7 +45,7 @@ spec:
               # Metrics
               IMMICH_METRICS: true
             envFrom:
-              - secret: immich
+              - secret: immich-secret
             resources:
               requests:
                 cpu: 100m
