@@ -46,4 +46,4 @@ spec:
           key: s3-access-key-id
         secretAccessKey:
           name: cloudnative-pg-secret
-          key: s3-secret-access-secret
+          key: s3-access-key-secret
