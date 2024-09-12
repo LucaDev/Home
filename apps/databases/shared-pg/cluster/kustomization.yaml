@@ -7,3 +7,4 @@ resources:
   - ./shared-pg.yaml
   - ./prometheusrule.yaml
   - ./externalsecret.yaml
+  - ./scheduledbackup.yaml

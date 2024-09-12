@@ -7,31 +7,43 @@ spec:
   instances: 1
   imageName: ghcr.io/tensorchord/cloudnative-pgvecto.rs:16.4-v0.3.0
   primaryUpdateStrategy: unsupervised
-
   storage:
     size: 10Gi
     storageClass: ssd-singlereplica
-
   monitoring:
     enablePodMonitor: true
-
   postgresql:
     shared_preload_libraries:
       - "vectors.so"
     parameters:
       max_connections: "400"
       shared_buffers: 256MB
-
   superuserSecret:
     name: cloudnative-pg-secret
   enableSuperuserAccess: true
-
   nodeMaintenanceWindow:
     inProgress: false
     reusePVC: true
-
   resources:
     requests:
       cpu: 500m
     limits:
       memory: 4Gi
+  backup:
+    retentionPolicy: 30d
+    barmanObjectStore: &barmanObjectStore
+      data:
+        compression: bzip2
+      wal:
+        compression: bzip2
+        maxParallel: 8
+      destinationPath: s3://db-backup/
+      endpointURL: http://minio.storage.svc.cluster.local:9000
+      serverName: &currentCluster shared-pg-1
+      s3Credentials:
+        accessKeyId:
+          name: cloudnative-pg-secret
+          key: s3-access-key-id
+        secretAccessKey:
+          name: cloudnative-pg-secret
+          key: s3-secret-access-secret
