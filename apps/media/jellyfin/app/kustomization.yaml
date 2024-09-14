@@ -10,5 +10,5 @@ resources:
   - ../../../../templates/netpol/dns-traefik
   - ../../../../templates/netpol/egress-internet
   - ../../../../templates/netpol/egress-local
-  - ../../../../templates/netpol/kanidm-ldap
+  - ../../../../templates/netpol/kanidm
   - ../../../../templates/netpol/ingress-homepage

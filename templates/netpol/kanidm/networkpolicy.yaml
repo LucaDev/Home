@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: ${APP}-kanidm-ldap
+  name: ${APP}-kanidm
 spec:
   podSelector:
     matchLabels:
@@ -19,4 +19,6 @@ spec:
               app.kubernetes.io/name: kanidm
       ports:
         - port: 636
+          protocol: TCP
+        - port: 443
           protocol: TCP
