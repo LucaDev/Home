@@ -55,7 +55,7 @@ spec:
           http:
             port: 8080
         annotations:
-          traefik.ingress.kubernetes.io/service.serverstransport: networking-rfc1918@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
     ingress:
       app:
         hosts:
