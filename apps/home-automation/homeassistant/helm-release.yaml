@@ -64,12 +64,6 @@ spec:
     ingress:
       main:
         hosts:
-          - host: "smart.home.lucadev.de"
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
           - host: "ha.lucadev.de"
             paths:
               - path: /
