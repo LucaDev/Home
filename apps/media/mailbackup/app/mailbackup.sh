@@ -6,9 +6,9 @@ for rcfile in $RCFILES; do
 
     filename=$(basename -- "${rcfile}")
 
-    mkdir -p "/data/Email/${filename}/new"
-    mkdir -p "/data/Email/${filename}/cur"
-    mkdir -p "/data/Email/${filename}/tmp"
+    mkdir -p "/data/backup/${filename}/new"
+    mkdir -p "/data/backup/${filename}/cur"
+    mkdir -p "/data/backup/${filename}/tmp"
 
     getmail --rcfile "/config/${filename}"
 done
