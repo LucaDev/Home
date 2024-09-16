@@ -54,8 +54,7 @@ spec:
         ports:
           http:
             port: 8080
-        annotations:
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
+
     ingress:
       app:
         hosts:
@@ -67,11 +66,7 @@ spec:
                   identifier: app
                   port: http
         annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Crowdsec
-          gethomepage.dev/group: Weitere
-          gethomepage.dev/icon: crowdsec
-          gethomepage.dev/name: Crowdsec
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
 
     persistence:
       config:
