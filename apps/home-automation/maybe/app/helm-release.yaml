@@ -28,7 +28,7 @@ spec:
           app:
             image:
               repository: ghcr.io/maybe-finance/maybe
-              tag: 0.1.0-alpha.16
+              tag: 0.1.0-alpha.17
             env:
               TZ: "Europe/Berlin"
               SELF_HOSTING_ENABLED: "true"
@@ -36,8 +36,7 @@ spec:
               RAILS_ASSUME_SSL: "false"
               GOOD_JOB_EXECUTION_MODE: async
               # Database
-              DB_HOST:
-                value: "shared-pg-rw.databases.svc.cluster.local"
+              DB_HOST: "shared-pg-rw.databases.svc.cluster.local"
               POSTGRES_USER: "maybe"
               POSTGRES_DB: "maybe"
             envFrom:
