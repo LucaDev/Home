@@ -37,7 +37,14 @@ spec:
                   failureThreshold: 30
                   periodSeconds: 5
             securityContext:
-              privileged: true
+              privileged: true # Todo: remove?
+              supplementalGroups:
+                - 44 # video
+                - 104 # renderer
+
+            resources:
+              limits:
+                amd.com/gpu: 1
 
     service:
       app:
@@ -84,3 +91,16 @@ spec:
             app:
               - path: /config/config.yml
                 subPath: config.yml
+      media:
+        type: persistentVolumeClaim
+        size: 250Gi
+        accessMode: ReadWriteOnce
+        storageClass: hdd-singlereplica
+        globalMounts:
+          - /media/frigate
+      tmpfs:
+        type: emptyDir
+        medium: Memory
+        sizeLimit: 512Mi
+        globalMounts:
+          - /tmp
