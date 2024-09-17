@@ -69,7 +69,9 @@ spec:
 
     persistence:
       config:
-        existingClaim: frigate-config
+        type: persistentVolumeClaim
+        size: 1Gi
+        accessMode: ReadWriteOnce
         advancedMounts:
           frigate:
             app:
