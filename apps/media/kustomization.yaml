@@ -14,3 +14,4 @@ resources:
   - ./shlink/ks.yaml
   - ./shlink-ui/ks.yaml
   - ./mailbackup/ks.yaml
+  - ./frigate/ks.yaml
