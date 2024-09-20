@@ -156,16 +156,16 @@ spec:
             name: Prometheus
             type: prometheus
             url: http://kube-prometheus-stack-prometheus.monitoring:9090
-          - access: proxy
-            name: Loki
-            type: loki
-            url: http://loki.monitoring.svc.cluster.local:3100
-          - name: Alertmanager
-            type: alertmanager
-            access: proxy
-            url: http://alertmanager.monitoring.svc.cluster.local:9093
-            jsonData:
-              implementation: prometheus
+#          - access: proxy
+#            name: Loki
+#            type: loki
+#            url: http://loki.monitoring.svc.cluster.local:3100
+#          - name: Alertmanager
+#            type: alertmanager
+#            access: proxy
+#            url: http://alertmanager.monitoring.svc.cluster.local:9093
+#            jsonData:
+#              implementation: prometheus
           - name: Sun
             type: fetzerch-sunandmoon-datasource
             jsonData:

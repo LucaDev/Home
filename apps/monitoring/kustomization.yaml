@@ -5,7 +5,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./kube-prometheus-stack/ks.yaml
-  - ./alertmanager/ks.yaml
+#  - ./alertmanager/ks.yaml
   - ./unpoller/ks.yaml
   - ./grafana/ks.yaml
   - ./mqtt-exporter/ks.yaml
