@@ -12,7 +12,7 @@ on: # yamllint disable-line rule:truthy
 jobs:
   changed-files:
     name: Generate matrix for building images
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
@@ -50,7 +50,7 @@ jobs:
           fi
 
   publish:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions: write-all
     needs:
       - changed-files
