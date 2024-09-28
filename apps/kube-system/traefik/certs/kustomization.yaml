@@ -5,4 +5,4 @@ kind: Kustomization
 namespace: default
 resources:
   - ./tls-store.yaml
-  - ./home.lucadev.de.yaml
+  - ./lucadev.de.yaml
