@@ -8,3 +8,4 @@ resources:
   - ./traefik/ks.yaml
   - ./amd-k8s-plugin/ks.yaml
   - ./cilium/ks.yaml
+  - ./system-upgrade-controller/ks.yaml
