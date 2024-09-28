@@ -84,6 +84,11 @@ spec:
                 icon: mdi-water-boiler
                 description: Heizungssteuerung
         - Netzwerk:
+            - SFP Switch:
+                href: http://192.168.1.180
+                ping: http://192.168.1.180
+                icon: mikrotik
+                description: Verwaltungsoberfläche des SFP Switches
             - POE Switch:
                 href: http://192.168.1.158
                 ping: http://192.168.1.158
