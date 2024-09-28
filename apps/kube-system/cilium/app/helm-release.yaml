@@ -51,5 +51,5 @@ spec:
     #routingMode: native
 
     kubeProxyReplacement: true
-    k8sServiceHost: homeserver.local
+    k8sServiceHost: homeserver.home.lucadev.de
     k8sServicePort: 6443

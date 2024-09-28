@@ -58,29 +58,29 @@ spec:
                 description: KVM am Server
         - Externe Geräte:
             - Drucker:
-                href: http://drucker-eg.local
-                ping: http://drucker-eg.local
+                href: http://drucker-eg.home.lucadev.de
+                ping: http://drucker-eg.home.lucadev.de
                 icon: hp.svg
                 description: Laserdrucker im Erdgeschoss
             - 3D Drucker:
-                href: http://3ddrucker.local
+                href: http://3ddrucker.home.lucadev.de
                 icon: mainsail.svg
-                ping: http://3ddrucker.local
+                ping: http://3ddrucker.home.lucadev.de
                 description: Steuerung des 3D Druckers
                 widget:
                   type: moonraker
-                  url: http://3ddrucker.local
+                  url: http://3ddrucker.home.lucadev.de
             - Solaranlage:
-                href: http://pv-anlage.local
-                ping: http://pv-anlage.local
+                href: http://pv-anlage.home.lucadev.de
+                ping: http://pv-anlage.home.lucadev.de
                 icon: mdi-solar-power-variant
                 description: Steuerung der Solaranlage
                 widget:
                   type: opendtu
                   url: http://192.168.100.40
             - Heizung:
-                href: http://ems-esp.local
-                ping: http://ems-esp.local
+                href: http://ems-esp.home.lucadev.de
+                ping: http://ems-esp.home.lucadev.de
                 icon: mdi-water-boiler
                 description: Heizungssteuerung
         - Netzwerk:
