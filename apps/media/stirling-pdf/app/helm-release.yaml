@@ -63,7 +63,7 @@ spec:
           gethomepage.dev/group: Medien
           gethomepage.dev/icon: stirling-pdf
           gethomepage.dev/name: Stirling PDF
-          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd
+#          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd
         hosts:
           - host: pdf.lucadev.de
             paths:
