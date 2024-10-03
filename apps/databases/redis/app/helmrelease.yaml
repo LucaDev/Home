@@ -22,7 +22,7 @@ spec:
           app:
             image:
               repository: valkey/valkey
-              tag: 8.0.0@sha256:4c7adcc09be945861346021c9fd51b61e85c860c33c3c5b8f274ccdfc90792ac
+              tag: 8.0.1@sha256:c5d4f082b76d433a38274ebb38a43cff19829a062928bdcc45611135ef54e608
             resources:
               requests:
                 cpu: 5m
