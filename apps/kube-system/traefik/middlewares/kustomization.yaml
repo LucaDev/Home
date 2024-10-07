@@ -7,3 +7,4 @@ resources:
   - ./rfc1918.yaml
   - ./local-IOT.yaml
   - ./local-home.yaml
+  - ./cloudflare.yaml

@@ -56,7 +56,7 @@ spec:
           gethomepage.dev/group: Weitere
           gethomepage.dev/icon: shlink
           gethomepage.dev/name: Link Shortener
-          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd,networking-allow-cloudflare-ips@kubernetescrd
     persistence:
       config:
         type: secret
