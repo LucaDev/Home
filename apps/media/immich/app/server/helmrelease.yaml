@@ -28,13 +28,11 @@ spec:
           app:
             image:
               repository: ghcr.io/immich-app/immich-server
-              tag: v1.117.0
+              tag: v1.118.1
             env:
               # General
               TZ: "Europe/Berlin"
               IMMICH_MEDIA_LOCATION: &mediaLocation /usr/src/app/upload
-              # Ports
-              IMMICH_PORT: &port 3001
               # Database
               DB_HOSTNAME: "shared-pg-rw.databases.svc.cluster.local"
               DB_USERNAME: "immich"
@@ -58,7 +56,7 @@ spec:
                 custom: true
                 spec:
                   httpGet:
-                    path: /api/server-info/ping
+                    path: /api/server/ping
                     port: http
               readiness: *probes
               startup:
@@ -70,7 +68,7 @@ spec:
         primary: true
         ports:
           http:
-            port: *port
+            port: 2283
             primary: true
           metrics-api:
             port: 8081
