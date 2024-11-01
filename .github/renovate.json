@@ -9,45 +9,82 @@
     ":enablePreCommit"
   ],
   "timezone": "Europe/Berlin",
-  "ignorePaths": ["^archive/**"],
+  "ignorePaths": [
+    "^archive/**"
+  ],
   "flux": {
-    "fileMatch": ["apps/.+\\.ya?ml$", "bootstrap/.+\\.ya?ml$", "flux/.+\\.ya?ml$"]
+    "fileMatch": [
+      "apps/.+\\.ya?ml$",
+      "bootstrap/.+\\.ya?ml$",
+      "flux/.+\\.ya?ml$"
+    ]
   },
   "helm-values": {
-    "fileMatch": ["apps/.+\\.ya?ml$", "bootstrap/.+\\.ya?ml$", "flux/.+\\.ya?ml$"]
+    "fileMatch": [
+      "apps/.+\\.ya?ml$",
+      "bootstrap/.+\\.ya?ml$",
+      "flux/.+\\.ya?ml$"
+    ]
   },
   "kubernetes": {
-    "fileMatch": ["apps/.+\\.ya?ml$", "bootstrap/.+\\.ya?ml$", "flux/.+\\.ya?ml$"]
+    "fileMatch": [
+      "apps/.+\\.ya?ml$",
+      "bootstrap/.+\\.ya?ml$",
+      "flux/.+\\.ya?ml$"
+    ]
   },
   "terraform": {
-    "fileMatch": ["terraform/.+\\.tf$"]
+    "fileMatch": [
+      "terraform/.+\\.tf$"
+    ]
   },
   "packageRules": [
     {
       "description": "Auto merge KPS minors and patches",
-      "matchDatasources": ["helm"],
+      "matchDatasources": [
+        "helm"
+      ],
       "automerge": true,
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchPackageNames": ["kube-prometheus-stack"]
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "matchPackageNames": [
+        "kube-prometheus-stack"
+      ]
     },
     {
       "description": "Auto merge container digests",
-      "matchDatasources": ["docker"],
+      "matchDatasources": [
+        "docker"
+      ],
       "automerge": true,
       "automergeType": "branch",
-      "matchUpdateTypes": ["digest"],
-      "matchPackagePrefixes": ["ghcr.io/onedr0p", "ghcr.io/bjw-s", "ghcr.io/lucadev"]
+      "matchUpdateTypes": [
+        "digest"
+      ],
+      "matchPackageNames": [
+        "ghcr.io/onedr0p{/,}**",
+        "ghcr.io/bjw-s{/,}**",
+        "ghcr.io/lucadev{/,}**"
+      ]
     },
     {
       "description": "Flux Group",
       "groupName": "Flux",
-      "matchPackagePatterns": ["^flux", "^ghcr.io/fluxcd/"],
-      "matchDatasources": ["docker", "github-tags"],
+      "matchDatasources": [
+        "docker",
+        "github-tags"
+      ],
       "versioning": "semver",
       "group": {
         "commitMessageTopic": "{{{groupName}}} group"
       },
-      "separateMinorPatch": true
+      "separateMinorPatch": true,
+      "matchPackageNames": [
+        "/^flux/",
+        "/^ghcr.io/fluxcd//"
+      ]
     },
     {
       "description": "Immich images",
@@ -56,7 +93,9 @@
         "ghcr.io/immich-app/immich-server",
         "ghcr.io/immich-app/immich-machine-learning"
       ],
-      "matchDatasources": ["docker"],
+      "matchDatasources": [
+        "docker"
+      ],
       "group": {
         "commitMessageTopic": "{{{groupName}}} group"
       },
