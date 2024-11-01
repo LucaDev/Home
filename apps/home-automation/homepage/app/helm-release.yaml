@@ -37,7 +37,7 @@ spec:
         annotations:
           traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
         hosts:
-          - host: dash.lucadev.de
+          - host: home.lucadev.de
             paths:
               - path: /
                 pathType: Prefix
