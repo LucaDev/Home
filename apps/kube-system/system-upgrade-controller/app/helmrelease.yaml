@@ -82,7 +82,8 @@ spec:
         clusterAdminBinding:
           type: ClusterRoleBinding
           roleRef:
-            identifier: cluster-admin
+            name: cluster-admin
+            kind: ClusterRole
           subjects:
             - identifier: default
     persistence:

@@ -97,10 +97,10 @@ spec:
         accessMode: ReadWriteOnce
         storageClass: hdd-singlereplica
         globalMounts:
-          - /media/frigate
+          - path: /media/frigate
       tmpfs:
         type: emptyDir
         medium: Memory
         sizeLimit: 512Mi
         globalMounts:
-          - /tmp
+          - path: /tmp
