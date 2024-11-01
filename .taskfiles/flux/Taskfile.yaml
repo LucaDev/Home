@@ -2,48 +2,52 @@
 version: "3"
 
 tasks:
-  gr-sync:
-    desc: Sync all Flux GitRepositories
-    cmds:
-      - |
-        kubectl get gitrepositories --all-namespaces --no-headers | awk '{print $1, $2}' \
-          | xargs -P 4 -L 1 bash -c \
-            'kubectl -n $0 annotate gitrepository/$1 reconcile.fluxcd.io/requestedAt=$(date +%s) --field-manager=flux-client-side-apply --overwrite'
+  apply-ks:
+    desc: Apply a Flux Kustomization resource for a cluster
+    summary: |
+      Args:
+        PATH: Path to the Flux Kustomization resource (required)
+        NAME: Name of the Flux Kustomization to apply (default: last segment of <PATH> variable)
+        SRC: Path to the manifests location (default: Same as <PATH> variable)
+        NS: Namespace the Flux Kustomization exists in (default: flux-system)
+    vars:
+      NS: '{{.NS | default "flux-system"}}'
+      KS:
+        sh: flux --namespace {{.NS}} get kustomizations {{base .PATH}} 2>&1
+    cmd: >
+      flux build --namespace {{.NS}} ks {{ if .NAME }}{{.NAME}}{{ else }}{{base .PATH}}{{ end }}
+      --kustomization-file {{.ROOT_DIR}}/apps/{{.PATH}}/ks.yaml
+      --path {{.ROOT_DIR}}/apps/{{.PATH}}{{- if .SRC }}/{{.SRC}}{{ end }}
+      {{ if contains "not found" .KS }}--dry-run \{{ end }}
+      | yq 'with(select(.apiVersion == "kustomize.toolkit.fluxcd.io/v1" and .kind == "Kustomization"); .metadata.namespace = "{{.NS}}")' -
+      | kubectl apply --server-side --field-manager=kustomize-controller --filename -
+    requires:
+      vars:
+        - PATH
+    preconditions:
+      - sh: "test -f {{.ROOT_DIR}}/apps/{{.PATH}}/ks.yaml"
 
-  ks-sync:
-    desc: Sync all Flux Kustomizations
-    cmds:
-      - |
-        kubectl get kustomization --all-namespaces --no-headers | awk '{print $1, $2}' \
-          | xargs -P 4 -L 1 bash -c \
-            'kubectl -n $0 annotate kustomization/$1 reconcile.fluxcd.io/requestedAt="$(date +%s)" --field-manager=flux-client-side-apply --overwrite'
-
-  hr-sync:
-    desc: Sync all Flux HelmReleases
-    cmds:
-      - |
-        kubectl get helmreleases --all-namespaces --no-headers | awk '{print $1, $2}' \
-          | xargs -P 4 -L 1 bash -c \
-            'kubectl -n $0 annotate helmrelease/$1 reconcile.fluxcd.io/requestedAt="$(date +%s)" --overwrite'
-
-  tf-sync:
-    desc: Sync Flux Terraforms
-    cmds:
-      - |
-        kubectl get terraforms --all-namespaces --no-headers | awk '{print $1, $2}' \
-          | xargs -P 4 -L 1 bash -c \
-            'kubectl -n $0 annotate terraform/$1 reconcile.fluxcd.io/requestedAt="$(date +%s)" --overwrite'
-
-  hr-suspend:
-    desc: Suspend all Flux HelmReleases
-    cmds:
-      - |
-        flux get helmrelease --all-namespaces --no-header | awk '{print $1, $2}' \
-          | xargs -L 1 bash -c 'flux -n $0 suspend helmrelease $1'
-
-  hr-resume:
-    desc: Resume all Flux HelmReleases
-    cmds:
-      - |
-        flux get helmrelease --all-namespaces --no-header | awk '{print $1, $2}' \
-          | xargs -L 1 bash -c 'flux -n $0 resume helmrelease $1'
+  delete-ks:
+    desc: Delete a Flux Kustomization resource for a cluster
+    summary: |
+      Args:
+        PATH: Path to the Flux Kustomization resource (required)
+        NAME: Name of the Flux Kustomization to apply (default: last segment of <PATH> variable)
+        SRC: Path to the manifests location (default: Same as <PATH> variable)
+        NS: Namespace the Flux Kustomization exists in (default: flux-system)
+    vars:
+      NS: '{{.NS | default "flux-system"}}'
+      KS:
+        sh: flux --namespace {{.NS}} get kustomizations {{base .PATH}} 2>&1
+    cmd: >
+      flux build --namespace {{.NS}} ks {{ if .NAME }}{{.NAME}}{{ else }}{{base .PATH}}{{ end }}
+      --kustomization-file {{.ROOT_DIR}}/apps/{{.PATH}}/ks.yaml
+      --path {{.ROOT_DIR}}/apps/{{.PATH}}{{- if .SRC }}/{{.SRC}}{{ end }}
+      {{ if contains "not found" .KS }}--dry-run \{{ end }}
+      | yq 'with(select(.apiVersion == "kustomize.toolkit.fluxcd.io/v1" and .kind == "Kustomization"); .metadata.namespace = "{{.NS}}")' -
+      | kubectl delete -f -
+    requires:
+      vars:
+        - PATH
+    preconditions:
+      - sh: "test -f {{.ROOT_DIR}}/apps/{{.PATH}}/ks.yaml"

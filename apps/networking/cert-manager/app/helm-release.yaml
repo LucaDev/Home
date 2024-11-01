@@ -23,20 +23,13 @@ spec:
     crds: CreateReplace
 
   values:
-    installCRDs: true
+    crds:
+      enabled: true
 
-    extraArgs:
-      - --dns01-recursive-nameservers=1.1.1.1:53,1.0.0.1:53
-      - --dns01-recursive-nameservers-only
-      - --enable-certificate-owner-ref
+    dns01RecursiveNameservers: https://1.1.1.1:443/dns-query,https://1.0.0.1:443/dns-query
+    dns01RecursiveNameserversOnly: true
 
     replicaCount: 1
-
-    podDnsPolicy: "None"
-    podDnsConfig:
-      nameservers:
-        - "1.1.1.1"
-        - "1.0.0.1"
 
     prometheus:
       enabled: true

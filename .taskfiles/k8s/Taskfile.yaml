@@ -58,17 +58,32 @@ tasks:
     preconditions:
       - kubectl -n {{.namespace}} get pod {{.pod}}
 
-  delete-failed-pods:
-    desc: Deletes failed pods
+  cleanup-pods:
+    desc: Clean up leftover Pods
     cmds:
-      - kubectl delete pods --field-selector status.phase=Failed -A --ignore-not-found=true
+      - for:
+          matrix:
+            PHASE: [Failed, Succeeded, Pending]
+        cmd: kubectl delete pods --field-selector status.phase={{.ITEM.PHASE}} -A --ignore-not-found=true
 
-  delete-succeeded-pods:
-    desc: Deletes pods with Succeeded phase
+  sync-externalsecret:
+    desc: Sync ExternalSecret resource
+    summary: |
+      Args:
+        NS: Namespace the PVC is in (default: default)
+        NAME: ExternalSecret to sync (default: all secrets)
+    silent: true
+    vars:
+      NS: '{{.NS | default "default"}}'
+      NAME: '{{ .NAME | default "" }}'
     cmds:
-      - kubectl delete pods --field-selector status.phase=Succeeded -A --ignore-not-found=true
-
-  delete-pending-pods:
-    desc: Deletes pods with Pending phase
-    cmds:
-      - kubectl delete pods --field-selector status.phase=Pending -A --ignore-not-found=true
+      - |
+        {{if eq .NAME ""}}
+        kubectl get externalsecret.external-secrets.io --all-namespaces --no-headers -A | awk '{print $1, $2}' \
+          | xargs --max-procs=2 -l bash -c 'kubectl --namespace $0 annotate externalsecret.external-secrets.io $1 force-sync=$(date +%s) --overwrite'
+        {{else}}
+        kubectl --namespace {{.NS}} annotate externalsecret.external-secrets.io {{.NAME}} force-sync=$(date +%s) --overwrite
+        {{end}}
+    preconditions:
+      - sh: '{{if ne .NAME ""}}kubectl --namespace {{.NS}} get externalsecret {{.NAME}}{{end}}'
+        msg: "ExternalSecret {{.NAME}} not found in namespace {{.NS}}"
