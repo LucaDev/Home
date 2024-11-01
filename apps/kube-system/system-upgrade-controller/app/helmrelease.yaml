@@ -77,7 +77,6 @@ spec:
           effect: NoSchedule
     serviceAccount:
       create: true
-      name: system-upgrade
     rbac:
       bindings:
         clusterAdminBinding:
@@ -85,7 +84,7 @@ spec:
           roleRef:
             identifier: cluster-admin
           subjects:
-            - identifier: system-upgrade
+            - identifier: default
     persistence:
       tmp:
         type: emptyDir
