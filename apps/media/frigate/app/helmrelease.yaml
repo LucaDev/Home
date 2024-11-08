@@ -42,9 +42,9 @@ spec:
                 - 44 # video
                 - 104 # renderer
 
-            #resources:
-            #  limits:
-            #    amd.com/gpu: 1
+            resources:
+              limits:
+                amd.com/gpu: 0
 
     service:
       app:
