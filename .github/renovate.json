@@ -84,5 +84,21 @@
       },
       "separateMinorPatch": true
     }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": ["Process custom dependencies"],
+      "fileMatch": [
+        "(^|/).taskfiles/.+\\.ya?ml(?:\\.j2)?$",
+        "(^|/)apps/.+\\.ya?ml(?:\\.j2)?$"
+      ],
+      "matchStrings": [
+        // # renovate: datasource=github-releases depName=k3s-io/k3s
+        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( repository=(?<registryUrl>\\S+))?\\n.+: (&\\S+\\s)?(?<currentValue>\\S+)",
+        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n.+/(?<currentValue>(v|\\d)[^/]+)"
+      ],
+      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}"
+    }
   ]
 }
