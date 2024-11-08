@@ -6,9 +6,3 @@ namespace: media
 resources:
   - ./helm-release.yaml
   - ./volsync.yaml
-#  - ./networkpolicy.yaml
-#  - ../../../../templates/netpol/dns-traefik
-#  - ../../../../templates/netpol/egress-internet
-#  - ../../../../templates/netpol/egress-local
-#  - ../../../../templates/netpol/kanidm
-#  - ../../../../templates/netpol/ingress-homepage

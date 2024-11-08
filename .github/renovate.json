@@ -9,9 +9,7 @@
     ":enablePreCommit"
   ],
   "timezone": "Europe/Berlin",
-  "ignorePaths": [
-    "^archive/**"
-  ],
+  "ignorePaths": ["^archive/**"],
   "flux": {
     "fileMatch": [
       "apps/.+\\.ya?ml$",
@@ -34,35 +32,28 @@
     ]
   },
   "terraform": {
-    "fileMatch": [
-      "terraform/.+\\.tf$"
-    ]
+    "fileMatch": ["terraform/.+\\.tf$"]
   },
   "packageRules": [
     {
+      "description": ["Custom versioning for k3s"],
+      "matchDatasources": ["github-releases"],
+      "matchPackagePatterns": ["k3s"],
+      "versioning": "regex:^v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?<compatibility>\\+k3s)(?<build>\\d+)$"
+    },
+    {
       "description": "Auto merge KPS minors and patches",
-      "matchDatasources": [
-        "helm"
-      ],
+      "matchDatasources": ["helm"],
       "automerge": true,
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "matchPackageNames": [
-        "kube-prometheus-stack"
-      ]
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": ["kube-prometheus-stack"]
     },
     {
       "description": "Auto merge container digests",
-      "matchDatasources": [
-        "docker"
-      ],
+      "matchDatasources": ["docker"],
       "automerge": true,
       "automergeType": "branch",
-      "matchUpdateTypes": [
-        "digest"
-      ],
+      "matchUpdateTypes": ["digest"],
       "matchPackageNames": [
         "ghcr.io/onedr0p{/,}**",
         "ghcr.io/bjw-s{/,}**",
@@ -72,19 +63,13 @@
     {
       "description": "Flux Group",
       "groupName": "Flux",
-      "matchDatasources": [
-        "docker",
-        "github-tags"
-      ],
+      "matchDatasources": ["docker", "github-tags"],
       "versioning": "semver",
       "group": {
         "commitMessageTopic": "{{{groupName}}} group"
       },
       "separateMinorPatch": true,
-      "matchPackageNames": [
-        "/^flux/",
-        "/^ghcr.io/fluxcd//"
-      ]
+      "matchPackageNames": ["/^flux/", "/^ghcr.io/fluxcd//"]
     },
     {
       "description": "Immich images",
@@ -93,9 +78,7 @@
         "ghcr.io/immich-app/immich-server",
         "ghcr.io/immich-app/immich-machine-learning"
       ],
-      "matchDatasources": [
-        "docker"
-      ],
+      "matchDatasources": ["docker"],
       "group": {
         "commitMessageTopic": "{{{groupName}}} group"
       },
