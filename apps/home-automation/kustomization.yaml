@@ -6,7 +6,6 @@ resources:
   - ./namespace.yaml
   - ./esphome/ks.yaml
   - ./homepage/ks.yaml
-  - ./node-red/ks.yaml
   - ./mosquitto/ks.yaml
   - ./homeassistant
   - ./zigbee2mqtt/ks.yaml

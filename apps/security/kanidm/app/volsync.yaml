@@ -1,21 +1,20 @@
-# TODO: media backups
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/external-secrets.io/externalsecret_v1beta1.json
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: jellyfin-media-restic
+  name: kanidm-restic
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
     name: bitwarden-fields
   target:
-    name: jellyfin-media-restic
+    name: kanidm-restic
     creationPolicy: Owner
     template:
       engineVersion: v2
       data:
-        RESTIC_REPOSITORY: rclone:storagebox:/homeserver/jellyfin
+        RESTIC_REPOSITORY: rclone:storagebox:/homeserver/kanidm
         RESTIC_PASSWORD: "{{ .restic_password }}"
         RCLONE_CONFIG_STORAGEBOX_TYPE: sftp
         RCLONE_CONFIG_STORAGEBOX_HOST: "{{ .storagebox_host }}"
@@ -44,15 +43,17 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: jellyfin-media
+  name: kanidm
 spec:
-  sourcePVC: jellyfin-media
+  sourcePVC: kanidm-data
   trigger:
     schedule: "0 */12 * * *"
   restic:
     copyMethod: Direct
     pruneIntervalDays: 14
-    repository: jellyfin-media-restic
+    repository: kanidm-restic
     retain:
       daily: 14
+      monthly: 1
+      yearly: 1
     cacheStorageClassName: local-path

@@ -6,6 +6,7 @@ resources:
   - externalsecret.yaml
   - cronjob.yaml
   - pvc.yaml
+  - volsync.yaml
 configMapGenerator:
   - name: mailbackup
     files:
