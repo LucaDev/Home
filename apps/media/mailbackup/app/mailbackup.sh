@@ -10,5 +10,5 @@ for rcfile in $RCFILES; do
     mkdir -p "/data/backup/${filename}/cur"
     mkdir -p "/data/backup/${filename}/tmp"
 
-    getmail --rcfile "/config/${filename}"
+    getmail --getmaildir "/data/backup/${filename}/" --rcfile "/config/${filename}"
 done
