@@ -47,7 +47,7 @@ spec:
           app:
             image:
               repository: jellyfin/jellyfin
-              tag: "10.10.2"
+              tag: "10.10.3"
             env:
               TZ: Europe/Berlin
             resources:
