@@ -57,3 +57,7 @@ spec:
       monthly: 1
       yearly: 1
     cacheStorageClassName: local-path
+    moverSecurityContext:
+      runAsUser: 65534
+      runAsGroup: 65534
+      fsGroup: 65534
