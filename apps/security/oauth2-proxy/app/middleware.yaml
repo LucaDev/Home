@@ -1,32 +1,7 @@
----
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: oauth-proxy
-  namespace: security
-spec:
-  chain:
-    middlewares:
-      - name: oauth-proxy-forward
----
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: oauth-proxy-error
-  namespace: security
-spec:
-  errors:
-    status:
-      - "401"
-    service:
-      name: oauthproxy
-      port: 80
-    query: "/oauth2/sign_in"
----
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: oauth-proxy-forward
   namespace: security
 spec:
   forwardAuth:
