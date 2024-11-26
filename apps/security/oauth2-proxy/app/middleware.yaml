@@ -7,7 +7,6 @@ metadata:
 spec:
   chain:
     middlewares:
-      - name: oauth-proxy-error
       - name: oauth-proxy-forward
 ---
 apiVersion: traefik.io/v1alpha1
