@@ -6,11 +6,9 @@ namespace: media
 resources:
   - ./externalsecret.yaml
   - ./pvc.yaml
-  - ./database.yaml
   - ./server
   - ./machine-learning
   - ./volsync.yaml
-  - ./volsync-db.yaml
 labels:
   - pairs:
       app.kubernetes.io/name: immich
