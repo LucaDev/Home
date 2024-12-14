@@ -48,11 +48,11 @@ spec:
                   name: mongodb-unifi
             resources:
               requests:
-                cpu: 100m
+                cpu: 512m
                 memory: 512M
               limits:
-                cpu: 1000m
-                memory: 1024M
+                cpu: 2000m
+                memory: 1280M
 
     service:
       internal:
