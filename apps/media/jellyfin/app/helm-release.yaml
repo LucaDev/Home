@@ -79,6 +79,7 @@ spec:
           gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_JELLYFIN_APIKEY}}`}}"
           gethomepage.dev/widget.enableBlocks: "true"
           gethomepage.dev/widget.enableNowPlaying: "false"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
         hosts:
           - host: lucaflix.lucadev.de
             paths:
