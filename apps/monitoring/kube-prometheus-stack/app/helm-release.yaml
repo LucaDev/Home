@@ -41,6 +41,8 @@ spec:
     ### Prometheus instance values
     ###
     prometheus:
+      image:
+        tag: v3.0.1
       ingress:
         enabled: true
         pathType: Prefix
