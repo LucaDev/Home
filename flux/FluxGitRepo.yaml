@@ -5,7 +5,7 @@ metadata:
   name: github-repo
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: 60m
   ref:
     branch: main
   url: https://github.com/LucaDev/Home

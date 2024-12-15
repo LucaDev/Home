@@ -1,0 +1,15 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1
+kind: Receiver
+metadata:
+  name: github-repo
+spec:
+  type: github
+  events:
+    - "ping"
+    - "push"
+  secretRef:
+    name: github-repo-webhook
+  resources:
+    - kind: GitRepository
+      name: github-repo
