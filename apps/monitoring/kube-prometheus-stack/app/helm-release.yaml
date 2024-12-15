@@ -41,8 +41,6 @@ spec:
     ### Prometheus instance values
     ###
     prometheus:
-      image:
-        tag: v3.0.1
       ingress:
         enabled: true
         pathType: Prefix
@@ -60,6 +58,8 @@ spec:
           traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
 
       prometheusSpec:
+        image:
+          tag: v3.0.1
         ruleSelectorNilUsesHelmValues: false
         scrapeConfigSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
