@@ -35,6 +35,9 @@ spec:
             env:
               TZ: Europe/Berlin
               XDG_DATA_HOME: /config # https://github.com/ErsatzTV/ErsatzTV/issues/327
+            envFrom:
+              - secretRef:
+                  name: ersatztv
             probes:
               liveness:
                 enabled: true
@@ -51,7 +54,7 @@ spec:
                 cpu: 10m
               limits:
                 amd.com/gpu: 0
-                memory: 4G
+                memory: 8G
     defaultPodOptions:
       automountServiceAccountToken: false
       securityContext:
