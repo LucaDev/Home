@@ -24,12 +24,22 @@ spec:
     kind: OCIRepository
     name: flux-manifests
   patches:
+    # Remove image automation and image reflector controllers
+    - patch: |
+        $patch: delete
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: all
+      target:
+        kind: Deployment
+        name: (image-automation-controller|image-reflector-controller)
     # Increase the number of reconciliations that can be performed in parallel and bump the resources limits
     # https://fluxcd.io/flux/cheatsheets/bootstrap/#increase-the-number-of-workers
     - patch: |
         - op: add
           path: /spec/template/spec/containers/0/args/-
-          value: --concurrent=12
+          value: --concurrent=10
         - op: add
           path: /spec/template/spec/containers/0/args/-
           value: --kube-api-qps=500
@@ -61,6 +71,9 @@ spec:
     # Enable in-memory-kustomize builds
     # https://fluxcd.io/flux/installation/configuration/vertical-scaling/#enable-in-memory-kustomize-builds
     - patch: |
+        - op: add
+          path: /spec/template/spec/containers/0/args/-
+          value: --concurrent=20
         - op: replace
           path: /spec/template/spec/volumes/0
           value:
@@ -70,18 +83,21 @@ spec:
       target:
         kind: Deployment
         name: "kustomize-controller"
-    # Enable drift detection for HelmReleases and set the log level to debug
-    # https://fluxcd.io/flux/components/helm/helmreleases/#drift-detection
+    # Enable Helm repositories caching
+    # Ref: https://fluxcd.io/flux/installation/configuration/vertical-scaling/#enable-helm-repositories-caching
     - patch: |
         - op: add
           path: /spec/template/spec/containers/0/args/-
-          value: --feature-gates=DetectDrift=true,CorrectDrift=false
+          value: --helm-cache-max-size=10
         - op: add
           path: /spec/template/spec/containers/0/args/-
-          value: --log-level=debug
+          value: --helm-cache-ttl=60m
+        - op: add
+          path: /spec/template/spec/containers/0/args/-
+          value: --helm-cache-purge-interval=5m
       target:
         kind: Deployment
-        name: helm-controller
+        name: source-controller
     # Enable Helm near OOM detection
     # https://fluxcd.io/flux/cheatsheets/bootstrap/#enable-helm-near-oom-detection
     - patch: |
