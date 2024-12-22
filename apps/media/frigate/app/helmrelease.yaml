@@ -42,7 +42,6 @@ spec:
               supplementalGroups:
                 - 44 # video
                 - 104 # renderer
-
             resources:
               limits:
                 amd.com/gpu: 0

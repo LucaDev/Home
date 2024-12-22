@@ -15,3 +15,4 @@ resources:
   - ./shlink-ui/ks.yaml
   - ./mailbackup/ks.yaml
   - ./frigate/ks.yaml
+  - ./ersatztv/ks.yaml
