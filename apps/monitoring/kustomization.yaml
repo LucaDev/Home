@@ -13,4 +13,5 @@ resources:
   - ./blackbox-exporter/ks.yaml
   - ./snmp-exporter/ks.yaml
 #  - ./fritz-exporter/ks.yaml
+  - ./gatus/ks.yaml
   - ./healthcheck
