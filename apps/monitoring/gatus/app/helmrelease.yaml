@@ -108,7 +108,6 @@ spec:
             scrapeTimeout: 10s
     ingress:
       app:
-        className: external
         hosts:
           - host: status.lucadev.de
             paths:
