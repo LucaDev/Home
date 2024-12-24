@@ -8,6 +8,7 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
   - ./volsync.yaml
+  - ../../../../templates/gatus/internal
 labels:
   - pairs:
       app.kubernetes.io/name: paperless

@@ -8,3 +8,4 @@ resources:
   - ../../../../templates/volsync/hetzner
   - ../../../../templates/netpol/dns-traefik
   - ../../../../templates/netpol/egress-internet
+  - ../../../../templates/gatus/external

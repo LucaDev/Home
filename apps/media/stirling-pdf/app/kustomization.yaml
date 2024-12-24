@@ -5,3 +5,4 @@ kind: Kustomization
 resources:
   - ./helm-release.yaml
   - ../../../../templates/netpol/dns-traefik
+  - ../../../../templates/gatus/internal

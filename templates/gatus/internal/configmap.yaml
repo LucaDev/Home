@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "${APP}-gatus-in"
+  labels:
+    gatus.io/enabled: "true"
+data:
+  config.yaml: |
+    endpoints:
+      - name: "${APP}"
+        group: external
+        url: "https://${GATUS_SUBDOMAIN:-${APP}}.lucadev.de${GATUS_PATH:-/}"
+        interval: 1m
+        conditions:
+          - "[STATUS] == ${GATUS_STATUS:-200}"

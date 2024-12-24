@@ -17,3 +17,6 @@ spec:
     kind: GitRepository
     name: github-repo
   wait: false
+  dependsOn:
+    - name: volsync
+    - name: external-secrets-stores

@@ -8,3 +8,4 @@ resources:
   - ./configuration.yaml
   - ./kanidm-transport.yaml
   - ./volsync.yaml
+  - ../../../../templates/gatus/external

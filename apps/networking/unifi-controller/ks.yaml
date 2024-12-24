@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: unifi-controller
+  name: &appname unifi-controller
   namespace: flux-system
 spec:
   interval: 10m
@@ -16,3 +16,7 @@ spec:
     - name: external-secrets-stores
     - name: mongodb-operator
     - name: traefik
+  postBuild:
+    substitute:
+      APP: *appname
+      GATUS_SUBDOMAIN: unifi

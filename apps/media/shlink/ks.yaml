@@ -12,6 +12,8 @@ spec:
     kind: GitRepository
     name: github-repo
   wait: false # no flux ks dependents
+  dependsOn:
+    - name: external-secrets-stores
   postBuild:
     substitute:
       APP: *appname
