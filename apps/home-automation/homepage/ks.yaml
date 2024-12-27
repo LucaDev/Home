@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: homepage
+  name: &appname homepage
   namespace: flux-system
 spec:
   interval: 10m
@@ -14,3 +14,6 @@ spec:
   wait: false # no flux ks dependents
   dependsOn:
     - name: external-secrets-stores
+  postBuild:
+    substitute:
+      APP: *appname
