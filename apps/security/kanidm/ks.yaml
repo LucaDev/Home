@@ -18,6 +18,7 @@ spec:
   dependsOn:
     - name: traefik
     - name: external-secrets-stores
+    - name: volsync
   postBuild:
     substitute:
       APP: *appname

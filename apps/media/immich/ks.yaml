@@ -19,3 +19,4 @@ spec:
   dependsOn:
     - name: shared-pg
     - name: external-secrets-stores
+    - name: volsync

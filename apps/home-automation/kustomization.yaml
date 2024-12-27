@@ -7,7 +7,7 @@ resources:
   - ./esphome/ks.yaml
   - ./homepage/ks.yaml
   - ./mosquitto/ks.yaml
-  - ./homeassistant
+  - ./homeassistant/ks.yaml
   - ./zigbee2mqtt/ks.yaml
   - ./nut/ks.yaml
   - ./whisper/ks.yaml
