@@ -52,7 +52,7 @@ spec:
                 memory: 512M
               limits:
                 cpu: 2000m
-                memory: 1280M
+                memory: 1536M
     service:
       internal:
         controller: unifi
