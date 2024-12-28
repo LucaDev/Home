@@ -18,3 +18,4 @@ spec:
   postBuild:
     substitute:
       APP: *appname
+      GATUS_SUBDOMAIN: ha

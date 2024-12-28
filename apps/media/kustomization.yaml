@@ -16,3 +16,4 @@ resources:
   - ./mailbackup/ks.yaml
   - ./frigate/ks.yaml
   - ./ersatztv/ks.yaml
+  - ./dawarich/ks.yaml
