@@ -102,18 +102,18 @@ spec:
                   port: http
 
     persistence:
-      dawarich_gem_cache_app:
+      dawarich-gem-cache-app:
         type: emptyDir
         globalMounts:
           - path: /usr/local/bundle/gems
-      dawarich_public:
+      dawarich-public:
         type: persistentVolumeClaim
         storageClass: ssd-dualreplica
         accessMode: ReadWriteOnce
         size: 1Gi
         globalMounts:
           - path: /var/app/public
-      dawarich_watched:
+      dawarich-watched:
         type: emptyDir
         globalMounts:
           - path: /var/app/tmp/imports/watched
