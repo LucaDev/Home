@@ -22,7 +22,7 @@ spec:
       esphome:
         type: statefulset
         annotations:
-          secret.reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: "true"
 
         statefulset:
           volumeClaimTemplates:

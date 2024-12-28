@@ -20,7 +20,8 @@ spec:
     controllers:
       unifi:
         type: statefulset
-
+        annotations:
+          reloader.stakater.com/auto: "true"
         statefulset:
           volumeClaimTemplates:
             - name: data
@@ -29,7 +30,6 @@ spec:
               globalMounts:
                 - path: /config
               storageClass: cached-dualreplica
-
         containers:
           app:
             image:
@@ -53,7 +53,6 @@ spec:
               limits:
                 cpu: 2000m
                 memory: 1280M
-
     service:
       internal:
         controller: unifi
@@ -98,7 +97,6 @@ spec:
             enabled: false
             port: 10001
             protocol: UDP
-
     ingress:
       main:
         hosts:
