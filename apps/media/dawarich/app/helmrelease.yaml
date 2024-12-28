@@ -31,7 +31,8 @@ spec:
             image:
               repository: freikin/dawarich
               tag: 0.21.1
-            command: ["dev-entrypoint.sh", "bin/dev"]
+            command: ["dev-entrypoint.sh"]
+            args: ["bin/rails server -p 3000 -b 0.0.0.0"]
             envFrom:
               - secretRef:
                   name: dawarich-secret
@@ -56,7 +57,8 @@ spec:
             image:
               repository: freikin/dawarich
               tag: 0.21.1
-            command: ["dev-entrypoint.sh", "sidekiq"]
+            command: ["dev-entrypoint.sh"]
+            args: ["sidekiq"]
             envFrom:
               - secretRef:
                   name: dawarich-secret
@@ -100,20 +102,3 @@ spec:
                 service:
                   identifier: app
                   port: http
-
-    persistence:
-      dawarich-gem-cache-app:
-        type: emptyDir
-        globalMounts:
-          - path: /usr/local/bundle/gems
-      dawarich-public:
-        type: persistentVolumeClaim
-        storageClass: ssd-dualreplica
-        accessMode: ReadWriteOnce
-        size: 1Gi
-        globalMounts:
-          - path: /var/app/public
-      dawarich-watched:
-        type: emptyDir
-        globalMounts:
-          - path: /var/app/tmp/imports/watched
