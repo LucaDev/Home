@@ -26,10 +26,10 @@ spec:
           volumeClaimTemplates:
             - name: data
               accessMode: ReadWriteOnce
-              size: 5Gi
+              size: 2Gi
               globalMounts:
                 - path: /config
-              storageClass: cached-dualreplica
+              storageClass: ssd-dualreplica
         containers:
           app:
             image:
