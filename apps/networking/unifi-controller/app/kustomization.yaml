@@ -9,4 +9,4 @@ resources:
   - ./database.yaml
   - ./volsync.yaml
   - ./volsync-db.yaml
-#  - ../../../../templates/gatus/internal
+  - ../../../../templates/gatus/internal

@@ -21,3 +21,4 @@ spec:
       APP_GID: "568"
       VOLSYNC_CLAIM: shlink
       GATUS_SUBDOMAIN: link
+      GATUS_PATH: /rest/health

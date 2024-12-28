@@ -4,7 +4,6 @@ apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
   name: unifi-db-restic
-  namespace: databases
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
@@ -45,7 +44,6 @@ apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
   name: unifi-db
-  namespace: databases
 spec:
   sourcePVC: data-volume-unifi-mongodb-0
   trigger:

@@ -3,12 +3,11 @@ apiVersion: mongodbcommunity.mongodb.com/v1
 kind: MongoDBCommunity
 metadata:
   name: unifi-mongodb
-  namespace: databases
 spec:
   members: 1
   type: ReplicaSet
-  version: "5.0.25"
-  featureCompatibilityVersion: "5.0"
+  version: "7.0.16"
+  featureCompatibilityVersion: "7.0"
   security:
     authentication:
       modes: ["SCRAM"]
@@ -48,7 +47,7 @@ spec:
             name: data-volume
           spec:
             accessModes: ["ReadWriteOnce"]
-            storageClassName: ssd-singlereplica
+            storageClassName: ssd-dualreplica
             resources:
               requests:
                 storage: 2G
@@ -56,7 +55,7 @@ spec:
             name: logs-volume
           spec:
             accessModes: ["ReadWriteOnce"]
-            storageClassName: ssd-singlereplica
+            storageClassName: ssd-dualreplica
             resources:
               requests:
                 storage: 2G

@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 10m
   path: "./apps/networking/unifi-controller/app"
-#  targetNamespace: networking
+  targetNamespace: networking
   prune: true
   sourceRef:
     kind: GitRepository

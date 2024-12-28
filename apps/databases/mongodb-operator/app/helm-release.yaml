@@ -15,3 +15,5 @@ spec:
         name: mongodb
         namespace: flux-system
       interval: 5m
+  values:
+    watchNamespace: "*"
