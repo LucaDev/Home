@@ -29,6 +29,7 @@ spec:
       masquerade: true
       tproxy: true
       datapathMode: netkit
+      preallocateMaps: true
 
     nodePort:
       enabled: true
