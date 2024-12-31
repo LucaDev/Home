@@ -61,7 +61,7 @@ I use k3s as my lightweight Kubernetes distribution for running containerized ap
 ├── secrets
 │  ├── bitwarden-cli
 │  ├── external-secrets
-│  └── kubed
+│  └── reflector
 ├── security
 │  ├── kanidm
 │  └── kanidm-radius

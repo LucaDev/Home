@@ -3,9 +3,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: appscode
+  name: emberstack
   namespace: flux-system
 spec:
   interval: 30m
-  url: https://charts.appscode.com/stable/
+  url: https://emberstack.github.io/helm-charts
   timeout: 3m
