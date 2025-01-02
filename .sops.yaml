@@ -1,8 +1,18 @@
 ---
+keys:
+  - &luca_macbook age1aslwudntjj2qt6cqcxrupnw86tzuxazlu3rxu947zfz9a856293qankprr
+  - &homeserver age1sq76ekd89fyyu7w5ry0ugcxtmgu2pwcpyuugg02ap78xh67wep8q44y3q4
+  - &flux age1tzw4jxxswsztmd03554czgk6fjkhl9t6ajvzf4fe52ws496k9q4qpcd2gm
+
 creation_rules:
-  - path_regex: .*\.sops\.ya?ml
-    # Laptop
-    # Flux
-    age: >-
-      age1aslwudntjj2qt6cqcxrupnw86tzuxazlu3rxu947zfz9a856293qankprr,
-      age1tzw4jxxswsztmd03554czgk6fjkhl9t6ajvzf4fe52ws496k9q4qpcd2gm
+  - path_regex: nixos/.*\.sops\.(ya?ml|json|env|ini|txt)
+    key_groups:
+      - age: 
+          - *luca_macbook
+          - *homeserver
+  - path_regex: (apps|flux|bootstrap)/.*\.sops\.ya?ml
+    key_groups:
+      - age: 
+          - *luca_macbook
+          - *flux
+

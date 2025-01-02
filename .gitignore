@@ -19,3 +19,6 @@ kubeconfig
 
 # Bootstrap
 bootstrap/bootstrap*.yaml
+
+# Target
+nixos/target/
