@@ -1,10 +1,18 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   # Base Config
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   networking.firewall.enable = false;
 
@@ -32,14 +40,23 @@
   ];
 
   boot.initrd = {
-    availableKernelModules = [ "aesni_intel" "cryptd" "ixgbe" ];
+    availableKernelModules = [
+      "aesni_intel"
+      "cryptd"
+      "ixgbe"
+    ];
     network = {
       enable = true;
       ssh = {
         enable = true;
         port = 22;
-        authorizedKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILjUx5YA3RwdM0xfXY7KMZb3N3BrK1tDyJ/qcQQvBWJE luca@Laptop-von-Luca.local" ];
-        hostKeys = [ "/etc/secrets/initrd/ssh_host_rsa_key" "/etc/secrets/initrd/ssh_host_ed25519_key" ];
+        authorizedKeys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILjUx5YA3RwdM0xfXY7KMZb3N3BrK1tDyJ/qcQQvBWJE luca@Laptop-von-Luca.local"
+        ];
+        hostKeys = [
+          "/etc/secrets/initrd/ssh_host_rsa_key"
+          "/etc/secrets/initrd/ssh_host_ed25519_key"
+        ];
       };
     };
   };
@@ -81,13 +98,14 @@
       repl = "nix repl -f flake:nixpkgs";
       gc = "nix-collect-garbage --delete-old";
     };
-    history.size = 10000;
   };
 
   users.defaultUserShell = pkgs.zsh;
   environment.variables.EDITOR = "vim";
 
-  users.users."root".openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILjUx5YA3RwdM0xfXY7KMZb3N3BrK1tDyJ/qcQQvBWJE luca@Laptop-von-Luca.local"];
+  users.users."root".openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILjUx5YA3RwdM0xfXY7KMZb3N3BrK1tDyJ/qcQQvBWJE luca@Laptop-von-Luca.local"
+  ];
 
   environment.systemPackages = with pkgs; [
     git

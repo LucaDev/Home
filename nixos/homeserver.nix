@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   #boot.initrd.extraUtilsCommands = ''
@@ -19,7 +24,8 @@
 
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
   sops.defaultSopsFile = ./secrets.sops.yaml;
-  sops.secrets.backup_server = {};
+  sops.secrets.backup_server = { };
+  sops.secrets.backup_password = { };
   sops.secrets.ldap-pw = {
     sopsFile = ./ldap-pw.sops.txt;
     format = "binary";
