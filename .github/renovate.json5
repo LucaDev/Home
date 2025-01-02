@@ -40,7 +40,7 @@
   },
   "nix": {
     "enabled": true
-  }
+  },
   packageRules: [
     {
       description: [
