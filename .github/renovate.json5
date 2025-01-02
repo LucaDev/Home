@@ -41,6 +41,9 @@
   "nix": {
     "enabled": true
   },
+  {
+    "lockFileMaintenance": { "enabled": true }
+  },
   packageRules: [
     {
       description: [
