@@ -1,15 +1,13 @@
 { config, lib, pkgs, ... }:
 
 {
-  #imports = [ <sops-nix/modules/sops> ];
-
   #boot.initrd.extraUtilsCommands = ''
   #  copy_bin_and_libs ${pkgs.curl}/bin/curl
   #  cp -rpv ${pkgs.openssl}/lib/* $out/lib/
   #'';
 
   #boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
-  #  curl https://pp6brxay42wq6obf.myfritz.net:44199/nas/filelink.lua?id=82edc694778f775f -o /tmp/key
+  #  curl <redacted> -o /tmp/key
   #'';
 
   #boot.initrd.luks.devices."nixos" = {
@@ -18,7 +16,7 @@
   #};
 
   networking.hostName = "homeserver";
- 
+
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
   sops.defaultSopsFile = ./secrets.sops.yaml;
   sops.secrets.backup_server = {};
@@ -56,7 +54,7 @@
   services.cron = {
     enable = true;
     systemCronJobs = [
-      "4 4 * * 3   root   rsync -a /mnt/data/cached/single/timemachine-luca/ $(cat ${config.sops.secrets.backup_server.path}):./timemachine --progress -e 'ssh -p23' --bwlimit=15M"
+      "4 4 * * 3   root   sshpass ${config.sops.secrets.backup_password.path} rsync -a /mnt/data/cached/single/timemachine-luca/ $(cat ${config.sops.secrets.backup_server.path}):./timemachine --progress -e 'ssh -p23' --bwlimit=15M"
     ];
   };
 
@@ -65,12 +63,12 @@
     enable = true;
     settings = {
       global = {
-        workgroup = "WORKGROUP";
+        "workgroup" = "WORKGROUP";
         "server string" = "%h";
         "server role" = "standalone server";
         "printcap name" = "/dev/null";
         "load printers" = "no";
-        security = "user";
+        "security" = "user";
         "guest ok" = "no";
         "vfs objects" = "catia fruit streams_xattr";
         "fruit:metadata" = "stream";
@@ -88,39 +86,39 @@
         "getwd cache" = "yes";
         "min receivefile size" = "16384";
       };
- 
+
       home = {
-        path = "/mnt/data/cached/single/homes/%U";
-        writeable = "true";
+        "path" = "/mnt/data/cached/single/homes/%U";
+        "writeable" = "true";
         "root preexec" = "mkdir /mnt/data/cached/single/homes/%U";
       };
 
       public = {
-        path = "/mnt/data/cached/single/public-share";
-        public = "yes";
-        writeable = "true";
+        "path" = "/mnt/data/cached/single/public-share";
+        "public" = "yes";
+        "writeable" = "true";
         "guest ok" = "yes";
       };
 
       luca-timemachine = {
-        path = "/mnt/data/cached/single/timemachine-luca";
+        "path" = "/mnt/data/cached/single/timemachine-luca";
         "valid users" = "lucadev";
-        writeable = "true";
+        "writeable" = "true";
         "fruit:time machine" = "yes";
         "fruit:time machine max size" = "2T";
       };
 
       paperless-ingest = {
-        path = "/tmp/paperless-ingest";
-        public = "yes";
-        writeable = "true";
+        "path" = "/tmp/paperless-ingest";
+        "public" = "yes";
+        "writeable" = "true";
         "guest ok" = "yes";
       };
 
       media = {
-        path = "/mnt/data/hdd/single/media";
-        public = "yes";
-        writable = "true";
+        "path" = "/mnt/data/hdd/single/media";
+        "public" = "yes";
+        "writable" = "true";
         "valid users" = "lucadev";
       };
     };
@@ -130,6 +128,8 @@
     enable = true;
     openFirewall = true;
   };
+
+  # systemd.tmpfiles.rules = [ "L+ /var/lib/rancher/k3s - - - - /mnt/data/ssd/dual/k3s" ];
 
   services.k3s = {
     enable = true;
@@ -152,10 +152,9 @@
     enable = true;
     settings = {
       PermitRootLogin = "without-password";
-    };  
+    };
   };
 
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.11"; # Did you read the comment?
 }
-

@@ -1,14 +1,35 @@
 { config, lib, pkgs, ... }:
 
 {
+  # Base Config
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   networking.firewall.enable = false;
-  # Use the systemd-boot EFI boot loader.
+
+  time.timeZone = "Europe/Berlin";
+
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "de";
+  };
+
+  # Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_stable;
-  boot.supportedFilesystems = [ "bcachefs" ]; 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.supportedFilesystems = [ "bcachefs" ];
+
+  boot.kernelPatches = [
+    {
+      name = "netkit-config";
+      patch = null;
+      extraStructuredConfig = {
+        NETKIT = lib.kernel.yes;
+      };
+    }
+  ];
 
   boot.initrd = {
     availableKernelModules = [ "aesni_intel" "cryptd" "ixgbe" ];
@@ -23,38 +44,6 @@
     };
   };
 
-  # Set your time zone.
-  time.timeZone = "Europe/Berlin";
-
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "de";
-  };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-
-    shellAliases = {
-      ll = "ls -alh";
-      rebuild = "nixos-rebuild switch --flake ~/homeserver/nixos/";
-      update = "nix flake update";
-      repl = "nix repl -f flake:nixpkgs";
-      gc = "nix-collect-garbage --delete-old";
-    };
-#    history.size = 10000;
-  };
-
-  users.defaultUserShell = pkgs.zsh;
-  environment.variables.EDITOR = "vim";
-
-  users.users."root".openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILjUx5YA3RwdM0xfXY7KMZb3N3BrK1tDyJ/qcQQvBWJE luca@Laptop-von-Luca.local"];
-
-  # Kernel arguments
   boot.kernelParams = [
     "ip=dhcp"
     "init_on_alloc=0"
@@ -63,8 +52,7 @@
     "module_blacklist=r8169"
     "security=none"
   ];
-  
-  # Sysctls
+
   boot.kernel.sysctl = {
     "fs.inotify.max_user_watches" = 1048576;
     "fs.inotify.max_user_instances" = 8192;
@@ -80,6 +68,27 @@
     "vm.nr_hugepages" = 512;
   };
 
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+
+    shellAliases = {
+      ll = "ls -alh";
+      rebuild = "nixos-rebuild switch --flake ~/homeserver/nixos/";
+      update = "nix flake update";
+      repl = "nix repl -f flake:nixpkgs";
+      gc = "nix-collect-garbage --delete-old";
+    };
+    history.size = 10000;
+  };
+
+  users.defaultUserShell = pkgs.zsh;
+  environment.variables.EDITOR = "vim";
+
+  users.users."root".openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILjUx5YA3RwdM0xfXY7KMZb3N3BrK1tDyJ/qcQQvBWJE luca@Laptop-von-Luca.local"];
+
   environment.systemPackages = with pkgs; [
     git
     vim
@@ -87,14 +96,12 @@
     smartmontools
     htop
     k9s
-    screen 
+    screen
     podman
     rsync
+    sshpass
   ];
-  
-  # systemd.tmpfiles.rules = [ "L+ /var/lib/rancher/k3s - - - - /mnt/data/ssd/dual/k3s" ];
 
-  # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
   };
@@ -108,7 +115,4 @@
     dates = "weekly";
     options = "+5";
   };
-
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.11"; # Did you read the comment?
 }
