@@ -52,6 +52,7 @@
         port = 22;
         authorizedKeys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILjUx5YA3RwdM0xfXY7KMZb3N3BrK1tDyJ/qcQQvBWJE luca@Laptop-von-Luca.local"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ1WsEPt50HcTjV5WY9g3NRlUVU7RH583ocFs+FzOK38 iPhone"
         ];
         hostKeys = [
           "/etc/secrets/initrd/ssh_host_rsa_key"
@@ -105,6 +106,7 @@
 
   users.users."root".openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILjUx5YA3RwdM0xfXY7KMZb3N3BrK1tDyJ/qcQQvBWJE luca@Laptop-von-Luca.local"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ1WsEPt50HcTjV5WY9g3NRlUVU7RH583ocFs+FzOK38 iPhone"
   ];
 
   environment.systemPackages = with pkgs; [
