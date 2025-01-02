@@ -28,7 +28,7 @@ spec:
     bpf:
       masquerade: true
       tproxy: true
-#      datapathMode: netkit
+      datapathMode: netkit
       preallocateMaps: true
 
     nodePort:
