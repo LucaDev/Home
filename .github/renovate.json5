@@ -38,6 +38,9 @@
       'terraform/.+\\.tf$',
     ],
   },
+  "nix": {
+    "enabled": true
+  }
   packageRules: [
     {
       description: [
