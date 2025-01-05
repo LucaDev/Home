@@ -158,6 +158,7 @@
     enable = true;
     settings = {
       PermitRootLogin = "without-password";
+      PasswordAuthentication = false;
     };
   };
 
