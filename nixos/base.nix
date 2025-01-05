@@ -94,10 +94,10 @@
 
     shellAliases = {
       ll = "ls -alh";
-      rebuild = "nixos-rebuild switch --flake ~/homeserver/nixos/";
+      rebuild = "nh os switch ~/homeserver/nixos/";
       update = "nix flake update";
       repl = "nix repl -f flake:nixpkgs";
-      gc = "nix-collect-garbage --delete-old";
+      gc = "nh clean --keep 5";
     };
   };
 
@@ -126,6 +126,7 @@
     podman
     rsync
     sshpass
+    nh
   ];
 
   services.openssh = {
