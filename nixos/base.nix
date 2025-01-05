@@ -101,12 +101,6 @@
     };
   };
 
-  programs.git = {
-    enable = true;
-    userName = "Luca Bäcker";
-    userEmail = "l.kroeger01@gmail.com";
-  };
-
   users.defaultUserShell = pkgs.zsh;
   environment.variables.EDITOR = "vim";
 
