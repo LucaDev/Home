@@ -62,14 +62,14 @@ spec:
           gethomepage.dev/name: Romm
 
     persistence:
-      romm_resources:
+      romm-resources:
         type: persistentVolumeClaim
         storageClass: cached-dualreplica
         accessMode: ReadWriteOnce
         size: 5G
         globalMounts:
           - path: /romm/resources
-      romm_redis_data:
+      romm-redis-data:
         globalMounts:
           - path: /redis-data
         type: persistentVolumeClaim
