@@ -49,6 +49,7 @@ spec:
           gethomepage.dev/group: Medien
           gethomepage.dev/icon: memos
           gethomepage.dev/name: Notes
+          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
         hosts:
           - host: notes.lucadev.de
             paths:

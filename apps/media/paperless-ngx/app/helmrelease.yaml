@@ -77,7 +77,7 @@ spec:
           gethomepage.dev/widget.url: https://paperless.lucadev.de
           gethomepage.dev/widget.username: "{{`{{HOMEPAGE_VAR_PAPERLESS_USERNAME}}`}}"
           gethomepage.dev/widget.password: "{{`{{HOMEPAGE_VAR_PAPERLESS_PASSWORD}}`}}"
-
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
     persistence:
       paperless-ingest:
         type: hostPath
