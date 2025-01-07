@@ -1,0 +1,97 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: romm
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.6.0
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+
+  values:
+    controllers:
+      romm:
+        containers:
+          app:
+            image:
+              repository: rommapp/romm
+              tag: 3.7.0-slim
+            envFrom:
+              - secretRef:
+                  name: romm-secret
+            resources:
+              requests:
+                cpu: 11m
+                memory: 1024M
+              limits:
+                cpu: 1000m
+                memory: 2048M
+
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+    service:
+      app:
+        controller: romm
+        ports:
+          http:
+            port: 8080
+
+    ingress:
+      app:
+        hosts:
+          - host: romm.lucadev.de
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: ROM Verwaltung
+          gethomepage.dev/group: Medien
+          gethomepage.dev/icon: romm
+          gethomepage.dev/name: Romm
+
+    persistence:
+      romm_resources:
+        type: persistentVolumeClaim
+        storageClass: cached-dualreplica
+        accessMode: ReadWriteOnce
+        size: 5G
+        globalMounts:
+          - path: /romm/resources
+      romm_redis_data:
+        globalMounts:
+          - path: /redis-data
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        storageClass: ssd-singlereplica
+        size: 1G
+      library:
+        type: hostPath
+        hostPath: /mnt/data/hdd/single/media/roms
+        globalMounts:
+          - path: /romm/library
+      assets:
+        type: persistentVolumeClaim
+        storageClass: cached-dualreplica
+        size: 5G
+        accessMode: ReadWriteOnce
+        globalMounts:
+          - path: /romm/assets
+      config:
+        type: persistentVolumeClaim
+        storageClass: ssd-dualreplica
+        size: 1G
+        accessMode: ReadWriteOnce
+        globalMounts:
+          - /romm/config
