@@ -30,10 +30,10 @@ spec:
             resources:
               requests:
                 cpu: 11m
-                memory: 1024M
+                memory: 256M
               limits:
                 cpu: 1000m
-                memory: 2048M
+                memory: 1024M
 
         annotations:
           reloader.stakater.com/auto: "true"
