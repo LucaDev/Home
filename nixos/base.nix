@@ -94,7 +94,7 @@
 
     shellAliases = {
       ll = "ls -alh";
-      rebuild = "nh os switch ~/homeserver/nixos/";
+      rebuild = "nh os switch ~/homeserver/nixos/ --bypass-root-check";
       update = "nix flake update";
       repl = "nix repl -f flake:nixpkgs";
       gc = "nh clean --keep 5";

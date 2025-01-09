@@ -49,8 +49,9 @@
     enable = true;
     mode = "standalone";
     ups.main = {
-      port = "/dev/ttyUSB0";
-      driver = "apcsmart";
+      description = "Smart-UPS 750 RM";
+      port = "/dev/usb/hiddev0";
+      driver = "usbhid-ups";
     };
     upsmon.monitor.homeserver.powerValue = 1;
     upsmon.monitor.homeserver.user = "admin";
