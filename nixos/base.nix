@@ -117,6 +117,7 @@
 
   environment = {
     variables.EDITOR = "vim";
+    variables.KUBECONFIG = "/var/lib/rancher/k3s/server/cred/admin.kubeconfig";
     systemPackages = with pkgs; [
       git
       vim

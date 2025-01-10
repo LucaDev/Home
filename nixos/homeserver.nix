@@ -71,7 +71,7 @@
   services.cron = {
     enable = true;
     systemCronJobs = [
-      "4 4 * * 3   root   sshpass -f ${config.sops.secrets.backup_password.path} rsync -a /mnt/data/cached/single/timemachine-luca/ $(cat ${config.sops.secrets.backup_server.path}):./timemachine --progress -e 'ssh -p23' --bwlimit=15M"
+      "4 4 * * 3   root   sshpass -f ${config.sops.secrets.backup_password.path} rsync -a /mnt/data/cached/single/timemachine-luca/ $(cat ${config.sops.secrets.backup_server.path}):./timemachine -e 'ssh -p23' --bwlimit=15M"
     ];
   };
 
