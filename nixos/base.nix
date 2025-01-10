@@ -100,7 +100,7 @@
     shellAliases = {
       ll = "ls -alh";
       rebuild = "nh os switch ~/homeserver/nixos/ --bypass-root-check";
-      update = "nix flake update";
+      update = "nix flake update --flake /root/homeserver/nixos/";
       repl = "nix repl -f flake:nixpkgs";
       gc = "nh clean --keep 5";
       fs = "bcachefs fs usage /mnt/data -h";
