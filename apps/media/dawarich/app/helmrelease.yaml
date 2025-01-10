@@ -29,8 +29,8 @@ spec:
             image:
               repository: freikin/dawarich
               tag: 0.22.1
-            command: ["dev-entrypoint.sh"]
-            args: ["bin/rails server -p 3000 -b 0.0.0.0"]
+            command: ["web-entrypoint.sh"]
+            args: ['bin/rails', 'server', '-p', '3000', '-b', '::']
             envFrom:
               - secretRef:
                   name: dawarich-secret
@@ -55,8 +55,8 @@ spec:
             image:
               repository: freikin/dawarich
               tag: 0.22.1
-            command: ["dev-entrypoint.sh"]
-            args: ["sidekiq"]
+            command: ["sidekiq-entrypoint.sh"]
+            args: ['bundle', 'exec', 'sidekiq']
             envFrom:
               - secretRef:
                   name: dawarich-secret

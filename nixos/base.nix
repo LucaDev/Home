@@ -98,6 +98,7 @@
       update = "nix flake update";
       repl = "nix repl -f flake:nixpkgs";
       gc = "nh clean --keep 5";
+      fs = "bcachefs fs usage /mnt/data -h";
     };
   };
 
