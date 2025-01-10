@@ -28,8 +28,9 @@
     secrets = {
       backup_server = { };
       backup_password = { };
-      ldap-pw = {
-        sopsFile = ./ldap-pw.sops.txt;
+      upsmon_password = { };
+      ldap_password = {
+        sopsFile = ./ldap_password.sops.txt;
         format = "binary";
         owner = "nslcd";
       };
@@ -46,7 +47,7 @@
     };
     bind = {
       distinguishedName = "dn=token";
-      passwordFile = config.sops.secrets.ldap-pw.path;
+      passwordFile = config.sops.secrets.ldap_password.path;
     };
   };
 
@@ -55,16 +56,25 @@
   # UPS monitoring
   power.ups = {
     enable = true;
-    mode = "standalone";
-    ups.main = {
+    mode = "netserver";
+    users.upsmon = {
+      upsmon = "primary";
+      instcmds = "ALL";
+      actions = [
+        "SET"
+        "FSD"
+      ];
+      passwordFile = config.sops.secrets.upsmon_password.path;
+    };
+    ups.rack = {
       description = "Smart-UPS 750 RM";
       port = "/dev/usb/hiddev0";
       driver = "usbhid-ups";
     };
-    upsmon.monitor.homeserver = {
+    upsmon.monitor.rack = {
       powerValue = 1;
-      user = "admin";
-      passwordFile = "/dev/null";
+      user = "upsmon";
+      passwordFile = config.sops.secrets.upsmon_password.path;
     };
   };
 
@@ -148,6 +158,7 @@
   services.samba-wsdd = {
     enable = true;
     extraOptions = [ "--preserve-case" ];
+    interface = "enp1s0";
     openFirewall = true;
   };
 

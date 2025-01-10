@@ -40,11 +40,11 @@ spec:
             securityContext:
               privileged: true # Todo: remove?
               supplementalGroups:
-                - 44 # video
-                - 104 # renderer
+                - 26 # video
+                - 303 # renderer
             resources:
               limits:
-                amd.com/gpu: 0
+                amd.com/gpu: 1
 
     service:
       app:

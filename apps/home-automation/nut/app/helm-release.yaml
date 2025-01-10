@@ -18,37 +18,17 @@ spec:
 
   values:
     controllers:
-      nut:
+      nut-exporter:
         strategy: Recreate
 
-        pod:
-          nodeSelector:
-            feature.node.kubernetes.io/ups-connected: "true"
-
         containers:
-          app:
-            image:
-              repository: instantlinux/nut-upsd
-              tag: 2.8.0-r4
-            env:
-              PORT: /dev/ttyUSB0
-            envFrom:
-              - secretRef:
-                  name: nut-upsd-password
-            resources:
-              requests:
-                cpu: 5m
-                memory: 50Mi
-              limits:
-                memory: 200Mi
-            securityContext:
-              privileged: true
           exporter:
             image:
               repository: druggeri/nut_exporter
               tag: 3.1.1
             env:
               NUT_EXPORTER_USERNAME: upsmon
+              NUT_EXPORTER_SERVER: 192.168.1.169
             envFrom:
               - secretRef:
                   name: nut-upsd-password
@@ -57,21 +37,11 @@ spec:
           reloader.stakater.com/auto: "true"
 
     service:
-      app:
-        controller: nut
-        ports:
-          http:
-            port: 3493
       exporter:
         controller: nut
         ports:
           http:
             port: 9199
-
-    persistence:
-      ups:
-        type: hostPath
-        hostPath: /dev/ttyUSB0
 
     serviceMonitor:
       exporter:

@@ -69,13 +69,6 @@ spec:
         size: 5G
         globalMounts:
           - path: /romm/resources
-      romm-redis-data:
-        globalMounts:
-          - path: /redis-data
-        type: persistentVolumeClaim
-        accessMode: ReadWriteOnce
-        storageClass: ssd-singlereplica
-        size: 1G
       library:
         type: hostPath
         hostPath: /mnt/data/hdd/single/media/roms
