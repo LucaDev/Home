@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./apps/home-automation/nut-exporter/app"
+  path: "./apps/monitoring/nut-exporter/app"
   prune: true
   sourceRef:
     kind: GitRepository
