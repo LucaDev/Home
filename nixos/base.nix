@@ -24,10 +24,15 @@
   };
 
   # Boot
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.supportedFilesystems = [ "bcachefs" ];
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      systemd-boot.netbootxyz.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    kernelPackages = pkgs.linuxPackages_latest;
+    supportedFilesystems = [ "bcachefs" ];
+  };
 
   boot.kernelPatches = [
     {
@@ -102,31 +107,32 @@
     };
   };
 
-  users.defaultUserShell = pkgs.zsh;
-  environment.variables.EDITOR = "vim";
-
-  users.users."root".openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILjUx5YA3RwdM0xfXY7KMZb3N3BrK1tDyJ/qcQQvBWJE luca@Laptop-von-Luca.local"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ1WsEPt50HcTjV5WY9g3NRlUVU7RH583ocFs+FzOK38 iPhone"
-  ];
-
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    wget
-    smartmontools
-    htop
-    k9s
-    screen
-    podman
-    rsync
-    sshpass
-    nh
-  ];
-
-  services.openssh = {
-    enable = true;
+  users = {
+    defaultUserShell = pkgs.zsh;
+    users."root".openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILjUx5YA3RwdM0xfXY7KMZb3N3BrK1tDyJ/qcQQvBWJE luca@Laptop-von-Luca.local"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ1WsEPt50HcTjV5WY9g3NRlUVU7RH583ocFs+FzOK38 iPhone"
+    ];
   };
+
+  environment = {
+    variables.EDITOR = "vim";
+    systemPackages = with pkgs; [
+      git
+      vim
+      wget
+      smartmontools
+      htop
+      k9s
+      screen
+      podman
+      rsync
+      sshpass
+      nh
+    ];
+  };
+
+  services.openssh.enable = true;
 
   services.envfs.enable = true;
   programs.nix-ld.enable = true;

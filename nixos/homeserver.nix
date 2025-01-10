@@ -71,7 +71,7 @@
   services.cron = {
     enable = true;
     systemCronJobs = [
-      "4 4 * * 3   root   sshpass ${config.sops.secrets.backup_password.path} rsync -a /mnt/data/cached/single/timemachine-luca/ $(cat ${config.sops.secrets.backup_server.path}):./timemachine --progress -e 'ssh -p23' --bwlimit=15M"
+      "4 4 * * 3   root   sshpass -f ${config.sops.secrets.backup_password.path} rsync -a /mnt/data/cached/single/timemachine-luca/ $(cat ${config.sops.secrets.backup_server.path}):./timemachine --progress -e 'ssh -p23' --bwlimit=15M"
     ];
   };
 
@@ -181,12 +181,9 @@
   powerManagement.powertop.enable = true;
 
   # Enable the OpenSSH daemon.
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "without-password";
-      PasswordAuthentication = false;
-    };
+  services.openssh.settings = {
+    PermitRootLogin = "without-password";
+    PasswordAuthentication = false;
   };
 
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
