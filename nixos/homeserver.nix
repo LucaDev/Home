@@ -22,24 +22,32 @@
 
   networking.hostName = "homeserver";
 
-  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-  sops.defaultSopsFile = ./secrets.sops.yaml;
-  sops.secrets.backup_server = { };
-  sops.secrets.backup_password = { };
-  sops.secrets.ldap-pw = {
-    sopsFile = ./ldap-pw.sops.txt;
-    format = "binary";
-    owner = "nslcd";
+  sops = {
+    age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+    defaultSopsFile = ./secrets.sops.yaml;
+    secrets = {
+      backup_server = { };
+      backup_password = { };
+      ldap-pw = {
+        sopsFile = ./ldap-pw.sops.txt;
+        format = "binary";
+        owner = "nslcd";
+      };
+    };
   };
 
   users.ldap = {
     enable = true;
     server = "ldaps://idm.lucadev.de/";
     base = "dc=idm,dc=lucadev,dc=de";
-    daemon.enable = true;
-    bind.distinguishedName = "dn=token";
-    bind.passwordFile = config.sops.secrets.ldap-pw.path;
-    daemon.extraConfig = "nss_initgroups_ignoreusers = ALLLOCAL";
+    daemon = {
+      enable = true;
+      extraConfig = "nss_initgroups_ignoreusers = ALLLOCAL";
+    };
+    bind = {
+      distinguishedName = "dn=token";
+      passwordFile = config.sops.secrets.ldap-pw.path;
+    };
   };
 
   services.fwupd.enable = true;
@@ -53,9 +61,11 @@
       port = "/dev/usb/hiddev0";
       driver = "usbhid-ups";
     };
-    upsmon.monitor.homeserver.powerValue = 1;
-    upsmon.monitor.homeserver.user = "admin";
-    upsmon.monitor.homeserver.passwordFile = "/dev/null";
+    upsmon.monitor.homeserver = {
+      powerValue = 1;
+      user = "admin";
+      passwordFile = "/dev/null";
+    };
   };
 
   services.cron = {
@@ -68,15 +78,16 @@
   # Samba server
   services.samba = {
     enable = true;
+    package = pkgs.samba4Full;
     settings = {
       global = {
         "workgroup" = "WORKGROUP";
         "server string" = "%h";
-        "server role" = "standalone server";
         "printcap name" = "/dev/null";
         "load printers" = "no";
         "security" = "user";
         "guest ok" = "no";
+        # macOS
         "vfs objects" = "catia fruit streams_xattr";
         "fruit:metadata" = "stream";
         "fruit:model" = "MacSamba";
@@ -87,11 +98,14 @@
         "fruit:delete_empty_adfiles" = "yes";
         "fruit:copyfile" = "yes";
         "fruit:encoding" = "native";
-        "server multi channel support" = "yes";
         "server min protocol" = "NT1";
+        # Performance
+        "server multi channel support" = "yes";
         "use sendfile" = "yes";
         "getwd cache" = "yes";
         "min receivefile size" = "16384";
+        "socket options" = "IPTOS_LOWDELAY TCP_NODELAY IPTOS_THROUGHPUT SO_RCVBUF=131072 SO_SNDBUF=131072";
+        "deadtime" = "60";
       };
 
       home = {
@@ -133,6 +147,18 @@
 
   services.samba-wsdd = {
     enable = true;
+    extraOptions = [ "--preserve-case" ];
+    openFirewall = true;
+  };
+
+  services.avahi = {
+    enable = true;
+    allowInterfaces = [ "enp1s0" ];
+    publish = {
+      enable = true;
+      userServices = true;
+    };
+    ipv6 = true;
     openFirewall = true;
   };
 
