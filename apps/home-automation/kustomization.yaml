@@ -9,6 +9,5 @@ resources:
   - ./mosquitto/ks.yaml
   - ./homeassistant/ks.yaml
   - ./zigbee2mqtt/ks.yaml
-  - ./nut/ks.yaml
   - ./whisper/ks.yaml
   - ./maybe/ks.yaml

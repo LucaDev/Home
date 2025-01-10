@@ -37,14 +37,15 @@ spec:
                 spec:
                   failureThreshold: 30
                   periodSeconds: 5
-            securityContext:
-              privileged: true # Todo: remove?
-              supplementalGroups:
-                - 26 # video
-                - 303 # renderer
             resources:
               limits:
-                amd.com/gpu: 1
+                amd.com/gpu: 0
+
+        pod:
+          securityContext:
+            supplementalGroups:
+              - 26 # video
+              - 303 # renderer
 
     service:
       app:

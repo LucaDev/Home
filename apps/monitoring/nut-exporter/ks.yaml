@@ -2,11 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &appname nut
+  name: &appname nut-exporter
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./apps/home-automation/nut/app"
+  path: "./apps/home-automation/nut-exporter/app"
   prune: true
   sourceRef:
     kind: GitRepository
