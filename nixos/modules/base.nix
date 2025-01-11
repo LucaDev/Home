@@ -9,10 +9,19 @@
   # Base Config
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+
+  nix = {
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    settings.auto-optimise-store = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "+5";
+    };
+  };
 
   networking.firewall.enable = false;
 
@@ -133,15 +142,17 @@
     ];
   };
 
-  services.openssh.enable = true;
+  # Enable the OpenSSH daemon.
+  services.openssh.settings = {
+    enable = true;
+    PermitRootLogin = "without-password";
+    PasswordAuthentication = false;
+  };
 
+  services.fwupd.enable = true;
   services.envfs.enable = true;
   programs.nix-ld.enable = true;
 
-  nix.settings.auto-optimise-store = true;
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "+5";
-  };
+  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+  system.stateVersion = "24.11"; # Did you read the comment?
 }

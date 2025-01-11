@@ -6,37 +6,6 @@
 }:
 
 {
-  #boot.initrd.extraUtilsCommands = ''
-  #  copy_bin_and_libs ${pkgs.curl}/bin/curl
-  #  cp -rpv ${pkgs.openssl}/lib/* $out/lib/
-  #'';
-
-  #boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
-  #  curl <redacted> -o /tmp/key
-  #'';
-
-  #boot.initrd.luks.devices."nixos" = {
-  #  keyFile = "/tmp/key";
-  #  preLVM = false; # If this is true the decryption is attempted before the postDeviceCommands can run
-  #};
-
-  networking.hostName = "homeserver";
-
-  sops = {
-    age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-    defaultSopsFile = ./secrets.sops.yaml;
-    secrets = {
-      backup_server = { };
-      backup_password = { };
-      upsmon_password = { };
-      ldap_password = {
-        sopsFile = ./ldap_password.sops.txt;
-        format = "binary";
-        owner = "nslcd";
-      };
-    };
-  };
-
   users.ldap = {
     enable = true;
     server = "ldaps://idm.lucadev.de/";
@@ -48,33 +17,6 @@
     bind = {
       distinguishedName = "dn=token";
       passwordFile = config.sops.secrets.ldap_password.path;
-    };
-  };
-
-  services.fwupd.enable = true;
-
-  # UPS monitoring
-  power.ups = {
-    enable = true;
-    mode = "netserver";
-    users.upsmon = {
-      upsmon = "primary";
-      instcmds = "ALL";
-      actions = [
-        "SET"
-        "FSD"
-      ];
-      passwordFile = config.sops.secrets.upsmon_password.path;
-    };
-    ups.rack = {
-      description = "Smart-UPS 750 RM";
-      port = "/dev/usb/hiddev0";
-      driver = "usbhid-ups";
-    };
-    upsmon.monitor.rack = {
-      powerValue = 1;
-      user = "upsmon";
-      passwordFile = config.sops.secrets.upsmon_password.path;
     };
   };
 
@@ -172,31 +114,4 @@
     ipv6 = true;
     openFirewall = true;
   };
-
-  # systemd.tmpfiles.rules = [ "L+ /var/lib/rancher/k3s - - - - /mnt/data/ssd/dual/k3s" ];
-
-  services.k3s = {
-    enable = true;
-    gracefulNodeShutdown.enable = true;
-    extraFlags = [
-      "--data-dir /mnt/data/ssd/dual/k3s"
-      "--flannel-backend=none"
-      "--disable-network-policy"
-      "--disable-kube-proxy"
-      "--disable=servicelb"
-      "--disable=traefik"
-      "--tls-san homeserver.home.lucadev.de"
-    ];
-  };
-
-  powerManagement.powertop.enable = true;
-
-  # Enable the OpenSSH daemon.
-  services.openssh.settings = {
-    PermitRootLogin = "without-password";
-    PasswordAuthentication = false;
-  };
-
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.11"; # Did you read the comment?
 }

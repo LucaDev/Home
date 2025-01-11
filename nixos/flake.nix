@@ -18,11 +18,13 @@
     }@inputs:
     {
       nixosConfigurations.homeserver = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         modules = [
-          ./hardware-configuration.nix
-          ./base.nix
-          ./homeserver.nix
+          ./hardware/homeserver.nix
+          ./modules/base.nix
+          ./modules/secrets.nix
+          ./modules/power.nix
+          ./modules/k3s.nix
+          ./modules/samba.nix
           sops-nix.nixosModules.sops
         ];
       };
@@ -30,7 +32,7 @@
         system = "x86_64-linux";
         modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-          ./base.nix
+          ./modules/base.nix
         ];
       };
     };
