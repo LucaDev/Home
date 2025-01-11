@@ -12,7 +12,9 @@
     mode = "netserver";
     users.upsmon = {
       upsmon = "primary";
-      instcmds = "ALL";
+      instcmds = [
+        "ALL"
+      ];
       actions = [
         "SET"
         "FSD"
