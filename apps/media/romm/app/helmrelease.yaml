@@ -33,7 +33,7 @@ spec:
                 memory: 256M
               limits:
                 cpu: 1000m
-                memory: 1024M
+                memory: 2048M
 
         annotations:
           reloader.stakater.com/auto: "true"
