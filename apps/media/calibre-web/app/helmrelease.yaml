@@ -32,8 +32,12 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/bjw-s/calibre-web
-              tag: 0.6.24@sha256:3adac22931efde3722834b9a12f9e3559944403db28545968949e1360939d64c
+              repository: crocodilestick/calibre-web-automated
+              tag: V2.1.2
+              PUID: ${APP_UID}
+              PGID: ${APP_GID}
+              TZ: Europe/Berlin
+              DOCKER_MODS: lscr.io/linuxserver/mods:universal-calibre-v7.16.0
             env:
               CACHE_DIR: /cache
             resources:
@@ -70,7 +74,7 @@ spec:
           gethomepage.dev/name: Calibre
           traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
         hosts:
-          - host: calibre.lucadev.de
+          - host: books.lucadev.de
             paths:
               - path: /
                 service:
@@ -87,10 +91,15 @@ spec:
           - path: /config
       media:
         type: hostPath
-        hostPath: /mnt/data/hdd/single/media
+        hostPath: /mnt/data/hdd/single/media/books
         globalMounts:
           - path: /data/media
       cache:
         type: emptyDir
         globalMounts:
           - path: /cache
+      cwa-ingrest:
+        type: hostPath
+        hostPath: /mnt/data/hdd/single/media/books/downloaded
+        globalMounts:
+          - path: /cwa-book-ingest
