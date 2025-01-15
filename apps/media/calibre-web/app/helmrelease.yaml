@@ -34,12 +34,12 @@ spec:
             image:
               repository: crocodilestick/calibre-web-automated
               tag: V2.1.2
+            env:
+              CACHE_DIR: /cache
               PUID: ${APP_UID}
               PGID: ${APP_GID}
               TZ: Europe/Berlin
               DOCKER_MODS: lscr.io/linuxserver/mods:universal-calibre-v7.16.0
-            env:
-              CACHE_DIR: /cache
             resources:
               requests:
                 cpu: 5m
