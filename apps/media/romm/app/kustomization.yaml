@@ -12,3 +12,9 @@ labels:
       app.kubernetes.io/name: romm
       app.kubernetes.io/instance: romm
       app.kubernetes.io/part-of: romm
+configMapGenerator:
+  - name: romm-nginx-config
+    files:
+      - conf/nginx.conf
+generatorOptions:
+  disableNameSuffixHash: true

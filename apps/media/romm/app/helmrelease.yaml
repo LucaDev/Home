@@ -88,3 +88,11 @@ spec:
         accessMode: ReadWriteOnce
         globalMounts:
           - path: /romm/config
+      nginx-config:
+        type: configMap
+        name: romm-nginx-config
+        advancedMounts:
+          romm:
+            app:
+              - path: /etc/nginx/nginx.conf
+                subPath: nginx.conf
