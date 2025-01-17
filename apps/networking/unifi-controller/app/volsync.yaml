@@ -13,7 +13,6 @@ spec:
     name: unifi-config-restic
     creationPolicy: Owner
     template:
-      engineVersion: v2
       data:
         RESTIC_REPOSITORY: rclone:storagebox:/homeserver/unifi-config
         RESTIC_PASSWORD: "{{ .restic_password }}"
