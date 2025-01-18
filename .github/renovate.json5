@@ -61,13 +61,14 @@
       description: 'Auto merge KPS minors and patches',
       matchDatasources: [
         'helm',
+        'docker'
       ],
       automerge: true,
       matchUpdateTypes: [
         'minor',
         'patch',
       ],
-      matchPackageNames: [
+      matchDepNames: [
         'kube-prometheus-stack',
       ],
     },
