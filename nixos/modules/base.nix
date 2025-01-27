@@ -43,16 +43,6 @@
     supportedFilesystems = [ "bcachefs" ];
   };
 
-  boot.kernelPatches = [
-    {
-      name = "netkit-config";
-      patch = null;
-      extraStructuredConfig = {
-        NETKIT = lib.kernel.yes;
-      };
-    }
-  ];
-
   boot.initrd = {
     availableKernelModules = [
       "aesni_intel"
@@ -143,10 +133,10 @@
   };
 
   # Enable the OpenSSH daemon.
-  services.openssh.settings = {
+  services.openssh = {
     enable = true;
-    PermitRootLogin = "without-password";
-    PasswordAuthentication = false;
+    settings.PermitRootLogin = "without-password";
+    settings.PasswordAuthentication = false;
   };
 
   services.fwupd.enable = true;

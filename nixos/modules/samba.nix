@@ -39,6 +39,7 @@
         "load printers" = "no";
         "security" = "user";
         "guest ok" = "no";
+        "mdns name" = "mdns";
         # macOS
         "vfs objects" = "catia fruit streams_xattr";
         "fruit:metadata" = "stream";

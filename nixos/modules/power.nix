@@ -10,6 +10,7 @@
   power.ups = {
     enable = true;
     mode = "netserver";
+    upsd.listen = [{address = "*";}];
     users.upsmon = {
       upsmon = "primary";
       instcmds = [

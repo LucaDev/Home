@@ -10,7 +10,6 @@
 }:
 
 {
-  system = "x86_64-linux";
   nixpkgs.hostPlatform = "x86_64-linux";
   networking.hostName = "homeserver";
   networking.useDHCP = true;

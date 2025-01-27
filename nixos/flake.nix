@@ -18,6 +18,7 @@
     }@inputs:
     {
       nixosConfigurations.homeserver = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
         modules = [
           ./hardware/homeserver.nix
           ./modules/base.nix
