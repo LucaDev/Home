@@ -23,7 +23,7 @@ spec:
           app:
             image:
               repository: shlinkio/shlink
-              tag: 4.4.1
+              tag: 4.4.2
             resources:
               requests:
                 cpu: 10m
