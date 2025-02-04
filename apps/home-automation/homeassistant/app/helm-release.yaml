@@ -79,4 +79,4 @@ spec:
           gethomepage.dev/group: Heimautomation
           gethomepage.dev/icon: home-assistant
           gethomepage.dev/name: HomeAssistant
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
+        
