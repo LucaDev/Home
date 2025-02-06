@@ -33,7 +33,7 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/11notes/kms
+              repository: docker.io/11notes/kms
               tag: 1e7ec66
             env:
               TZ: Europe/Berlin
@@ -47,7 +47,7 @@ spec:
                 memory: 128M
           web:
             image:
-              repository: ghcr.io/11notes/kms-gui
+              repository: docker.io/11notes/kms-gui
               tag: 58e32a5
             env:
               TZ: Europe/Berlin
