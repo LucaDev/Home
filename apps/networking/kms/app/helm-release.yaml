@@ -37,7 +37,7 @@ spec:
               tag: 1e7ec66
             env:
               TZ: Europe/Berlin
-              KMS_LOCALE: de-DE
+              KMS_LOCALE: 1031
             resources:
               requests:
                 cpu: 128m
