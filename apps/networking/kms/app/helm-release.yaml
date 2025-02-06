@@ -45,6 +45,13 @@ spec:
               limits:
                 cpu: 256m
                 memory: 128M
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
           web:
             image:
               repository: docker.io/11notes/kms-gui
