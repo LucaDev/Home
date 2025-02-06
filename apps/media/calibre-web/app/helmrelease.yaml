@@ -55,8 +55,8 @@ spec:
                 enabled: true
                 spec:
                   failureThreshold: 30
-                  periodSeconds: 5
-                  initialDelaySeconds: 60
+                  periodSeconds: 10
+                  initialDelaySeconds: 90
 
     service:
       app:
