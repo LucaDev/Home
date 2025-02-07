@@ -27,7 +27,7 @@ spec:
           app:
             image:
               repository: prom/snmp-exporter
-              tag: v0.27.0
+              tag: v0.28.0
             resources:
               requests:
                 cpu: 10m
