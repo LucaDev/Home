@@ -19,32 +19,21 @@ spec:
   values:
     controllers:
       kms:
-        type: statefulset
+        type: deployment
         annotations:
           reloader.stakater.com/auto: "true"
-        statefulset:
-          volumeClaimTemplates:
-            - name: data
-              accessMode: ReadWriteOnce
-              size: 1Gi
-              globalMounts:
-                - path: /kms/var
-              storageClass: ssd-dualreplica
         containers:
           app:
             image:
-              repository: docker.io/11notes/kms
-              tag: 1e7ec66
-            env:
-              TZ: Europe/Berlin
-              KMS_LOCALE: 1031
+              repository: mogeko/vlmcsd
+              tag: latest
             resources:
               requests:
                 cpu: 128m
-                memory: 64M
+                memory: 32M
               limits:
                 cpu: 256m
-                memory: 128M
+                memory: 64M
             probes:
               liveness:
                 enabled: false
@@ -52,20 +41,6 @@ spec:
                 enabled: false
               startup:
                 enabled: false
-          web:
-            image:
-              repository: docker.io/11notes/kms-gui
-              tag: 58e32a5
-            env:
-              TZ: Europe/Berlin
-              KMS_LOCALE: 1031
-            resources:
-              requests:
-                cpu: 128m
-                memory: 64M
-              limits:
-                cpu: 256m
-                memory: 128M
     service:
       main:
         controller: kms
@@ -75,26 +50,3 @@ spec:
           kms:
             port: 1688
             protocol: TCP
-      web:
-        controller: kms
-        ports:
-          http:
-            port: 8080
-            protocol: TCP
-    ingress:
-      web:
-        hosts:
-          - host: kms.lucadev.de
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  identifier: web
-                  port: http
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: KMS
-          gethomepage.dev/group: Netzwerk
-          gethomepage.dev/icon: windows
-          gethomepage.dev/name: KMS
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
