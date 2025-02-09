@@ -29,11 +29,11 @@ spec:
               tag: latest
             resources:
               requests:
-                cpu: 128m
-                memory: 32M
+                cpu: 32m
+                memory: 8M
               limits:
-                cpu: 256m
-                memory: 64M
+                cpu: 16m
+                memory: 16M
             probes:
               liveness:
                 enabled: false

@@ -61,6 +61,12 @@
         "deadtime" = "60";
       };
 
+      WindowsISOs = {
+        "path" = "/mnt/data/hdd/single/WindowsISOs";
+        "writeable" = "false";
+        "guest ok" = "yes";
+      };
+
       home = {
         "path" = "/mnt/data/cached/single/homes/%U";
         "writeable" = "true";
