@@ -1,5 +1,4 @@
 return {
-    ["Ask for Key"] = "",
     ["Windows 10/11 Home"] = "YTMG3-N6DKC-DKB77-7M9GH-8HVX7",
     ["Windows 10/11 Home N"] = "4CPRK-NM3K3-X6XXQ-RXX86-WXCHW",
     ["Windows 10/11 Pro"] = "VK7JG-NPHTM-C97JM-9MPGT-3V66T",
@@ -21,7 +20,7 @@ return {
     ["Windows 10/11 EnterpriseSNEval"] = "7M88N-MTVMR-VC46G-4K4R6-KTQF7",
     ["KMS: Windows Server 2025 Standard"] = "TVRH6-WHNXV-R9WG3-9XRFY-MY832",
     ["KMS: Windows Server 2025 Datacenter"] = "D764K-2NDRG-47T6Q-P8T8W-YP6DF",
-    ["KMS: Windows Server 2025 Datacenter: Azure Edition"] = "XGN3F-F394H-FD2MY-PP6FD-8MCRC",
+    ["KMS: Windows Server 2025 Datacenter Azure Edition"] = "XGN3F-F394H-FD2MY-PP6FD-8MCRC",
     ["KMS: Windows Server 2022 Standard"] = "VDYBN-27WPP-V4HQT-9VMD4-VMK7H",
     ["KMS: Windows Server 2022 Datacenter"] = "WX4NM-KYWYW-QJJR4-XV3QB-6VM33",
     ["KMS: Windows Server 2022 Datacenter: Azure Edition"] = "NTBV8-9K7Q8-V27C6-M2BTV-KHMXV",
