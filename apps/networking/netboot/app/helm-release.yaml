@@ -67,9 +67,17 @@ spec:
           - path: /media
       config:
         type: configMap
-        name: nginx-config
+        name: netboot-config
         advancedMounts:
           nginx:
             app:
               - path: /etc/nginx/conf.d/default.conf
                 subPath: nginx.conf
+      customipxe:
+        type: configMap
+        name: netboot-config
+        advancedMounts:
+          nginx:
+            app:
+              - path: /templates/custom.ipxe
+                subPath: custom.ipxe

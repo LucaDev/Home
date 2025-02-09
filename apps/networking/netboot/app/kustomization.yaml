@@ -6,9 +6,10 @@ resources:
   - ./helm-release.yaml
   - ../../../../templates/gatus/internal
 configMapGenerator:
-  - name: nginx-config
+  - name: netboot-config
     files:
       - conf/nginx.conf
+      - conf/custom.ipxe
 generatorOptions:
   disableNameSuffixHash: true
   annotations:

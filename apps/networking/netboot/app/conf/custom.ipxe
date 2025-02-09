@@ -1,0 +1,50 @@
+#!ipxe
+
+# Microsoft Windows
+# https://www.microsoft.com
+
+set arch x64
+set win_image Windows11_24H2
+set win_base_url https://boot.lucadev.de
+goto ${menu} ||
+
+:windows
+set os Microsoft Windows
+clear win_version
+menu ${os}
+item --gap Installers
+item win_install ${space} Load ${os} Installer...
+item --gap Options:
+item image_set ${space} Image [ ${win_image} ]
+item arch_set ${space} Architecture [ ${arch} ]
+choose win_version || goto windows_exit
+goto ${win_version}
+
+:image_set
+menu Image
+{{WINVERSIONS}}
+choose win_image && goto windows
+
+:arch_set
+iseq ${arch} x64 && set arch x86 || set arch x64
+goto windows
+
+:win_install
+isset ${win_base_url} && goto boot || echo URL not set... && goto url_set
+
+:boot
+imgfree
+kernel http://${boot_domain}/wimboot
+initrd -n configure.bat ${win_base_url}/configure?system=${win_image}&arch=${arch} configure.bat
+initrd -n winpeshl.ini  ${win_base_url}/winpeshl winpeshl.ini
+initrd -n bootmgr       ${win_base_url}/WinPE/${arch}/bootmgr       bootmgr ||
+initrd -n bootmgr.efi   ${win_base_url}/WinPE/${arch}/bootmgr.efi   bootmgr.efi ||
+initrd -n bcd           ${win_base_url}/WinPE/${arch}/boot/bcd      bcd ||
+initrd -n bcd           ${win_base_url}/WinPE/${arch}/Boot/BCD      bcd ||
+initrd -n boot.sdi      ${win_base_url}/WinPE/${arch}/boot/boot.sdi boot.sdi ||
+initrd -n boot.sdi      ${win_base_url}/WinPE/${arch}/Boot/boot.sdi boot.sdi ||
+initrd -n boot.wim      ${win_base_url}/WinPE/${arch}/sources/boot.wim boot.wim
+boot
+
+:windows_exit
+exit 0
