@@ -67,7 +67,7 @@ spec:
           - path: /media
       config:
         type: configMap
-        name: nginx-configmap
+        name: nginx-config
         advancedMounts:
           nginx:
             app:
