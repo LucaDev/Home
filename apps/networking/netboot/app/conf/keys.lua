@@ -1,6 +1,4 @@
-local _M = {}
-
-local keys = {
+return {
     ["Ask for Key"] = "",
     ["Windows 10/11 Home"] = "YTMG3-N6DKC-DKB77-7M9GH-8HVX7",
     ["Windows 10/11 Home N"] = "4CPRK-NM3K3-X6XXQ-RXX86-WXCHW",
@@ -53,19 +51,3 @@ local keys = {
     ["KMS: Windows 7 Professional"] = "FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4",
     ["KMS: Windows Vista Business"] = "YFKBB-PQJJV-G996G-VWGXY-2V3X8"
 }
-
-function _M.getKeys()
-    return keys
-end
-
-function _M.getKeyList()
-    local keyset={}
-
-    for k,_ in pairs(keys) do
-      keyset[#keyset + 1]=k
-    end
-
-    return keyset
-end
-
-return _M
