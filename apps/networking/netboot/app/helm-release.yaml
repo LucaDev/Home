@@ -89,7 +89,7 @@ spec:
             app:
               - path: /lua/keys.lua
                 subPath: keys.lua
-      autounattend.xml:
+      autounattend:
         type: configMap
         name: netboot-config
         advancedMounts:
