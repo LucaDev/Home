@@ -8,3 +8,4 @@ resources:
   - ./cert-manager/ks.yaml
   - ./openspeedtest/ks.yaml
   - ./kms/ks.yaml
+  - ./netboot/ks.yaml
