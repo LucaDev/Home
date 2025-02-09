@@ -44,7 +44,7 @@ choose unattended_key && goto windows
 :boot
 imgfree
 kernel http://${boot_domain}/wimboot
-[ "${unattended_key}" != "disabled" ] && initrd -n autounattended.xml ${win_base_url}/unattended?key=${unattended_key:uristring} autounattended.xml
+iseq ${unattended_key} disabled || initrd -n autounattended.xml ${win_base_url}/unattended?key=${unattended_key:uristring} autounattended.xml
 initrd -n configure.bat      ${win_base_url}/configure?system=${win_image:uristring}&arch=${arch} configure.bat
 initrd -n winpeshl.ini       ${win_base_url}/winpeshl winpeshl.ini
 initrd -n bootmgr            ${win_base_url}/WinPE/${arch}/bootmgr       bootmgr ||
