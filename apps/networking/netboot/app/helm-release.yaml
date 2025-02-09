@@ -1,0 +1,75 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: netboot
+  namespace: networking
+spec:
+  chart:
+    spec:
+      chart: app-template
+      version: 3.7.0
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  interval: 30m
+  values:
+    controllers:
+      nginx:
+        type: deployment
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          app:
+            image:
+              repository: nginx
+              tag: 1.27.4
+            resources:
+              requests:
+                cpu: 50m
+                memory: 64M
+              limits:
+                cpu: 512m
+                memory: 256M
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
+    service:
+      main:
+        controller: nginx
+        ports:
+          http:
+            port: 80
+            protocol: TCP
+    ingress:
+      app:
+        hosts:
+          - host: boot.lucadev.de
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        annotations:
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
+    persistence:
+      data:
+        type: hostPath
+        hostPath: /mnt/data/hdd/single/WindowsISOs
+        globalMounts:
+          - path: /media
+      config:
+        type: configmap
+        name: nginx-configmap
+        advancedMounts:
+          nginx:
+            app:
+              - path: /etc/nginx/nginx.conf
+                subPath: nginx.conf
