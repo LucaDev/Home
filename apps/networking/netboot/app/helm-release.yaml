@@ -66,7 +66,7 @@ spec:
         globalMounts:
           - path: /media
       config:
-        type: configmap
+        type: configMap
         name: nginx-configmap
         advancedMounts:
           nginx:
