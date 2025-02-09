@@ -81,10 +81,7 @@
                 </OSImage>
             </ImageInstall>
             <UserData>
-                <ProductKey>
-                    <Key>VK7JG-NPHTM-C97JM-9MPGT-3V66T</Key>
-                    <WillShowUI>OnError</WillShowUI>
-                </ProductKey>
+                {{KEY}}
                 <AcceptEula>true</AcceptEula>
             </UserData>
             <UseConfigurationSet>false</UseConfigurationSet>
@@ -125,10 +122,7 @@
                 </OSImage>
             </ImageInstall>
             <UserData>
-                <ProductKey>
-                    <Key>VK7JG-NPHTM-C97JM-9MPGT-3V66T</Key>
-                    <WillShowUI>OnError</WillShowUI>
-                </ProductKey>
+                {{KEY}}
                 <AcceptEula>true</AcceptEula>
             </UserData>
             <UseConfigurationSet>false</UseConfigurationSet>
