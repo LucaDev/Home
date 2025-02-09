@@ -43,8 +43,8 @@ choose unattended_key && goto windows
 :boot
 imgfree
 kernel http://${boot_domain}/wimboot
-isset ${unattended_key} && initrd -n autounattended.xml ${win_base_url}/unattended?key=${unattended_key} autounattended.xml
-initrd -n configure.bat      ${win_base_url}/configure?system=${win_image}&arch=${arch} configure.bat
+isset ${unattended_key} && initrd -n autounattended.xml ${win_base_url}/unattended?key=${unattended_key:uristring} autounattended.xml
+initrd -n configure.bat      ${win_base_url}/configure?system=${win_image:uristring}&arch=${arch} configure.bat
 initrd -n winpeshl.ini       ${win_base_url}/winpeshl winpeshl.ini
 initrd -n bootmgr            ${win_base_url}/WinPE/${arch}/bootmgr       bootmgr ||
 initrd -n bootmgr.efi        ${win_base_url}/WinPE/${arch}/bootmgr.efi   bootmgr.efi ||
