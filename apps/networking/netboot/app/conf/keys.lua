@@ -2,7 +2,6 @@ local _M = {}
 
 local keys = {
     ["Ask for Key"] = ""
-    ---
     ["Windows 10/11 Home"] = "YTMG3-N6DKC-DKB77-7M9GH-8HVX7",
     ["Windows 10/11 Home N"] = "4CPRK-NM3K3-X6XXQ-RXX86-WXCHW",
     ["Windows 10/11 Pro"] = "VK7JG-NPHTM-C97JM-9MPGT-3V66T",
@@ -22,7 +21,6 @@ local keys = {
     ["Windows 10/11 EnterpriseSEval"] = "JBGN9-T2MH3-2YV7W-WBWHM-FGFCG",
     ["Windows 10/11 EnterpriseN"] = "WGGHN-J84D6-QYCPR-T7PJ7-X766F",
     ["Windows 10/11 EnterpriseSNEval"] = "7M88N-MTVMR-VC46G-4K4R6-KTQF7",
-    ---
     ["KMS: Windows Server 2025 Standard"] = "TVRH6-WHNXV-R9WG3-9XRFY-MY832",
     ["KMS: Windows Server 2025 Datacenter"] = "D764K-2NDRG-47T6Q-P8T8W-YP6DF",
     ["KMS: Windows Server 2025 Datacenter: Azure Edition"] = "XGN3F-F394H-FD2MY-PP6FD-8MCRC",
