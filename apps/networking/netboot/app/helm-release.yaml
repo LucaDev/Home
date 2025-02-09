@@ -42,7 +42,7 @@ spec:
               startup:
                 enabled: false
     service:
-      main:
+      app:
         controller: nginx
         ports:
           http:
