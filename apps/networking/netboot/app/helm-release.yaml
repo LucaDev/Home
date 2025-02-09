@@ -71,5 +71,5 @@ spec:
         advancedMounts:
           nginx:
             app:
-              - path: /etc/nginx/nginx.conf
+              - path: /etc/nginx/conf.d/default.conf
                 subPath: nginx.conf
