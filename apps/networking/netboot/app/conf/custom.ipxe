@@ -6,6 +6,7 @@
 set arch x64
 set win_image Windows11_24H2
 set win_base_url https://boot.lucadev.de
+set unattended_key disabled
 goto ${menu} ||
 
 :windows
@@ -17,6 +18,7 @@ item win_install ${space} Load ${os} Installer...
 item --gap Options:
 item image_set ${space} Image [ ${win_image} ]
 item arch_set ${space} Architecture [ ${arch} ]
+item unattended_key_set ${space} Unattended Installation [ ${unattended_key} ]
 choose win_version || goto windows_exit
 goto ${win_version}
 
@@ -32,18 +34,25 @@ goto windows
 :win_install
 isset ${win_base_url} && goto boot || echo URL not set... && goto url_set
 
+:unattended_key_set
+menu Unattended Installation
+disabled Disabled
+{{UNATTENDED_KEYS}}
+choose unattended_key && goto windows
+
 :boot
 imgfree
 kernel http://${boot_domain}/wimboot
-initrd -n configure.bat ${win_base_url}/configure?system=${win_image}&arch=${arch} configure.bat
-initrd -n winpeshl.ini  ${win_base_url}/winpeshl winpeshl.ini
-initrd -n bootmgr       ${win_base_url}/WinPE/${arch}/bootmgr       bootmgr ||
-initrd -n bootmgr.efi   ${win_base_url}/WinPE/${arch}/bootmgr.efi   bootmgr.efi ||
-initrd -n bcd           ${win_base_url}/WinPE/${arch}/boot/bcd      bcd ||
-initrd -n bcd           ${win_base_url}/WinPE/${arch}/Boot/BCD      bcd ||
-initrd -n boot.sdi      ${win_base_url}/WinPE/${arch}/boot/boot.sdi boot.sdi ||
-initrd -n boot.sdi      ${win_base_url}/WinPE/${arch}/Boot/boot.sdi boot.sdi ||
-initrd -n boot.wim      ${win_base_url}/WinPE/${arch}/sources/boot.wim boot.wim
+isset ${unattended_key} && initrd -n autounattended.xml ${win_base_url}/unattended?key=${unattended_key} autounattended.xml
+initrd -n configure.bat      ${win_base_url}/configure?system=${win_image}&arch=${arch} configure.bat
+initrd -n winpeshl.ini       ${win_base_url}/winpeshl winpeshl.ini
+initrd -n bootmgr            ${win_base_url}/WinPE/${arch}/bootmgr       bootmgr ||
+initrd -n bootmgr.efi        ${win_base_url}/WinPE/${arch}/bootmgr.efi   bootmgr.efi ||
+initrd -n bcd                ${win_base_url}/WinPE/${arch}/boot/bcd      bcd ||
+initrd -n bcd                ${win_base_url}/WinPE/${arch}/Boot/BCD      bcd ||
+initrd -n boot.sdi           ${win_base_url}/WinPE/${arch}/boot/boot.sdi boot.sdi ||
+initrd -n boot.sdi           ${win_base_url}/WinPE/${arch}/Boot/boot.sdi boot.sdi ||
+initrd -n boot.wim           ${win_base_url}/WinPE/${arch}/sources/boot.wim boot.wim
 boot
 
 :windows_exit

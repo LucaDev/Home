@@ -10,6 +10,8 @@ configMapGenerator:
     files:
       - conf/nginx.conf
       - conf/custom.ipxe
+      - conf/autounattend.xml
+      - conf/keys.lua
 generatorOptions:
   disableNameSuffixHash: true
   annotations:

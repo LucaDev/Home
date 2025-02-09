@@ -81,3 +81,19 @@ spec:
             app:
               - path: /templates/custom.ipxe
                 subPath: custom.ipxe
+      keys:
+        type: configMap
+        name: netboot-config
+        advancedMounts:
+          nginx:
+            app:
+              - path: /lua/keys.lua
+                subPath: keys.lua
+      autounattend.xml:
+        type: configMap
+        name: netboot-config
+        advancedMounts:
+          nginx:
+            app:
+              - path: /templates/autounattend.xml
+                subPath: autounattend.xml
