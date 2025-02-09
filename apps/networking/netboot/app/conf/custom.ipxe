@@ -36,7 +36,7 @@ isset ${win_base_url} && goto boot || echo URL not set... && goto url_set
 
 :unattended_key_set
 menu Unattended Installation
-disabled Disabled
+item disabled Disabled
 {{UNATTENDED_KEYS}}
 choose unattended_key && goto windows
 
