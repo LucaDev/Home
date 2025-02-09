@@ -1,7 +1,7 @@
 local _M = {}
 
 local keys = {
-    ["Ask for Key"] = ""
+    ["Ask for Key"] = "",
     ["Windows 10/11 Home"] = "YTMG3-N6DKC-DKB77-7M9GH-8HVX7",
     ["Windows 10/11 Home N"] = "4CPRK-NM3K3-X6XXQ-RXX86-WXCHW",
     ["Windows 10/11 Pro"] = "VK7JG-NPHTM-C97JM-9MPGT-3V66T",
