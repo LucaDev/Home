@@ -97,3 +97,11 @@ spec:
             app:
               - path: /templates/autounattend.xml
                 subPath: autounattend.xml
+      configure:
+        type: configMap
+        name: netboot-config
+        advancedMounts:
+          nginx:
+            app:
+              - path: /templates/configure.bat
+                subPath: configure.bat

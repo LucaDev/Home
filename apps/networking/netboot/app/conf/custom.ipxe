@@ -4,17 +4,16 @@
 # https://www.microsoft.com
 
 cpuid --ext 29 && set arch x64 || set arch x86
-set win_image Windows11_24H2
+set win_image Windows_11_24H2
 set win_base_url https://boot.lucadev.de
 set unattended_key disabled
 goto ${menu} ||
 
 :windows
-set os Microsoft Windows
 clear win_version
 menu ${os}
 item --gap Installers
-item win_install ${space} Load ${os} Installer...
+item win_install ${space} Load ${win_image} Installer...
 item --gap Options:
 item image_set ${space} Image [ ${win_image} ]
 item unattended_key_set ${space} Unattended Installation [ ${unattended_key} ]
