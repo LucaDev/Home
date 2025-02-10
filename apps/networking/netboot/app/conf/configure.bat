@@ -25,20 +25,7 @@ echo Network drive M: mapped successfully.
 
 :: Check for autounattend.xml
 set UNATTEND_PATH=X:\Windows\System32\autounattend.xml
-
-:: Locate setup.exe case-insensitively
-for %%F in (setup.exe Setup.exe SETUP.exe setup.EXE Setup.EXE SETUP.EXE) do (
-    if exist "M:\{{SYSTEM}}\%%F" (
-        set SETUP_PATH=M:\{{SYSTEM}}\%%F
-    )
-)
-
-if not defined SETUP_PATH (
-    echo setup.exe not found in M:\{{SYSTEM}}\
-    exit /b 1
-)
-
-echo Found setup executable: !SETUP_PATH!
+set SETUP_PATH=M:\{{SYSTEM}}\setup.exe
 
 :: Run setup with or without unattend file
 if exist "%UNATTEND_PATH%" (
