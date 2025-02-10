@@ -3,7 +3,7 @@
 # Microsoft Windows
 # https://www.microsoft.com
 
-set arch x64
+cpuid --ext 29 && set arch x64 || set arch x86
 set win_image Windows11_24H2
 set win_base_url https://boot.lucadev.de
 set unattended_key disabled
@@ -17,7 +17,6 @@ item --gap Installers
 item win_install ${space} Load ${os} Installer...
 item --gap Options:
 item image_set ${space} Image [ ${win_image} ]
-item arch_set ${space} Architecture [ ${arch} ]
 item unattended_key_set ${space} Unattended Installation [ ${unattended_key} ]
 choose win_version || goto windows_exit
 goto ${win_version}
@@ -26,10 +25,6 @@ goto ${win_version}
 menu Image
 {{WINVERSIONS}}
 choose win_image && goto windows
-
-:arch_set
-iseq ${arch} x64 && set arch x86 || set arch x64
-goto windows
 
 :win_install
 isset ${win_base_url} && goto boot || echo URL not set... && goto url_set
@@ -45,7 +40,7 @@ choose unattended_key && goto windows
 imgfree
 kernel http://${boot_domain}/wimboot
 iseq ${unattended_key} disabled || initrd -n autounattend.xml ${win_base_url}/unattended?key=${unattended_key:uristring} autounattended.xml
-initrd -n configure.bat      ${win_base_url}/configure?system=${win_image:uristring}&arch=${arch} configure.bat
+initrd -n configure.bat      ${win_base_url}/configure?system=${win_image:uristring} configure.bat
 initrd -n winpeshl.ini       ${win_base_url}/winpeshl winpeshl.ini
 initrd -n bootmgr            ${win_base_url}/WinPE/${arch}/bootmgr       bootmgr ||
 initrd -n bootmgr.efi        ${win_base_url}/WinPE/${arch}/bootmgr.efi   bootmgr.efi ||
