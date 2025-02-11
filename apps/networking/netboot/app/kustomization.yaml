@@ -12,7 +12,6 @@ configMapGenerator:
       - conf/custom.ipxe
       - conf/autounattend.xml
       - conf/keys.lua
-      - conf/configure.bat
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
