@@ -39,8 +39,8 @@ choose unattended_key && goto windows
 imgfree
 kernel http://${boot_domain}/wimboot
 iseq ${unattended_key} disabled || initrd -n autounattend.xml ${win_base_url}/unattended?key=${unattended_key:uristring} autounattended.xml
-initrd -n winpeshl.ini       ${win_base_url}/winpeshl winpeshl.ini
-initrd -n configure.exe       ${win_base_url}/configure.exe configure.exe
+initrd -n winpeshl.ini       ${win_base_url}/winpeshl?system=${win_image} winpeshl.ini
+initrd -n configure.exe      ${win_base_url}/configure.exe configure.exe
 initrd -n bootmgr            ${win_base_url}/WinPE/${arch}/bootmgr       bootmgr ||
 initrd -n bootmgr.efi        ${win_base_url}/WinPE/${arch}/bootmgr.efi   bootmgr.efi ||
 initrd -n bcd                ${win_base_url}/WinPE/${arch}/boot/bcd      bcd ||
