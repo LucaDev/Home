@@ -4,7 +4,7 @@
 # https://www.microsoft.com
 
 cpuid --ext 29 && set arch x64 || set arch x86
-set win_image Windows_11_24H2
+set win_image Windows_11_24H2.iso
 set win_base_url https://boot.lucadev.de
 set unattended_key disabled
 goto ${menu} ||
