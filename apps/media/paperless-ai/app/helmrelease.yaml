@@ -23,7 +23,7 @@ spec:
           app:
             image:
               repository: docker.io/clusterzx/paperless-ai
-              tag: v2.6.4
+              tag: 2.6.4
             resources:
               requests:
                 cpu: 25m
