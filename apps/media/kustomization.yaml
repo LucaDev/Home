@@ -18,3 +18,4 @@ resources:
   - ./ersatztv/ks.yaml
   - ./dawarich/ks.yaml
   - ./romm/ks.yaml
+  - ./paperless-ai/ks.yaml
