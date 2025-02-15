@@ -40,6 +40,13 @@ spec:
         ports:
           smb:
             port: 2139
+      app2:
+        controller: samba
+        type: LoadBalancer
+        loadBalancerClass: "io.cilium/node"
+        ports:
+          smb:
+            port: 2445
     persistence:
       samba-config:
         type: configMap
