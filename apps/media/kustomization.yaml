@@ -20,3 +20,4 @@ resources:
   - ./romm/ks.yaml
   - ./paperless-ai/ks.yaml
   - ./samba-scanner-proxy/ks.yaml
+  - ./kiwix/ks.yaml
