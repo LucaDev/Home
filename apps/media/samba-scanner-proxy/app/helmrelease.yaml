@@ -41,11 +41,11 @@ spec:
           smb:
             port: 2139
     persistence:
-      samba-scanner-proxy-smb-config:
+      samba-config:
         type: configMap
-        name: samba-scanner-proxy-smb-config
+        name: samba-config
         advancedMounts:
-          samba-scanner-proxy:
+          samba:
             app:
               - path: /etc/samba/smb.conf
                 subPath: smb.conf
