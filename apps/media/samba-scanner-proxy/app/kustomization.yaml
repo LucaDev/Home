@@ -1,0 +1,20 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: media
+resources:
+  - ./externalsecret.yaml
+  - ./helmrelease.yaml
+  - ../../../../templates/gatus/internal
+labels:
+  - pairs:
+      app.kubernetes.io/name: samba-scanner-proxy
+      app.kubernetes.io/instance: samba-scanner-proxy
+      app.kubernetes.io/part-of: samba-scanner-proxy
+configMapGenerator:
+  - name: samba-scanner-proxy-smb-config
+    files:
+      - conf/smb.conf
+generatorOptions:
+  disableNameSuffixHash: true
