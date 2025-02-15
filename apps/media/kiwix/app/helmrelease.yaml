@@ -16,8 +16,8 @@ spec:
         name: bjw-s
         namespace: flux-system
   values:
-    kiwix:
-      samba:
+    controllers:
+      kiwix:
         containers:
           app:
             image:
