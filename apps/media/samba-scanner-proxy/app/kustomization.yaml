@@ -11,7 +11,7 @@ labels:
       app.kubernetes.io/instance: samba-scanner-proxy
       app.kubernetes.io/part-of: samba-scanner-proxy
 configMapGenerator:
-  - name: samba-scanner-proxy-smb-config
+  - name: samba-scanner-proxy-config
     files:
       - conf/smb.conf
 generatorOptions:

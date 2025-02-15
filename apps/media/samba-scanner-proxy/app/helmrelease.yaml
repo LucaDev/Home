@@ -43,7 +43,7 @@ spec:
     persistence:
       samba-config:
         type: configMap
-        name: samba-config
+        name: samba-scanner-proxy-config
         advancedMounts:
           samba:
             app:
