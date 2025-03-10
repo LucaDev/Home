@@ -38,6 +38,7 @@ spec:
               OC_URL: https://cloud.lucadev.de
               # do not use SSL between Traefik and OpenCloud
               PROXY_TLS: "false"
+              OC_INSECURE: "false"
             command: ["sh", "-c", "opencloud init || true; opencloud server"]
             probes:
               liveness: &probes
