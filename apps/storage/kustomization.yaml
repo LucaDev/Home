@@ -8,3 +8,4 @@ resources:
   - ./volsync/ks.yaml
   - ./filebrowser/ks.yaml
   - ./minio/ks.yaml
+  - ./opencloud/ks.yaml
