@@ -8,5 +8,5 @@ metadata:
 spec:
   type: oci
   interval: 30m
-  url: oci://lucadev.github.io/bitnami-charts/
+  url: oci://ghcr.io/lucadev/bitnami-charts
   timeout: 3m
