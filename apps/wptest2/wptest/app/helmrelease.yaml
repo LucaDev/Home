@@ -1,0 +1,19 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: wptest-flux
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: wordpress-nginx
+      version: 24.1.11
+      sourceRef:
+        kind: HelmRepository
+        name: lucadev-bnc
+        namespace: flux-system
+  values:
+    ingress:
+      enabled: true
+      hostname: wptest-flux.lucadev.de
