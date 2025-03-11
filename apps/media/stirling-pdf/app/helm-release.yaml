@@ -27,7 +27,7 @@ spec:
           app:
             image:
               repository: docker.io/frooodle/s-pdf
-              tag: 0.44.0
+              tag: 0.44.1
             env:
               SYSTEM_DEFAULTLOCALE: de-DE
               SYSTEM_SHOWUPDATE: "false"
