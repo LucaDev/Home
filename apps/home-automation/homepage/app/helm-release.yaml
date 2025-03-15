@@ -107,15 +107,15 @@ spec:
             - Maria:
                 href: http://192.168.46.1
                 ping: http://192.168.46.1
-                icon: avmfritzbox.svg
+                icon: fritzbox.svg
             - Opa:
                 href: http://192.168.13.1
                 ping: http://192.168.13.1
-                icon: avmfritzbox.svg
+                icon: fritzbox.svg
             - Dirk:
                 href: http://192.168.178.1
                 ping: http://192.168.178.1
-                icon: avmfritzbox.svg
+                icon: fritzbox.svg
       widgets:
         - kubernetes:
             cluster:
