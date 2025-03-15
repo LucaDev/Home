@@ -20,7 +20,7 @@ spec:
     image:
       # renovate: datasource=github-releases depName=gethomepage/homepage
       repository: ghcr.io/gethomepage/homepage
-      tag: v0.10.9
+      tag: v1.0.2
 
     podAnnotations:
       reloader.stakater.com/auto: "true"
@@ -188,3 +188,5 @@ spec:
     envFrom:
       - secretRef:
           name: homepage-secret
+    env:
+      HOMEPAGE_ALLOWED_HOSTS: "home.lucadev.de"
