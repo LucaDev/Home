@@ -19,6 +19,12 @@ spec:
       minio:
         annotations:
           reloader.stakater.com/auto: "true"
+        initContainers:
+          ping-kanidm:
+            image:
+              repository: busybox
+              tag: 1.37.0
+            command: ["sh", "-c", "until wget https://idm.lucadev.de -q -O /dev/null; do echo waiting for kanidm; sleep 2; done"]
         containers:
           app:
             image:
