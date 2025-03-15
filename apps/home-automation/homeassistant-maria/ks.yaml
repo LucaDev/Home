@@ -1,0 +1,20 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &appname homeassistant-maria
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: "./apps/home-automation/homeassistant-maria/app"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: github-repo
+  wait: false # no flux ks dependents
+  dependsOn:
+    - name: external-secrets-stores
+  postBuild:
+    substitute:
+      APP: *appname
+      GATUS_SUBDOMAIN: ha-maria

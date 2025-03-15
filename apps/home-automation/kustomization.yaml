@@ -11,3 +11,4 @@ resources:
   - ./zigbee2mqtt/ks.yaml
   - ./whisper/ks.yaml
   - ./maybe/ks.yaml
+  - ./homeassistant-maria/ks.yaml
