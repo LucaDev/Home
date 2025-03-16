@@ -27,8 +27,9 @@ spec:
   resources:
     requests:
       cpu: 500m
+      requests: 2Gi
     limits:
-      memory: 4Gi
+      memory: 6Gi
   backup:
     retentionPolicy: 30d
     barmanObjectStore: &barmanObjectStore
