@@ -62,7 +62,7 @@ spec:
                 extensionRef:
                   group: traefik.io
                   kind: Middleware
-                  name: chhonto-oauth-proxy
+                  name: chhoto-oauth-proxy
             backendRefs:
               - name: *app
                 port: *port
@@ -76,7 +76,7 @@ spec:
         accessMode: ReadWriteOnce
         size: 1Gi
         advancedMounts:
-          chhonto:
+          chhoto:
             app:
               - path: /urls.sqlite
                 subPath: /urls.sqlite
