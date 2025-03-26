@@ -10,11 +10,11 @@ spec:
   chart:
     spec:
       chart: homepage
-      version: 1.2.3
+      version: 2.0.2
       interval: 1h
       sourceRef:
         kind: HelmRepository
-        name: lucadev
+        name: homepage
         namespace: flux-system
   values:
     image:

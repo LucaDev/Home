@@ -6,10 +6,7 @@ namespace: flux-system
 resources:
   - ./app-template.yaml
   - ./homepage.yaml
-  - ./lucadev.yaml
   - ./appscode.yaml
   - ./cnpg.yaml
   - ./mongodb.yaml
   - ./amd-gpu.yaml
-  - ./traefik.yaml
-  - ./lucadev-bnc.yaml
