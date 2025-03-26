@@ -26,3 +26,14 @@ spec:
 
   values:
     gatewayAPI: true
+
+    gateway:
+      listeners:
+        websecure:
+          port: 8443
+          protocol: HTTPS
+          certificateRefs:
+            - secretRef:
+                name: home-lucadev-de-wildcard-cert
+          mode: Terminate
+          namespacePolicy: All
