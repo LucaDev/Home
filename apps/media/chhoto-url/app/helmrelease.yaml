@@ -75,6 +75,7 @@ spec:
         type: persistentVolumeClaim
         accessMode: ReadWriteOnce
         size: 1Gi
+        storageClass: ssd-dualreplica
         advancedMounts:
           chhoto:
             app:
