@@ -39,15 +39,15 @@ spec:
     ipam:
       operator:
         clusterPoolIPv4PodCIDRList: "10.42.0.0/16"
-        #clusterPoolIPv6PodCIDRList: "2001:db8:7653:299:cafe:0::/96"
+        # clusterPoolIPv6PodCIDRList: "2001:db8:7653:299:cafe:0::/96"
 
-    #ipv6:
-    #  enabled: true
+    # ipv6:
+    #   enabled: true
 
     bpf:
       masquerade: true
       tproxy: true
-#      datapathMode: netkit
+      # datapathMode: netkit
       preallocateMaps: true
 
     nodePort:
@@ -67,8 +67,8 @@ spec:
 
     rollOutCiliumPods: true
 
-    #ipv4NativeRoutingCIDR: 10.0.0.0/16 TODO
-    #routingMode: native
+    # ipv4NativeRoutingCIDR: 10.0.0.0/16 TODO
+    # routingMode: native
 
     kubeProxyReplacement: true
     k8sServiceHost: homeserver.home.lucadev.de
