@@ -28,9 +28,6 @@ spec:
             env:
               site_url: "https://link2.lucadev.de"
               redirect_method: "TEMPORARY"
-            envFrom:
-              - secretRef:
-                  name: chhoto
         annotations:
           reloader.stakater.com/auto: "true"
     service:
