@@ -3,29 +3,68 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: OCIRepository
 metadata:
-  name: traefik-crds
+  name: traefik
 spec:
   interval: 5m
   layerSelector:
     mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
     operation: copy
   ref:
-    tag: 1.5.0
-  url: oci://ghcr.io/traefik/helm/traefik-crds
+    tag: 34.4.1
+  url: oci://ghcr.io/traefik/helm/traefik
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: traefik-crds
+  name: traefik
 spec:
   interval: 1h
   chartRef:
     kind: OCIRepository
-    name: traefik-crds
+    name: traefik
 
   values:
-    gatewayAPI: true
+    providers:
+      kubernetesCRD:
+        allowCrossNamespace: true
+      kubernetesIngress:
+        publishedService:
+          enabled: true
+      kubernetesGateway:
+        enabled: true
+
+    ingressRoute:
+      dashboard:
+        enabled: true
+
+    ports:
+      web:
+        redirections:
+          entryPoint:
+            to: websecure
+            scheme: https
+            permanent: true
+      websecure:
+        http3:
+          enabled: true
+          advertisedPort: 443
+
+    priorityClassName: "system-cluster-critical"
+
+    tolerations:
+      - key: "CriticalAddonsOnly"
+        operator: "Exists"
+      - key: "node-role.kubernetes.io/control-plane"
+        operator: "Exists"
+        effect: "NoSchedule"
+      - key: "node-role.kubernetes.io/master"
+        operator: "Exists"
+        effect: "NoSchedule"
+
+    service:
+      ipFamilyPolicy: "PreferDualStack"
+      loadBalancerClass: "io.cilium/node"
 
     gateway:
       listeners:
