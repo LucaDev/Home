@@ -45,7 +45,7 @@ spec:
         hostnames:
           - link2.lucadev.de
         parentRefs:
-          - name: traefik
+          - name: traefik-gateway
             sectionName: websecure
             kind: Gateway
             namespace: kube-system
@@ -62,7 +62,7 @@ spec:
                 extensionRef:
                   group: traefik.io
                   kind: Middleware
-                  name: security-oauth-proxy@kubernetescrd
+                  name: security-oauth-proxy
             backendRefs:
               - name: *app
                 port: *port
