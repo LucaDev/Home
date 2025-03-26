@@ -16,7 +16,7 @@ spec:
         containers:
           app:
             image:
-              repository: docker.io/chhoto-url
+              repository: docker.io/sintan1729/chhoto-url
               tag: 5.6.2
             resources:
               requests:
