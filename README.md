@@ -49,8 +49,7 @@ apps/
 │   ├── mailbackup
 │   ├── memos
 │   ├── paperless-ngx
-│   ├── shlink
-│   ├── shlink-ui
+│   ├── chotto
 │   ├── stirling-pdf
 │   └── tandoor
 ├── monitoring

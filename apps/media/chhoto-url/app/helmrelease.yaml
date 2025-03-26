@@ -39,11 +39,10 @@ spec:
                 cpu: 100m
                 memory: 15M
             env:
-              site_url: "https://link2.lucadev.de"
+              site_url: "https://link.lucadev.de"
               redirect_method: "TEMPORARY"
         annotations:
           reloader.stakater.com/auto: "true"
-
 
     service:
       app:
@@ -55,7 +54,7 @@ spec:
     route:
       app:
         hostnames:
-          - link2.lucadev.de
+          - link.lucadev.de
         parentRefs:
           - name: traefik-gateway
             sectionName: websecure

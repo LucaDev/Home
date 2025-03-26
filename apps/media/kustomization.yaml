@@ -11,8 +11,6 @@ resources:
   - ./calibre-web/ks.yaml
   - ./memos/ks.yaml
   - ./tandoor/ks.yaml
-  - ./shlink/ks.yaml
-  - ./shlink-ui/ks.yaml
   - ./mailbackup/ks.yaml
   - ./frigate/ks.yaml
   - ./ersatztv/ks.yaml

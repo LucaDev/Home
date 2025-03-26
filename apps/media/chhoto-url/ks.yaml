@@ -18,4 +18,4 @@ spec:
     substitute:
       APP: *appname
       VOLSYNC_CLAIM: chhoto-url
-      GATUS_SUBDOMAIN: link2
+      GATUS_SUBDOMAIN: link
