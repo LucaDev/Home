@@ -79,4 +79,4 @@ spec:
           chhoto:
             app:
               - path: /urls.sqlite
-                subPath: /urls.sqlite
+                subPath: urls.sqlite
