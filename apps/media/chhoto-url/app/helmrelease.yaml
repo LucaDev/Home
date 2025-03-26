@@ -27,6 +27,7 @@ spec:
                 memory: 15M
             env:
               site_url: "https://link2.lucadev.de"
+              redirect_method: "TEMPORARY"
             envFrom:
               - secretRef:
                   name: chhoto
@@ -34,17 +35,36 @@ spec:
           reloader.stakater.com/auto: "true"
     service:
       app:
-        controller: chhoto
+        controller: &app chhoto
         ports:
           http:
-            port: 4567
+            port: &port 4567
 
-    ingress:
+    route:
       app:
-        hosts:
-          - host: link2.lucadev.de
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
+        hostnames:
+          - link2.lucadev.de
+        parentRefs:
+          - name: traefik
+            sectionName: http
+            kind: Gateway
+        rules:
+          - matches:
+              - path:
+                  type: PathPrefix
+                  value: /api/
+              - path:
+                  type: Exact
+                  value: /
+            filters:
+              - type: ExtensionRef
+                extensionRef:
+                  group: traefik.io
+                  kind: Middleware
+                  name: security-oauth-proxy@kubernetescrd
+            backendRefs:
+              - name: *app
+                port: *port
+          - backendRefs:
+              - name: *app
+                port: *port
