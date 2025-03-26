@@ -69,3 +69,14 @@ spec:
           - backendRefs:
               - name: *app
                 port: *port
+
+    persistence:
+      data:
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        advancedMounts:
+          chhonto:
+            app:
+              - path: /urls.sqlite
+                subPath: /urls.sqlite
