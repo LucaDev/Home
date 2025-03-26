@@ -39,7 +39,7 @@
       systemd-boot.netbootxyz.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_testing;
     supportedFilesystems = [ "bcachefs" ];
   };
 
@@ -126,11 +126,14 @@
       k9s
       screen
       podman
+      podman-compose
       rsync
       sshpass
       nh
     ];
   };
+
+  virtualisation.containers.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh = {

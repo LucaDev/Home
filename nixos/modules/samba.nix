@@ -40,6 +40,7 @@
         "security" = "user";
         "guest ok" = "no";
         "mdns name" = "mdns";
+        "map to guest" = "Bad User";
         # macOS
         "vfs objects" = "catia fruit streams_xattr";
         "fruit:metadata" = "stream";
@@ -51,7 +52,7 @@
         "fruit:delete_empty_adfiles" = "yes";
         "fruit:copyfile" = "yes";
         "fruit:encoding" = "native";
-        "server min protocol" = "NT1";
+        "server min protocol" = "SMB2";
         # Performance
         "server multi channel support" = "yes";
         "use sendfile" = "yes";
@@ -65,16 +66,17 @@
         "path" = "/mnt/data/hdd/single/WindowsISOs";
         "writeable" = "false";
         "guest ok" = "yes";
+        "force user" = "nobody";
       };
 
       home = {
-        "path" = "/mnt/data/cached/single/homes/%U";
+        "path" = "/mnt/data/cached/dual/homes/%U";
         "writeable" = "true";
         "root preexec" = "mkdir /mnt/data/cached/single/homes/%U";
       };
 
       public = {
-        "path" = "/mnt/data/cached/single/public-share";
+        "path" = "/mnt/data/cached/dual/public-share";
         "public" = "yes";
         "writeable" = "true";
         "guest ok" = "yes";
