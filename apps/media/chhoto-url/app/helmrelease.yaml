@@ -62,6 +62,7 @@ spec:
                   group: traefik.io
                   kind: Middleware
                   name: security-oauth-proxy@kubernetescrd
+                  namespace: kube-system
             backendRefs:
               - name: *app
                 port: *port
