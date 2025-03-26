@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: chhoto-url
+  name: &app chhoto-url
 spec:
   interval: 1h
   chartRef:
@@ -35,7 +35,7 @@ spec:
           reloader.stakater.com/auto: "true"
     service:
       app:
-        controller: &app chhoto
+        controller: chhoto
         ports:
           http:
             port: &port 4567
