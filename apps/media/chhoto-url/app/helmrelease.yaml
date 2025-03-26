@@ -13,6 +13,19 @@ spec:
   values:
     controllers:
       chhoto:
+        type: statefulset
+
+        statefulset:
+          volumeClaimTemplates:
+            - name: data
+              accessMode: ReadWriteOnce
+              size: 1Gi
+              storageClass: ssd-dualreplica
+              advancedMounts:
+                app:
+                  - path: /urls.sqlite
+                    subPath: urls.sqlite
+
         containers:
           app:
             image:
@@ -30,6 +43,8 @@ spec:
               redirect_method: "TEMPORARY"
         annotations:
           reloader.stakater.com/auto: "true"
+
+
     service:
       app:
         controller: chhoto
@@ -66,15 +81,3 @@ spec:
           - backendRefs:
               - name: *app
                 port: *port
-
-    persistence:
-      data:
-        type: persistentVolumeClaim
-        accessMode: ReadWriteOnce
-        size: 1Gi
-        storageClass: ssd-dualreplica
-        advancedMounts:
-          chhoto:
-            app:
-              - path: /urls.sqlite
-                subPath: urls.sqlite
