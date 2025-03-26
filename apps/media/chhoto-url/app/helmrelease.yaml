@@ -62,7 +62,7 @@ spec:
                 extensionRef:
                   group: traefik.io
                   kind: Middleware
-                  name: kube-system-security-oauth-proxy
+                  name: chhonto-oauth-proxy
             backendRefs:
               - name: *app
                 port: *port
