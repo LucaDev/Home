@@ -72,7 +72,7 @@ spec:
           port: 8443
           protocol: HTTPS
           certificateRefs:
-            - secretRef:
-                name: home-lucadev-de-wildcard-cert
+            - kind: Secret
+              name: home-lucadev-de-wildcard-cert
           mode: Terminate
           namespacePolicy: All
