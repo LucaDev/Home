@@ -23,6 +23,3 @@ spec:
   chartRef:
     kind: OCIRepository
     name: traefik-crds
-
-  values:
-    gatewayAPI: true
