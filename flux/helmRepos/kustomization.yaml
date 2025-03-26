@@ -3,30 +3,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ./kubernetes-sigs-external-dns.yaml
-  - ./kubernetes-sigs-feature-discovery.yaml
-  - ./prometheus-community.yaml
-  - ./ext-postgres-operator.yaml
-  - ./grafana.yaml
-  - ./ingress-nginx.yaml
-  - ./bitnami.yaml
-  - ./bjw-s.yaml
-  - ./external-secrets.yaml
+  - ./app-template.yaml
   - ./homepage.yaml
-  - ./stakater.yaml
-  - ./jetstack.yaml
-  - ./mittwald.yaml
   - ./lucadev.yaml
   - ./appscode.yaml
   - ./cnpg.yaml
-  - ./instantlinux.yaml
-  - ./backube.yaml
   - ./mongodb.yaml
   - ./amd-gpu.yaml
-  - ./vector.yaml
-  - ./victoriametrics.yaml
-  - ./dragonfly.yaml
-  - ./angelnu.yaml
-  - ./cilium.yaml
   - ./traefik.yaml
   - ./lucadev-bnc.yaml

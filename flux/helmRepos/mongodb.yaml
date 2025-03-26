@@ -6,6 +6,6 @@ metadata:
   name: mongodb
   namespace: flux-system
 spec:
-  interval: 30m
+  interval: 1h
   url: https://mongodb.github.io/helm-charts
   timeout: 3m

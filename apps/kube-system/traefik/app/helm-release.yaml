@@ -4,12 +4,12 @@ kind: HelmRelease
 metadata:
   name: traefik
 spec:
-  interval: 30m
+  interval: 1h
   chart:
     spec:
       chart: traefik
       version: 34.4.1
-      interval: 30m
+      interval: 1h
       sourceRef:
         kind: HelmRepository
         name: traefik

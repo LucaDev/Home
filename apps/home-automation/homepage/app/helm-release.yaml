@@ -6,12 +6,12 @@ metadata:
   name: homepage
   namespace: home-automation
 spec:
-  interval: 30m
+  interval: 1h
   chart:
     spec:
       chart: homepage
       version: 1.2.3
-      interval: 30m
+      interval: 1h
       sourceRef:
         kind: HelmRepository
         name: lucadev

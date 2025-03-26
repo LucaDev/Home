@@ -3,44 +3,37 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: shlink
+  name: chhoto-url
 spec:
   interval: 1h
   chartRef:
     kind: OCIRepository
     name: app-template
-
   values:
     controllers:
-      shlink:
+      chhoto:
         containers:
           app:
             image:
-              repository: shlinkio/shlink
-              tag: 4.4.6
+              repository: chhoto-url
+              tag: 5.6.2
             resources:
               requests:
-                cpu: 10m
-                memory: 350M
+                cpu: 5m
+                memory: 10M
               limits:
-                cpu: 1000m
-                memory: 600M
+                cpu: 100m
+                memory: 15M
             env:
-              IS_HTTPS_ENABLED: "true"
-              DEFAULT_DOMAIN: &host link.lucadev.de
-              TIMEZONE: "Europe/Berlin"
-              DB_DRIVER: postgres
-              DB_NAME: shlink
-              DB_USER: shlink
-              DB_HOST: "shared-pg-rw.databases.svc.cluster.local"
+              site_url: "https://link2.lucadev.de"
             envFrom:
               - secretRef:
-                  name: shlink
+                  name: chhoto
         annotations:
           reloader.stakater.com/auto: "true"
     service:
       app:
-        controller: shlink
+        controller: chhoto
         ports:
           http:
             port: 8080
@@ -48,7 +41,7 @@ spec:
     ingress:
       app:
         hosts:
-          - host: *host
+          - host: link2.lucadev.de
             paths:
               - path: /
                 service:

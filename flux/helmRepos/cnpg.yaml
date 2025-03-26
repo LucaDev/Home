@@ -6,6 +6,6 @@ metadata:
   name: cnpg
   namespace: flux-system
 spec:
-  interval: 30m
+  interval: 1h
   url: https://cloudnative-pg.github.io/charts
   timeout: 3m

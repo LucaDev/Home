@@ -6,6 +6,6 @@ metadata:
   name: lucadev
   namespace: flux-system
 spec:
-  interval: 30m
+  interval: 1h
   url: https://lucadev.github.io/helm-charts
   timeout: 3m
