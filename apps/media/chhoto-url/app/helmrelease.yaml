@@ -46,7 +46,7 @@ spec:
           - link2.lucadev.de
         parentRefs:
           - name: traefik-gateway
-            sectionName: web
+            sectionName: http
             kind: Gateway
             namespace: kube-system
         rules:
