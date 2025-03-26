@@ -37,7 +37,7 @@ spec:
         controller: chhoto
         ports:
           http:
-            port: 8080
+            port: 4567
 
     ingress:
       app:
