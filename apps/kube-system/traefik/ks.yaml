@@ -94,7 +94,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./apps/kube-system/traefik-crds/app"
+  path: "./apps/kube-system/traefik/crds"
   prune: true
   sourceRef:
     kind: GitRepository
