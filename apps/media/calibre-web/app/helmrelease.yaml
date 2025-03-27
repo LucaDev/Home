@@ -62,7 +62,7 @@ spec:
           gethomepage.dev/group: Medien
           gethomepage.dev/icon: calibre-web
           gethomepage.dev/name: Calibre
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd
         hosts:
           - host: books.lucadev.de
             paths:
