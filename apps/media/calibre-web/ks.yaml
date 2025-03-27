@@ -18,7 +18,7 @@ spec:
   postBuild:
     substitute:
       APP: *appname
-      APP_UID: "568"
-      APP_GID: "568"
+      APP_UID: "1000"
+      APP_GID: "1000"
       VOLSYNC_CLAIM: calibre-config # TODO
       GATUS_SUBDOMAIN: books
