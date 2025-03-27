@@ -31,8 +31,8 @@ spec:
               tag: V2.1.2
             env:
               CACHE_DIR: /cache
-              PUID: ${APP_UID}
-              PGID: ${APP_GID}
+              #PUID: ${APP_UID}
+              #PGID: ${APP_GID}
               TZ: Europe/Berlin
             resources:
               requests:
