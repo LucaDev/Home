@@ -26,13 +26,10 @@ spec:
         containers:
           app:
             image:
-              repository: docker.io/filebrowser/filebrowser
-              tag: v2.32.0@sha256:593478e3c24c5ea9f5d7478dc549965b7bc7030707291006ce8d0b6162d3454b
+              repository: docker.io/gtstef/filebrowser
+              tag: v0.6.3-beta
             env:
               TZ: Europe/Berlin
-              FB_DATABASE: /config/filebrowser.db
-              FB_ROOT: /mnt/
-              FB_LOG: stdout
             probes:
               liveness: &probes
                 enabled: true
@@ -78,7 +75,7 @@ spec:
           gethomepage.dev/group: Weitere
           gethomepage.dev/icon: filebrowser
           gethomepage.dev/name: Filebrowser
-          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd
         hosts:
           - host: "files.lucadev.de"
             paths:
@@ -88,19 +85,21 @@ spec:
                   port: http
     persistence:
       config:
-        type: persistentVolumeClaim
-        accessMode: ReadWriteOnce
-        size: 1Gi
-        storageClass: ssd-dualreplica
-        globalMounts:
-          - path: /config
+        type: configMap
+        name: filebrowser-config
+        advancedMounts:
+          - filebrowser:
+              app:
+                - path: /home/filebrowser/config.yaml
+                  subPath: config.yaml
+
       homes:
         type: hostPath
-        hostPath: /mnt/data/cached/single/homes/
+        hostPath: /mnt/data/cached/dual/homes/
         globalMounts:
           - path: /mnt/homes
       public:
         type: hostPath
-        hostPath: /mnt/data/cached/single/public-share/
+        hostPath: /mnt/data/cached/dual/public-share/
         globalMounts:
           - path: /mnt/public

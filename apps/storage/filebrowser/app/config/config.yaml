@@ -1,0 +1,19 @@
+frontend:
+  name: "Filebrowser"
+  disableDefaultLinks: true
+auth:
+  signup: false
+  methods:
+    noauth: false
+    proxy:
+      enabled: true
+      header: "X-Auth-Request-Preferred-Username"
+      createUser: true
+server:
+  sources:
+    - path: "/mnt/public"
+    - path: "/mnt/homes"
+      config:
+        defaultUserScope: "subfolder"
+        defaultEnabled: true
+        createUserDir: true
