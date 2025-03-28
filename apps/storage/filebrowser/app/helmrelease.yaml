@@ -88,10 +88,10 @@ spec:
         type: configMap
         name: filebrowser-config
         advancedMounts:
-          - filebrowser:
-              app:
-                - path: /home/filebrowser/config.yaml
-                  subPath: config.yaml
+          filebrowser:
+            app:
+              - path: /home/filebrowser/config.yaml
+                subPath: config.yaml
 
       homes:
         type: hostPath
