@@ -10,6 +10,7 @@ auth:
       header: "X-Auth-Request-Preferred-Username"
       createUser: true
 server:
+  database: /db/filebrowser.db
   sources:
     - path: "/mnt/public"
     - path: "/mnt/homes"

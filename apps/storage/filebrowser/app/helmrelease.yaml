@@ -87,7 +87,7 @@ spec:
       database:
         type: emptyDir
         globalMounts:
-          - /home/filebrowser/database
+          - /db/
       config:
         type: configMap
         name: filebrowser-config
