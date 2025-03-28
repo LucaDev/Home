@@ -84,6 +84,10 @@ spec:
                   identifier: app
                   port: http
     persistence:
+      database:
+        type: emptyDir
+        globalMounts:
+          - /home/filebrowser/database
       config:
         type: configMap
         name: filebrowser-config
