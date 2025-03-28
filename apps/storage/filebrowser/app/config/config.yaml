@@ -15,6 +15,6 @@ server:
     - path: "/mnt/public"
     - path: "/mnt/homes"
       config:
-        defaultUserScope: "subfolder"
+        defaultUserScope: "/"
         defaultEnabled: true
         createUserDir: true
