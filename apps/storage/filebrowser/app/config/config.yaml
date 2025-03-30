@@ -12,7 +12,12 @@ auth:
 server:
   database: /db/filebrowser.db
   sources:
+    - path: "/mnt/media"
+      config:
+        defaultEnabled: true
     - path: "/mnt/public"
+      config:
+        defaultEnabled: true
     - path: "/mnt/homes"
       config:
         defaultUserScope: "/"

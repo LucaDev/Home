@@ -85,7 +85,10 @@ spec:
                   port: http
     persistence:
       database:
-        type: emptyDir
+        type: persistentVolumeClaim
+        size: 1Gi
+        accessMode: ReadWriteOnce
+        storageClass: ssd-dualreplica
         globalMounts:
           - path: /db
       config:
@@ -96,7 +99,11 @@ spec:
             app:
               - path: /home/filebrowser/config.yaml
                 subPath: config.yaml
-
+      media:
+        type: hostPath
+        hostPath: /mnt/data/hdd/single/media/
+        globalMounts:
+          - path: /mnt/media
       homes:
         type: hostPath
         hostPath: /mnt/data/cached/dual/homes/
