@@ -37,8 +37,10 @@ spec:
       retries: 3
   values:
     ipam:
+      mode: kubernetes
       operator:
         clusterPoolIPv4PodCIDRList: "10.42.0.0/16"
+        clusterPoolIPv6PodCIDRList: ""
 
     ipv6:
       enabled: true
