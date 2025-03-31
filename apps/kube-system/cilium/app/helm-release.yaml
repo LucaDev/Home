@@ -39,10 +39,9 @@ spec:
     ipam:
       operator:
         clusterPoolIPv4PodCIDRList: "10.42.0.0/16"
-        # clusterPoolIPv6PodCIDRList: "2001:db8:7653:299:cafe:0::/96"
 
-    # ipv6:
-    #   enabled: true
+    ipv6:
+      enabled: true
 
     bpf:
       masquerade: true
@@ -56,8 +55,9 @@ spec:
     operator:
       replicas: 1 # singlenode
 
-    envoy:
-      enabled: false
+    gatewayAPI:
+      enable: true
+      enableAlpn: true
 
     hubble:
       enabled: false
