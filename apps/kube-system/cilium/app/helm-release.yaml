@@ -39,7 +39,7 @@ spec:
     ipam:
       operator:
         clusterPoolIPv4PodCIDRList: "10.42.0.0/16"
-        clusterPoolIPv6PodCIDRList: "2001:cafe:42::/56"
+        clusterPoolIPv6PodCIDRList: "2001:cafe:42::/104"
 
     ipv6:
       enabled: true
