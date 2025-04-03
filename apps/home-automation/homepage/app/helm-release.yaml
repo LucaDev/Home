@@ -164,7 +164,7 @@ spec:
           - Downloads:
               tab: Technik
               style: row
-              columns: 3
+              columns: 4
           - Überwachung:
               tab: Technik
               style: row
