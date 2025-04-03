@@ -162,7 +162,7 @@ spec:
               style: row
               columns: 3
           - Downloads:
-              tab: Allgemeines
+              tab: Technik
               style: row
               columns: 3
           - Überwachung:

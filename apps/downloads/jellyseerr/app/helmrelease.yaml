@@ -55,7 +55,7 @@ spec:
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Filme & Serien Anfragen
-          gethomepage.dev/group: Downloads
+          gethomepage.dev/group: Medien
           gethomepage.dev/icon: jellyseerr
           gethomepage.dev/name: Jellyseerr
           gethomepage.dev/widget.type: jellyseerr
