@@ -47,7 +47,7 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Dokumenten KI
           gethomepage.dev/group: Medien
-          gethomepage.dev/icon: paperless-ai
+          gethomepage.dev/icon: paperless-ngx
           gethomepage.dev/name: PaperlessAI
           traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
     persistence:

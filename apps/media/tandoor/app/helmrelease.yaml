@@ -102,7 +102,7 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Rezepte
           gethomepage.dev/group: Medien
-          gethomepage.dev/icon: tandoor
+          gethomepage.dev/icon: tandoor-recipes.svg
           gethomepage.dev/name: Tandoor
           traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
         hosts:
