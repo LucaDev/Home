@@ -12,3 +12,19 @@ spec:
     kind: GitRepository
     name: github-repo
   wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cilium-gateway
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: "./apps/kube-system/cilium/gateway"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: github-repo
+  wait: true
+  dependsOn:
+    - name: cilium
