@@ -59,6 +59,8 @@ spec:
     gatewayAPI:
       enable: true
       enableAlpn: true
+      gatewayClass:
+        create: true
 
     hubble:
       enabled: false
