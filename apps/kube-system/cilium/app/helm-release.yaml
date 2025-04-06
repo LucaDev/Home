@@ -60,7 +60,7 @@ spec:
       enable: true
       enableAlpn: true
       gatewayClass:
-        create: true
+        create: "true"
 
     hubble:
       enabled: false
