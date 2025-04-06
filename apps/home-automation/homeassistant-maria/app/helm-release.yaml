@@ -68,5 +68,3 @@ spec:
                 service:
                   identifier: app
                   port: http
-        annotations:
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
