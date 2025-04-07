@@ -56,6 +56,10 @@ spec:
         hostnames:
           - link.lucadev.de
         parentRefs:
+          - name: ciliumgateway
+            sectionName: https
+            kind: Gateway
+            namespace: kube-system
           - name: traefik-gateway
             sectionName: websecure
             kind: Gateway
