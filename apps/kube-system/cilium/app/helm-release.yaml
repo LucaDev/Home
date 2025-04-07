@@ -65,6 +65,8 @@ spec:
       # we might need to force this because of flux?
       gatewayClass:
         create: 'true'
+      hostNetwork:
+        enabled: true
 
     hubble:
       enabled: false
