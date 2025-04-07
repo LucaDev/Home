@@ -49,6 +49,9 @@ spec:
       tproxy: true
       # datapathMode: netkit
       preallocateMaps: true
+      distributedLRU:
+        enabled: true
+    bpfClockProbe: true
 
     nodePort:
       enabled: true
