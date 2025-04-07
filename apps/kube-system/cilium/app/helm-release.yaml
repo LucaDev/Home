@@ -57,7 +57,7 @@ spec:
       replicas: 1 # singlenode
 
     gatewayAPI:
-      enable: true
+      enabled: true
       enableAlpn: true
       # we might need to force this because of flux?
       gatewayClass:
