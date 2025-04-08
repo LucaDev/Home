@@ -27,7 +27,7 @@ spec:
           app:
             image:
               repository: docker.io/opencloudeu/opencloud-rolling
-              tag: 2.0.0
+              tag: 2.1.0
             env:
               # enable services that are not started automatically
               OC_ADD_RUN_SERVICES: ${START_ADDITIONAL_SERVICES}
