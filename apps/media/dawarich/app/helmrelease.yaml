@@ -95,3 +95,12 @@ spec:
                 service:
                   identifier: app
                   port: http
+
+    persistence:
+      storage:
+        type: persistentVolumeClaim
+        size: 1Gi
+        storageClass: ssd-dualreplica
+        accessMode: ReadWriteOnce
+        globalMounts:
+          - /var/app/storage
