@@ -52,3 +52,10 @@ boot
 
 :windows_exit
 exit 0
+
+
+:talos
+item boot_talos Boot Talos
+
+:boot_talos
+chain https://pxe.factory.talos.dev/pxe/b91b5d279598a660ed481b91b87b61e2afd50f529915d248c1f76c5614d928a0/1.9.5/metal-amd64
