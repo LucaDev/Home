@@ -33,6 +33,7 @@ spec:
   values:
     image:
       repository: lucadev/netbox-fat
+      tag: v4.2.7@sha256:7727fa082562de25f26f11eb202786d944bdd58d19dcb34ee7d74987803c6aba
     postgresql:
       enabled: false
     externalDatabase:
@@ -86,5 +87,3 @@ spec:
           SOCIAL_AUTH_OIDC_OIDC_ENDPOINT: https://idm.lucadev.de/oauth2/openid/netbox/
           SOCIAL_AUTH_OIDC_KEY: netbox
           PLUGINS: ["netbox_dns", "netbox_qrcode", "netbox_reorder_rack", "netbox_interface_synchronization", "nextbox_ui_plugin"]
-    debug: true
-    dbWaitDebug: true
