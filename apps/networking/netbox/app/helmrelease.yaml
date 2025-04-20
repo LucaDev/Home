@@ -76,7 +76,7 @@ spec:
     extraConfig:
       - secret:
           secretName: netbox-secret
-          items: [SOCIAL_AUTH_OIDC_SECRET:]
+          items: [SOCIAL_AUTH_OIDC_SECRET]
           optional: false
       - values:
           SOCIAL_AUTH_OIDC_OIDC_ENDPOINT: https://idm.lucadev.de/oauth2/openid/netbox/
