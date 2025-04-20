@@ -54,7 +54,7 @@ spec:
           paths:
             - /
     timeZone: "Europe/Berlin"
-    # shortDateFormat: "d.m.Y"
+    shortDateFormat: "d.m.Y"
     # dateFormat: "Y"
     # timeFormat: "%H:%M"
     # shortTimeFormat: "H:i:s"
