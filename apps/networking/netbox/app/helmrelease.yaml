@@ -73,5 +73,3 @@ spec:
         - admins
     loginRequired: true
     powerFeedDefaultVoltage: 220
-    readinessProbe:
-      enabled: false
