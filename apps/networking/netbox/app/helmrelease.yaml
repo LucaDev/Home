@@ -73,4 +73,5 @@ spec:
         - admins
     loginRequired: true
     powerFeedDefaultVoltage: 220
+    extraEnvVarsSecret: netbox-secret
     debug: true
