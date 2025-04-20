@@ -43,6 +43,9 @@ spec:
     tasksRedis:
       database: 3
       host: shared-redis.databases.svc.cluster.local
+    cachingRedis:
+      database: 4
+      host: shared-redis.databases.svc.cluster.local
     serviceAccount:
       create: false
     persistence:
