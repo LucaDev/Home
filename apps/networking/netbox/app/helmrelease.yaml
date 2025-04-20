@@ -31,6 +31,8 @@ spec:
     remediation:
       retries: 3
   values:
+    image:
+      repository: LucaDev/netbox-fat
     postgresql:
       enabled: false
     externalDatabase:
