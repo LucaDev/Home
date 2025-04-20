@@ -32,7 +32,7 @@ spec:
       retries: 3
   values:
     image:
-      repository: LucaDev/netbox-fat
+      repository: lucadev/netbox-fat
     postgresql:
       enabled: false
     externalDatabase:
