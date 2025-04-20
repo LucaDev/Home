@@ -73,3 +73,4 @@ spec:
         - admins
     loginRequired: true
     powerFeedDefaultVoltage: 220
+    debug: true
