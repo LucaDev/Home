@@ -1,0 +1,72 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/source.toolkit.fluxcd.io/ocirepository_v1beta2.json
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: netbox
+spec:
+  interval: 5m
+  layerSelector:
+    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+    operation: copy
+  ref:
+    tag: 5.0.63
+  url: oci://ghcr.io/netbox-community/netbox-chart/netbox
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: netbox
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: netbox
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    postgresql:
+      enabled: false
+    externalDatabase:
+      host: shared-pg-rw.databases.svc.cluster.local
+      database: netbox
+      username: netbox
+      existingSecretName: netbox-secret
+    redis:
+      enabled: false
+    tasksRedis:
+      database: 3
+      host: shared-redis.databases.svc.cluster.local
+    serviceAccount:
+      create: false
+    persistence:
+      storageClass: ssd-dualreplica
+    ingress:
+      enabled: true
+      hosts:
+        - host: "netbox.lucadev.de"
+          paths:
+            - /
+    timeZone: "Europe/Berlin"
+    # shortDateFormat: "d.m.Y"
+    # dateFormat: "Y"
+    # timeFormat: "%H:%M"
+    # shortTimeFormat: "H:i:s"
+    # dateTimeFormat: "N j, Y g:i a"
+    # shortDateTimeFormat: ""Y-m-d H:i""
+    enableLocalization: true
+    remoteAuth:
+      backends:
+        - "social_core.backends.open_id_connect"
+      autoCreateUser: true
+      autoCreateGroups: true
+      superuserGroups:
+        - admins
+    loginRequired: true
+    powerFeedDefaultVoltage: 220

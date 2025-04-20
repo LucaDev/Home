@@ -9,3 +9,4 @@ resources:
   - ./openspeedtest/ks.yaml
   - ./kms/ks.yaml
   - ./netboot/ks.yaml
+  - ./netbox/ks.yaml
