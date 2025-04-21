@@ -33,7 +33,7 @@ spec:
   values:
     image:
       repository: lucadev/netbox-fat
-      tag: v4.2.7@sha256:73e2d4acd59c6a9e626bb7a7267f5b7735716c1828d349a9bc42ad1a32ee818a
+      tag: v4.2.7@sha256:552e2971db813f0da4d1a8239910c2d86f220bfd9a06a51e76699197e57a7de8
     postgresql:
       enabled: false
     externalDatabase:
