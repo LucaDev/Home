@@ -86,3 +86,4 @@ spec:
           SOCIAL_AUTH_OIDC_OIDC_ENDPOINT: https://idm.lucadev.de/oauth2/openid/netbox/
           SOCIAL_AUTH_OIDC_KEY: netbox
           SOCIAL_AUTH_OIDC_SCOPE: ['groups']
+          LOGIN_FORM_HIDDEN: "true"
