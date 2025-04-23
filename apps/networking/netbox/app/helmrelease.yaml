@@ -80,8 +80,8 @@ spec:
       - secret:
           secretName: netbox-secret
           items:
-            - key: oidc_auth.py
-              path: oidc_auth.py
+            - key: oidc_auth.yaml
+              path: oidc_auth.yaml
           optional: false
       - values:
           SOCIAL_AUTH_OIDC_OIDC_ENDPOINT: https://idm.lucadev.de/oauth2/openid/netbox/
