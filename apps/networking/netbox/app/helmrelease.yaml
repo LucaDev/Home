@@ -73,7 +73,7 @@ spec:
       autoCreateUser: true
       autoCreateGroups: true
       superuserGroups:
-        - admins
+        - admins@idm.lucadev.de
     loginRequired: true
     powerFeedDefaultVoltage: 220
     extraConfig:
