@@ -23,7 +23,7 @@ spec:
               tag: 3.2.0
             env:
               NUT_EXPORTER_USERNAME: upsmon
-              NUT_EXPORTER_SERVER: 192.168.1.169
+              NUT_EXPORTER_SERVER: homeserver.home.lucadev.de
             envFrom:
               - secretRef:
                   name: nut-upsd-password

@@ -125,10 +125,10 @@ spec:
         # Robot vacuums
         - module: icmp
           name: valetudo-living-room-icmp
-          url: "192.168.1.243" # TODO: propper dns resolution
+          url: "roborock-vacuum-a15.home.lucadev.de"
         - module: http_2xx
           name: valetudo-living-room-http
-          url: "http://192.168.1.243"
+          url: "http://roborock-vacuum-a15.home.lucadev.de"
 
         # WG Tunnels
         - module: http_2xx_ignore
@@ -153,7 +153,7 @@ spec:
         # Other devices
         - module: icmp
           name: zigbee-bridge
-          url: "192.168.1.157"
+          url: "SLZB-06M.home.lucadev.de"
         - module: icmp
           name: ems-esp
           url: "192.168.100.50"

@@ -105,8 +105,9 @@ spec:
             scrape_timeout: 10s
             static_configs:
               - targets:
-                  - 192.168.1.1
-                  - 192.168.1.158
+                  - router.home.lucadev.de
+                  - SFP-Switch.home.lucadev.de
+                  - POE-Switch.home.lucadev.de
             metrics_path: /snmp
             params:
               auth: [public_v2]

@@ -47,13 +47,13 @@ spec:
       services:
         - Weitere:
             - Zigbee Bridge:
-                href: http://192.168.1.157
-                ping: http://192.168.1.157
+                href: http://SLZB-06M.home.lucadev.de
+                ping: http://SLZB-06M.home.lucadev.de
                 icon: mdi-zigbee
                 description: Steuerung des ZigBee Coordinators
             - NanoKVM:
-                href: http://192.168.1.130
-                ping: http://192.168.1.130
+                href: http://nanokvm.home.lucadev.de
+                ping: http://nanokvm.home.lucadev.de
                 icon: mdi-keyboard
                 description: KVM am Server
         - Externe Geräte:
@@ -77,7 +77,7 @@ spec:
                 description: Steuerung der Solaranlage
                 widget:
                   type: opendtu
-                  url: http://192.168.100.40
+                  url: http://pv-anlage.home.lucadev.de
             - Heizung:
                 href: http://ems-esp.home.lucadev.de
                 ping: http://ems-esp.home.lucadev.de
@@ -85,19 +85,18 @@ spec:
                 description: Heizungssteuerung
         - Netzwerk:
             - SFP Switch:
-                href: http://192.168.1.180
-                ping: http://192.168.1.180
-                icon: mikrotik
+                href: https://SFP-Switch.home.lucadev.de
+                ping: https://SFP-Switch.home.lucadev.de
                 description: Verwaltungsoberfläche des SFP Switches
             - POE Switch:
-                href: http://192.168.1.158
-                ping: http://192.168.1.158
+                href: http://POE-Switch.home.lucadev.de
+                ping: http://POE-Switch.home.lucadev.de
                 icon: mdi-switch
                 description: Verwaltungsoberfläche des POE Switches
             - Router:
-                href: http://192.168.1.1
-                ping: http://192.168.1.1
-                icon: edgeos-light
+                href: http://router.home.lucadev.de
+                ping: http://router.home.lucadev.de
+                icon: mikrotik
                 description: Verwaltungsoberfläche des Routers
             - Crowdsec:
                 href: https://app.crowdsec.net
