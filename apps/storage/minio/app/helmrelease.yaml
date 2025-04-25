@@ -25,7 +25,7 @@ spec:
           app:
             image:
               repository: quay.io/minio/minio
-              tag: RELEASE.2024-11-07T00-52-20Z
+              tag: RELEASE.2025-04-22T22-12-26Z
             env:
               MINIO_API_CORS_ALLOW_ORIGIN: https://minio.lucadev.de,https://s3.lucadev.de
               MINIO_BROWSER_REDIRECT_URL: https://minio.lucadev.de
