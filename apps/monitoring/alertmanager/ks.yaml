@@ -13,5 +13,5 @@ spec:
     kind: GitRepository
     name: github-repo
   wait: true
-#  dependsOn:
-#    - name: external-secrets-stores
+  dependsOn:
+    - name: external-secrets-stores
