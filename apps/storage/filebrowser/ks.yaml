@@ -19,3 +19,4 @@ spec:
     substitute:
       APP: *appname
       GATUS_SUBDOMAIN: files
+      VOLSYNC_CLAIM: filebrowser-database

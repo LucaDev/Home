@@ -7,6 +7,7 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
   - ../../../../templates/gatus/internal
+  - ../../../../templates/volsync/hetzner_ext
 labels:
   - pairs:
       app.kubernetes.io/name: romm

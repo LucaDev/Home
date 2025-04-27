@@ -19,3 +19,4 @@ spec:
     substitute:
       APP: *appname
       GATUS_SUBDOMAIN: tv
+      VOLSYNC_CLAIM: ersatztv-config

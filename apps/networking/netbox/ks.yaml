@@ -15,3 +15,4 @@ spec:
   postBuild:
     substitute:
       APP: *appname
+      VOLSYNC_CLAIM: netbox-media

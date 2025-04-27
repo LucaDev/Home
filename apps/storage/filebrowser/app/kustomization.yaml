@@ -6,6 +6,7 @@ namespace: storage
 resources:
   - ./helmrelease.yaml
   - ../../../../templates/gatus/internal
+  - ../../../../templates/volsync/hetzner_ext
 configMapGenerator:
   - name: filebrowser-config
     files:
