@@ -9,4 +9,3 @@ resources:
   - ./filebrowser/ks.yaml
   - ./minio/ks.yaml
   - ./opencloud/ks.yaml
-#  - ./extra-backups/ks.yaml
