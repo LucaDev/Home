@@ -17,4 +17,4 @@ spec:
   postBuild:
     substitute:
       APP: *appname
-      VOLSYNC_CLAIM: paperlessai-data
+      VOLSYNC_CLAIM: paperless-ai-data
