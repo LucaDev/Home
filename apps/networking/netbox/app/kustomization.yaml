@@ -6,4 +6,5 @@ namespace: networking
 resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
-  - ../../../../templates/volsync/hetzner_ext
+components:
+  - ../../../../components/volsync/hetzner_ext

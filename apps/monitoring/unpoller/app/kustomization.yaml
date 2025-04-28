@@ -6,5 +6,6 @@ namespace: monitoring
 resources:
   - ./external-secret.yaml
   - ./networkpolicy.yaml
-  - ../../../../templates/netpol/ingress-prometheus
   - ./helm-release.yaml
+components:
+  - ../../../../components/netpol/ingress-prometheus

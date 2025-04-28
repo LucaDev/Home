@@ -6,7 +6,8 @@ resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
   - ./networkpolicy.yaml
-  - ../../../../templates/volsync/hetzner
-  - ../../../../templates/netpol/dns-traefik
-  - ../../../../templates/netpol/egress-internet
-  - ../../../../templates/gatus/internal
+components:
+  - ../../../../components/volsync/hetzner
+  - ../../../../components/netpol/dns-traefik
+  - ../../../../components/netpol/egress-internet
+  - ../../../../components/gatus/internal

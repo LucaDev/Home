@@ -6,4 +6,5 @@ namespace: networking
 resources:
   - ./helm-release.yaml
   - ./openspeedtest-middleware.yaml
-  - ../../../../templates/gatus/internal
+components:
+  - ../../../../components/gatus/internal

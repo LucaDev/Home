@@ -5,7 +5,8 @@ kind: Kustomization
 namespace: media
 resources:
   - ./helmrelease.yaml
-  - ../../../../templates/gatus/internal
+components:
+  - ../../../../components/gatus/internal
 labels:
   - pairs:
       app.kubernetes.io/name: kiwix
