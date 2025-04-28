@@ -8,7 +8,8 @@ resources:
   - ./helm-release_opa.yaml
   - ./externalsecret_opa.yaml
   - ./externalsecret_maria.yaml
-  - ../../../../templates/netpol/ingress-prometheus
+components:
+  - ../../../../components/netpol/ingress-prometheus
 configMapGenerator:
   - name: fritz-dashboard
     files:

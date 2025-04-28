@@ -5,8 +5,9 @@ kind: Kustomization
 namespace: media
 resources:
   - ./helmrelease.yaml
-  - ../../../../templates/volsync/hetzner
-  - ../../../../templates/netpol/dns-traefik
-  - ../../../../templates/netpol/egress-local
-  - ../../../../templates/netpol/kanidm
-  - ../../../../templates/gatus/internal
+components:
+  - ../../../../components/volsync/hetzner
+  - ../../../../components/netpol/dns-traefik
+  - ../../../../components/netpol/egress-local
+  - ../../../../components/netpol/kanidm
+  - ../../../../components/gatus/internal

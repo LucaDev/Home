@@ -6,8 +6,9 @@ namespace: home-automation
 resources:
   - ./external-secret.yaml
   - ./helm-release.yaml
-  - ../../../../templates/netpol/ingress-prometheus
   - ./alerts.yaml
+components:
+  - ../../../../components/netpol/ingress-prometheus
 configMapGenerator:
   - name: nut-dashboard
     files:

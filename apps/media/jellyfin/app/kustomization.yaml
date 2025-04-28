@@ -6,4 +6,5 @@ namespace: media
 resources:
   - ./helm-release.yaml
   - ./volsync.yaml
-  - ../../../../templates/gatus/external
+components:
+  - ../../../../components/gatus/external

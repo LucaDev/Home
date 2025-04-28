@@ -6,5 +6,6 @@ namespace: home-automation
 resources:
   - ./helm-release.yaml
   - ./external-secret.yaml
-  - ../../../../templates/gatus/internal
-  - ../../../../templates/volsync/hetzner_ext
+components:
+  - ../../../../components/gatus/internal
+  - ../../../../components/volsync/hetzner_ext

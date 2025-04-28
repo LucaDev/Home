@@ -9,7 +9,8 @@ resources:
   - ./server
   - ./machine-learning
   - ./volsync.yaml
-  - ../../../../templates/gatus/external
+components:
+  - ../../../../components/gatus/external
 labels:
   - pairs:
       app.kubernetes.io/name: immich

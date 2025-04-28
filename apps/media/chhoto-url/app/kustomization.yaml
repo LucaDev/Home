@@ -6,8 +6,9 @@ namespace: media
 resources:
   - ./helmrelease.yaml
   - ./middleware.yaml
-  - ../../../../templates/gatus/external
-  - ../../../../templates/volsync/hetzner_ext
+components:
+  - ../../../../components/gatus/external
+  - ../../../../components/volsync/hetzner_ext
 labels:
   - pairs:
       app.kubernetes.io/name: chhoto

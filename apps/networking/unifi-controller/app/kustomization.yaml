@@ -9,5 +9,6 @@ resources:
   - ./database.yaml
   - ./volsync.yaml
   - ./volsync-db.yaml
-  - ../../../../templates/gatus/internal
   - ./database-sa.yaml
+components:
+  - ../../../../components/gatus/internal
