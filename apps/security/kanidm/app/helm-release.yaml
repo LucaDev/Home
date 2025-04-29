@@ -55,7 +55,7 @@ spec:
         annotations:
           traefik.ingress.kubernetes.io/service.serverstransport: security-kanidm@kubernetescrd
           traefik.ingress.kubernetes.io/service.serversscheme: https
-          traefik.ingress.kubernetes.io/router.middlewares: kanidm-csp@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: security-kanidm-csp@kubernetescrd
       ldap-lb:
         controller: kanidm
         type: LoadBalancer
