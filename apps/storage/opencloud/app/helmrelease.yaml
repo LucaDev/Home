@@ -32,7 +32,7 @@ spec:
               # OIDC configuration
               PROXY_AUTOPROVISION_ACCOUNTS: "true"
               PROXY_ROLE_ASSIGNMENT_DRIVER: oidc
-              OC_OIDC_ISSUER: http://idm.lucadev.de/oauth2/openid/web/
+              OC_OIDC_ISSUER: https://idm.lucadev.de/oauth2/openid/web/
               PROXY_OIDC_REWRITE_WELLKNOWN: true
               PROXY_USER_OIDC_CLAIM: preferred_username
               GRAPH_ASSIGN_DEFAULT_USER_ROLE: false
