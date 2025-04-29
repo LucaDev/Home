@@ -75,7 +75,6 @@ spec:
                   identifier: app
                   port: http
         annotations:
-          traefik.ingress.kubernetes.io/router.middlewares: security-kanidm-csp@kubernetescrd
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Zentrale Nutzerverwaltung
           gethomepage.dev/group: Weitere

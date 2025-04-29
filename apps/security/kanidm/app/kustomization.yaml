@@ -7,7 +7,6 @@ resources:
   - ./helm-release.yaml
   - ./configuration.yaml
   - ./kanidm-transport.yaml
-  - ./kanidm-csp.yaml
   - ./volsync.yaml
 components:
   - ../../../../components/gatus/external
