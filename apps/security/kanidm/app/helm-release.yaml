@@ -53,7 +53,7 @@ spec:
             port: 636
             protocol: TCP
         annotations:
-          traefik.ingress.kubernetes.io/service.serverstransport: security-kanidm@kubernetescrd
+          traefik.ingress.kubernetes.io/service.serverstransport: security-kanidm@kubernetescrd,kanidm-csp@kubernetescrd
           traefik.ingress.kubernetes.io/service.serversscheme: https
       ldap-lb:
         controller: kanidm

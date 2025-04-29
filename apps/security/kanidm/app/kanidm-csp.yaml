@@ -1,0 +1,9 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: kanidm-csp
+  namespace: networking
+spec:
+  headers:
+    customResponseHeaders:
+      Content-Security-Policy: "default-src 'self'; connect-src *"
