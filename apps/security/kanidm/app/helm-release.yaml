@@ -55,7 +55,6 @@ spec:
         annotations:
           traefik.ingress.kubernetes.io/service.serverstransport: security-kanidm@kubernetescrd
           traefik.ingress.kubernetes.io/service.serversscheme: https
-          traefik.ingress.kubernetes.io/router.middlewares: security-kanidm-csp@kubernetescrd
       ldap-lb:
         controller: kanidm
         type: LoadBalancer
@@ -76,6 +75,7 @@ spec:
                   identifier: app
                   port: http
         annotations:
+          traefik.ingress.kubernetes.io/router.middlewares: security-kanidm-csp@kubernetescrd
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Zentrale Nutzerverwaltung
           gethomepage.dev/group: Weitere
