@@ -5,6 +5,5 @@ kind: Kustomization
 namespace: storage
 resources:
   - ./helmrelease.yaml
-  - ./opencloud-csp.yaml
 components:
   - ../../../../components/gatus/external
