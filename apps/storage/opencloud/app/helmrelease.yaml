@@ -29,9 +29,11 @@ spec:
               repository: docker.io/opencloudeu/opencloud-rolling
               tag: 2.2.0
             env:
+              STORAGE_USERS_POSIX_WATCH_FS: "true"
               # OIDC configuration
               PROXY_AUTOPROVISION_ACCOUNTS: "true"
-              #PROXY_ROLE_ASSIGNMENT_DRIVER: oidc
+              PROXY_ROLE_ASSIGNMENT_DRIVER: oidc
+              PROXY_ROLE_ASSIGNMENT_OIDC_CLAIM: groups
               OC_OIDC_ISSUER: https://idm.lucadev.de/oauth2/openid/web
               PROXY_OIDC_REWRITE_WELLKNOWN: true
               PROXY_USER_OIDC_CLAIM: preferred_username
