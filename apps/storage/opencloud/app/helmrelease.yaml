@@ -103,6 +103,13 @@ spec:
         storageClass: cached-dualreplica
         globalMounts:
           - path: /var/lib/opencloud
+      apps:
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        storageClass: ssd-dualreplica
+        globalMounts:
+          - /var/lib/opencloud/web/assets/apps
       homes:
         type: hostPath
         hostPath: /mnt/data/cached/single/homes/
