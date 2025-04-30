@@ -21,11 +21,23 @@ spec:
         containers:
           app:
             image:
-              repository: docker.io/frooodle/s-pdf
+              repository: docker.stirlingpdf.com/stirlingtools/stirling-pdf
               tag: 0.46.0
             env:
               SYSTEM_DEFAULTLOCALE: de-DE
               SYSTEM_SHOWUPDATE: "false"
+              SECURITY_ENABLELOGIN: "true"
+              SECURITY_LOGINMETHOD: oauth2
+              SECURITY_OAUTH2_ENABLED: "true"
+              SECURITY_OAUTH2_PROVIDER: IDM
+              SECURITY_OAUTH2_AUTOCREATEUSER: "true"
+              SECURITY_OAUTH2_CLIENT_IDM_ISSUER: "https://idm.lucadev.de/oauth2/openid/stirling-pdf/.well-known/openid-configuration"
+              SECURITY_OAUTH2_CLIENT_IDM_CLIENTID: stirling-pdf
+              SECURITY_OAUTH2_CLIENT_IDM_SCOPES: openid, profile, email
+              SECURITY_OAUTH2_CLIENT_IDM_USEASUSERNAME: preferred_username
+            envFrom:
+              - secretRef:
+                  name: stirling-pdf-secret
             resources:
               requests:
                 cpu: 100m
