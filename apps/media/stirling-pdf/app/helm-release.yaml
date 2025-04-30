@@ -26,6 +26,7 @@ spec:
             env:
               SYSTEM_DEFAULTLOCALE: de-DE
               SYSTEM_SHOWUPDATE: "false"
+              DOCKER_ENABLE_SECURITY: "true"
               SECURITY_ENABLELOGIN: "true"
               SECURITY_LOGINMETHOD: oauth2
               SECURITY_OAUTH2_ENABLED: "true"
