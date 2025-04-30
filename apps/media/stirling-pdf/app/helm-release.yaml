@@ -32,7 +32,7 @@ spec:
               SECURITY_OAUTH2_ENABLED: "true"
               SECURITY_OAUTH2_PROVIDER: IDM
               SECURITY_OAUTH2_AUTOCREATEUSER: "true"
-              SECURITY_OAUTH2_ISSUER: "https://idm.lucadev.de/oauth2/openid/stirling-pdf/"
+              SECURITY_OAUTH2_ISSUER: "https://idm.lucadev.de/oauth2/openid/stirling-pdf"
               SECURITY_OAUTH2_CLIENTID: stirling-pdf
               SECURITY_OAUTH2_SCOPES: openid, profile, email
               SECURITY_OAUTH2_USEASUSERNAME: preferred_username
