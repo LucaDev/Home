@@ -103,4 +103,4 @@ spec:
         storageClass: ssd-dualreplica
         accessMode: ReadWriteOnce
         globalMounts:
-          - /var/app/storage
+          - path: /var/app/storage
