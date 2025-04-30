@@ -7,4 +7,5 @@ resources:
   - ./externalsecret.yaml
 components:
   - ../../../../components/netpol/dns-traefik
+  - ../../../../components/netpol/kanidm
   - ../../../../components/gatus/internal
