@@ -22,20 +22,11 @@ spec:
           app:
             image:
               repository: docker.stirlingpdf.com/stirlingtools/stirling-pdf
-              tag: 0.46.0-fat
+              tag: 0.46.0
             env:
+              SYSTEM_ENABLEANALYTICS: "false"
               SYSTEM_DEFAULTLOCALE: de-DE
               SYSTEM_SHOWUPDATE: "false"
-              DOCKER_ENABLE_SECURITY: "true"
-              SECURITY_ENABLELOGIN: "true"
-              SECURITY_LOGINMETHOD: oauth2
-              SECURITY_OAUTH2_ENABLED: "true"
-              SECURITY_OAUTH2_PROVIDER: IDM
-              SECURITY_OAUTH2_AUTOCREATEUSER: "true"
-              SECURITY_OAUTH2_ISSUER: "https://idm.lucadev.de/oauth2/openid/stirling-pdf"
-              SECURITY_OAUTH2_CLIENTID: stirling-pdf
-              SECURITY_OAUTH2_SCOPES: openid, profile, email
-              SECURITY_OAUTH2_USEASUSERNAME: preferred_username
             envFrom:
               - secretRef:
                   name: stirling-pdf-secret
