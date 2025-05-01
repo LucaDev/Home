@@ -80,7 +80,6 @@ spec:
           gethomepage.dev/group: Weitere
           gethomepage.dev/icon: opencloud
           gethomepage.dev/name: Cloud
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
         hosts:
           - host: "cloud.lucadev.de"
             paths:
