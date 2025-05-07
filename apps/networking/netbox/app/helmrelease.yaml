@@ -40,12 +40,12 @@ spec:
       database: netbox
       username: netbox
       existingSecretName: netbox-secret
-    redis:
+    valkey:
       enabled: false
-    tasksRedis:
+    tasksDatabase:
       database: 3
       host: shared-redis.databases.svc.cluster.local
-    cachingRedis:
+    cachingDatabase:
       database: 4
       host: shared-redis.databases.svc.cluster.local
     serviceAccount:
