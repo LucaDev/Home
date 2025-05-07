@@ -16,16 +16,13 @@ data:
     db_path = "/data/persistent/kanidm.db"
     tls_chain = "/data/certs/tls.crt"
     tls_key = "/data/certs/tls.key"
-
-    # Common
     log_level = "info"
-    # TODO
     domain = "idm.lucadev.de"
     origin = "https://idm.lucadev.de"
 
     # Traefik
     [http_client_address_info]
-    x-forward-for = ["10.0.0.0/8"]
+    x-forward-for = ["10.0.0.0"]
 
     # Backups
     [online_backup]
