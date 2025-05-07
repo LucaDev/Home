@@ -5,13 +5,14 @@ metadata:
   name: kanidm-configuration
 data:
   server.toml: |-
+    version = "2"
+
     # Bind
     bindaddress = "[::]:8443"
     # LDAP Bind
     ldapbindaddress = "[::]:636"
 
-    # Traefik
-    trust_x_forward_for = true
+    # General
     db_path = "/data/persistent/kanidm.db"
     tls_chain = "/data/certs/tls.crt"
     tls_key = "/data/certs/tls.key"
@@ -21,6 +22,10 @@ data:
     # TODO
     domain = "idm.lucadev.de"
     origin = "https://idm.lucadev.de"
+
+    # Traefik
+    [http_client_address_info]
+    x-forward-for = ["10.0.0.0/8"]
 
     # Backups
     [online_backup]
