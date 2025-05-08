@@ -52,7 +52,7 @@ spec:
 
     gitea:
       admin:
-        username: "admin"
+        username: "lucadev"
         password: "admin" # TEMP
 
       oauth:
