@@ -22,8 +22,6 @@ spec:
   chartRef:
     kind: OCIRepository
     name: forgejo
-  dependsOn:
-    - name: external-secrets-stores
   values:
     ingress:
       enabled: true
