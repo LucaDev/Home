@@ -36,10 +36,10 @@ spec:
           paths:
             - path: /
               pathType: Prefix
-          tls:
-            - secretName: home-lucadev-de-wildcard-cert
-              hosts:
-                - git.lucadev.de
+      tls:
+        - secretName: home-lucadev-de-wildcard-cert
+          hosts:
+            - git.lucadev.de
 
     persistence:
       storageClass: ssd-dualreplica
