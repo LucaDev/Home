@@ -36,6 +36,10 @@ spec:
           paths:
             - path: /
               pathType: Prefix
+          tls:
+            - secretName: home-lucadev-de-wildcard-cert
+              hosts:
+                - git.lucadev.de
 
     persistence:
       storageClass: ssd-dualreplica
@@ -78,7 +82,6 @@ spec:
           USERNAME: nickname
         server:
           START_SSH_SERVER: false
-          PROTOCOL: https
         database:
           DB_TYPE: sqlite3
         session:
