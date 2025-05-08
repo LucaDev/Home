@@ -1,0 +1,73 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: forgejo
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: forgejo
+      version: "12.3.1"
+      sourceRef:
+        kind: HelmRepository
+        name: forgejo
+        namespace: flux-system
+      interval: 5m
+  dependsOn:
+    - name: external-secrets-stores
+  values:
+    ingress:
+      enabled: true
+      annotations:
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/description: Source Repository
+        gethomepage.dev/group: Weitere
+        gethomepage.dev/icon: forgejo
+        gethomepage.dev/name: forgejo
+      hosts:
+        - host: git.lucadev.de
+          paths:
+            - path: /
+              pathType: Prefix
+
+    persistence:
+      storageClass: ssd-dualreplica
+
+    # databases
+    redis-cluster:
+      enabled: false
+    postgresql-ha:
+      enabled: false
+    postgresql:
+      enabled: false
+
+    gitea:
+      admin:
+        username: "admin"
+        password: "admin" # TEMP
+
+      oauth:
+        - name: "IDM"
+          provider: "openidConnect"
+          existingSecret: "forgejo-secret"
+          key: "oauth-sercret"
+          autoDiscoveryUrl: "https://idm.lucadev.de/oauth2/openid/forgejo/.well-known/openid-configuration"
+
+      # See https://forgejo.org/docs/latest/admin/config-cheat-sheet/
+      config:
+        APP_NAME: "LucaDev Git Repo"
+        service:
+          REQUIRE_SIGNIN_VIEW: true
+          DISABLE_REGISTRATION: true
+        openid:
+          ENABLE_OPENID_SIGNIN: false
+        oauth2_client:
+          REGISTER_EMAIL_CONFIRM: false
+          ENABLE_AUTO_REGISTRATION: true
+          UPDATE_AVATAR: true
+          ACCOUNT_LINKING: auto
+          OPENID_CONNECT_SCOPES: ["groups", "email", "profile", "openid"]
+          USERNAME: nickname
+        server:
+          START_SSH_SERVER: false
