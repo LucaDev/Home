@@ -57,7 +57,6 @@ spec:
         - name: "IDM"
           provider: "openidConnect"
           existingSecret: "forgejo-secret"
-          key: "oauth-sercret"
           autoDiscoveryUrl: "https://idm.lucadev.de/oauth2/openid/forgejo/.well-known/openid-configuration"
 
       # See https://forgejo.org/docs/latest/admin/config-cheat-sheet/
