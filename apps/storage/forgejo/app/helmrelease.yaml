@@ -52,8 +52,7 @@ spec:
 
     gitea:
       admin:
-        username: "lucadev"
-        password: "admin" # TEMP
+        existingSecret: "forgejo-secret"
 
       oauth:
         - name: "IDM"
