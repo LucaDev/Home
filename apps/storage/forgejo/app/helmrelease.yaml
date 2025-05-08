@@ -78,6 +78,7 @@ spec:
           USERNAME: nickname
         server:
           START_SSH_SERVER: false
+          PROTOCOL: https
         database:
           DB_TYPE: sqlite3
         session:
