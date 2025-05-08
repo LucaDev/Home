@@ -53,6 +53,7 @@ spec:
     gitea:
       admin:
         existingSecret: "forgejo-secret"
+        email: "admin@lucadev.de"
 
       oauth:
         - name: "IDM"
