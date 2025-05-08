@@ -41,6 +41,8 @@ spec:
       storageClass: ssd-dualreplica
 
     # databases
+    redis:
+      enabled: false
     redis-cluster:
       enabled: false
     postgresql-ha:
@@ -76,3 +78,11 @@ spec:
           USERNAME: nickname
         server:
           START_SSH_SERVER: false
+        database:
+          DB_TYPE: sqlite3
+        session:
+          PROVIDER: memory
+        cache:
+          ADAPTER: memory
+        queue:
+          TYPE: level
