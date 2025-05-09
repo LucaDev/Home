@@ -78,7 +78,6 @@ spec:
           ENABLE_AUTO_REGISTRATION: true
           UPDATE_AVATAR: true
           ACCOUNT_LINKING: auto
-          OPENID_CONNECT_SCOPES: "groups,email,profile"
           USERNAME: nickname
         server:
           START_SSH_SERVER: false
