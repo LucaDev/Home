@@ -82,10 +82,20 @@ spec:
         server:
           START_SSH_SERVER: false
         database:
-          DB_TYPE: sqlite3
+          DB_TYPE: postgres
+          HOST: shared-pg-rw.databases.svc.cluster.local
+          NAME: forgejo
+          USER: forgejo
+          SCHEMA: forgejo
         session:
           PROVIDER: memory
         cache:
           ADAPTER: memory
         queue:
           TYPE: level
+
+  valuesFrom:
+    - kind: Secret
+      name: "forgejo-secret"
+      valuesKey: helm-values
+      optional: false
