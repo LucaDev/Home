@@ -86,7 +86,6 @@ spec:
           HOST: shared-pg-rw.databases.svc.cluster.local
           NAME: forgejo
           USER: forgejo
-          SCHEMA: forgejo
         session:
           PROVIDER: memory
         cache:
