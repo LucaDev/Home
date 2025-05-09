@@ -87,11 +87,14 @@ spec:
           NAME: forgejo
           USER: forgejo
         session:
-          PROVIDER: memory
+          PROVIDER: redis
+          PROVIDER_CONFIG: redis://shared-redis.databases.svc.cluster.local:6379/5
         cache:
-          ADAPTER: memory
+          ADAPTER: redis
+          HOST: redis://shared-redis.databases.svc.cluster.local:6379/5?pool_size=100&idle_timeout=180s
         queue:
-          TYPE: level
+          TYPE: redis
+          CONN_STR: redis://shared-redis.databases.svc.cluster.local:6379/5
 
   valuesFrom:
     - kind: Secret
