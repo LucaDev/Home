@@ -45,9 +45,11 @@ spec:
     tasksDatabase:
       database: 3
       host: shared-redis.databases.svc.cluster.local
+      existingSecretName: netbox-secret
     cachingDatabase:
       database: 4
       host: shared-redis.databases.svc.cluster.local
+      existingSecretName: netbox-secret
     serviceAccount:
       create: false
     persistence:
