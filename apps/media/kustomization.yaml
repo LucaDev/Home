@@ -14,7 +14,6 @@ resources:
   - ./mailbackup/ks.yaml
   - ./frigate/ks.yaml
   - ./ersatztv/ks.yaml
-  - ./dawarich/ks.yaml
   - ./romm/ks.yaml
   - ./paperless-ai/ks.yaml
   - ./samba-scanner-proxy/ks.yaml
