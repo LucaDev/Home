@@ -22,7 +22,7 @@ spec:
           app:
             image:
               repository: docker.stirlingpdf.com/stirlingtools/stirling-pdf
-              tag: 0.46.1
+              tag: 0.46.1-ultra-lite
             env:
               SYSTEM_ENABLEANALYTICS: "false"
               SYSTEM_DEFAULTLOCALE: de-DE
