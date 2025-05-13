@@ -80,7 +80,7 @@ spec:
           ACCOUNT_LINKING: auto
           USERNAME: nickname
         server:
-          START_SSH_SERVER: false
+          DISABLE_SSH: true
         database:
           DB_TYPE: postgres
           HOST: shared-pg-rw.databases.svc.cluster.local
