@@ -20,7 +20,7 @@ spec:
 
           containers:
             - name: mailbackup
-              image: ghcr.io/bjw-s-labs/getmail:6.19.7@sha256:ae35622d8900dadfacc3b6df1edfc23472d974a4715ddd6ae01f543d9e27203d
+              image: ghcr.io/bjw-s-labs/getmail:6.19.08@sha256:24c10e05e61787f887bb55487985ec2ada93cd51d897de7bfe63cb47255c8d9e
               imagePullPolicy: IfNotPresent
               command:
                 - "/scripts/mailbackup.sh"
