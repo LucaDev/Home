@@ -5,7 +5,7 @@ metadata:
   name: local-path
   namespace: storage
 provisioner: rancher.io/local-path
-reclaimPolicy: Delete
-volumeBindingMode: WaitForFirstConsumer
+reclaimPolicy: Retain
+volumeBindingMode: Immediate
 parameters:
   nodePath: /var/lib/rancher/k3s/storage

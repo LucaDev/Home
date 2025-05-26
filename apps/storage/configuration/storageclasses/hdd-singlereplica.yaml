@@ -7,5 +7,5 @@ metadata:
 provisioner: rancher.io/local-path
 parameters:
   nodePath: /mnt/data/hdd/single
-volumeBindingMode: WaitForFirstConsumer
-reclaimPolicy: Delete
+volumeBindingMode: Immediate
+reclaimPolicy: Retain
