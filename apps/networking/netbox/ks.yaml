@@ -16,3 +16,5 @@ spec:
     substitute:
       APP: *appname
       VOLSYNC_CLAIM: netbox-media
+  dependsOn:
+    - name: external-secrets-stores

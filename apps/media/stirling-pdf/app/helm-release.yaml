@@ -27,9 +27,6 @@ spec:
               SYSTEM_ENABLEANALYTICS: "false"
               SYSTEM_DEFAULTLOCALE: de-DE
               SYSTEM_SHOWUPDATE: "false"
-            envFrom:
-              - secretRef:
-                  name: stirling-pdf-secret
             resources:
               requests:
                 cpu: 100m
