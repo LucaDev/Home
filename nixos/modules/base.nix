@@ -24,6 +24,8 @@
   };
 
   networking.firewall.enable = false;
+  networking.tempAddresses = "disabled";
+
 
   time.timeZone = "Europe/Berlin";
 
@@ -39,55 +41,59 @@
       systemd-boot.netbootxyz.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages_testing;
+    kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = [ "bcachefs" ];
-  };
 
-  boot.initrd = {
-    availableKernelModules = [
-      "aesni_intel"
-      "cryptd"
-      "ixgbe"
-    ];
-    network = {
-      enable = true;
-      ssh = {
+    initrd = {
+      availableKernelModules = [
+        "aesni_intel"
+        "cryptd"
+        "ixgbe"
+      ];
+      network = {
         enable = true;
-        port = 22;
-        authorizedKeys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILjUx5YA3RwdM0xfXY7KMZb3N3BrK1tDyJ/qcQQvBWJE luca@Laptop-von-Luca.local"
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ1WsEPt50HcTjV5WY9g3NRlUVU7RH583ocFs+FzOK38 iPhone"
-        ];
-        hostKeys = [
-          "/etc/secrets/initrd/ssh_host_rsa_key"
-          "/etc/secrets/initrd/ssh_host_ed25519_key"
-        ];
+        ssh = {
+          enable = true;
+          port = 22;
+          authorizedKeys = [
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILjUx5YA3RwdM0xfXY7KMZb3N3BrK1tDyJ/qcQQvBWJE luca@Laptop-von-Luca.local"
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ1WsEPt50HcTjV5WY9g3NRlUVU7RH583ocFs+FzOK38 iPhone"
+          ];
+          hostKeys = [
+            "/etc/secrets/initrd/ssh_host_rsa_key"
+            "/etc/secrets/initrd/ssh_host_ed25519_key"
+          ];
+        };
       };
     };
-  };
 
-  boot.kernelParams = [
-    "ip=dhcp"
-    "init_on_alloc=0"
-    "init_on_free=0"
-    "mitigations=off"
-    "module_blacklist=r8169"
-    "security=none"
-  ];
+    kernelParams = [
+      "ip=dhcp"
+      "init_on_alloc=0"
+      "init_on_free=0"
+      "mitigations=off"
+      "module_blacklist=r8169"
+      "security=none"
+    ];
 
-  boot.kernel.sysctl = {
-    "fs.inotify.max_user_watches" = 1048576;
-    "fs.inotify.max_user_instances" = 8192;
-    "net.core.default_qdisc" = "fq";
-    "net.core.rmem_max" = 67108864;
-    "net.core.wmem_max" = 67108864;
-    "net.ipv4.tcp_congestion_control" = "bbr";
-    "net.ipv4.tcp_fastopen" = 3;
-    "net.ipv4.tcp_mtu_probing" = 1;
-    "net.ipv4.tcp_rmem" = "4096 87380 33554432";
-    "net.ipv4.tcp_wmem" = "4096 65536 33554432";
-    "net.ipv4.tcp_window_scaling" = 1;
-    "vm.nr_hugepages" = 512;
+    kernel.sysctl = {
+      "fs.inotify.max_user_watches" = 1048576;
+      "fs.inotify.max_user_instances" = 8192;
+      "net.core.default_qdisc" = "fq";
+      "net.core.rmem_max" = 67108864;
+      "net.core.wmem_max" = 67108864;
+      "net.ipv4.tcp_congestion_control" = "bbr";
+      "net.ipv4.tcp_fastopen" = 3;
+      "net.ipv4.tcp_mtu_probing" = 1;
+      "net.ipv4.tcp_rmem" = "4096 87380 33554432";
+      "net.ipv4.tcp_wmem" = "4096 65536 33554432";
+      "net.ipv4.tcp_window_scaling" = 1;
+      "vm.nr_hugepages" = 512;
+    };
+
+    kernelModules = [ "ip6table_filter" "ip6_tables" "ip6table_mangle" "ip6table_raw" "iptable_nat" "ip6table_nat" "iptable_filter" "xt_socket" ];
+
+    tmp.tmpfsHugeMemoryPages = "within_size";
   };
 
   programs.zsh = {
