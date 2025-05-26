@@ -41,8 +41,8 @@ spec:
         clusterPoolIPv4PodCIDRList: "10.42.0.0/16"
     #    clusterPoolIPv6PodCIDRList: "2001:cafe:42::/104"
 
-    #ipv6:
-    #  enabled: true
+    ipv6:
+      enabled: false
 
     bpf:
       masquerade: true
