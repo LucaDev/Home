@@ -115,5 +115,6 @@ spec:
         type: persistentVolumeClaim
         accessMode: ReadWriteOnce
         size: 10Gi
+        storageClass: hdd-singlereplica
         globalMounts:
           - path: /data
