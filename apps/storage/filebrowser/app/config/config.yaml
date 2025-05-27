@@ -2,9 +2,9 @@ frontend:
   name: "Filebrowser"
   disableDefaultLinks: true
 auth:
-  signup: false
   methods:
-    noauth: false
+    password:
+      enabled: false
     proxy:
       enabled: true
       header: "X-Auth-Request-Preferred-Username"
