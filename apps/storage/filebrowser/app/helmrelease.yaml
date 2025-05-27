@@ -91,6 +91,13 @@ spec:
         storageClass: ssd-dualreplica
         globalMounts:
           - path: /db
+      cache:
+        type: persistentVolumeClaim
+        size: 1Gi
+        accessMode: ReadWriteOnce
+        storageClass: ssd-singlereplica
+        globalMounts:
+          - path: /cache
       config:
         type: configMap
         name: filebrowser-config
