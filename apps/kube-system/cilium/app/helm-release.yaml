@@ -37,6 +37,7 @@ spec:
       retries: 3
   values:
     ipam:
+      mode: cluster-pool
       operator:
         clusterPoolIPv4PodCIDRList: "10.42.0.0/16"
     #    clusterPoolIPv6PodCIDRList: "2001:cafe:42::/104"
