@@ -24,13 +24,6 @@ spec:
 
         pod:
           enableServiceLinks: false
-          securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            fsGroup: 568
-            fsGroupChangePolicy: OnRootMismatch
-            supplementalGroups:
-              - 65541
 
         containers:
           app:
