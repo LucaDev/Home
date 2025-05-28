@@ -5,7 +5,7 @@ metadata:
   name: shared-pg
 spec:
   instances: 1
-  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:17.5-0.3.0
+  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.9-0.3.0
   primaryUpdateStrategy: unsupervised
   storage:
     size: 10Gi
