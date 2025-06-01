@@ -26,6 +26,11 @@
   networking.firewall.enable = false;
   networking.tempAddresses = "disabled";
 
+  # IOT
+  networking.vlans.vlan100 = {
+    id = 100;
+    interface = "eth0";
+  };
 
   time.timeZone = "Europe/Berlin";
 
@@ -91,7 +96,16 @@
       "vm.nr_hugepages" = 512;
     };
 
-    kernelModules = [ "ip6table_filter" "ip6_tables" "ip6table_mangle" "ip6table_raw" "iptable_nat" "ip6table_nat" "iptable_filter" "xt_socket" ];
+    kernelModules = [
+      "ip6table_filter"
+      "ip6_tables"
+      "ip6table_mangle"
+      "ip6table_raw"
+      "iptable_nat"
+      "ip6table_nat"
+      "iptable_filter"
+      "xt_socket"
+    ];
 
     tmp.tmpfsHugeMemoryPages = "within_size";
   };

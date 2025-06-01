@@ -52,7 +52,7 @@
         "fruit:delete_empty_adfiles" = "yes";
         "fruit:copyfile" = "yes";
         "fruit:encoding" = "native";
-        "server min protocol" = "SMB2";
+        "server min protocol" = "SMB3";
         # Performance
         "server multi channel support" = "yes";
         "use sendfile" = "yes";
@@ -122,5 +122,33 @@
     };
     ipv6 = true;
     openFirewall = true;
+  };
+
+  environment.etc."samba/smb-scanner-proxy.conf".text = ''
+    [global]
+      netbios name = SMBv1
+      workgroup = WORKGROUP
+      server min protocol = NT1
+      server max protocol = NT1
+      interfaces = 192.168.100.169
+      bind interfaces only = yes
+      smb ports = 445
+      log level = 2
+
+    [printer-scan]
+      path = /tmp/paperless-ingest
+      guest ok = yes
+      writeable = yes
+      read only = no
+      force user = nobody
+  '';
+
+  systemd.services.smbv1 = {
+    description = "Samba scanner-proxy instance";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "/run/current-system/sw/bin/smbd -s /etc/samba/smb-scanner-proxy.conf";
+      Restart = "on-failure";
+    };
   };
 }
