@@ -26,6 +26,7 @@
           ./modules/power.nix
           ./modules/k3s.nix
           ./modules/samba.nix
+          ./modules/networking.nix
           sops-nix.nixosModules.sops
         ];
       };

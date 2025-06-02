@@ -27,10 +27,11 @@
   networking.tempAddresses = "disabled";
 
   # IOT
-  networking.vlans.vlan100 = {
-    id = 100;
-    interface = "eth0";
-  };
+  #networking.vlans.vlan100 = {
+  #  id = 100;
+  #  interface = "enp1s0";
+  #};
+  #networking.interfaces."vlan100@enp1s0".useDHCP = true;
 
   time.timeZone = "Europe/Berlin";
 
@@ -38,6 +39,8 @@
     font = "Lat2-Terminus16";
     keyMap = "de";
   };
+
+  security.lsm = lib.mkForce [];
 
   # Boot
   boot = {
@@ -118,7 +121,7 @@
 
     shellAliases = {
       ll = "ls -alh";
-      rebuild = "nh os switch ~/homeserver/nixos/ --bypass-root-check";
+      rebuild = "nixos-rebuild switch --flake /root/homeserver/nixos/";
       update = "nix flake update --flake /root/homeserver/nixos/";
       repl = "nix repl -f flake:nixpkgs";
       gc = "nh clean --keep 5";

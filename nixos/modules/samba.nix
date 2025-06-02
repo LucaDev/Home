@@ -33,6 +33,10 @@
     package = pkgs.samba4Full;
     settings = {
       global = {
+        # Bind
+        "interfaces" = "enp1s0";
+        "bind interfaces only" = "yes";
+        # General
         "workgroup" = "WORKGROUP";
         "server string" = "%h";
         "printcap name" = "/dev/null";
@@ -130,25 +134,33 @@
       workgroup = WORKGROUP
       server min protocol = NT1
       server max protocol = NT1
-      interfaces = 192.168.100.169
+      interfaces = "vlanIOT"
       bind interfaces only = yes
       smb ports = 445
       log level = 2
+      pid directory = /var/run/samba-scanner-proxy
+      load printers = no
+      printcap name = /dev/null
+      disable spoolss = yes
 
-    [printer-scan]
+    [paperless-ingest]
       path = /tmp/paperless-ingest
       guest ok = yes
       writeable = yes
       read only = no
-      force user = nobody
   '';
 
-  systemd.services.smbv1 = {
+  systemd.services.samba-scanner-proxy = {
     description = "Samba scanner-proxy instance";
     wantedBy = [ "multi-user.target" ];
+    wants =  [ "network-online.target" ];
     serviceConfig = {
-      ExecStart = "/run/current-system/sw/bin/smbd -s /etc/samba/smb-scanner-proxy.conf";
+      ExecStart = "/run/current-system/sw/bin/smbd -s /etc/samba/smb-scanner-proxy.conf --foreground --no-process-group";
       Restart = "on-failure";
+      LimitCORE = "infinity";
+      LimitNOFILE = "16384";
+      PIDFile = "/run/samba-scanner-proxy/smbd.pid";
+      Type = "notify";
     };
   };
 }
