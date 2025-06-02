@@ -6,7 +6,6 @@ namespace: flux-system
 resources:
   - ./app-template.yaml
   - ./homepage.yaml
-  - ./appscode.yaml
   - ./cnpg.yaml
   - ./mongodb.yaml
   - ./amd-gpu.yaml
