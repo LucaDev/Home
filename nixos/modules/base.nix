@@ -37,10 +37,15 @@
   # Boot
   boot = {
     loader = {
-      systemd-boot.enable = true;
-      systemd-boot.netbootxyz.enable = true;
+      systemd-boot.enable = lib.mkForce false;
       efi.canTouchEfiVariables = true;
     };
+
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+    };
+
     kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = [ "bcachefs" ];
 
@@ -77,6 +82,7 @@
     ];
 
     kernel.sysctl = {
+      "user.max_user_namespaces" = 11255;
       "fs.inotify.max_user_watches" = 1048576;
       "fs.inotify.max_user_instances" = 8192;
       "net.core.default_qdisc" = "fq";
@@ -144,6 +150,7 @@
       nerdctl
       rsync
       sshpass
+      sbctl
     ];
   };
 

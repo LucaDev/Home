@@ -7,6 +7,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -14,12 +18,14 @@
       self,
       nixpkgs,
       sops-nix,
+      lanzaboote,
       ...
     }@inputs:
     {
       nixosConfigurations.homeserver = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          lanzaboote.nixosModules.lanzaboote
           ./hardware/homeserver.nix
           ./modules/base.nix
           ./modules/secrets.nix
