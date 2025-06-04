@@ -6,9 +6,13 @@
 }:
 
 {
+  networking.firewall.enable = false;
+
+  networking.useNetworkd = true;
+
   systemd.network = {
     enable = true;
-    networks."lan" = {
+    networks."10-enp1s0" = {
       matchConfig.Name = "enp1s0";
       linkConfig.RequiredForOnline = "routable";
       networkConfig = {
@@ -18,7 +22,7 @@
       vlan = ["vlanIOT"];
     };
 
-    networks."vlanIOT" = {
+    networks."12-vlanIOT" = {
       matchConfig.Name = "vlanIOT";
       networkConfig = {
         DHCP = "ipv4";
@@ -26,12 +30,13 @@
     };
 
     netdevs = {
-      "vlanIOT" = {
+      "11-vlanIOT" = {
         netdevConfig = {
-        Kind = "vlan";
-        Name = "vlanIOT";
+          Kind = "vlan";
+          Name = "vlanIOT";
+        };
+        vlanConfig.Id = 100;
       };
-      vlanConfig.Id = 100;
     };
   };
 }

@@ -7,6 +7,8 @@
 
 {
   # Base Config
+  system.rebuild.enableNg = true;
+
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
 
@@ -22,16 +24,6 @@
       options = "+5";
     };
   };
-
-  networking.firewall.enable = false;
-  networking.tempAddresses = "disabled";
-
-  # IOT
-  #networking.vlans.vlan100 = {
-  #  id = 100;
-  #  interface = "enp1s0";
-  #};
-  #networking.interfaces."vlan100@enp1s0".useDHCP = true;
 
   time.timeZone = "Europe/Berlin";
 
@@ -140,6 +132,7 @@
   environment = {
     variables.EDITOR = "vim";
     variables.KUBECONFIG = "/var/lib/rancher/k3s/server/cred/admin.kubeconfig";
+    variables.CONTAINERD_ADDRESS = "/run/k3s/containerd/containerd.sock"; 
     systemPackages = with pkgs; [
       git
       vim
@@ -148,11 +141,9 @@
       htop
       k9s
       screen
-      podman
-      podman-compose
+      nerdctl
       rsync
       sshpass
-      nh
     ];
   };
 

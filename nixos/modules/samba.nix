@@ -130,18 +130,17 @@
 
   environment.etc."samba/smb-scanner-proxy.conf".text = ''
     [global]
-      netbios name = SMBv1
+      netbios name = scannerproxy
       workgroup = WORKGROUP
       server min protocol = NT1
-      server max protocol = NT1
       interfaces = "vlanIOT"
       bind interfaces only = yes
-      smb ports = 445
-      log level = 2
+      log level = 4
       pid directory = /var/run/samba-scanner-proxy
       load printers = no
       printcap name = /dev/null
       disable spoolss = yes
+      map to guest = Bad User
 
     [paperless-ingest]
       path = /tmp/paperless-ingest
