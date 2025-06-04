@@ -1,5 +1,5 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
   name: flux-manifests
@@ -40,12 +40,6 @@ spec:
         - op: add
           path: /spec/template/spec/containers/0/args/-
           value: --concurrent=10
-        - op: add
-          path: /spec/template/spec/containers/0/args/-
-          value: --kube-api-qps=500
-        - op: add
-          path: /spec/template/spec/containers/0/args/-
-          value: --kube-api-burst=1000
         - op: add
           path: /spec/template/spec/containers/0/args/-
           value: --requeue-dependency=5s
@@ -110,6 +104,14 @@ spec:
         - op: add
           path: /spec/template/spec/containers/0/args/-
           value: --oom-watch-interval=500ms
+      target:
+        kind: Deployment
+        name: helm-controller
+    # Disable chart digest tracking
+    - patch: |
+        - op: add
+          path: /spec/template/spec/containers/0/args/-
+          value: --feature-gates=DisableChartDigestTracking=true
       target:
         kind: Deployment
         name: helm-controller
