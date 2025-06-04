@@ -105,6 +105,12 @@
         "path" = "/mnt/data/hdd/single/media";
         "public" = "yes";
         "writable" = "true";
+      };
+
+      P = {
+        "path" = "/mnt/data/hdd/single/P";
+        "public" = "no";
+        "writable" = "true";
         "valid users" = "lucadev";
       };
     };
@@ -152,7 +158,7 @@
   systemd.services.samba-scanner-proxy = {
     description = "Samba scanner-proxy instance";
     wantedBy = [ "multi-user.target" ];
-    wants =  [ "network-online.target" ];
+    wants = [ "network-online.target" ];
     serviceConfig = {
       ExecStart = "/run/current-system/sw/bin/smbd -s /etc/samba/smb-scanner-proxy.conf --foreground --no-process-group";
       Restart = "on-failure";
