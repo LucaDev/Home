@@ -91,10 +91,10 @@
         "valid users" = "lucadev";
         "writeable" = "true";
         "fruit:time machine" = "yes";
-        "fruit:time machine max size" = "2T";
+        "fruit:time machine max size" = "1T";
       };
 
-      paperless-ingest = {
+      paperless = {
         "path" = "/tmp/paperless-ingest";
         "public" = "yes";
         "writeable" = "true";
