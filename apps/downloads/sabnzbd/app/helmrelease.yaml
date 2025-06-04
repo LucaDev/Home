@@ -114,3 +114,8 @@ spec:
         type: emptyDir
         globalMounts:
           - path: /tmp
+      p:
+        type: hostPath
+        hostPath: /mnt/data/hdd/single/P
+        globalMounts:
+          - path: /P/
