@@ -102,3 +102,8 @@ spec:
         hostPath: /mnt/data/hdd/single/media
         globalMounts:
           - path: /media/
+      P:
+        type: hostPath
+        hostPath: /mnt/data/hdd/single/P
+        globalMounts:
+          - path: /P/
