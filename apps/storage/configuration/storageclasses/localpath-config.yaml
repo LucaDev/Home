@@ -41,7 +41,6 @@ data:
         esac
     done
     mkdir -m 0777 -p ${absolutePath}
-    chmod 700 ${absolutePath}/..
   teardown: |-
     #!/bin/sh
     while getopts "m:s:p:" opt
