@@ -30,7 +30,7 @@ spec:
           app:
             image:
               repository: docker.io/sintan1729/chhoto-url
-              tag: 6.0.3
+              tag: 6.0.4
             resources:
               requests:
                 cpu: 5m
