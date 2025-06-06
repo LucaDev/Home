@@ -18,7 +18,7 @@ spec:
           app:
             image:
               repository: rommapp/romm
-              tag: 3.10.0-slim
+              tag: 3.10.1-slim
             envFrom:
               - secretRef:
                   name: romm-secret
