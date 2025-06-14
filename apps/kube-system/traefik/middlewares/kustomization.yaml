@@ -8,3 +8,4 @@ resources:
   - ./local-IOT.yaml
   - ./local-home.yaml
   - ./cloudflare.yaml
+  - ./error-pages.yaml
