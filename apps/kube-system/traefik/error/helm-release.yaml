@@ -51,5 +51,3 @@ spec:
             app:
               - path: /usr/share/nginx/html/index.html
                 subPath: index.html
-              - path: /usr/share/nginx/html/styles.css
-                subPath: styles.css

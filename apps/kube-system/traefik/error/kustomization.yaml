@@ -9,6 +9,5 @@ configMapGenerator:
   - name: error-page
     files:
       - page/index.html
-      - page/styles.css
 generatorOptions:
   disableNameSuffixHash: true
