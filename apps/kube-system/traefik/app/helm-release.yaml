@@ -51,7 +51,7 @@ spec:
           advertisedPort: 443
         http:
           middlewares:
-            - error-pages@kubernetescrd
+            - networking-error-pages@kubernetescrd
 
     priorityClassName: "system-cluster-critical"
 
