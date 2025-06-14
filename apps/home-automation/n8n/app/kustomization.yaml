@@ -2,10 +2,7 @@
 # yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: flux-system
+namespace: home-automation
 resources:
-  - ./app-template.yaml
-  - ./homepage.yaml
-  - ./mongodb.yaml
-  - ./amd-gpu.yaml
-  - ./bjw-s-labs.yaml
+  - ./helm-release.yaml
+  - ./external-secret.yaml

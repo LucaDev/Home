@@ -12,3 +12,4 @@ resources:
   - ./whisper/ks.yaml
   - ./maybe/ks.yaml
   - ./homeassistant-maria/ks.yaml
+  - ./n8n/ks.yaml
