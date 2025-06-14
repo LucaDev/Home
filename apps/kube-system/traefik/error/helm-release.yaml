@@ -30,11 +30,11 @@ spec:
                 memory: 32M
             probes:
               liveness:
-                enabled: true
+                enabled: false
               readiness:
-                enabled: true
+                enabled: false
               startup:
-                enabled: true
+                enabled: false
     service:
       app:
         controller: nginx
