@@ -49,9 +49,8 @@ spec:
         http3:
           enabled: true
           advertisedPort: 443
-        http:
-          middlewares:
-            - networking-error-pages@kubernetescrd
+        middlewares:
+          - networking-error-pages@kubernetescrd
 
     priorityClassName: "system-cluster-critical"
 
