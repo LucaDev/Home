@@ -13,5 +13,6 @@ spec:
       - "505-599"
     query: /index.html
     service:
+      namespace: kube-system
       name: error-page
       port: 80
