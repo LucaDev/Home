@@ -20,7 +20,7 @@ spec:
           app:
             image:
               repository: nginxinc/nginx-unprivileged
-              tag: 1.27
+              tag: 1.28
             resources:
               requests:
                 cpu: 5m
