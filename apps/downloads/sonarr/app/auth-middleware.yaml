@@ -1,0 +1,14 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: sonarr-auth
+spec:
+  plugin:
+    traefik-oidc-auth:
+      Provider:
+        Url: "https://idm.lucadev.de/oauth2/openid/sonarr"
+        ClientId: "sonarr"
+        ClientSecret: "urn:k8s:secret:sonarr-secret:OIDC_SECRET"
+        TokenValidation: "IdToken"
+        UsePkce: true
+      Scopes: ["openid", "profile"]

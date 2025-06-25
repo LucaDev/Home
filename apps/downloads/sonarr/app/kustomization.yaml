@@ -6,6 +6,7 @@ resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
   - ./networkpolicy.yaml
+  - ./auth-middleware.yaml
 components:
   - ../../../../components/volsync/hetzner
   - ../../../../components/netpol/dns-traefik
