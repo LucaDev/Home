@@ -8,7 +8,7 @@ spec:
       Provider:
         Url: "https://idm.lucadev.de/oauth2/openid/zigbee2mqtt"
         ClientId: "zigbee2mqtt"
-        ClientSecret: "urn:k8s:secret:zigbee2mett-secret:OIDC_SECRET"
+        ClientSecret: "urn:k8s:secret:zigbee2mqtt-secret:OIDC_SECRET"
         TokenValidation: "IdToken"
         UsePkce: true
       Scopes: ["openid", "profile"]
