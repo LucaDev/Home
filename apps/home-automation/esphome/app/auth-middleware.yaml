@@ -8,7 +8,7 @@ spec:
       Provider:
         Url: "https://idm.lucadev.de/oauth2/openid/esphome"
         ClientId: "esphome"
-        ClientSecret: "urn:k8s:secret:esphome-secret:OIDC_SECRET"
+        ClientSecret: "urn:k8s:secret:esphome-secrets:OIDC_SECRET"
         TokenValidation: "IdToken"
         UsePkce: true
       Scopes: ["openid", "profile"]
