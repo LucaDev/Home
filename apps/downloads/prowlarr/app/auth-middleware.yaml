@@ -3,10 +3,11 @@ kind: Middleware
 metadata:
   name: prowlarr-auth
 spec:
-  traefik-oidc-auth:
-    Provider:
-      Url: "https://idm.lucadev.de/oauth2/openid/prowlarr"
-      ClientId: "prowlarr"
-      TokenValidation: "IdToken"
-      UsePkce: true
-    Scopes: ["openid", "profile"]
+  plugin:
+    traefik-oidc-auth:
+      Provider:
+        Url: "https://idm.lucadev.de/oauth2/openid/prowlarr"
+        ClientId: "prowlarr"
+        TokenValidation: "IdToken"
+        UsePkce: true
+      Scopes: ["openid", "profile"]
