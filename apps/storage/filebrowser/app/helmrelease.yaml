@@ -75,7 +75,7 @@ spec:
           gethomepage.dev/group: Weitere
           gethomepage.dev/icon: filebrowser
           gethomepage.dev/name: Filebrowser
-          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: storage-filebrowser-auth@kubernetescrd
         hosts:
           - host: "files.lucadev.de"
             paths:

@@ -5,7 +5,7 @@ metadata:
   name: traefik
   namespace: kube-system
   annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: kube-system-traefik-dashboard@kubernetescrd,security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: kube-system-traefik-dashboard@kubernetescrd,kube-system-traefik-auth@kubernetescrd,networking-rfc1918@kubernetescrd
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: Traefik Dashboard
     gethomepage.dev/group: Netzwerk

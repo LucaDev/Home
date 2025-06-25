@@ -58,19 +58,6 @@ spec:
     prometheus:
       ingress:
         enabled: false
-        pathType: Prefix
-        hosts:
-          - prometheus.lucadev.de
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Metrik-Datenbank
-          gethomepage.dev/group: Überwachung
-          gethomepage.dev/icon: prometheus
-          gethomepage.dev/name: Prometheus
-          gethomepage.dev/widget.type: prometheus
-          gethomepage.dev/widget.url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
-          gethomepage.dev/pod-selector: app.kubernetes.io/name=prometheus
-          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
 
       prometheusSpec:
         image:

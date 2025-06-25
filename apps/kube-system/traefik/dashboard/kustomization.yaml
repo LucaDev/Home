@@ -7,3 +7,5 @@ resources:
   - ./middleware.yaml
   - ./service.yaml
   - ./ingress.yaml
+  - ./auth-middleware.yaml
+  - ./externalsecret.yaml

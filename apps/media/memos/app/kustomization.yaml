@@ -5,6 +5,8 @@ kind: Kustomization
 namespace: media
 resources:
   - ./helmrelease.yaml
+  - ./externalsecret.yaml
+  - ./auth-middleware.yaml
 components:
   - ../../../../components/volsync/hetzner
   - ../../../../components/netpol/dns-traefik

@@ -1,0 +1,19 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: filebrowser-auth
+spec:
+  plugin:
+    traefik-oidc-auth:
+      Provider:
+        Url: "https://idm.lucadev.de/oauth2/openid/filebrowser"
+        ClientId: "filebrowser"
+        ClientSecret: "urn:k8s:secret:filebrowser-secret:OIDC_SECRET"
+        TokenValidation: "IdToken"
+        UsePkce: true
+        Scopes: ["openid", "profile", "email", "groups"]
+        Headers:
+          - Name: "X-Auth-Request-User"
+            Value: "{{`{{ .claims.preferred_username }}`}}"
+          - Name: "X-Auth-Request-Preferred-Username"
+            Value: "{{`{{ .claims.preferred_username }}`}}"

@@ -5,5 +5,4 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./kanidm/ks.yaml
-  - ./oauth2-proxy/ks.yaml
   - ./crowdsec/ks.yaml

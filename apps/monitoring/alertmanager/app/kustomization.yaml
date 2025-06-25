@@ -6,6 +6,8 @@ namespace: monitoring
 resources:
   - ./alertmanager-secret.yaml
   - ./helmrelease.yaml
+  - ./externalsecret.yaml
+  - ./auth-middleware.yaml
 configMapGenerator:
   - name: alertmanager-configmap
     files:

@@ -77,7 +77,7 @@ spec:
                 extensionRef:
                   group: traefik.io
                   kind: Middleware
-                  name: chhoto-oauth-proxy
+                  name: chhoto-auth
             backendRefs:
               - name: *app
                 port: *port

@@ -59,7 +59,7 @@ spec:
                   identifier: app
                   port: http
         annotations:
-          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: monitoring-alertmanager-auth@kubernetescrd,networking-rfc1918@kubernetescrd
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Alarmzentrale
           gethomepage.dev/group: Überwachung

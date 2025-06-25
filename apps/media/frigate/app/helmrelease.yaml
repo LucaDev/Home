@@ -61,7 +61,7 @@ spec:
           gethomepage.dev/group: Weitere
           gethomepage.dev/icon: frigate
           gethomepage.dev/name: Frigate
-          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-rfc1918@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
         hosts:
           - host: frigate.lucadev.de
             paths:

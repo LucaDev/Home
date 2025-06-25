@@ -63,4 +63,4 @@ spec:
           gethomepage.dev/group: Netzwerk
           gethomepage.dev/icon: openspeedtest
           gethomepage.dev/name: SpeedTest
-          traefik.ingress.kubernetes.io/router.middlewares: security-oauth-proxy@kubernetescrd,networking-openspeedtest@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: networking-openspeedtest-auth@kubernetescrd,networking-openspeedtest@kubernetescrd
