@@ -80,7 +80,7 @@ spec:
           gethomepage.dev/group: Downloads
           gethomepage.dev/icon: prowlarr
           gethomepage.dev/name: Prowlarr
-          traefik.ingress.kubernetes.io/router.middlewares: downloads-prowlarr-authy@kubernetescrd,networking-rfc1918@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: downloads-prowlarr-auth@kubernetescrd,networking-rfc1918@kubernetescrd
         hosts:
           - host: prowlarr.lucadev.de
             paths:
