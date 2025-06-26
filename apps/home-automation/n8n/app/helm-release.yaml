@@ -85,4 +85,3 @@ spec:
           gethomepage.dev/group: Weitere
           gethomepage.dev/icon: n8n
           gethomepage.dev/name: N8N
-          traefik.ingress.kubernetes.io/router.middlewares: home-automation-n8n-auth@kubernetescrd
