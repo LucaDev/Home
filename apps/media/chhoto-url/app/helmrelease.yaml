@@ -68,6 +68,9 @@ spec:
           - matches:
               - path:
                   type: PathPrefix
+                  value: /oidc/
+              - path:
+                  type: PathPrefix
                   value: /api/
               - path:
                   type: Exact
