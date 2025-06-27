@@ -97,7 +97,6 @@ spec:
           gethomepage.dev/group: Weitere
           gethomepage.dev/icon: minio
           gethomepage.dev/name: MinIO
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
         hosts:
           - host: minio.lucadev.de
             paths:
