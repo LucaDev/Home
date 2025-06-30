@@ -13,36 +13,36 @@
     '^archive/**',
   ],
   flux: {
-    fileMatch: [
-      'apps/.+\\.ya?ml$',
-      'bootstrap/.+\\.ya?ml$',
-      'flux/.+\\.ya?ml$',
+    managerFilePatterns: [
+      '/apps/.+\\.ya?ml$/',
+      '/bootstrap/.+\\.ya?ml$/',
+      '/flux/.+\\.ya?ml$/',
     ],
   },
   'helm-values': {
-    fileMatch: [
-      'apps/.+\\.ya?ml$',
-      'bootstrap/.+\\.ya?ml$',
-      'flux/.+\\.ya?ml$',
+    managerFilePatterns: [
+      '/apps/.+\\.ya?ml$/',
+      '/bootstrap/.+\\.ya?ml$/',
+      '/flux/.+\\.ya?ml$/',
     ],
   },
   kubernetes: {
-    fileMatch: [
-      'apps/.+\\.ya?ml$',
-      'bootstrap/.+\\.ya?ml$',
-      'flux/.+\\.ya?ml$',
+    managerFilePatterns: [
+      '/apps/.+\\.ya?ml$/',
+      '/bootstrap/.+\\.ya?ml$/',
+      '/flux/.+\\.ya?ml$/',
     ],
   },
   terraform: {
-    fileMatch: [
-      'terraform/.+\\.tf$',
+    managerFilePatterns: [
+      '/terraform/.+\\.tf$/',
     ],
   },
-  "nix": {
-    "enabled": true
+  nix: {
+    enabled: true,
   },
-  "lockFileMaintenance": {
-    "enabled": true
+  lockFileMaintenance: {
+    enabled: true,
   },
   packageRules: [
     {
@@ -61,7 +61,7 @@
       description: 'Auto merge KPS minors and patches',
       matchDatasources: [
         'helm',
-        'docker'
+        'docker',
       ],
       automerge: true,
       matchUpdateTypes: [
@@ -127,9 +127,9 @@
       description: [
         'Process custom dependencies',
       ],
-      fileMatch: [
-        '(^|/).taskfiles/.+\\.ya?ml(?:\\.j2)?$',
-        '(^|/)apps/.+\\.ya?ml(?:\\.j2)?$',
+      managerFilePatterns: [
+        '/(^|/).taskfiles/.+\\.ya?ml(?:\\.j2)?$/',
+        '/(^|/)apps/.+\\.ya?ml(?:\\.j2)?$/',
       ],
       matchStrings: [
         'datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( repository=(?<registryUrl>\\S+))?\\n.+: (&\\S+\\s)?(?<currentValue>\\S+)',
