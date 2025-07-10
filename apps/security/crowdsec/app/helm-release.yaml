@@ -21,7 +21,7 @@ spec:
           app:
             image:
               repository: crowdsecurity/crowdsec
-              tag: v1.6.9
+              tag: v1.6.10
             resources:
               requests:
                 cpu: 50m
