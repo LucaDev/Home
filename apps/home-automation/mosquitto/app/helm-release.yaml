@@ -30,7 +30,7 @@ spec:
           init-config:
             image:
               repository: public.ecr.aws/docker/library/eclipse-mosquitto
-              tag: 2.0.21
+              tag: 2.0.22
             command:
               - "/bin/sh"
               - "-c"
@@ -40,7 +40,7 @@ spec:
           app:
             image:
               repository: public.ecr.aws/docker/library/eclipse-mosquitto
-              tag: 2.0.21
+              tag: 2.0.22
             resources:
               requests:
                 cpu: 5m
