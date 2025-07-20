@@ -45,9 +45,7 @@ spec:
       storageClass: ssd-dualreplica
 
     # databases
-    redis:
-      enabled: false
-    redis-cluster:
+    valkey-cluster:
       enabled: false
     postgresql-ha:
       enabled: false
