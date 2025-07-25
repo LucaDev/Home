@@ -27,7 +27,7 @@ spec:
           app:
             image:
               repository: jasongdove/ersatztv
-              tag: v25.3.0
+              tag: v25.3.1
             env:
               TZ: Europe/Berlin
               XDG_DATA_HOME: /config # https://github.com/ErsatzTV/ErsatzTV/issues/327
