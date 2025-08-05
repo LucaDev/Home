@@ -116,15 +116,6 @@ spec:
                 subPath: mediafiles
               - path: /opt/recipes/staticfiles
                 subPath: staticfiles
-      nginx-config:
-        type: configMap
-        name: tandoor-nginx
-        advancedMounts:
-          tandoor:
-            nginx:
-              - path: /etc/nginx/nginx.conf
-                subPath: nginx-config
-                readOnly: true
       tmpfs:
         type: emptyDir
         advancedMounts:
