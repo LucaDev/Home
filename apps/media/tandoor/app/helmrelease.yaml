@@ -87,7 +87,7 @@ spec:
         controller: tandoor
         ports:
           http:
-            port: 8080
+            port: 8000
 
     ingress:
       app:
