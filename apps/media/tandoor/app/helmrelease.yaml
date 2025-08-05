@@ -37,6 +37,7 @@ spec:
               POSTGRES_PORT: 5432
               POSTGRES_DB: tandoor
               POSTGRES_USER: "tandoor"
+              AI_MODEL_NAME: openai/gpt-4o
             envFrom:
               - secretRef:
                   name: tandoor-secret
@@ -70,14 +71,16 @@ spec:
                 memory: 512Mi
             securityContext:
               allowPrivilegeEscalation: false
-              capabilities:
-                drop:
-                  - ALL
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
 
-          nginx:
-            image:
-              repository: ghcr.io/nginx/nginx-unprivileged
-              tag: 1.29.0
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
 
     service:
       app:
@@ -113,11 +116,6 @@ spec:
                 subPath: mediafiles
               - path: /opt/recipes/staticfiles
                 subPath: staticfiles
-            nginx:
-              - path: /media
-                subPath: mediafiles
-              - path: /static
-                subPath: staticfiles
       nginx-config:
         type: configMap
         name: tandoor-nginx
@@ -127,12 +125,16 @@ spec:
               - path: /etc/nginx/nginx.conf
                 subPath: nginx-config
                 readOnly: true
-      temp:
+      tmpfs:
         type: emptyDir
         advancedMounts:
           tandoor:
             app:
-              - path: /tmp
-                subPath: app-tmp
               - path: /opt/recipes/cookbook/static/django_js_reverse
                 subPath: django_js_reverse
+              - path: /var/lib/nginx/logs
+                subPath: nginx_logs
+              - path: /var/lib/nginx/tmp
+                subPath: nginx_tmp
+              - path: /tmp
+                subPath: tmp
