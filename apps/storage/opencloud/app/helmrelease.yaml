@@ -46,6 +46,8 @@ spec:
               # do not use SSL between Traefik and OpenCloud
               PROXY_TLS: "false"
               OC_INSECURE: "false"
+              # Other settings
+              OC_SHARING_PUBLIC_SHARE_MUST_HAVE_PASSWORD: "false"
             command: ["sh", "-c", "opencloud init || true; opencloud server"]
             probes:
               liveness: &probes
