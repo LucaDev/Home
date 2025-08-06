@@ -110,10 +110,13 @@ spec:
         hostPath: /mnt/data/hdd/single/media
         globalMounts:
           - path: /media/
-      temp:
+      tmpfs:
         type: emptyDir
         globalMounts:
+          - path: /config/logs
+            subPath: logs
           - path: /tmp
+            subPath: tmp
       p:
         type: hostPath
         hostPath: /mnt/data/hdd/single/P
