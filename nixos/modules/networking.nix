@@ -12,8 +12,8 @@
 
   systemd.network = {
     enable = true;
-    networks."10-enp1s0" = {
-      matchConfig.Name = "enp1s0";
+    networks."10-enp1s0np0" = {
+      matchConfig.Name = "enp1s0np0";
       linkConfig.RequiredForOnline = "routable";
       networkConfig = {
         DHCP = "ipv4";

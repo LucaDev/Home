@@ -151,6 +151,7 @@
       rsync
       sshpass
       sbctl
+      nvtopPackages.amd
     ];
   };
 
