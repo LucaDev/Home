@@ -85,7 +85,7 @@ spec:
                   port: http
 
     persistence:
-      DRI:
+      dri:
         type: hostPath
         hostPath: /dev/dri
         globalMounts:
