@@ -60,7 +60,7 @@ spec:
         fsGroup: 568
         fsGroupChangePolicy: OnRootMismatch
         supplementalGroups: [44, 303]
-        seccompProfile: { type: RuntimeDefault }
+        seccompProfile: { type: Unconfined }
     service:
       app:
         controller: *app
