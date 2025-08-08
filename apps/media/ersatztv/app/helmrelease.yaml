@@ -59,7 +59,7 @@ spec:
         runAsGroup: 568
         fsGroup: 568
         fsGroupChangePolicy: OnRootMismatch
-        supplementalGroups: [44, 104]
+        supplementalGroups: [44, 303]
         seccompProfile: { type: RuntimeDefault }
     service:
       app:
