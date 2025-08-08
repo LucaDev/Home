@@ -85,6 +85,11 @@ spec:
                   port: http
 
     persistence:
+      DRI:
+        type: hostPath
+        hostPath: /dev/dri
+        globalMounts:
+          - path: /dev/dri
       media:
         type: hostPath
         hostPath: /mnt/data/hdd/single/media
