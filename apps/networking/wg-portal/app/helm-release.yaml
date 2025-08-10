@@ -34,7 +34,7 @@ spec:
       main:
         controller: wgportal
         ports:
-          controller:
+          http:
             port: 8080
             protocol: TCP
     ingress:
@@ -45,7 +45,7 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  identifier: internal
+                  identifier: main
                   port: http
         annotations:
           gethomepage.dev/enabled: "true"
