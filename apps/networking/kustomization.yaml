@@ -10,3 +10,4 @@ resources:
   - ./kms/ks.yaml
   - ./netboot/ks.yaml
   - ./netbox/ks.yaml
+  - ./wg-portal/ks.yaml
