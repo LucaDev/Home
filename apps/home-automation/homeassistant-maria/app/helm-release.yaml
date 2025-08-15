@@ -35,9 +35,6 @@ spec:
             envFrom:
               - secretRef:
                   name: home-assistant-maria-secret
-            env:
-              - name: PYTHONPATH
-                value: /usr/local/lib/python3.12:/config/deps
             probes:
               liveness:
                 enabled: false
