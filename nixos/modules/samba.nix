@@ -125,12 +125,13 @@
 
   services.avahi = {
     enable = true;
-    allowInterfaces = [ "enp1s0" ];
+    allowInterfaces = [ "enp1s0np0" ];
     publish = {
       enable = true;
       userServices = true;
     };
     ipv6 = true;
+    nssmdns4 = true;
     openFirewall = true;
   };
 
