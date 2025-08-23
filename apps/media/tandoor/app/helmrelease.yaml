@@ -20,7 +20,7 @@ spec:
           app:
             image:
               repository: ghcr.io/tandoorrecipes/recipes
-              tag: 2.0.2
+              tag: 2.0.3
             env:
               COMMENT_PREF_DEFAULT: 0
               DEBUG: 0
