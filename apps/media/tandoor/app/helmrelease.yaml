@@ -28,7 +28,6 @@ spec:
               FRACTION_PREF_DEFAULT: 0
               MAX_OWNED_SPACES_PREF_DEFAULT: 0
               SHOPPING_MIN_AUTOSYNC_INTERVAL: 5
-              TANDOOR_PORT: &tandoorPort 8000
               SOCIAL_DEFAULT_ACCESS: 1
               SOCIAL_DEFAULT_GROUP: user
               DB_ENGINE: django.db.backends.postgresql
@@ -47,7 +46,7 @@ spec:
                 spec:
                   httpGet:
                     path: /accounts/login/
-                    port: *tandoorPort
+                    port: http
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -59,7 +58,7 @@ spec:
                 spec:
                   httpGet:
                     path: /accounts/login/
-                    port: *tandoorPort
+                    port: http
                   failureThreshold: 30
                   periodSeconds: 10
             resources:
