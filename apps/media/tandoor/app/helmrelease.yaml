@@ -26,7 +26,6 @@ spec:
               DEBUG: 0
               ENABLE_SIGNUP: 0
               FRACTION_PREF_DEFAULT: 0
-              GUNICORN_MEDIA: 0
               MAX_OWNED_SPACES_PREF_DEFAULT: 0
               SHOPPING_MIN_AUTOSYNC_INTERVAL: 5
               TANDOOR_PORT: &tandoorPort 8000
@@ -97,7 +96,6 @@ spec:
           gethomepage.dev/group: Medien
           gethomepage.dev/icon: tandoor-recipes.svg
           gethomepage.dev/name: Tandoor
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
         hosts:
           - host: &host tandoor.lucadev.de
             paths:
