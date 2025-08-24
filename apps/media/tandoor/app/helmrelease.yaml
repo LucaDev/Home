@@ -160,6 +160,8 @@ spec:
             app:
               - path: /opt/recipes/cookbook/static/django_js_reverse
                 subPath: django_js_reverse
+              - path: /tmp
+                subPath: tmp
             migrations:
               - path: /opt/recipes/cookbook/static/django_js_reverse
                 subPath: django_js_reverse
