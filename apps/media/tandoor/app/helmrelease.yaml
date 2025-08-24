@@ -114,13 +114,13 @@ spec:
 
     service:
       nginx:
-        controller: nginx
+        controller: tandoor
         ports:
           http:
             port: 8080
 
     ingress:
-      app:
+      nginx:
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Rezepte
