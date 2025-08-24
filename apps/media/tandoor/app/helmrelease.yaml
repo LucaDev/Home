@@ -16,6 +16,23 @@ spec:
       tandoor:
         annotations:
           reloader.stakater.com/auto: "true"
+        initContainers:
+          migrations:
+            image:
+              repository: ghcr.io/tandoorrecipes/recipes
+              tag: 2.0.3
+            envFrom: &envFrom
+              - secretRef:
+                  name: tandoor-secret
+            command:
+              - sh
+              - -c
+              - |
+                set -e
+                source /opt/recipes/venv/bin/activate
+                echo "Updating database"
+                python3 /opt/recipes/manage.py migrate
+                python3 /opt/recipes/manage.py collectstatic --noinput
         containers:
           app:
             image:
@@ -28,6 +45,8 @@ spec:
               FRACTION_PREF_DEFAULT: 0
               MAX_OWNED_SPACES_PREF_DEFAULT: 0
               SHOPPING_MIN_AUTOSYNC_INTERVAL: 5
+              GUNICORN_MEDIA: "0"
+              TANDOOR_PORT: &tandoorPort 8888
               SOCIAL_DEFAULT_ACCESS: 1
               SOCIAL_DEFAULT_GROUP: user
               DB_ENGINE: django.db.backends.postgresql
@@ -36,9 +55,18 @@ spec:
               POSTGRES_DB: tandoor
               POSTGRES_USER: "tandoor"
               AI_MODEL_NAME: openai/gpt-4o
-            envFrom:
-              - secretRef:
-                  name: tandoor-secret
+            command:
+              - /opt/recipes/venv/bin/gunicorn
+              - -b
+              - :8888
+              - --access-logfile
+              - "-"
+              - --error-logfile
+              - "-"
+              - --log-level
+              - INFO
+              - recipes.wsgi
+            envFrom: *envFrom
             probes:
               liveness: &probes
                 enabled: true
@@ -46,7 +74,7 @@ spec:
                 spec:
                   httpGet:
                     path: /accounts/login/
-                    port: http
+                    port: *tandoorPort
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -58,7 +86,7 @@ spec:
                 spec:
                   httpGet:
                     path: /accounts/login/
-                    port: http
+                    port: *tandoorPort
                   failureThreshold: 30
                   periodSeconds: 10
             resources:
@@ -71,6 +99,18 @@ spec:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities: { drop: ["ALL"] }
+          nginx:
+            image:
+              repository: nginxinc/nginx-unprivileged
+              tag: 1.29.1-alpine@sha256:69e8821ff71771c12686bfd1a3f74b92c02f53ea422e1378d26fc7bb29044cf2
+
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
 
     service:
       app:
@@ -92,7 +132,7 @@ spec:
             paths:
               - path: /
                 service:
-                  identifier: app
+                  identifier: nginx
                   port: http
 
     persistence:
@@ -105,6 +145,14 @@ spec:
                 subPath: mediafiles
               - path: /opt/recipes/staticfiles
                 subPath: staticfiles
+            nginx:
+              - path: /media
+                subPath: mediafiles
+              - path: /static
+                subPath: staticfiles
+            migrations:
+              - path: /opt/recipes/staticfiles
+                subPath: staticfiles
       tmpfs:
         type: emptyDir
         advancedMounts:
@@ -112,9 +160,17 @@ spec:
             app:
               - path: /opt/recipes/cookbook/static/django_js_reverse
                 subPath: django_js_reverse
-              - path: /var/lib/nginx/logs
-                subPath: nginx_logs
-              - path: /var/lib/nginx/tmp
-                subPath: nginx_tmp
-              - path: /tmp
-                subPath: tmp
+            migrations:
+              - path: /opt/recipes/cookbook/static/django_js_reverse
+                subPath: django_js_reverse
+            nginx:
+              - path: /var/cache/nginx
+                subPath: nginx-cache
+      nginx-config:
+        type: configMap
+        name: tandoor-nginx-configmap
+        advancedMounts:
+          tandoor:
+            nginx:
+              - path: /etc/nginx/nginx.conf
+                subPath: nginx-config

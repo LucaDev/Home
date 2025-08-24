@@ -9,3 +9,9 @@ resources:
 components:
   - ../../../../components/volsync/hetzner
   - ../../../../components/gatus/internal
+configMapGenerator:
+  - name: tandoor-nginx-configmap
+    files:
+      - ./config/nginx-config
+generatorOptions:
+  disableNameSuffixHash: true
