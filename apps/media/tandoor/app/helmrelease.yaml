@@ -21,6 +21,22 @@ spec:
             image:
               repository: ghcr.io/tandoorrecipes/recipes
               tag: 2.0.3
+            env: &env
+              COMMENT_PREF_DEFAULT: 0
+              ENABLE_SIGNUP: 0
+              FRACTION_PREF_DEFAULT: 0
+              MAX_OWNED_SPACES_PREF_DEFAULT: 0
+              SHOPPING_MIN_AUTOSYNC_INTERVAL: 5
+              GUNICORN_MEDIA: "0"
+              TANDOOR_PORT: &tandoorPort 8888
+              SOCIAL_DEFAULT_ACCESS: 1
+              SOCIAL_DEFAULT_GROUP: user
+              DB_ENGINE: django.db.backends.postgresql
+              POSTGRES_HOST: shared-pg-rw.databases.svc.cluster.local
+              POSTGRES_PORT: 5432
+              POSTGRES_DB: tandoor
+              POSTGRES_USER: "tandoor"
+              AI_MODEL_NAME: openai/gpt-4o
             envFrom: &envFrom
               - secretRef:
                   name: tandoor-secret
@@ -38,23 +54,7 @@ spec:
             image:
               repository: ghcr.io/tandoorrecipes/recipes
               tag: 2.0.3
-            env:
-              COMMENT_PREF_DEFAULT: 0
-              DEBUG: 0
-              ENABLE_SIGNUP: 0
-              FRACTION_PREF_DEFAULT: 0
-              MAX_OWNED_SPACES_PREF_DEFAULT: 0
-              SHOPPING_MIN_AUTOSYNC_INTERVAL: 5
-              GUNICORN_MEDIA: "0"
-              TANDOOR_PORT: &tandoorPort 8888
-              SOCIAL_DEFAULT_ACCESS: 1
-              SOCIAL_DEFAULT_GROUP: user
-              DB_ENGINE: django.db.backends.postgresql
-              POSTGRES_HOST: shared-pg-rw.databases.svc.cluster.local
-              POSTGRES_PORT: 5432
-              POSTGRES_DB: tandoor
-              POSTGRES_USER: "tandoor"
-              AI_MODEL_NAME: openai/gpt-4o
+            env: *env
             command:
               - /opt/recipes/venv/bin/gunicorn
               - -b
