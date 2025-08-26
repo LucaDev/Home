@@ -23,7 +23,7 @@ spec:
           app:
             image:
               repository: ghcr.io/immich-app/immich-server
-              tag: v1.139.3
+              tag: v1.139.4
             env:
               # General
               TZ: "Europe/Berlin"
