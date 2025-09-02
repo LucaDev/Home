@@ -88,4 +88,5 @@ spec:
             - kind: Secret
               name: home-lucadev-de-wildcard-cert
           mode: Terminate
-          namespacePolicy: All
+          namespacePolicy:
+            from: All
