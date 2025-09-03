@@ -43,6 +43,7 @@ spec:
               PGID: "1000"
               COLLECTIONS: "crowdsecurity/traefik crowdsecurity/http-cve"
               TZ: "Europe/Berlin"
+              CROWDSEC_BYPASS_DB_VOLUME_CHECK: "true"
     service:
       app:
         controller: crowdsec
