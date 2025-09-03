@@ -21,7 +21,7 @@ spec:
           app:
             image:
               repository: ghcr.io/blakeblackshear/frigate
-              tag: 0.16.0
+              tag: 0.16.0-rocm
             probes:
               liveness:
                 enabled: false
@@ -100,3 +100,8 @@ spec:
         sizeLimit: 512Mi
         globalMounts:
           - path: /tmp
+      dri:
+        type: hostPath
+        hostPath: /dev/dri
+        globalMounts:
+          - path: /dev/dri
