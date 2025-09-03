@@ -33,6 +33,8 @@ spec:
                   failureThreshold: 30
                   periodSeconds: 5
             resources:
+              requests:
+                memory: 512Mi
               limits:
                 amd.com/gpu: 0
 
@@ -100,6 +102,12 @@ spec:
         sizeLimit: 512Mi
         globalMounts:
           - path: /tmp
+      shm:
+        type: emptyDir
+        medium: Memory
+        sizeLimit: 512Mi
+        globalMounts:
+          - path: /dev/shm
       dri:
         type: hostPath
         hostPath: /dev/dri
