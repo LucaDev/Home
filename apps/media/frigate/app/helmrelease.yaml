@@ -37,7 +37,7 @@ spec:
                 memory: 512Mi
               limits:
                 amd.com/gpu: 0
-                memory: 2Gi
+                memory: 4Gi
             securityContext:
               privileged: true
         pod:
