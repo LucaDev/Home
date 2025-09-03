@@ -37,6 +37,7 @@ spec:
                 memory: 512Mi
               limits:
                 amd.com/gpu: 0
+                memory: 2Gi
             env:
               LIBVA_DRIVER_NAME: radeonsi
             securityContext:
