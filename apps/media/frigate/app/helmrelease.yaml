@@ -80,6 +80,7 @@ spec:
         type: persistentVolumeClaim
         size: 1Gi
         accessMode: ReadWriteOnce
+        storageClass: ssd-dualreplica
         advancedMounts:
           frigate:
             app:
