@@ -40,8 +40,7 @@ spec:
             env:
               LIBVA_DRIVER_NAME: radeonsi
             securityContext:
-              capabilities:
-                add: ["SYS_ADMIN"]
+              privileged: true
         pod:
           securityContext:
             supplementalGroups:
@@ -114,6 +113,6 @@ spec:
           - path: /dev/shm
       dri:
         type: hostPath
-        hostPath: /dev/dri/renderD128
+        hostPath: /dev/dri
         globalMounts:
-          - path: /dev/dri/renderD128
+          - path: /dev/dri
