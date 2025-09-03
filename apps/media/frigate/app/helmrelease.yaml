@@ -21,7 +21,7 @@ spec:
           app:
             image:
               repository: ghcr.io/blakeblackshear/frigate
-              tag: 0.16.0-rocm
+              tag: 0.16.0
             probes:
               liveness:
                 enabled: false
@@ -38,8 +38,6 @@ spec:
               limits:
                 amd.com/gpu: 0
                 memory: 2Gi
-            env:
-              LIBVA_DRIVER_NAME: radeonsi
             securityContext:
               privileged: true
         pod:
