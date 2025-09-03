@@ -37,7 +37,8 @@ spec:
                 memory: 512Mi
               limits:
                 amd.com/gpu: 0
-
+            env:
+              LIBVA_DRIVER_NAME: radeonsi
         pod:
           securityContext:
             supplementalGroups:
