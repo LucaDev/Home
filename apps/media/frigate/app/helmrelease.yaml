@@ -39,6 +39,9 @@ spec:
                 amd.com/gpu: 0
             env:
               LIBVA_DRIVER_NAME: radeonsi
+            securityContext:
+              capabilities:
+                add: ["SYS_ADMIN"]
         pod:
           securityContext:
             supplementalGroups:
