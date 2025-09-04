@@ -54,11 +54,17 @@ spec:
             port: 5000
           rtmp:
             port: 1935
+      rtsp:
+        controller: frigate
+        type: LoadBalancer
+        loadBalancerClass: "io.cilium/node"
+        ports:
           rtsp:
             port: 8554
       webrtc:
         controller: frigate
         type: LoadBalancer
+        loadBalancerClass: "io.cilium/node"
         ports:
           webrtc:
             port: 8555
