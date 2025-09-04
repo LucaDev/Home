@@ -56,6 +56,16 @@ spec:
             port: 1935
           rtsp:
             port: 8554
+      webrtc:
+        controller: frigate
+        type: LoadBalancer
+        ports:
+          webrtc:
+            port: 8555
+            protocol: TCP
+          webrtc-udp:
+            port: 8555
+            protocol: UDP
 
     ingress:
       app:
