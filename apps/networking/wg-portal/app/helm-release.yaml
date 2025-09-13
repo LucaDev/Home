@@ -14,13 +14,14 @@ spec:
   values:
     controllers:
       wgportal:
+        replicas: 0
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
           app:
             image:
               repository: docker.io/wgportal/wg-portal
-              tag: v2.1.0-beta.1
+              tag: latest
             env:
               TZ: Europe/Berlin
             resources:
