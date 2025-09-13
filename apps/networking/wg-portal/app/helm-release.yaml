@@ -21,7 +21,7 @@ spec:
           app:
             image:
               repository: docker.io/wgportal/wg-portal
-              tag: latest
+              tag: master
               pullPolicy: Always
             env:
               TZ: Europe/Berlin
