@@ -14,7 +14,7 @@ spec:
   values:
     controllers:
       wgportal:
-        replicas: 0
+        replicas: 1
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
@@ -22,6 +22,7 @@ spec:
             image:
               repository: docker.io/wgportal/wg-portal
               tag: latest
+              pullPolicy: Always
             env:
               TZ: Europe/Berlin
             resources:
