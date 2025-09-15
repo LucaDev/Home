@@ -152,6 +152,7 @@
       sshpass
       sbctl
       nvtopPackages.amd
+      btop
     ];
   };
 

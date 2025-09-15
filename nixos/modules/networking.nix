@@ -27,6 +27,9 @@
       networkConfig = {
         DHCP = "ipv4";
       };
+      dhcpV4Config = {
+        UseGateway = false;
+      };
     };
 
     netdevs = {

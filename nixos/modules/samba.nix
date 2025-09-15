@@ -131,7 +131,6 @@
       userServices = true;
     };
     ipv6 = true;
-    nssmdns4 = true;
     openFirewall = true;
   };
 
