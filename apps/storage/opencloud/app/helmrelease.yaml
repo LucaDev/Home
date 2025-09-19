@@ -38,7 +38,6 @@ spec:
               PROXY_ROLE_ASSIGNMENT_OIDC_CLAIM: groups
               OC_OIDC_ISSUER: https://idm.lucadev.de/oauth2/openid/web
               PROXY_OIDC_REWRITE_WELLKNOWN: true
-              PROXY_OIDC_ACCESS_TOKEN_VERIFY_METHOD: none
               PROXY_USER_OIDC_CLAIM: preferred_username
               GRAPH_ASSIGN_DEFAULT_USER_ROLE: true
               GRAPH_USERNAME_MATCH: none
