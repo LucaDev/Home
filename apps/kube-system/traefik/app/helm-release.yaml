@@ -95,4 +95,4 @@ spec:
       otlp:
         enabled: true
         http:
-          endpoint: http://alloy.monitoring.svc.cluster.local:4318
+          endpoint: http://alloy.monitoring.svc.cluster.local:4318/v1/traces
