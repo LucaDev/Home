@@ -90,3 +90,9 @@ spec:
           mode: Terminate
           namespacePolicy:
             from: All
+
+    tracing:
+      otlp:
+        enabled: true
+        http:
+          endpoint: http://alloy.monitoring.svc.cluster.local:4318
