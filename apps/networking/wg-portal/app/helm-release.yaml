@@ -55,7 +55,6 @@ spec:
           gethomepage.dev/group: Netzwerk
           gethomepage.dev/icon: wireguard
           gethomepage.dev/name: VPN
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
 
     persistence:
       config:
