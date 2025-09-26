@@ -69,7 +69,8 @@ spec:
           roleRef:
             identifier: homepage
           subjects:
-            - identifier: default
+            - kind: ServiceAccount
+              name: homepage
 
     service:
       main:
