@@ -74,21 +74,6 @@ spec:
         ports:
           http:
             port: *port
-    ingress:
-      app:
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Dateibrowser
-          gethomepage.dev/group: Weitere
-          gethomepage.dev/icon: opencloud
-          gethomepage.dev/name: Cloud
-        hosts:
-          - host: "cloud.lucadev.de"
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
     persistence:
       config:
         type: persistentVolumeClaim
@@ -134,3 +119,9 @@ spec:
           - backendRefs:
               - name: app
                 port: *port
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Dateibrowser
+          gethomepage.dev/group: Weitere
+          gethomepage.dev/icon: opencloud
+          gethomepage.dev/name: Cloud

@@ -72,28 +72,6 @@ spec:
         ports:
           http:
             port: *port
-
-    ingress:
-      app:
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Seriendownloader
-          gethomepage.dev/group: Downloads
-          gethomepage.dev/icon: sonarr
-          gethomepage.dev/name: Sonarr
-          gethomepage.dev/weight: "-90"
-          gethomepage.dev/widget.type: sonarr
-          gethomepage.dev/widget.url: "https://sonarr.lucadev.de"
-          gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_SONARR_APIKEY}}`}}"
-          traefik.ingress.kubernetes.io/router.middlewares: downloads-sonarr-auth@kubernetescrd,networking-rfc1918@kubernetescrd
-        hosts:
-          - host: sonarr.lucadev.de
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-
     persistence:
       config:
         existingClaim: "${VOLSYNC_CLAIM}"
@@ -115,3 +93,14 @@ spec:
           - backendRefs:
               - name: app
                 port: *port
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Seriendownloader
+          gethomepage.dev/group: Downloads
+          gethomepage.dev/icon: sonarr
+          gethomepage.dev/name: Sonarr
+          gethomepage.dev/weight: "-90"
+          gethomepage.dev/widget.type: sonarr
+          gethomepage.dev/widget.url: "https://sonarr.lucadev.de"
+          gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_SONARR_APIKEY}}`}}"
+          traefik.ingress.kubernetes.io/router.middlewares: downloads-sonarr-auth@kubernetescrd,networking-rfc1918@kubernetescrd

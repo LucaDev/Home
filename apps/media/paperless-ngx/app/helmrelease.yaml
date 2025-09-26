@@ -52,27 +52,6 @@ spec:
           http:
             port: 8000
 
-    ingress:
-      app:
-        hosts:
-          - host: paperless.lucadev.de
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Dokumenten Verwaltungs System
-          gethomepage.dev/group: Medien
-          gethomepage.dev/icon: paperless-ngx
-          gethomepage.dev/name: PaperlessNGX
-          gethomepage.dev/weight: "-80"
-          gethomepage.dev/widget.type: paperlessngx
-          gethomepage.dev/widget.url: https://paperless.lucadev.de
-          gethomepage.dev/widget.username: "{{`{{HOMEPAGE_VAR_PAPERLESS_USERNAME}}`}}"
-          gethomepage.dev/widget.password: "{{`{{HOMEPAGE_VAR_PAPERLESS_PASSWORD}}`}}"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
     persistence:
       paperless-ingest:
         type: hostPath
@@ -100,3 +79,15 @@ spec:
           - backendRefs:
               - name: app
                 port: 8000
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Dokumenten Verwaltungs System
+          gethomepage.dev/group: Medien
+          gethomepage.dev/icon: paperless-ngx
+          gethomepage.dev/name: PaperlessNGX
+          gethomepage.dev/weight: "-80"
+          gethomepage.dev/widget.type: paperlessngx
+          gethomepage.dev/widget.url: https://paperless.lucadev.de
+          gethomepage.dev/widget.username: "{{`{{HOMEPAGE_VAR_PAPERLESS_USERNAME}}`}}"
+          gethomepage.dev/widget.password: "{{`{{HOMEPAGE_VAR_PAPERLESS_PASSWORD}}`}}"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd

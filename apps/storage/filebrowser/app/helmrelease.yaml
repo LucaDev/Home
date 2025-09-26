@@ -67,22 +67,6 @@ spec:
         ports:
           http:
             port: *port
-    ingress:
-      app:
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Dateibrowser
-          gethomepage.dev/group: Weitere
-          gethomepage.dev/icon: filebrowser
-          gethomepage.dev/name: Filebrowser
-          traefik.ingress.kubernetes.io/router.middlewares: storage-filebrowser-auth@kubernetescrd
-        hosts:
-          - host: "files.lucadev.de"
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
     persistence:
       database:
         type: persistentVolumeClaim
@@ -134,3 +118,10 @@ spec:
           - backendRefs:
               - name: app
                 port: *port
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Dateibrowser
+          gethomepage.dev/group: Weitere
+          gethomepage.dev/icon: filebrowser
+          gethomepage.dev/name: Filebrowser
+          traefik.ingress.kubernetes.io/router.middlewares: storage-filebrowser-auth@kubernetescrd

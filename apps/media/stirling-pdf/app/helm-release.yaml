@@ -51,24 +51,6 @@ spec:
           http:
             port: 8080
 
-    ingress:
-      app:
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: PDF Editor
-          gethomepage.dev/group: Medien
-          gethomepage.dev/icon: stirling-pdf
-          gethomepage.dev/name: Stirling PDF
-          traefik.ingress.kubernetes.io/router.middlewares: media-stirling-pdf-auth@kubernetescrd
-        hosts:
-          - host: pdf.lucadev.de
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  identifier: app
-                  port: http
-
     route:
       app:
         hostnames:
@@ -81,3 +63,10 @@ spec:
           - backendRefs:
               - name: app
                 port: 8080
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: PDF Editor
+          gethomepage.dev/group: Medien
+          gethomepage.dev/icon: stirling-pdf
+          gethomepage.dev/name: Stirling PDF
+          traefik.ingress.kubernetes.io/router.middlewares: media-stirling-pdf-auth@kubernetescrd

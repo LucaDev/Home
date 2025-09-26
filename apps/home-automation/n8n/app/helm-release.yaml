@@ -70,22 +70,6 @@ spec:
             app:
               - path: /home/node/.n8n
 
-    ingress:
-      app:
-        hosts:
-          - host: *hostName
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Automatisierung
-          gethomepage.dev/group: Weitere
-          gethomepage.dev/icon: n8n
-          gethomepage.dev/name: N8N
-
     route:
       app:
         hostnames:
@@ -98,3 +82,9 @@ spec:
           - backendRefs:
               - name: app
                 port: *port
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Automatisierung
+          gethomepage.dev/group: Weitere
+          gethomepage.dev/icon: n8n
+          gethomepage.dev/name: N8N

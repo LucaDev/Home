@@ -88,29 +88,6 @@ spec:
             enabled: false
             port: 10001
             protocol: UDP
-    ingress:
-      main:
-        hosts:
-          - host: unifi.lucadev.de
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  identifier: internal
-                  port: http
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: WLAN Verwaltung
-          gethomepage.dev/group: Netzwerk
-          gethomepage.dev/icon: unifi
-          gethomepage.dev/name: Unifi
-          gethomepage.dev/widget.type: "unifi"
-          gethomepage.dev/widget.url: "https://unifi.lucadev.de"
-          gethomepage.dev/widget.username: "monitoring"
-          gethomepage.dev/widget.password: "{{`{{HOMEPAGE_VAR_UNIFI_MONITORING_PASSWORD}}`}}"
-          gethomepage.dev/widget.fields: "[\"wlan_users\"]"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
-
     route:
       main:
         hostnames:
@@ -123,3 +100,15 @@ spec:
           - backendRefs:
               - name: main
                 port: 8080
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: WLAN Verwaltung
+          gethomepage.dev/group: Netzwerk
+          gethomepage.dev/icon: unifi
+          gethomepage.dev/name: Unifi
+          gethomepage.dev/widget.type: "unifi"
+          gethomepage.dev/widget.url: "https://unifi.lucadev.de"
+          gethomepage.dev/widget.username: "monitoring"
+          gethomepage.dev/widget.password: "{{`{{HOMEPAGE_VAR_UNIFI_MONITORING_PASSWORD}}`}}"
+          gethomepage.dev/widget.fields: "[\"wlan_users\"]"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd

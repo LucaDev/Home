@@ -54,23 +54,6 @@ spec:
           http:
             port: 8083
 
-    ingress:
-      app:
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Bücher
-          gethomepage.dev/group: Medien
-          gethomepage.dev/icon: calibre-web
-          gethomepage.dev/name: Calibre
-          traefik.ingress.kubernetes.io/router.middlewares: media-calibre-web-auth@kubernetescrd
-        hosts:
-          - host: books.lucadev.de
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-
     persistence:
       config:
         type: persistentVolumeClaim
@@ -106,3 +89,10 @@ spec:
           - backendRefs:
               - name: app
                 port: 8083
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Bücher
+          gethomepage.dev/group: Medien
+          gethomepage.dev/icon: calibre-web
+          gethomepage.dev/name: Calibre
+          traefik.ingress.kubernetes.io/router.middlewares: media-calibre-web-auth@kubernetescrd

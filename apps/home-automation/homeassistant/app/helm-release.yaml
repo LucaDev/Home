@@ -56,22 +56,6 @@ spec:
           http:
             port: 8123
 
-    ingress:
-      main:
-        hosts:
-          - host: "ha.lucadev.de"
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Smarthome Zentrale
-          gethomepage.dev/group: Heimautomation
-          gethomepage.dev/icon: home-assistant
-          gethomepage.dev/name: HomeAssistant
-
     route:
       main:
         hostnames:
@@ -84,3 +68,9 @@ spec:
           - backendRefs:
               - name: app
                 port: 8123
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Smarthome Zentrale
+          gethomepage.dev/group: Heimautomation
+          gethomepage.dev/icon: home-assistant
+          gethomepage.dev/name: HomeAssistant

@@ -1,0 +1,51 @@
+background:
+  image: https://raw.githubusercontent.com/gethomepage/homepage/main/docs/assets/blossom_valley.jpg
+  opacity: 30
+cardBlur: xl
+target: _self
+language: de
+statusStyle: 'dot'
+quicklaunch:
+  searchDescriptions: true
+  hideInternetSearch: true
+  hideVisitURL: true
+hideVersion: true
+hideErrors: true
+color: slate
+iconStyle: theme
+theme: dark
+title: Home
+disableCollapse: true
+layout:
+  - Heimautomation:
+      tab: Allgemeines
+      style: row
+      columns: 3
+  - Medien:
+      tab: Allgemeines
+      style: row
+      columns: 3
+  - Downloads:
+      tab: Technik
+      style: row
+      columns: 4
+  - Überwachung:
+      tab: Technik
+      style: row
+      columns: 3
+  - Netzwerk:
+      tab: Technik
+      style: row
+      columns: 3
+  - Weitere:
+      tab: Technik
+      style: row
+      columns: 3
+  - Gekoppelte Netze:
+      tab: Technik
+      style: row
+      columns: 3
+  - Externe Geräte:
+      tab: Technik
+      style: row
+      columns: 4

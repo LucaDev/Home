@@ -34,23 +34,6 @@ spec:
         ports:
           http:
             port: 8080
-    ingress:
-      app:
-        hosts:
-          - host: kiwix.lucadev.de
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Offline Backup von Seiten
-          gethomepage.dev/group: Medien
-          gethomepage.dev/icon: kiwix
-          gethomepage.dev/name: Kiwix
-          gethomepage.dev/weight: "-80"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
     persistence:
       kiwix-data:
         type: hostPath
@@ -71,3 +54,11 @@ spec:
           - backendRefs:
               - name: app
                 port: 8080
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Offline Backup von Seiten
+          gethomepage.dev/group: Medien
+          gethomepage.dev/icon: kiwix
+          gethomepage.dev/name: Kiwix
+          gethomepage.dev/weight: "-80"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd

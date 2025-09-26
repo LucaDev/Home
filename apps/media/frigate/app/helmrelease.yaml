@@ -73,23 +73,6 @@ spec:
             port: 8555
             protocol: UDP
 
-    ingress:
-      app:
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Kameraüberwachung
-          gethomepage.dev/group: Weitere
-          gethomepage.dev/icon: frigate
-          gethomepage.dev/name: Frigate
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
-        hosts:
-          - host: frigate.lucadev.de
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-
     persistence:
       config:
         type: persistentVolumeClaim
@@ -145,3 +128,10 @@ spec:
           - backendRefs:
               - name: app
                 port: 5000
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Kameraüberwachung
+          gethomepage.dev/group: Weitere
+          gethomepage.dev/icon: frigate
+          gethomepage.dev/name: Frigate
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd

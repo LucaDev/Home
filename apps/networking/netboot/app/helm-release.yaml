@@ -43,17 +43,6 @@ spec:
           http:
             port: 80
             protocol: TCP
-    ingress:
-      app:
-        hosts:
-          - host: boot.lucadev.de
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
     persistence:
       data:
         type: hostPath
@@ -105,3 +94,5 @@ spec:
           - backendRefs:
               - name: app
                 port: 80
+        annotations:
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd

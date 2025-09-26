@@ -49,22 +49,6 @@ spec:
           http:
             port: 9093
 
-    ingress:
-      app:
-        hosts:
-          - host: &host alerts.lucadev.de
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          traefik.ingress.kubernetes.io/router.middlewares: monitoring-alertmanager-auth@kubernetescrd,networking-rfc1918@kubernetescrd
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Alarmzentrale
-          gethomepage.dev/group: Überwachung
-          gethomepage.dev/icon: alertmanager
-          gethomepage.dev/name: Alertmanager
     persistence:
       config:
         type: configMap
@@ -80,7 +64,7 @@ spec:
     route:
       app:
         hostnames:
-          - *host
+          - &host alerts.lucadev.de
         parentRefs:
           - name: envoy
             namespace: networking
@@ -89,3 +73,10 @@ spec:
           - backendRefs:
               - name: app
                 port: 9093
+        annotations:
+          traefik.ingress.kubernetes.io/router.middlewares: monitoring-alertmanager-auth@kubernetescrd,networking-rfc1918@kubernetescrd
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Alarmzentrale
+          gethomepage.dev/group: Überwachung
+          gethomepage.dev/icon: alertmanager
+          gethomepage.dev/name: Alertmanager

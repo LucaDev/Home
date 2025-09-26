@@ -48,23 +48,6 @@ spec:
           http:
             port: 3000
 
-    ingress:
-      app:
-        hosts:
-          - host: speedtest.lucadev.de
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: OpenSpeedTest
-          gethomepage.dev/group: Netzwerk
-          gethomepage.dev/icon: openspeedtest
-          gethomepage.dev/name: SpeedTest
-          traefik.ingress.kubernetes.io/router.middlewares: networking-openspeedtest-auth@kubernetescrd,networking-openspeedtest@kubernetescrd
-
     route:
       app:
         hostnames:
@@ -77,3 +60,10 @@ spec:
           - backendRefs:
               - name: app
                 port: 3000
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: OpenSpeedTest
+          gethomepage.dev/group: Netzwerk
+          gethomepage.dev/icon: openspeedtest
+          gethomepage.dev/name: SpeedTest
+          traefik.ingress.kubernetes.io/router.middlewares: networking-openspeedtest-auth@kubernetescrd,networking-openspeedtest@kubernetescrd

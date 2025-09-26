@@ -1,0 +1,13 @@
+- kubernetes:
+    cluster:
+      show: true
+      cpu: true
+      memory: true
+      showLabel: false
+      label: "cluster"
+    nodes:
+      show: false
+- datetime:
+    text_size: xl
+    format:
+      timeStyle: short

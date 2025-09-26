@@ -50,24 +50,6 @@ spec:
         ports:
           http:
             port: 5055
-    ingress:
-      app:
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Filme & Serien Anfragen
-          gethomepage.dev/group: Medien
-          gethomepage.dev/icon: jellyseerr
-          gethomepage.dev/name: Jellyseerr
-          gethomepage.dev/widget.type: jellyseerr
-          gethomepage.dev/widget.url: https://jellyseerr.lucadev.de
-          gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_JELLYSEERR_APIKEY}}`}}"
-        hosts:
-          - host: jellyseerr.lucadev.de
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
     persistence:
       config:
         existingClaim: "${VOLSYNC_CLAIM}"
@@ -86,3 +68,12 @@ spec:
           - backendRefs:
               - name: app
                 port: 5055
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Filme & Serien Anfragen
+          gethomepage.dev/group: Medien
+          gethomepage.dev/icon: jellyseerr
+          gethomepage.dev/name: Jellyseerr
+          gethomepage.dev/widget.type: jellyseerr
+          gethomepage.dev/widget.url: https://jellyseerr.lucadev.de
+          gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_JELLYSEERR_APIKEY}}`}}"

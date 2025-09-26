@@ -40,22 +40,6 @@ spec:
           http:
             port: 8080
 
-    ingress:
-      app:
-        hosts:
-          - host: romm.lucadev.de
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: ROM Verwaltung
-          gethomepage.dev/group: Medien
-          gethomepage.dev/icon: romm
-          gethomepage.dev/name: Romm
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
     persistence:
       resources:
         type: persistentVolumeClaim
@@ -104,3 +88,10 @@ spec:
           - backendRefs:
               - name: app
                 port: 8080
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: ROM Verwaltung
+          gethomepage.dev/group: Medien
+          gethomepage.dev/icon: romm
+          gethomepage.dev/name: Romm
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd

@@ -36,23 +36,6 @@ spec:
           http:
             port: 5230
 
-    ingress:
-      app:
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Notizen
-          gethomepage.dev/group: Medien
-          gethomepage.dev/icon: memos
-          gethomepage.dev/name: Notes
-          traefik.ingress.kubernetes.io/router.middlewares: media-memos-auth@kubernetescrd,networking-rfc1918@kubernetescrd
-        hosts:
-          - host: notes.lucadev.de
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-
     persistence:
       data:
         existingClaim: "${VOLSYNC_CLAIM}"
@@ -71,3 +54,10 @@ spec:
           - backendRefs:
               - name: app
                 port: 5230
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Notizen
+          gethomepage.dev/group: Medien
+          gethomepage.dev/icon: memos
+          gethomepage.dev/name: Notes
+          traefik.ingress.kubernetes.io/router.middlewares: media-memos-auth@kubernetescrd,networking-rfc1918@kubernetescrd

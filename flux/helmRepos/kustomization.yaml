@@ -5,7 +5,6 @@ kind: Kustomization
 namespace: flux-system
 resources:
   - ./app-template.yaml
-  - ./homepage.yaml
   - ./mongodb.yaml
   - ./amd-gpu.yaml
   - ./bjw-s-labs.yaml

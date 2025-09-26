@@ -108,23 +108,6 @@ spec:
           metrics:
             port: 9000
 
-    ingress:
-      app:
-        hosts:
-          - host: "z2m.lucadev.de"
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Zigbee Geräteverwaltung
-          gethomepage.dev/group: Weitere
-          gethomepage.dev/icon: zigbee2mqtt
-          gethomepage.dev/name: Zigbee2MQTT
-          traefik.ingress.kubernetes.io/router.middlewares: home-automation-z2m-auth@kubernetescrd,networking-rfc1918@kubernetescrd
-
     route:
       app:
         hostnames:
@@ -137,3 +120,10 @@ spec:
           - backendRefs:
               - name: app
                 port: 8080
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Zigbee Geräteverwaltung
+          gethomepage.dev/group: Weitere
+          gethomepage.dev/icon: zigbee2mqtt
+          gethomepage.dev/name: Zigbee2MQTT
+          traefik.ingress.kubernetes.io/router.middlewares: home-automation-z2m-auth@kubernetescrd,networking-rfc1918@kubernetescrd

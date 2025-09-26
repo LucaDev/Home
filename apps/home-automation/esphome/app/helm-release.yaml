@@ -56,23 +56,6 @@ spec:
           http:
             port: 6052
 
-    ingress:
-      app:
-        hosts:
-          - host: "esphome.lucadev.de"
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Geräte-Verwaltung
-          gethomepage.dev/group: Weitere
-          gethomepage.dev/icon: esphome
-          gethomepage.dev/name: ESPHome
-          traefik.ingress.kubernetes.io/router.middlewares: home-automation-esphome-auth@kubernetescrd,networking-rfc1918@kubernetescrd
-
     persistence:
       secrets:
         type: secret
@@ -97,3 +80,10 @@ spec:
           - backendRefs:
               - name: app
                 port: 6052
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Geräte-Verwaltung
+          gethomepage.dev/group: Weitere
+          gethomepage.dev/icon: esphome
+          gethomepage.dev/name: ESPHome
+          traefik.ingress.kubernetes.io/router.middlewares: home-automation-esphome-auth@kubernetescrd,networking-rfc1918@kubernetescrd

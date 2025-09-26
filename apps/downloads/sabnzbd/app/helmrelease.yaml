@@ -78,28 +78,6 @@ spec:
         ports:
           http:
             port: *port
-
-    ingress:
-      app:
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Downloadmanager
-          gethomepage.dev/group: Downloads
-          gethomepage.dev/icon: sabnzbd
-          gethomepage.dev/name: Sabnzbd
-          gethomepage.dev/weight: "-100"
-          gethomepage.dev/widget.type: sabnzbd
-          gethomepage.dev/widget.url: "https://sabnzbd.lucadev.de"
-          gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_SABNZBD_APIKEY}}`}}"
-          traefik.ingress.kubernetes.io/router.middlewares: downloads-sabnzbd-auth@kubernetescrd,networking-rfc1918@kubernetescrd
-        hosts:
-          - host: sabnzbd.lucadev.de
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-
     persistence:
       config:
         existingClaim: "${VOLSYNC_CLAIM}"
@@ -135,3 +113,14 @@ spec:
           - backendRefs:
               - name: app
                 port: *port
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Downloadmanager
+          gethomepage.dev/group: Downloads
+          gethomepage.dev/icon: sabnzbd
+          gethomepage.dev/name: Sabnzbd
+          gethomepage.dev/weight: "-100"
+          gethomepage.dev/widget.type: sabnzbd
+          gethomepage.dev/widget.url: "https://sabnzbd.lucadev.de"
+          gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_SABNZBD_APIKEY}}`}}"
+          traefik.ingress.kubernetes.io/router.middlewares: downloads-sabnzbd-auth@kubernetescrd,networking-rfc1918@kubernetescrd

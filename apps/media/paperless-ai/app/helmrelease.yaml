@@ -34,22 +34,6 @@ spec:
         ports:
           http:
             port: 3000
-    ingress:
-      app:
-        hosts:
-          - host: paperlessai.lucadev.de
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Dokumenten KI
-          gethomepage.dev/group: Medien
-          gethomepage.dev/icon: paperless-ngx
-          gethomepage.dev/name: PaperlessAI
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
     persistence:
       data:
         globalMounts:
@@ -71,3 +55,10 @@ spec:
           - backendRefs:
               - name: app
                 port: 3000
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Dokumenten KI
+          gethomepage.dev/group: Medien
+          gethomepage.dev/icon: paperless-ngx
+          gethomepage.dev/name: PaperlessAI
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd

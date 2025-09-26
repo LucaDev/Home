@@ -39,23 +39,6 @@ spec:
           http:
             port: 8080
             protocol: TCP
-    ingress:
-      main:
-        hosts:
-          - host: vpn.lucadev.de
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  identifier: main
-                  port: http
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: VPN Verwaltung
-          gethomepage.dev/group: Netzwerk
-          gethomepage.dev/icon: wireguard
-          gethomepage.dev/name: VPN
-
     persistence:
       config:
         type: secret
@@ -82,3 +65,9 @@ spec:
           - backendRefs:
               - name: main
                 port: 8080
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: VPN Verwaltung
+          gethomepage.dev/group: Netzwerk
+          gethomepage.dev/icon: wireguard
+          gethomepage.dev/name: VPN

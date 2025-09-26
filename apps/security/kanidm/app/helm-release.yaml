@@ -64,23 +64,6 @@ spec:
             port: 636
             protocol: TCP
 
-    ingress:
-      app:
-        hosts:
-          - host: "idm.lucadev.de"
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Zentrale Nutzerverwaltung
-          gethomepage.dev/group: Weitere
-          gethomepage.dev/icon: mdi-account-lock
-          gethomepage.dev/name: kanidm
-
     persistence:
       data:
         type: persistentVolumeClaim
@@ -118,3 +101,9 @@ spec:
           - backendRefs:
               - name: app
                 port: 8443
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Zentrale Nutzerverwaltung
+          gethomepage.dev/group: Weitere
+          gethomepage.dev/icon: mdi-account-lock
+          gethomepage.dev/name: kanidm

@@ -119,22 +119,6 @@ spec:
           http:
             port: 8080
 
-    ingress:
-      nginx:
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Rezepte
-          gethomepage.dev/group: Medien
-          gethomepage.dev/icon: tandoor-recipes.svg
-          gethomepage.dev/name: Tandoor
-        hosts:
-          - host: &host tandoor.lucadev.de
-            paths:
-              - path: /
-                service:
-                  identifier: nginx
-                  port: http
-
     persistence:
       files:
         existingClaim: tandoor-data
@@ -180,7 +164,7 @@ spec:
     route:
       nginx:
         hostnames:
-          - *host
+          - &host tandoor.lucadev.de
         parentRefs:
           - name: envoy
             namespace: networking
@@ -189,3 +173,9 @@ spec:
           - backendRefs:
               - name: nginx
                 port: 8080
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Rezepte
+          gethomepage.dev/group: Medien
+          gethomepage.dev/icon: tandoor-recipes.svg
+          gethomepage.dev/name: Tandoor

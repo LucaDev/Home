@@ -89,27 +89,6 @@ spec:
             path: /minio/v2/metrics/cluster
             interval: 1m
             scrapeTimeout: 10s
-    ingress:
-      app:
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: S3 Storage
-          gethomepage.dev/group: Weitere
-          gethomepage.dev/icon: minio
-          gethomepage.dev/name: MinIO
-        hosts:
-          - host: minio.lucadev.de
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-          - host: s3.lucadev.de
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: s3
     persistence:
       data:
         type: persistentVolumeClaim
@@ -132,3 +111,9 @@ spec:
           - backendRefs:
               - name: app
                 port: 9001
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: S3 Storage
+          gethomepage.dev/group: Weitere
+          gethomepage.dev/icon: minio
+          gethomepage.dev/name: MinIO
