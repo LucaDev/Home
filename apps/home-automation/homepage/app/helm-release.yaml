@@ -43,8 +43,9 @@ spec:
                 memory: 200Mi
 
     serviceAccount:
-      create: true
-      name: homepage
+      homepage:
+        create: true
+        name: homepage
 
     rbac:
       roles:
