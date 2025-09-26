@@ -7,7 +7,7 @@ spec:
   targetRefs:
     - group: ''
       kind: Service
-      name: unifi-internal
+      name: unifi-controller-internal
       sectionName: http
   validation:
     wellKnownCACertificates: "System"
