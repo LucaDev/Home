@@ -61,4 +61,3 @@ spec:
           gethomepage.dev/icon: kiwix
           gethomepage.dev/name: Kiwix
           gethomepage.dev/weight: "-80"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd

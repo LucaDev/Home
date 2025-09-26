@@ -72,5 +72,3 @@ spec:
           - backendRefs:
               - name: app
                 port: 8080
-        annotations:
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd

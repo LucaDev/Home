@@ -5,3 +5,4 @@ kind: Kustomization
 namespace: security
 resources:
   - ./helm-release.yaml
+  - ./securitypolicy.yaml

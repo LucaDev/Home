@@ -10,11 +10,3 @@ resources:
 components:
   - ../../../../components/gatus/internal
   - ../../../../components/volsync/hetzner_ext
-configMapGenerator:
-  - name: filebrowser-config
-    files:
-      - config/config.yaml
-generatorOptions:
-  disableNameSuffixHash: true
-  annotations:
-    kustomize.toolkit.fluxcd.io/substitute: disabled

@@ -257,7 +257,6 @@ spec:
           gethomepage.dev/group: Überwachung
           gethomepage.dev/icon: grafana
           gethomepage.dev/name: Grafana
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
 
     persistence:
       enabled: false

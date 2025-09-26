@@ -56,9 +56,6 @@ spec:
             enabled: true
             port: 8443
             protocol: HTTPS
-        annotations:
-          traefik.ingress.kubernetes.io/service.serverstransport: networking-unifi@kubernetescrd
-          traefik.ingress.kubernetes.io/service.serversscheme: https
       main:
         controller: unifi
         type: LoadBalancer
@@ -98,8 +95,8 @@ spec:
             sectionName: https
         rules:
           - backendRefs:
-              - name: main
-                port: 8080
+              - name: internal
+                port: 8443
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: WLAN Verwaltung

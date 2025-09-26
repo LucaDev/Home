@@ -83,7 +83,7 @@ spec:
         globalMounts:
           - path: /cache
       config:
-        type: configMap
+        type: secret
         name: filebrowser-config
         advancedMounts:
           filebrowser:
@@ -124,4 +124,3 @@ spec:
           gethomepage.dev/group: Weitere
           gethomepage.dev/icon: filebrowser
           gethomepage.dev/name: Filebrowser
-          traefik.ingress.kubernetes.io/router.middlewares: storage-filebrowser-auth@kubernetescrd
