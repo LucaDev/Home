@@ -1,0 +1,31 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Netzwerkübersicht
+    gethomepage.dev/group: Netzwerk
+    gethomepage.dev/icon: netbox
+    gethomepage.dev/name: NetBox
+  name: netbox
+spec:
+  hostnames:
+    - netbox.lucadev.de
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: envoy
+      namespace: networking
+      sectionName: https
+  rules:
+    - backendRefs:
+        - group: ""
+          kind: Service
+          name: netbox
+          namespace: networking
+          port: 80
+          weight: 1
+      matches:
+        - path:
+            type: PathPrefix
+            value: /

@@ -54,12 +54,6 @@ spec:
       create: false
     persistence:
       storageClass: ssd-dualreplica
-    ingress:
-      enabled: true
-      hosts:
-        - host: "netbox.lucadev.de"
-          paths:
-            - /
     timeZone: "Europe/Berlin"
     shortDateFormat: "d.m.Y"
     # dateFormat: "Y"
@@ -89,7 +83,3 @@ spec:
           SOCIAL_AUTH_OIDC_KEY: netbox
           SOCIAL_AUTH_OIDC_SCOPE: ['groups']
           LOGIN_FORM_HIDDEN: "true"
-    #debug: true
-    #dbWaitDebug: true
-
-# TODO GATEWAY API
