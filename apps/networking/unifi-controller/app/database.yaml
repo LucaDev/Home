@@ -23,7 +23,7 @@ spec:
           db: admin
       scramCredentialsSecretName: mongodb-unifi-admin-scram
     - name: unifi
-      db: unifi
+      db: admin
       passwordSecretRef:
         name: mongodb-unifi-unifi-password
       roles:
@@ -31,15 +31,11 @@ spec:
           db: unifi
         - name: dbOwner
           db: unifi_stat
-      scramCredentialsSecretName: mongodb-unifi-unifi-scram
-    - name: unifi_stat
-      db: unifi_stat
-      passwordSecretRef:
-        name: mongodb-unifi-unifi-password
-      roles:
         - name: dbOwner
-          db: unifi
-      scramCredentialsSecretName: mongodb-unifi-unifi-stats-scram
+          db: unifi_audit
+        - name: clusterMonitor
+          db: admin
+      scramCredentialsSecretName: mongodb-unifi-unifi-scram
   statefulSet:
     spec:
       volumeClaimTemplates:

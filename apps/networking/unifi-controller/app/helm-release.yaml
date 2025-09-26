@@ -38,6 +38,7 @@ spec:
               MONGO_HOST: unifi-mongodb-svc.networking.svc.cluster.local
               MONGO_PORT: 27017
               MONGO_DBNAME: unifi
+              MONGO_AUTHSOURCE: admin
             envFrom:
               - secretRef:
                   name: mongodb-unifi
