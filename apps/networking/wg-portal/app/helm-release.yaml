@@ -81,4 +81,4 @@ spec:
         rules:
           - backendRefs:
               - name: main
-                port: http
+                port: 8080

@@ -104,4 +104,4 @@ spec:
         rules:
           - backendRefs:
               - name: app
-                port: http
+                port: *port

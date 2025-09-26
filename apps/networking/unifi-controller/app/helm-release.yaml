@@ -126,4 +126,4 @@ spec:
         rules:
           - backendRefs:
               - name: main
-                port: controller
+                port: 8080

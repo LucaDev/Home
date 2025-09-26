@@ -198,3 +198,7 @@ spec:
           - name: envoy
             namespace: networking
             sectionName: https
+        rules:
+          - backendRefs:
+              - name: app
+                port: 8080
