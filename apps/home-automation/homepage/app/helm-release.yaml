@@ -70,6 +70,7 @@ spec:
               resources:
                 - "pods"
                 - "nodes"
+                - "namespaces"
               verbs:
                 - "get"
                 - "list"
