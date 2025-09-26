@@ -6,7 +6,6 @@ namespace: storage
 resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
-  - ./auth-middleware.yaml
 components:
   - ../../../../components/gatus/internal
   - ../../../../components/volsync/hetzner_ext
