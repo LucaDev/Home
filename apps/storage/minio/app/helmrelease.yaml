@@ -56,7 +56,7 @@ spec:
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
-              capabilities: { drop: ["ALL"] }
+              capabilities: {drop: ["ALL"]}
             resources:
               requests:
                 cpu: 100m
@@ -71,7 +71,7 @@ spec:
         fsGroup: 568
         fsGroupChangePolicy: OnRootMismatch
         supplementalGroups: [10000]
-        seccompProfile: { type: RuntimeDefault }
+        seccompProfile: {type: RuntimeDefault}
     service:
       app:
         controller: minio
@@ -118,3 +118,13 @@ spec:
         storageClass: hdd-singlereplica
         globalMounts:
           - path: /data
+
+    route:
+      app:
+        hostnames:
+          - minio.lucadev.de
+          - s3.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

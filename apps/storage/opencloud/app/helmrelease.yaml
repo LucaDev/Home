@@ -121,3 +121,12 @@ spec:
         hostPath: /mnt/data/cached/single/public-share/
         globalMounts:
           - path: /mnt/public
+
+    route:
+      app:
+        hostnames:
+          - "cloud.lucadev.de"
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

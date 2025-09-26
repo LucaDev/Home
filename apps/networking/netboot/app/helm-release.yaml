@@ -92,3 +92,12 @@ spec:
             app:
               - path: /templates/autounattend.xml
                 subPath: autounattend.xml
+
+    route:
+      app:
+        hostnames:
+          - boot.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

@@ -68,3 +68,12 @@ spec:
                 service:
                   identifier: app
                   port: http
+
+    route:
+      app:
+        hostnames:
+          - pdf.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

@@ -99,3 +99,12 @@ spec:
         type: emptyDir
         globalMounts:
           - path: /cache
+
+    route:
+      app:
+        hostnames:
+          - lucaflix.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

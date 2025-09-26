@@ -189,3 +189,12 @@ spec:
           name: homepage-secret
     env:
       HOMEPAGE_ALLOWED_HOSTS: "home.lucadev.de"
+
+    route:
+      main:
+        hostnames:
+          - home.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

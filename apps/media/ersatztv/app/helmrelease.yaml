@@ -44,7 +44,7 @@ spec:
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
-              capabilities: { drop: ["ALL"] }
+              capabilities: {drop: ["ALL"]}
             resources:
               requests:
                 cpu: 10m
@@ -102,3 +102,12 @@ spec:
         globalMounts:
           - path: /data
             readOnly: true
+
+    route:
+      app:
+        hostnames:
+          - "tv.lucadev.de"
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

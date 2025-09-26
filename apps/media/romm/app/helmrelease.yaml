@@ -91,3 +91,12 @@ spec:
             app:
               - path: /etc/nginx/nginx.conf
                 subPath: nginx.conf
+
+    route:
+      app:
+        hostnames:
+          - romm.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

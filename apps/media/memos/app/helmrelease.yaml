@@ -58,3 +58,12 @@ spec:
         existingClaim: "${VOLSYNC_CLAIM}"
         globalMounts:
           - path: /var/opt/memos
+
+    route:
+      app:
+        hostnames:
+          - notes.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

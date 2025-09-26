@@ -85,3 +85,12 @@ spec:
           gethomepage.dev/group: Weitere
           gethomepage.dev/icon: n8n
           gethomepage.dev/name: N8N
+
+    route:
+      app:
+        hostnames:
+          - *hostName
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

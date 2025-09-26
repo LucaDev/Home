@@ -93,3 +93,12 @@ spec:
         hostPath: /mnt/data/hdd/single/media/books/downloaded
         globalMounts:
           - path: /cwa-book-ingest
+
+    route:
+      app:
+        hostnames:
+          - books.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

@@ -69,3 +69,12 @@ spec:
         accessMode: ReadWriteOnce
         size: 500m
         storageClass: ssd-dualreplica
+
+    route:
+      main:
+        hostnames:
+          - vpn.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

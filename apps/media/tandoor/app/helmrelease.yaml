@@ -98,7 +98,7 @@ spec:
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
-              capabilities: { drop: ["ALL"] }
+              capabilities: {drop: ["ALL"]}
           nginx:
             image:
               repository: nginxinc/nginx-unprivileged
@@ -176,3 +176,12 @@ spec:
             nginx:
               - path: /etc/nginx/nginx.conf
                 subPath: nginx-config
+
+    route:
+      nginx:
+        hostnames:
+          - *host
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

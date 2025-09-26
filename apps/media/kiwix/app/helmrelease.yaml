@@ -58,3 +58,12 @@ spec:
         hostPathType: DirectoryOrCreate
         globalMounts:
           - path: /data
+
+    route:
+      app:
+        hostnames:
+          - kiwix.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

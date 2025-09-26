@@ -65,3 +65,12 @@ spec:
                 service:
                   identifier: app
                   port: http
+
+    route:
+      main:
+        hostnames:
+          - "ha-maria.lucadev.de"
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

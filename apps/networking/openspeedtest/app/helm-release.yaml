@@ -64,3 +64,12 @@ spec:
           gethomepage.dev/icon: openspeedtest
           gethomepage.dev/name: SpeedTest
           traefik.ingress.kubernetes.io/router.middlewares: networking-openspeedtest-auth@kubernetescrd,networking-openspeedtest@kubernetescrd
+
+    route:
+      app:
+        hostnames:
+          - speedtest.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

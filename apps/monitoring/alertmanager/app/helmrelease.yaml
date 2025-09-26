@@ -76,3 +76,12 @@ spec:
         name: alertmanager-secret
         globalMounts:
           - path: /etc/secrets
+
+    route:
+      app:
+        hostnames:
+          - *host
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

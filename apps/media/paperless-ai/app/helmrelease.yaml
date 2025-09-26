@@ -58,3 +58,12 @@ spec:
         accessMode: ReadWriteOnce
         storageClass: ssd-dualreplica
         size: 5Gi
+
+    route:
+      app:
+        hostnames:
+          - paperlessai.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

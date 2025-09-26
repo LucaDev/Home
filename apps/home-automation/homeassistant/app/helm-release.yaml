@@ -71,3 +71,12 @@ spec:
           gethomepage.dev/group: Heimautomation
           gethomepage.dev/icon: home-assistant
           gethomepage.dev/name: HomeAssistant
+
+    route:
+      main:
+        hostnames:
+          - "ha.lucadev.de"
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

@@ -122,3 +122,12 @@ spec:
         hostPath: /mnt/data/hdd/single/P
         globalMounts:
           - path: /P/
+
+    route:
+      app:
+        hostnames:
+          - sabnzbd.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

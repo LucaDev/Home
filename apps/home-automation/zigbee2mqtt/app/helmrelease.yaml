@@ -124,3 +124,12 @@ spec:
           gethomepage.dev/icon: zigbee2mqtt
           gethomepage.dev/name: Zigbee2MQTT
           traefik.ingress.kubernetes.io/router.middlewares: home-automation-z2m-auth@kubernetescrd,networking-rfc1918@kubernetescrd
+
+    route:
+      app:
+        hostnames:
+          - "z2m.lucadev.de"
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

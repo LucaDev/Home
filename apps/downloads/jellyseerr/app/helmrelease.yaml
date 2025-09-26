@@ -73,3 +73,12 @@ spec:
         existingClaim: "${VOLSYNC_CLAIM}"
         globalMounts:
           - path: /app/config
+
+    route:
+      app:
+        hostnames:
+          - jellyseerr.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

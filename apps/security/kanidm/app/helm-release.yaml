@@ -105,3 +105,12 @@ spec:
         name: home-lucadev-de-wildcard-cert
         globalMounts:
           - path: /data/certs/
+
+    route:
+      app:
+        hostnames:
+          - "idm.lucadev.de"
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

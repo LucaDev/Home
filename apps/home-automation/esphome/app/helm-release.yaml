@@ -84,3 +84,12 @@ spec:
         type: emptyDir
         globalMounts:
           - path: /config/.esphome
+
+    route:
+      app:
+        hostnames:
+          - "esphome.lucadev.de"
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

@@ -79,3 +79,12 @@ spec:
         size: 2Gi
         globalMounts:
           - path: /rails/storage
+
+    route:
+      app:
+        hostnames:
+          - maybe.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

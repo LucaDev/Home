@@ -102,3 +102,12 @@ spec:
         hostPath: /mnt/data/hdd/single/media
         globalMounts:
           - path: /media/
+
+    route:
+      app:
+        hostnames:
+          - sonarr.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

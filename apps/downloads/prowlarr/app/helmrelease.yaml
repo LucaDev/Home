@@ -92,3 +92,12 @@ spec:
     persistence:
       config:
         existingClaim: ${VOLSYNC_CLAIM}
+
+    route:
+      app:
+        hostnames:
+          - prowlarr.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

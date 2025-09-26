@@ -72,3 +72,12 @@ spec:
         storageClass: ssd-singlereplica
         globalMounts:
           - path: /etc/crowdsec
+
+    route:
+      app:
+        hostnames:
+          - "crowdsec.lucadev.de"
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

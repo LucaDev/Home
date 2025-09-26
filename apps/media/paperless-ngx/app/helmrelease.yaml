@@ -87,3 +87,12 @@ spec:
         accessMode: ReadWriteOnce
         storageClass: ssd-singlereplica
         size: 1G
+
+    route:
+      app:
+        hostnames:
+          - paperless.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https

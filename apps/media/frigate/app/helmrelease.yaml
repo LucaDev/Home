@@ -132,3 +132,12 @@ spec:
         hostPath: /dev/dri
         globalMounts:
           - path: /dev/dri
+
+    route:
+      app:
+        hostnames:
+          - frigate.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https
