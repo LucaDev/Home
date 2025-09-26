@@ -18,11 +18,6 @@ spec:
 
         pod:
           enableServiceLinks: false
-          #securityContext:
-            #runAsUser: ${APP_UID}
-            #runAsGroup: ${APP_GID}
-            #fsGroup: ${APP_UID}
-            #fsGroupChangePolicy: "OnRootMismatch"
 
         containers:
           app:
@@ -31,8 +26,6 @@ spec:
               tag: V3.0.4
             env:
               CACHE_DIR: /cache
-              #PUID: ${APP_UID}
-              #PGID: ${APP_GID}
               TZ: Europe/Berlin
             resources:
               requests:
