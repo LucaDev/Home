@@ -134,4 +134,3 @@ spec:
           gethomepage.dev/group: Weitere
           gethomepage.dev/icon: frigate
           gethomepage.dev/name: Frigate
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd

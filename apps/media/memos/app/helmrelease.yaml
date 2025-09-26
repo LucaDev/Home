@@ -60,4 +60,3 @@ spec:
           gethomepage.dev/group: Medien
           gethomepage.dev/icon: memos
           gethomepage.dev/name: Notes
-          traefik.ingress.kubernetes.io/router.middlewares: media-memos-auth@kubernetescrd,networking-rfc1918@kubernetescrd

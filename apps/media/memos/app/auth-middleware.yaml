@@ -14,5 +14,5 @@ spec:
     clientID: memos
     clientSecret:
       name: memos-secret
-    redirectURL: https://memos.lucadev.de/oidc/callback
+    redirectURL: https://notes.lucadev.de/oidc/callback
     logoutPath: /logout

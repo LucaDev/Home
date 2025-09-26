@@ -8,6 +8,7 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
   - ./volsync.yaml
+  - ./securitypolicy.yaml
 components:
   - ../../../../components/gatus/internal
 labels:
