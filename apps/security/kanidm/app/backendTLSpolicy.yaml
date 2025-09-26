@@ -10,5 +10,5 @@ spec:
       name: kanidm-app
       sectionName: http
   validation:
-    WellKnownCACertificates: "System"
+    wellKnownCACertificates: "System"
     hostname: idm.lucadev.de
