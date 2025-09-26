@@ -89,9 +89,6 @@ kind: ClientTrafficPolicy
 metadata:
   name: envoy
 spec:
-  clientIPDetection:
-    xForwardedFor:
-      numTrustedHops: 1
   http2:
     onInvalidMessage: TerminateStream
   http3: {}
