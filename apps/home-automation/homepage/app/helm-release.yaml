@@ -71,6 +71,7 @@ spec:
           subjects:
             - kind: ServiceAccount
               name: homepage
+              namespace: "{{ .Release.Namespace }}"
 
     service:
       main:
