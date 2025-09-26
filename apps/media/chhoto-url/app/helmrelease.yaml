@@ -61,6 +61,10 @@ spec:
             kind: Gateway
             namespace: networking
         rules:
+          - matches:
+              - path:
+                  type: PathPrefix
+                  value: /
           - backendRefs:
               - name: *app
                 port: *port
