@@ -7,3 +7,9 @@ resources:
   - ./envoy.yaml
   - ./observability.yaml
   - ./error-5x.yaml
+configMapGenerator:
+  - name: envoy-500-error
+    files:
+      - error/500.html
+generatorOptions:
+  disableNameSuffixHash: true
