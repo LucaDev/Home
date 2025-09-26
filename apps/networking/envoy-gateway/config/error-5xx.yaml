@@ -1,0 +1,24 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: BackendTrafficPolicy
+metadata:
+  name: error-5xx
+spec:
+  targetRef:
+    group: gateway.networking.k8s.io
+    kind: Gateway
+    name: envoy
+  responseOverride:
+    - match:
+        statusCodes:
+          - type: Range
+            range:
+              start: 500
+              end: 511
+      response:
+        contentType: text/html
+        body:
+          type: ValueRef
+          valueRef:
+            group: ""
+            kind: ConfigMap
+            name: envoy-500-error

@@ -29,3 +29,9 @@ spec:
     name: github-repo
   dependsOn:
     - name: envoy-gateway
+configMapGenerator:
+  - name: envoy-500-error
+    files:
+      - error/500.html
+generatorOptions:
+  disableNameSuffixHash: true
