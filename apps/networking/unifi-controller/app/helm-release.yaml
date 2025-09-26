@@ -116,6 +116,6 @@ spec:
         advancedMounts:
           unifi:
             app:
-              - path: /usr/lib/unifi/data/keystore
+              - path: /config/keystore
                 subPath: keystore.jks
                 readOnly: false
