@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: homepage
+  name: &appname homepage
 spec:
   interval: 1h
   chartRef:
@@ -62,7 +62,7 @@ spec:
             sectionName: https
         rules:
           - backendRefs:
-              - name: app
+              - name: *appname
                 port: 3000
 
     persistence:
