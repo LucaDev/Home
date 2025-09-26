@@ -42,9 +42,6 @@ spec:
               limits:
                 memory: 200Mi
 
-    serviceAccount:
-      homepage: {}
-
     rbac:
       roles:
         homepage:
