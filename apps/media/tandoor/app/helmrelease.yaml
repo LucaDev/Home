@@ -187,5 +187,5 @@ spec:
             sectionName: https
         rules:
           - backendRefs:
-              - identifier: nginx
+              - name: nginx
                 port: http

@@ -83,5 +83,5 @@ spec:
             sectionName: https
         rules:
           - backendRefs:
-              - identifier: app
+              - name: app
                 port: http
