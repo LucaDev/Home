@@ -1,3 +1,4 @@
+---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
@@ -20,9 +21,9 @@ metadata:
   name: calibre-web-auth
 spec:
   targetRefs:
-  - group: gateway.networking.k8s.io
-    kind: HTTPRoute
-    name: calibre-web
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: calibre-web
   oidc:
     provider:
       issuer: https://idm.lucadev.de/oauth2/openid/calibre-web

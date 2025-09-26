@@ -1,3 +1,4 @@
+---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
@@ -20,9 +21,9 @@ metadata:
   name: blackbox-exporter-auth
 spec:
   targetRefs:
-  - group: gateway.networking.k8s.io
-    kind: HTTPRoute
-    name: blackbox-exporter
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: blackbox-exporter
   oidc:
     provider:
       issuer: https://idm.lucadev.de/oauth2/openid/blackbox-exporter

@@ -1,3 +1,4 @@
+---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
@@ -25,9 +26,9 @@ metadata:
   name: filebrowser-auth
 spec:
   targetRefs:
-  - group: gateway.networking.k8s.io
-    kind: HTTPRoute
-    name: filebrowser
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: filebrowser
   oidc:
     provider:
       issuer: https://idm.lucadev.de/oauth2/openid/filebrowser
