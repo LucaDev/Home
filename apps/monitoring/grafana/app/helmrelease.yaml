@@ -253,6 +253,17 @@ spec:
         gethomepage.dev/icon: grafana
         gethomepage.dev/name: Grafana
         traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
+
+    route:
+      main:
+        enabled: true
+        hostnames:
+          - grafana.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https
+
     persistence:
       enabled: false
 

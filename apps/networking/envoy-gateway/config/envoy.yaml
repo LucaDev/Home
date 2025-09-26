@@ -54,13 +54,13 @@ spec:
   listeners:
     - name: http
       protocol: HTTP
-      port: 8080
+      port: 80
       allowedRoutes:
         namespaces:
           from: Same
     - name: https
       protocol: HTTPS
-      port: 4443
+      port: 443
       allowedRoutes:
         namespaces:
           from: All

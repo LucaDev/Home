@@ -56,34 +56,11 @@ spec:
         hostnames:
           - link.lucadev.de
         parentRefs:
-          - name: ciliumgateway
+          - name: envoy
             sectionName: https
             kind: Gateway
-            namespace: kube-system
-          - name: traefik-gateway
-            sectionName: websecure
-            kind: Gateway
-            namespace: kube-system
+            namespace: networking
         rules:
-          - matches:
-              - path:
-                  type: PathPrefix
-                  value: /oidc/
-              - path:
-                  type: PathPrefix
-                  value: /api/
-              - path:
-                  type: Exact
-                  value: /
-            filters:
-              - type: ExtensionRef
-                extensionRef:
-                  group: traefik.io
-                  kind: Middleware
-                  name: chhoto-auth
-            backendRefs:
-              - name: *app
-                port: *port
           - backendRefs:
               - name: *app
                 port: *port

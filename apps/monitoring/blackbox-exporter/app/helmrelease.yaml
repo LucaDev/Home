@@ -65,16 +65,6 @@ spec:
           icmp:
             preferred_ip_protocol: "ip4"
 
-    ingress:
-      enabled: true
-      annotations:
-        traefik.ingress.kubernetes.io/router.middlewares: monitoring-blackbox-exporter-auth@kubernetescrd,networking-rfc1918@kubernetescrd
-      hosts:
-        - host: "blackbox-exporter.lucadev.de"
-          paths:
-            - path: /
-              pathType: Prefix
-
     prometheusRule:
       enabled: true
       additionalLabels:
