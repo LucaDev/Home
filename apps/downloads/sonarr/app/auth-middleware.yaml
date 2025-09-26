@@ -30,5 +30,5 @@ spec:
     clientID: sonarr
     clientSecret:
       name: sonarr-secret
-    redirectURL: /
+    redirectURL: https://sonarr.lucadev.de/oidc/callback
     logoutPath: /logout

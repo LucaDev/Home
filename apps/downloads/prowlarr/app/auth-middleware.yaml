@@ -30,5 +30,5 @@ spec:
     clientID: prowlarr
     clientSecret:
       name: prowlarr-secret
-    redirectURL: /
+    redirectURL: https://prowlarr.lucadev.de/oidc/callback
     logoutPath: /logout

@@ -30,5 +30,5 @@ spec:
     clientID: esphome
     clientSecret:
       name: esphome-secrets
-    redirectURL: /
+    redirectURL: https://esphome.lucadev.de/oidc/callback
     logoutPath: /logout

@@ -30,5 +30,5 @@ spec:
     clientID: n8n
     clientSecret:
       name: n8n-secret
-    redirectURL: /
+    redirectURL: https://n8n.lucadev.de/oidc/callback
     logoutPath: /logout

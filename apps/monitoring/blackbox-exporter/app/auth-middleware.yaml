@@ -30,5 +30,5 @@ spec:
     clientID: blackbox-exporter
     clientSecret:
       name: blackbox-exporter-secret
-    redirectURL: /
+    redirectURL: https://blackbox-exporter.lucadev.de/oidc/callback
     logoutPath: /logout

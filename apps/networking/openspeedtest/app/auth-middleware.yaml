@@ -30,5 +30,5 @@ spec:
     clientID: openspeedtest
     clientSecret:
       name: openspeedtest-secret
-    redirectURL: /
+    redirectURL: https://speedtest.lucadev.de/oidc/callback
     logoutPath: /logout

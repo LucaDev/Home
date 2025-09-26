@@ -30,5 +30,5 @@ spec:
     clientID: zigbee2mqtt
     clientSecret:
       name: zigbee2mqtt-secret
-    redirectURL: /
+    redirectURL: https://z2m.lucadev.de/oidc/callback
     logoutPath: /logout

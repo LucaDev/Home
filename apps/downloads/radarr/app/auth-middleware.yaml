@@ -30,5 +30,5 @@ spec:
     clientID: radarr
     clientSecret:
       name: radarr-secret
-    redirectURL: /
+    redirectURL: https://radarr.lucadev.de/oidc/callback
     logoutPath: /logout

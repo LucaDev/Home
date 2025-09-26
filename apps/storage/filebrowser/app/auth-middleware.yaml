@@ -35,5 +35,5 @@ spec:
     clientID: filebrowser
     clientSecret:
       name: filebrowser-secret
-    redirectURL: /
+    redirectURL: https://files.lucadev.de/oidc/callback
     logoutPath: /logout

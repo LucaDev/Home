@@ -30,5 +30,5 @@ spec:
     clientID: stirling-pdf
     clientSecret:
       name: stirling-pdf-secret
-    redirectURL: /
+    redirectURL: https://pdf.lucadev.de/oidc/callback
     logoutPath: /logout

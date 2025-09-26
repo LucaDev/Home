@@ -13,22 +13,3 @@ spec:
         TokenValidation: "IdToken"
         UsePkce: true
       Scopes: ["openid", "profile"]
-
----
-apiVersion: gateway.envoyproxy.io/v1alpha1
-kind: SecurityPolicy
-metadata:
-  name: traefik-auth
-spec:
-  targetRefs:
-    - group: gateway.networking.k8s.io
-      kind: HTTPRoute
-      name: traefik
-  oidc:
-    provider:
-      issuer: https://idm.lucadev.de/oauth2/openid/traefik
-    clientID: traefik
-    clientSecret:
-      name: traefik-secret
-    redirectURL: /
-    logoutPath: /logout

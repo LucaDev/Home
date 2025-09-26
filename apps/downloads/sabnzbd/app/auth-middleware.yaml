@@ -30,5 +30,5 @@ spec:
     clientID: sabnzbd
     clientSecret:
       name: sabnzbd-secret
-    redirectURL: /
+    redirectURL: https://sabnzbd.lucadev.de/oidc/callback
     logoutPath: /logout

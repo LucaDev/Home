@@ -30,5 +30,5 @@ spec:
     clientID: calibre-web
     clientSecret:
       name: calibre-web-secret
-    redirectURL: /
+    redirectURL: https://calibre.lucadev.de/oidc/callback
     logoutPath: /logout
