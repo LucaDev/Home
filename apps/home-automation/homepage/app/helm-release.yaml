@@ -126,7 +126,3 @@ spec:
             path: /app/config/services.yaml
           - subPath: widgets.yaml
             path: /app/config/widgets.yaml
-      cache:
-        type: emptyDir
-        globalMounts:
-          - path: /app/.next/server/pages
