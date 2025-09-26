@@ -6,6 +6,7 @@ namespace: home-automation
 resources:
   - ./helm-release.yaml
   - ./external-secret.yaml
+  - ./securitypolicy.yaml
 components:
   - ../../../../components/gatus/internal
 configMapGenerator:
