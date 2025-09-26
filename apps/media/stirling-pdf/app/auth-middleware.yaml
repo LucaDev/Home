@@ -8,7 +8,26 @@ spec:
       Provider:
         Url: "https://idm.lucadev.de/oauth2/openid/stirling-pdf"
         ClientId: "stirling-pdf"
-        ClientSecret: "urn:k8s:secret:stirling-pdf-secret:OIDC_SECRET"
+        ClientSecret: "urn:k8s:secret:stirling-pdf-secret:client-secret"
         TokenValidation: "IdToken"
         UsePkce: true
       Scopes: ["openid", "profile"]
+
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: stirling-pdf-auth
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: stirling-pdf
+  oidc:
+    provider:
+      issuer: https://idm.lucadev.de/oauth2/openid/stirling-pdf
+    clientID: stirling-pdf
+    clientSecret:
+      name: stirling-pdf-secret
+    redirectURL: /
+    logoutPath: /logout

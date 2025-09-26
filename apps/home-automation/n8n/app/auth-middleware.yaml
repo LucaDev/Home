@@ -8,7 +8,26 @@ spec:
       Provider:
         Url: "https://idm.lucadev.de/oauth2/openid/n8n"
         ClientId: "n8n"
-        ClientSecret: "urn:k8s:secret:n8n-secret:OIDC_SECRET"
+        ClientSecret: "urn:k8s:secret:n8n-secret:client-secret"
         TokenValidation: "IdToken"
         UsePkce: true
       Scopes: ["openid", "profile"]
+
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: n8n-auth
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: n8n
+  oidc:
+    provider:
+      issuer: https://idm.lucadev.de/oauth2/openid/n8n
+    clientID: n8n
+    clientSecret:
+      name: n8n-secret
+    redirectURL: /
+    logoutPath: /logout

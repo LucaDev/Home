@@ -8,7 +8,26 @@ spec:
       Provider:
         Url: "https://idm.lucadev.de/oauth2/openid/zigbee2mqtt"
         ClientId: "zigbee2mqtt"
-        ClientSecret: "urn:k8s:secret:zigbee2mqtt-secret:OIDC_SECRET"
+        ClientSecret: "urn:k8s:secret:zigbee2mqtt-secret:client-secret"
         TokenValidation: "IdToken"
         UsePkce: true
       Scopes: ["openid", "profile"]
+
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: z2m-auth
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: zigbee2mqtt
+  oidc:
+    provider:
+      issuer: https://idm.lucadev.de/oauth2/openid/zigbee2mqtt
+    clientID: zigbee2mqtt
+    clientSecret:
+      name: zigbee2mqtt-secret
+    redirectURL: /
+    logoutPath: /logout

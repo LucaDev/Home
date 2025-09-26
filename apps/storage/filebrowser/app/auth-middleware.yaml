@@ -8,7 +8,7 @@ spec:
       Provider:
         Url: "https://idm.lucadev.de/oauth2/openid/filebrowser"
         ClientId: "filebrowser"
-        ClientSecret: "urn:k8s:secret:filebrowser-secret:OIDC_SECRET"
+        ClientSecret: "urn:k8s:secret:filebrowser-secret:client-secret"
         TokenValidation: "IdToken"
         UsePkce: true
         Scopes: ["openid", "profile", "email", "groups"]
@@ -17,3 +17,22 @@ spec:
             Value: "{{`{{ .claims.preferred_username }}`}}"
           - Name: "X-Auth-Request-Preferred-Username"
             Value: "{{`{{ .claims.preferred_username }}`}}"
+
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: filebrowser-auth
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: filebrowser
+  oidc:
+    provider:
+      issuer: https://idm.lucadev.de/oauth2/openid/filebrowser
+    clientID: filebrowser
+    clientSecret:
+      name: filebrowser-secret
+    redirectURL: /
+    logoutPath: /logout

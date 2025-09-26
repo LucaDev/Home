@@ -8,7 +8,26 @@ spec:
       Provider:
         Url: "https://idm.lucadev.de/oauth2/openid/blackbox-exporter"
         ClientId: "blackbox-exporter"
-        ClientSecret: "urn:k8s:secret:blackbox-exporter-secret:OIDC_SECRET"
+        ClientSecret: "urn:k8s:secret:blackbox-exporter-secret:client-secret"
         TokenValidation: "IdToken"
         UsePkce: true
       Scopes: ["openid", "profile"]
+
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: blackbox-exporter-auth
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: blackbox-exporter
+  oidc:
+    provider:
+      issuer: https://idm.lucadev.de/oauth2/openid/blackbox-exporter
+    clientID: blackbox-exporter
+    clientSecret:
+      name: blackbox-exporter-secret
+    redirectURL: /
+    logoutPath: /logout
