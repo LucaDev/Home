@@ -6,7 +6,7 @@ namespace: networking
 resources:
   - ./envoy.yaml
   - ./observability.yaml
-  - ./error-5x.yaml
+  - ./error-5xx.yaml
 configMapGenerator:
   - name: envoy-500-error
     files:
