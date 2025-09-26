@@ -30,11 +30,11 @@ spec:
             image:
               repository: ghcr.io/gethomepage/homepage
               tag: v1.5.0
-              envFrom:
-                - secretRef:
-                    name: homepage-secret
-              env:
-                HOMEPAGE_ALLOWED_HOSTS: &host "home.lucadev.de"
+            envFrom:
+              - secretRef:
+                  name: homepage-secret
+            env:
+              HOMEPAGE_ALLOWED_HOSTS: &host "home.lucadev.de"
             resources:
               requests:
                 memory: 10Mi
@@ -43,10 +43,13 @@ spec:
                 memory: 200Mi
 
     serviceAccount:
-      homepage: {}
+      homepage:
+        create: true
+        name: homepage
 
     service:
       main:
+        controller: main
         ports:
           http:
             port: 3000
