@@ -70,8 +70,6 @@ spec:
         globalMounts:
           - subPath: kubernetes.yaml
             path: /app/config/kubernetes.yaml
-          - subPath: docker.yaml
-            path: /app/config/docker.yaml
           - subPath: settings.yaml
             path: /app/config/settings.yaml
           - subPath: bookmarks.yaml
