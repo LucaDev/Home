@@ -1,24 +1,2 @@
-# Trash
-.DS_Store
-Thumbs.db
-
-# Sops
-.decrypted~*
-
-# Talhelper
-/clusterconfig
-
-# Kubernetes
-kubeconfig
-
-# JetBrains
-/.idea
-
-# TF
-.terraform/
-
-# Bootstrap
-bootstrap/bootstrap*.yaml
-
-# Target
-nixos/target/
+# Created by venv; see https://docs.python.org/3/library/venv.html
+*
