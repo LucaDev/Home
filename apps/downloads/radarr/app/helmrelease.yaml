@@ -103,4 +103,3 @@ spec:
           gethomepage.dev/widget.type: radarr
           gethomepage.dev/widget.url: *url
           gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_RADARR_APIKEY}}`}}"
-          traefik.ingress.kubernetes.io/router.middlewares: downloads-radarr-auth@kubernetescrd,networking-rfc1918@kubernetescrd

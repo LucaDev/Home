@@ -88,4 +88,3 @@ spec:
           gethomepage.dev/group: Medien
           gethomepage.dev/icon: calibre-web
           gethomepage.dev/name: Calibre
-          traefik.ingress.kubernetes.io/router.middlewares: media-calibre-web-auth@kubernetescrd

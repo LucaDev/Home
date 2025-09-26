@@ -104,4 +104,3 @@ spec:
           gethomepage.dev/group: Weitere
           gethomepage.dev/icon: ersatztv
           gethomepage.dev/name: ErsatzTV
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd

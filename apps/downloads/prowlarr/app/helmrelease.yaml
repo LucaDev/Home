@@ -93,4 +93,3 @@ spec:
           gethomepage.dev/group: Downloads
           gethomepage.dev/icon: prowlarr
           gethomepage.dev/name: Prowlarr
-          traefik.ingress.kubernetes.io/router.middlewares: downloads-prowlarr-auth@kubernetescrd,networking-rfc1918@kubernetescrd
