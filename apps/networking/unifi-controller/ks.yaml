@@ -16,7 +16,7 @@ spec:
   dependsOn:
     - name: external-secrets-stores
     - name: mongodb-operator
-    - name: traefik
+    - name: envoy-gateway
   postBuild:
     substitute:
       APP: *appname
