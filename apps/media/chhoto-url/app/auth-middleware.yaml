@@ -7,7 +7,7 @@ spec:
   targetRefs:
     - group: gateway.networking.k8s.io
       kind: HTTPRoute
-      name: chhoto-url
+      name: chhoto-url-secure
   oidc:
     provider:
       issuer: https://idm.lucadev.de/oauth2/openid/chhoto-url

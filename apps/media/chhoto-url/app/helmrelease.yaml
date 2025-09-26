@@ -64,3 +64,25 @@ spec:
           - backendRefs:
               - name: *app
                 port: *port
+      secure:
+        hostnames:
+          - link.lucadev.de
+        parentRefs:
+          - name: envoy
+            sectionName: https
+            kind: Gateway
+            namespace: networking
+        rules:
+          - matches:
+              - path:
+                  type: PathPrefix
+                  value: /oidc/
+              - path:
+                  type: PathPrefix
+                  value: /api/
+              - path:
+                  type: Exact
+                  value: /
+          - backendRefs:
+              - name: *app
+                port: *port
