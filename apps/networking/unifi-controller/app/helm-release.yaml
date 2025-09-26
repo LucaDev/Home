@@ -108,4 +108,14 @@ spec:
           gethomepage.dev/widget.username: "monitoring"
           gethomepage.dev/widget.password: "{{`{{HOMEPAGE_VAR_UNIFI_MONITORING_PASSWORD}}`}}"
           gethomepage.dev/widget.fields: "[\"wlan_users\"]"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
+
+    persistence:
+      cert:
+        type: secret
+        name: 'unifi-certificate'
+        advancedMounts:
+          unifi:
+            app:
+              - path: /usr/lib/unifi/data/keystore
+                subPath: keystore.jks
+                readOnly: false

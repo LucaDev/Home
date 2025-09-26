@@ -10,5 +10,6 @@ resources:
   - ./volsync.yaml
   - ./volsync-db.yaml
   - ./database-sa.yaml
+  - ./certificate.yaml
 components:
   - ../../../../components/gatus/internal
