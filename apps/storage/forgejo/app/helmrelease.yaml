@@ -23,7 +23,7 @@ spec:
     kind: OCIRepository
     name: forgejo
   values:
-    ingress:
+    httpRoute:
       enabled: true
       annotations:
         gethomepage.dev/enabled: "true"
@@ -31,15 +31,12 @@ spec:
         gethomepage.dev/group: Weitere
         gethomepage.dev/icon: forgejo
         gethomepage.dev/name: forgejo
-      hosts:
-        - host: git.lucadev.de
-          paths:
-            - path: /
-              pathType: Prefix
-      tls:
-        - secretName: home-lucadev-de-wildcard-cert
-          hosts:
-            - git.lucadev.de
+      hostnames:
+        - git.lucadev.de
+      parentRefs:
+        - name: envoy
+          namespace: networking
+          sectionName: https
 
     persistence:
       storageClass: ssd-dualreplica

@@ -56,16 +56,6 @@ spec:
           http:
             port: 8123
 
-    ingress:
-      main:
-        hosts:
-          - host: "ha-maria.lucadev.de"
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-
     route:
       main:
         hostnames:

@@ -242,18 +242,6 @@ spec:
     imageRenderer:
       enabled: false
 
-    ingress:
-      enabled: true
-      hosts:
-        - grafana.lucadev.de
-      annotations:
-        gethomepage.dev/enabled: "true"
-        gethomepage.dev/description: Dashboards
-        gethomepage.dev/group: Überwachung
-        gethomepage.dev/icon: grafana
-        gethomepage.dev/name: Grafana
-        traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
-
     route:
       main:
         enabled: true
@@ -263,6 +251,13 @@ spec:
           - name: envoy
             namespace: networking
             sectionName: https
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Dashboards
+          gethomepage.dev/group: Überwachung
+          gethomepage.dev/icon: grafana
+          gethomepage.dev/name: Grafana
+          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
 
     persistence:
       enabled: false

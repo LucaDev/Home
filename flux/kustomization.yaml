@@ -8,5 +8,5 @@ resources:
   - ./helmRepos
   - ./cluster-apps.yaml
   - ./notifications.yaml
-  - ./ingress.yaml
+  - ./httproute.yaml
   - ./service.yaml
