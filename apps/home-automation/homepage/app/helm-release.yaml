@@ -25,6 +25,8 @@ spec:
       main:
         annotations:
           reloader.stakater.com/auto: "true"
+        serviceAccount:
+          identifier: *appname
         containers:
           app:
             image:
@@ -41,6 +43,14 @@ spec:
                 cpu: 10m
               limits:
                 memory: 200Mi
+            securityContext:
+              allowPrivilegeEscalation: false
+              capabilities:
+                drop:
+                  - ALL
+
+    serviceAccount:
+      homepage: {}
 
     rbac:
       roles:
@@ -67,11 +77,9 @@ spec:
         homepage:
           type: ClusterRoleBinding
           roleRef:
-            identifier: homepage
+            identifier: *appname
           subjects:
-            - kind: ServiceAccount
-              name: homepage
-              namespace: "home-automation"
+            - identifier: *appname
 
     service:
       main:
