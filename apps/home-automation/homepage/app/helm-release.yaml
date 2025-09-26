@@ -7,7 +7,7 @@ spec:
   interval: 1h
   chartRef:
     kind: OCIRepository
-    name: app-template
+    name: app-template-4
     namespace: flux-system
   maxHistory: 2
   install:
