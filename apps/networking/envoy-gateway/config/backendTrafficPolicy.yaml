@@ -12,18 +12,18 @@ spec:
     - group: gateway.networking.k8s.io
       kind: Gateway
   tcpKeepalive: {}
-  responseOverride:
-    - match:
-        statusCodes:
-          - type: Range
-            range:
-              start: 500
-              end: 511
-      response:
-        contentType: text/html
-        body:
-          type: ValueRef
-          valueRef:
-            group: ""
-            kind: ConfigMap
-            name: envoy-5xx-error
+#  responseOverride:
+#    - match:
+#        statusCodes:
+#          - type: Range
+#            range:
+#              start: 500
+#              end: 511
+#      response:
+#        contentType: text/html
+#        body:
+#          type: ValueRef
+#          valueRef:
+#            group: ""
+#            kind: ConfigMap
+#            name: envoy-5xx-error
