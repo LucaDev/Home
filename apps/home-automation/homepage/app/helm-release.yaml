@@ -46,6 +46,35 @@ spec:
       create: true
       name: homepage
 
+    rbac:
+      roles:
+        homepage:
+          type: ClusterRole
+          rules:
+            - apiGroups:
+                - "gateway.networking.k8s.io"
+              resources:
+                - "httproutes"
+              verbs:
+                - "get"
+                - "list"
+                - "watch"
+            - apiGroups:
+                - ""
+              resources:
+                - "nodes"
+              verbs:
+                - "get"
+                - "list"
+                - "watch"
+      bindings:
+        homepage:
+          type: ClusterRoleBinding
+          roleRef:
+            identifier: homepage
+          subjects:
+            - identifier: homepage
+
     service:
       main:
         controller: main
