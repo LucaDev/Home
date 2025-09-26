@@ -69,7 +69,7 @@ spec:
           roleRef:
             identifier: homepage
           subjects:
-            - identifier: homepage
+            - identifier: default
 
     service:
       main:
