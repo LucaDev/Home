@@ -66,6 +66,9 @@ spec:
     nodeIPAM:
       enabled: true
 
+    envoy:
+      enabled: false
+
     rollOutCiliumPods: true
 
     # ipv4NativeRoutingCIDR: 10.0.0.0/16 TODO
