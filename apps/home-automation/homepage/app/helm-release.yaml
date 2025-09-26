@@ -71,7 +71,7 @@ spec:
           subjects:
             - kind: ServiceAccount
               name: homepage
-              namespace: "{{ .Release.Namespace }}"
+              namespace: "home-automation"
 
     service:
       main:
