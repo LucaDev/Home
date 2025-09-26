@@ -68,11 +68,20 @@ spec:
             - apiGroups:
                 - ""
               resources:
+                - "pods"
                 - "nodes"
               verbs:
                 - "get"
                 - "list"
                 - "watch"
+            - apiGroups:
+                - metrics.k8s.io
+              resources:
+                - nodes
+                - pods
+              verbs:
+                - get
+                - list
       bindings:
         homepage:
           type: ClusterRoleBinding
