@@ -69,4 +69,3 @@ spec:
           gethomepage.dev/group: Medien
           gethomepage.dev/icon: stirling-pdf
           gethomepage.dev/name: Stirling PDF
-          traefik.ingress.kubernetes.io/router.middlewares: media-stirling-pdf-auth@kubernetescrd

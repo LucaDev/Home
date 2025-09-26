@@ -6,6 +6,7 @@ namespace: media
 resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
+  - ./securitypolicy.yaml
 components:
   - ../../../../components/gatus/internal
   - ../../../../components/volsync/hetzner_ext

@@ -74,7 +74,6 @@ spec:
               - name: app
                 port: 9093
         annotations:
-          traefik.ingress.kubernetes.io/router.middlewares: monitoring-alertmanager-auth@kubernetescrd,networking-rfc1918@kubernetescrd
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Alarmzentrale
           gethomepage.dev/group: Überwachung

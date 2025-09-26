@@ -94,4 +94,3 @@ spec:
           gethomepage.dev/group: Medien
           gethomepage.dev/icon: romm
           gethomepage.dev/name: Romm
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918@kubernetescrd
