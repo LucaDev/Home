@@ -6,7 +6,7 @@ namespace: security
 resources:
   - ./helm-release.yaml
   - ./configuration.yaml
-  - ./kanidm-transport.yaml
+  - ./backendTLSpolicy.yaml
   - ./volsync.yaml
 components:
   - ../../../../components/gatus/external

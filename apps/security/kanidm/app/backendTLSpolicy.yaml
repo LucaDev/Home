@@ -1,0 +1,14 @@
+---
+apiVersion: gateway.networking.k8s.io/v1alpha3
+kind: BackendTLSPolicy
+metadata:
+  name: kanidm-backend-tls
+spec:
+  targetRefs:
+    - group: ''
+      kind: Service
+      name: kanidm-app
+      sectionName: http
+  validation:
+    WellKnownCACertificates: "System"
+    hostname: idm.lucadev.de
