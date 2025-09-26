@@ -26,4 +26,4 @@ spec:
           valueRef:
             group: ""
             kind: ConfigMap
-            name: envoy-500-error
+            name: envoy-5xx-error

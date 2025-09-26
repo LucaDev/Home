@@ -8,8 +8,8 @@ resources:
   - ./observability.yaml
   - ./backendTrafficPolicy.yaml
 configMapGenerator:
-  - name: envoy-500-error
+  - name: envoy-5xx-error
     files:
-      - error/500.html
+      - response.body=error/5xx.html
 generatorOptions:
   disableNameSuffixHash: true
