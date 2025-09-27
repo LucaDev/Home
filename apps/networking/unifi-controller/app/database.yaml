@@ -8,6 +8,8 @@ spec:
   type: ReplicaSet
   version: "7.0.24"
   featureCompatibilityVersion: "7.0"
+  agent:
+    logLevel: INFO
   security:
     authentication:
       modes: ["SCRAM"]
