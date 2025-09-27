@@ -19,5 +19,8 @@ configMapGenerator:
   - name: romm-nginx-config
     files:
       - conf/nginx.conf
+  - name: romm-config
+    files:
+      - conf/config.yml
 generatorOptions:
   disableNameSuffixHash: true

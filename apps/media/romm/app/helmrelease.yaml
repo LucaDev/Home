@@ -61,12 +61,10 @@ spec:
         globalMounts:
           - path: /romm/assets
       config:
-        type: persistentVolumeClaim
-        storageClass: ssd-dualreplica
-        size: 1G
-        accessMode: ReadWriteOnce
+        type: configMap
+        name: romm-config
         globalMounts:
-          - path: /romm/config
+          - path: /romm/config/
       nginx-config:
         type: configMap
         name: romm-nginx-config
