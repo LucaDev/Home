@@ -27,6 +27,7 @@ spec:
           reloader.stakater.com/auto: "true"
         serviceAccount:
           identifier: *appname
+        enableServiceLinks: true
         containers:
           app:
             image:
@@ -65,7 +66,6 @@ spec:
               verbs:
                 - "get"
                 - "list"
-                - "watch"
             - apiGroups:
                 - ""
               resources:
@@ -75,7 +75,6 @@ spec:
               verbs:
                 - "get"
                 - "list"
-                - "watch"
             - apiGroups:
                 - metrics.k8s.io
               resources:
