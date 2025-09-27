@@ -5,7 +5,6 @@ metadata:
   name: unifi-mongodb
 spec:
   members: 1
-  arbiters: 1
   type: ReplicaSet
   version: "7.0.24"
   featureCompatibilityVersion: "7.0"
