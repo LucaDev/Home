@@ -1,0 +1,59 @@
+---
+apiVersion: mongodbcommunity.mongodb.com/v1
+kind: MongoDBCommunity
+metadata:
+  name: unifi-mongodb2
+spec:
+  members: 1
+  type: ReplicaSet
+  version: "7.0.24"
+  featureCompatibilityVersion: "7.0"
+  agent:
+    logLevel: INFO
+  security:
+    authentication:
+      modes: ["SCRAM"]
+  users:
+    - name: admin
+      db: admin
+      passwordSecretRef:
+        name: mongodb-unifi-admin-password
+      roles:
+        - name: clusterAdmin
+          db: admin
+        - name: userAdminAnyDatabase
+          db: admin
+      scramCredentialsSecretName: mongodb-unifi-admin-scram2
+    - name: unifi
+      db: admin
+      passwordSecretRef:
+        name: mongodb-unifi-unifi-password
+      roles:
+        - name: dbOwner
+          db: unifi
+        - name: dbOwner
+          db: unifi_stat
+        - name: dbOwner
+          db: unifi_audit
+        - name: clusterMonitor
+          db: admin
+      scramCredentialsSecretName: mongodb-unifi-unifi-scram2
+  statefulSet:
+    spec:
+      volumeClaimTemplates:
+        - metadata:
+            name: data-volume
+          spec:
+            accessModes: ["ReadWriteOnce"]
+            storageClassName: ssd-dualreplica
+            resources:
+              requests:
+                storage: 2G
+        - metadata:
+            name: logs-volume
+          spec:
+            accessModes: ["ReadWriteOnce"]
+            storageClassName: ssd-dualreplica
+            resources:
+              requests:
+                storage: 2G
