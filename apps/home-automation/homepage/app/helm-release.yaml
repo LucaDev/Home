@@ -27,7 +27,8 @@ spec:
           reloader.stakater.com/auto: "true"
         serviceAccount:
           identifier: *appname
-        enableServiceLinks: true
+        pod:
+          enableServiceLinks: true
         containers:
           app:
             image:
