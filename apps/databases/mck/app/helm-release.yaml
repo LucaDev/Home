@@ -17,4 +17,5 @@ spec:
       interval: 5m
   values:
     operator:
+      watchNamespace: "*"
       name: mongodb-mck
