@@ -6,6 +6,5 @@ resources:
   - ./namespace.yaml
   - ./redis/ks.yaml
   - ./cloudnative-pg # TODO
-  - ./mongodb-operator/ks.yaml
   - ./shared-pg/ks.yaml
   - ./mck/ks.yaml

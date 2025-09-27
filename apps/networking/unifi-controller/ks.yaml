@@ -15,7 +15,7 @@ spec:
   wait: false # no flux ks dependents
   dependsOn:
     - name: external-secrets-stores
-    - name: mongodb-operator
+    - name: mck
     - name: envoy-gateway
   postBuild:
     substitute:
