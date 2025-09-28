@@ -42,7 +42,7 @@ spec:
     spec:
       volumeClaimTemplates:
         - metadata:
-            name: data-volume
+            name: data
           spec:
             accessModes: ["ReadWriteOnce"]
             storageClassName: ssd-dualreplica
@@ -50,7 +50,7 @@ spec:
               requests:
                 storage: 2G
         - metadata:
-            name: logs-volume
+            name: logs
           spec:
             accessModes: ["ReadWriteOnce"]
             storageClassName: ssd-dualreplica
