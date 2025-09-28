@@ -68,6 +68,9 @@ spec:
             backendRefs:
               - name: *app
                 port: *port
+          - backendRefs:
+              - name: *app
+                port: *port
       secure:
         hostnames:
           - link.lucadev.de
