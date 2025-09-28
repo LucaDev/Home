@@ -12,7 +12,7 @@ resources:
   - ./smartctl_exporter/ks.yaml
   - ./blackbox-exporter/ks.yaml
   - ./snmp-exporter/ks.yaml
-#  - ./fritz-exporter/ks.yaml
+  # - ./fritz-exporter/ks.yaml
   - ./gatus/ks.yaml
   - ./healthcheck
   - ./nut-exporter/ks.yaml
