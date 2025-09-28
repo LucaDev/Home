@@ -6,11 +6,10 @@ resources:
   - ./helm-release.yaml
   - ./backendTLSpolicy.yaml
   - ./externalsecret.yaml
-  - ./database.yaml
+#  - ./database.yaml
   - ./volsync.yaml
   - ./volsync-db.yaml
   - ./database-sa.yaml
   - ./certificate.yaml
-  - ./database2.yaml
 components:
   - ../../../../components/gatus/internal
