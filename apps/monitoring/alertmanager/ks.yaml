@@ -6,7 +6,7 @@ metadata:
   name: alertmanager
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 1h
   path: "./apps/monitoring/alertmanager/app"
   prune: true
   sourceRef:

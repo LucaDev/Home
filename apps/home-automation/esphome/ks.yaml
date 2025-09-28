@@ -5,7 +5,7 @@ metadata:
   name: &appname esphome
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 1h
   path: "./apps/home-automation/esphome/app"
   prune: true
   sourceRef:

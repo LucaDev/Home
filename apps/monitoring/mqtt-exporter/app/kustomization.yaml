@@ -5,7 +5,7 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - ./external-secret.yaml
-  - ./helm-release.yaml
+  - ./helmrelease.yaml
   - ./networkpolicy.yaml
 components:
   - ../../../../components/netpol/ingress-prometheus

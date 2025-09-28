@@ -5,7 +5,7 @@ metadata:
   name: &appname paperlessai
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 1h
   path: "./apps/media/paperless-ai/app"
   prune: true
   sourceRef:

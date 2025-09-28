@@ -5,7 +5,7 @@ metadata:
   name: &appname nut-exporter
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 1h
   path: "./apps/monitoring/nut-exporter/app"
   prune: true
   sourceRef:

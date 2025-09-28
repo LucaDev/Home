@@ -5,7 +5,7 @@ metadata:
   name: &appname snmp-exporter
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 1h
   path: "./apps/monitoring/snmp-exporter/app"
   prune: true
   sourceRef:

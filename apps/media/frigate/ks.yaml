@@ -6,7 +6,7 @@ metadata:
   name: &appname frigate
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 1h
   path: "./apps/media/frigate/app"
   prune: true
   sourceRef:

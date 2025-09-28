@@ -5,7 +5,7 @@ metadata:
   name: &appname homeassistant-maria
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 1h
   path: "./apps/home-automation/homeassistant-maria/app"
   prune: true
   sourceRef:

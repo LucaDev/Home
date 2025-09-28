@@ -52,6 +52,7 @@ spec:
       preallocateMaps: true
       distributedLRU:
         enabled: true
+
     bpfClockProbe: true
 
     nodePort:
@@ -77,3 +78,6 @@ spec:
     kubeProxyReplacement: true
     k8sServiceHost: homeserver.home.lucadev.de
     k8sServicePort: 6443
+
+    pmtuDiscovery:
+      enabled: true

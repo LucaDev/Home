@@ -5,7 +5,7 @@ metadata:
   name: envoy-gateway
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 1h
   path: "./apps/networking/envoy-gateway/app"
   prune: true
   sourceRef:
@@ -21,7 +21,7 @@ metadata:
   name: envoy-gateway-config
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 1h
   path: "./apps/networking/envoy-gateway/config"
   prune: true
   sourceRef:

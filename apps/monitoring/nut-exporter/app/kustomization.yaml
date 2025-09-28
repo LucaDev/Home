@@ -5,7 +5,7 @@ kind: Kustomization
 namespace: home-automation
 resources:
   - ./external-secret.yaml
-  - ./helm-release.yaml
+  - ./helmrelease.yaml
   - ./alerts.yaml
 components:
   - ../../../../components/netpol/ingress-prometheus

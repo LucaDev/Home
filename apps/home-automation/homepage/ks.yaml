@@ -5,7 +5,7 @@ metadata:
   name: &appname homepage
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 1h
   path: "./apps/home-automation/homepage/app"
   prune: true
   sourceRef:
