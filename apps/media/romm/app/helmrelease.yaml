@@ -60,11 +60,6 @@ spec:
         accessMode: ReadWriteOnce
         globalMounts:
           - path: /romm/assets
-      config:
-        type: configMap
-        name: romm-config
-        globalMounts:
-          - path: /romm/config/
       nginx-config:
         type: configMap
         name: romm-nginx-config

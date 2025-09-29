@@ -12,7 +12,8 @@ spec:
     logLevel: INFO
   security:
     authentication:
-      modes: ["SCRAM"]
+      modes:
+        - "SCRAM"
   users:
     - name: admin
       db: admin
@@ -42,17 +43,19 @@ spec:
     spec:
       volumeClaimTemplates:
         - metadata:
-            name: data
+          name: data-volume
           spec:
-            accessModes: ["ReadWriteOnce"]
+            accessModes:
+              - "ReadWriteOnce"
             storageClassName: ssd-dualreplica
             resources:
               requests:
                 storage: 2G
         - metadata:
-            name: logs
+          name: logs-volume
           spec:
-            accessModes: ["ReadWriteOnce"]
+            accessModes:
+              - "ReadWriteOnce"
             storageClassName: ssd-dualreplica
             resources:
               requests:
