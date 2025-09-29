@@ -5,7 +5,7 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
-  - ./auth-middleware.yaml
+  - ./securitypolicy.yaml
 components:
   - ../../../../components/gatus/internal
   - ../../../../components/volsync/hetzner

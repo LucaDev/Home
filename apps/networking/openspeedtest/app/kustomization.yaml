@@ -7,6 +7,6 @@ resources:
   - ./helmrelease.yaml
   - ./openspeedtest-middleware.yaml
   - ./externalsecret.yaml
-  - ./auth-middleware.yaml
+  - ./securitypolicy.yaml
 components:
   - ../../../../components/gatus/internal

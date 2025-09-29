@@ -6,4 +6,4 @@ namespace: home-automation
 resources:
   - ./helmrelease.yaml
   - ./external-secret.yaml
-  - ./auth-middleware.yaml
+  - ./securitypolicy.yaml

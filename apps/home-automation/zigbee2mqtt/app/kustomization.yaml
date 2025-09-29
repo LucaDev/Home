@@ -7,6 +7,6 @@ resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
   - ./volsync.yaml
-  - ./auth-middleware.yaml
+  - ./securitypolicy.yaml
 components:
   - ../../../../components/gatus/internal

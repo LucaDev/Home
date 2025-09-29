@@ -5,7 +5,7 @@ kind: Kustomization
 namespace: media
 resources:
   - ./helmrelease.yaml
-  - ./auth-middleware.yaml
+  - ./securitypolicy.yaml
   - ./externalsecret.yaml
 components:
   - ../../../../components/gatus/external
