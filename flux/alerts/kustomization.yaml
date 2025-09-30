@@ -2,10 +2,9 @@
 # yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: flux-system
 resources:
-  - ./flux.yaml
-  - ./FluxGitRepo.yaml
-  - ./helmRepos
-  - ./cluster-apps.yaml
-  - ./httproute.yaml
-  - ./service.yaml
+  - ./github-status.yaml
+  - ./alertmanager.yaml
+  - ./externalsecret.yaml
+  - ./grafana.yaml

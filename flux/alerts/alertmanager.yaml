@@ -2,8 +2,7 @@
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Provider
 metadata:
-  name: alert-manager
-  namespace: flux-system
+  name: alertmanager
 spec:
   type: alertmanager
   address: http://alertmanager.monitoring.svc.cluster.local:9093/api/v2/alerts/
@@ -11,11 +10,10 @@ spec:
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Alert
 metadata:
-  name: alert-manager
-  namespace: flux-system
+  name: alertmanager
 spec:
   providerRef:
-    name: alert-manager
+    name: alertmanager
   eventSeverity: error
   eventSources:
     - kind: GitRepository
@@ -29,8 +27,7 @@ spec:
     - kind: OCIRepository
       name: "*"
   exclusionList:
-    - "error.*lookup github\\.com"
-    - "error.*lookup raw\\.githubusercontent\\.com"
-    - "dial.*tcp.*timeout"
-    - "waiting.*socket"
+    - error.*lookup.*github
+    - dial.*tcp.*timeout
+    - waiting.*socket
   suspend: false
