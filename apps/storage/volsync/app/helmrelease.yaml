@@ -28,6 +28,13 @@ spec:
   chartRef:
     kind: OCIRepository
     name: volsync
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
   values:
     manageCRDs: true
     metrics:

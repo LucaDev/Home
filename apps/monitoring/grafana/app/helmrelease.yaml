@@ -23,6 +23,13 @@ spec:
   chartRef:
     kind: OCIRepository
     name: grafana
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
   values:
     replicas: 1
     serviceAccount:
@@ -156,10 +163,10 @@ spec:
             name: Prometheus
             type: prometheus
             url: http://kube-prometheus-stack-prometheus.monitoring:9090
-            # - access: proxy
-            #   name: Loki
-            #   type: loki
-            #   url: http://loki.monitoring.svc.cluster.local:3100
+          # - access: proxy
+          #   name: Loki
+          #   type: loki
+          #   url: http://loki.monitoring.svc.cluster.local:3100
           - name: Alertmanager
             type: alertmanager
             access: proxy
