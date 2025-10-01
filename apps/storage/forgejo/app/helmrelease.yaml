@@ -32,7 +32,7 @@ spec:
         gethomepage.dev/icon: forgejo
         gethomepage.dev/name: forgejo
       hostnames:
-        - git.lucadev.de
+        - &hostname git.lucadev.de
       parentRefs:
         - name: envoy
           namespace: networking
@@ -76,6 +76,9 @@ spec:
           USERNAME: nickname
         server:
           DISABLE_SSH: true
+          ROOT_URL: "https://git.lucadev.de"
+          DOMAIN: *hostname
+          SSH_DOMAIN: *hostname
         database:
           DB_TYPE: postgres
           HOST: shared-pg-rw.databases.svc.cluster.local
