@@ -32,22 +32,22 @@ spec:
                 cpu: 500m
                 memory: 1024Mi
             probes:
-              liveness:
+              liveness: &probe
                 enabled: true
-              readiness:
-                enabled: true
-              startup:
-                enabled: true
+                custom: true
                 spec:
-                  failureThreshold: 30
-                  periodSeconds: 5
-
+                  httpGet:
+                    path: /status
+                    port: &httpsPort 8443
+                    scheme: HTTPS
+              readiness: *probe
+              startup: *probe
     service:
       app:
         controller: kanidm
         ports:
           http:
-            port: 8443
+            port: *httpsPort
             protocol: HTTPS
           ldaps:
             port: 636
