@@ -10,14 +10,6 @@ spec:
     kind: OCIRepository
     name: app-template
     namespace: flux-system
-  install:
-    remediation:
-      retries: 3
-  upgrade:
-    cleanupOnFail: true
-    remediation:
-      strategy: rollback
-      retries: 3
   values:
     controllers:
       opencloud:
@@ -48,7 +40,10 @@ spec:
               OC_INSECURE: "false"
               # Other settings
               OC_SHARING_PUBLIC_SHARE_MUST_HAVE_PASSWORD: "false"
-            command: ["sh", "-c", "opencloud init || true; opencloud server"]
+            command:
+              - "sh"
+              - "-c"
+              - "opencloud init || true; opencloud server"
             probes:
               liveness: &probes
                 enabled: true

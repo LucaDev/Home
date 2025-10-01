@@ -23,13 +23,6 @@ spec:
   chartRef:
     kind: OCIRepository
     name: kube-prometheus-stack
-  install:
-    remediation:
-      retries: -1
-  upgrade:
-    cleanupOnFail: true
-    remediation:
-      retries: 3
   values:
     # Disable monitoring of kubernetes core components not available in k3s
     kubeEtcd:
@@ -106,12 +99,16 @@ spec:
                   - POE-Switch.home.lucadev.de
             metrics_path: /snmp
             params:
-              auth: [public_v2]
-              module: [if_mib]
+              auth:
+                - public_v2
+              module:
+                - if_mib
             relabel_configs:
-              - source_labels: [__address__]
+              - source_labels:
+                  - __address__
                 target_label: __param_target
-              - source_labels: [__param_target]
+              - source_labels:
+                  - __param_target
                 target_label: instance
               - target_label: __address__
                 replacement: "snmp-exporter-prometheus-snmp-exporter.monitoring.svc.cluster.local:9116"
@@ -120,7 +117,8 @@ spec:
           volumeClaimTemplate:
             spec:
               storageClassName: cached-singlereplica
-              accessModes: ["ReadWriteOnce"]
+              accessModes:
+                - "ReadWriteOnce"
               resources:
                 requests:
                   storage: 50Gi

@@ -10,14 +10,6 @@ spec:
     name: app-template-4
     namespace: flux-system
   maxHistory: 2
-  install:
-    createNamespace: true
-    remediation:
-      retries: 3
-  upgrade:
-    cleanupOnFail: true
-    remediation:
-      retries: 3
   uninstall:
     keepHistory: false
   values:
@@ -101,7 +93,8 @@ spec:
 
     route:
       app:
-        hostnames: [*host]
+        hostnames:
+          - *host
         parentRefs:
           - name: envoy
             namespace: networking

@@ -16,8 +16,4 @@ spec:
         name: amd-gpu
         namespace: flux-system
       interval: 1h
-  install:
-    crds: CreateReplace
-  upgrade:
-    crds: CreateReplace
   values:
