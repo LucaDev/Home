@@ -11,6 +11,8 @@ spec:
   sourceRef:
     kind: GitRepository
     name: github-repo
+  decryption:
+    provider: sops
   patches:
     - patch: |-
         apiVersion: kustomize.toolkit.fluxcd.io/v1
