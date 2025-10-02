@@ -78,15 +78,18 @@ spec:
   http2:
     onInvalidMessage: TerminateStream
   http3: {}
-  targetSelectors:
-    - group: gateway.networking.k8s.io
-      kind: Gateway
+  connection:
+    bufferLimit: 64Mi
+    maxAcceptPerSocketEvent: 0
   tcpKeepalive: {}
   tls:
     minVersion: "1.2"
     alpnProtocols:
       - h2
       - http/1.1
+  targetSelectors:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
 ---
 # yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/gateway.networking.k8s.io/httproute_v1.json
 apiVersion: gateway.networking.k8s.io/v1
