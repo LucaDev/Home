@@ -7,5 +7,6 @@ resources:
   - ./helmrelease.yaml
   - ./external-secret.yaml
   - ./securitypolicy.yaml
+  - ./configmap.yaml
 components:
   - ../../../../components/gatus/internal
