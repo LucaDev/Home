@@ -9,13 +9,3 @@ resources:
   - ./securitypolicy.yaml
 components:
   - ../../../../components/gatus/internal
-configMapGenerator:
-  - name: homepage-config
-    files:
-      - config/bookmarks.yaml
-      - config/kubernetes.yaml
-      - config/services.yaml
-      - config/settings.yaml
-      - config/widgets.yaml
-generatorOptions:
-  disableNameSuffixHash: true

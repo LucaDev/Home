@@ -1,0 +1,136 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "homepage-config"
+data:
+  bookmarks.yaml: ""
+  kubernetes.yaml: |
+    mode: cluster
+    gateway: true
+    ingress: false
+    traefik: false
+  services.yaml: |
+    - Weitere:
+        - Zigbee Bridge:
+            href: http://SLZB-06M.home.lucadev.de
+            ping: http://SLZB-06M.home.lucadev.de
+            icon: mdi-zigbee
+            description: Steuerung des ZigBee Coordinators
+        - NanoKVM:
+            href: http://nanokvm.home.lucadev.de
+            ping: http://nanokvm.home.lucadev.de
+            icon: mdi-keyboard
+            description: KVM am Server
+    - Externe Geräte:
+        - Drucker:
+            href: http://drucker-eg.home.lucadev.de
+            ping: http://drucker-eg.home.lucadev.de
+            icon: hp.svg
+            description: Laserdrucker im Erdgeschoss
+        - 3D Drucker:
+            href: http://3ddrucker.home.lucadev.de
+            icon: mainsail.svg
+            ping: http://3ddrucker.home.lucadev.de
+            description: Steuerung des 3D Druckers
+            widget:
+              type: moonraker
+              url: http://3ddrucker.home.lucadev.de
+        - Solaranlage:
+            href: http://pv-anlage.home.lucadev.de
+            ping: http://pv-anlage.home.lucadev.de
+            icon: mdi-solar-power-variant
+            description: Steuerung der Solaranlage
+            widget:
+              type: opendtu
+              url: http://pv-anlage.home.lucadev.de
+        - Heizung:
+            href: http://ems-esp.home.lucadev.de
+            ping: http://ems-esp.home.lucadev.de
+            icon: mdi-water-boiler
+            description: Heizungssteuerung
+    - Netzwerk:
+        - SFP Switch:
+            href: https://SFP-Switch.home.lucadev.de
+            ping: https://SFP-Switch.home.lucadev.de
+            description: Verwaltungsoberfläche des SFP Switches
+        - POE Switch:
+            href: http://POE-Switch.home.lucadev.de
+            ping: http://POE-Switch.home.lucadev.de
+            icon: mdi-switch
+            description: Verwaltungsoberfläche des POE Switches
+        - Router:
+            href: http://router.home.lucadev.de
+            ping: http://router.home.lucadev.de
+            icon: mikrotik
+            description: Verwaltungsoberfläche des Routers
+        - Crowdsec:
+            href: https://app.crowdsec.net
+            icon: crowdsec
+            description: Sicherheitsplattform
+  settings.yaml: |
+    background:
+      image: https://raw.githubusercontent.com/gethomepage/homepage/main/docs/assets/blossom_valley.jpg
+      opacity: 30
+    cardBlur: xl
+    target: _self
+    language: de
+    statusStyle: 'dot'
+    quicklaunch:
+      searchDescriptions: true
+      hideInternetSearch: true
+      hideVisitURL: true
+    hideVersion: true
+    hideErrors: true
+    color: slate
+    iconStyle: theme
+    theme: dark
+    title: Home
+    disableCollapse: true
+    layout:
+      - Heimautomation:
+          tab: Allgemeines
+          style: row
+          columns: 3
+      - Medien:
+          tab: Allgemeines
+          style: row
+          columns: 3
+      - Downloads:
+          tab: Technik
+          style: row
+          columns: 4
+      - Überwachung:
+          tab: Technik
+          style: row
+          columns: 3
+      - Netzwerk:
+          tab: Technik
+          style: row
+          columns: 3
+      - Weitere:
+          tab: Technik
+          style: row
+          columns: 3
+      - Gekoppelte Netze:
+          tab: Technik
+          style: row
+          columns: 3
+      - Externe Geräte:
+          tab: Technik
+          style: row
+          columns: 4
+  widgets.yaml: |-
+    - kubernetes:
+        cluster:
+          show: true
+          cpu: true
+          memory: true
+          showLabel: false
+          label: "cluster"
+        nodes:
+          show: false
+    - datetime:
+        text_size: xl
+        format:
+          timeStyle: short
