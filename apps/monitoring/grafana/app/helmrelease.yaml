@@ -85,7 +85,9 @@ spec:
           revision: 1
           datasource: Prometheus
         cert-manager:
-          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
+          # renovate: dashboardName="Cert-manager-Kubernetes"
+          gnetId: 20842
+          revision: 3
           datasource: Prometheus
         envoy-gateway:
           url: https://raw.githubusercontent.com/envoyproxy/gateway/refs/heads/main/charts/gateway-addons-helm/dashboards/envoy-gateway-global.json

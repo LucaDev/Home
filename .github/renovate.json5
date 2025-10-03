@@ -1,42 +1,39 @@
 {
-  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: [
-    'config:recommended',
-    ':dependencyDashboard',
-    ':disableRateLimiting',
-    'docker:enableMajor',
-    ':automergeDigest',
-    ':enablePreCommit',
+    "config:recommended",
+    ":dependencyDashboard",
+    ":disableRateLimiting",
+    "docker:enableMajor",
+    ":automergeDigest",
+    ":enablePreCommit",
+    "github>LucaDev/Home//.renovate/grafanaDashboards.json5",
   ],
-  timezone: 'Europe/Berlin',
-  ignorePaths: [
-    '^archive/**',
-  ],
+  timezone: "Europe/Berlin",
+  ignorePaths: ["^archive/**"],
   flux: {
     managerFilePatterns: [
-      '/apps/.+\\.ya?ml$/',
-      '/bootstrap/.+\\.ya?ml$/',
-      '/flux/.+\\.ya?ml$/',
+      "/apps/.+\\.ya?ml$/",
+      "/bootstrap/.+\\.ya?ml$/",
+      "/flux/.+\\.ya?ml$/",
     ],
   },
-  'helm-values': {
+  "helm-values": {
     managerFilePatterns: [
-      '/apps/.+\\.ya?ml$/',
-      '/bootstrap/.+\\.ya?ml$/',
-      '/flux/.+\\.ya?ml$/',
+      "/apps/.+\\.ya?ml$/",
+      "/bootstrap/.+\\.ya?ml$/",
+      "/flux/.+\\.ya?ml$/",
     ],
   },
   kubernetes: {
     managerFilePatterns: [
-      '/apps/.+\\.ya?ml$/',
-      '/bootstrap/.+\\.ya?ml$/',
-      '/flux/.+\\.ya?ml$/',
+      "/apps/.+\\.ya?ml$/",
+      "/bootstrap/.+\\.ya?ml$/",
+      "/flux/.+\\.ya?ml$/",
     ],
   },
   terraform: {
-    managerFilePatterns: [
-      '/terraform/.+\\.tf$/',
-    ],
+    managerFilePatterns: ["/terraform/.+\\.tf$/"],
   },
   nix: {
     enabled: true,
@@ -46,96 +43,68 @@
   },
   packageRules: [
     {
-      description: [
-        'Custom versioning for k3s',
-      ],
-      matchDatasources: [
-        'github-releases',
-      ],
-      versioning: 'regex:^v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?<compatibility>\\+k3s)(?<build>\\d+)$',
-      matchPackageNames: [
-        '/k3s/',
-      ],
+      description: ["Custom versioning for k3s"],
+      matchDatasources: ["github-releases"],
+      versioning: "regex:^v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?<compatibility>\\+k3s)(?<build>\\d+)$",
+      matchPackageNames: ["/k3s/"],
     },
     {
-      description: 'Auto merge KPS minors and patches',
-      matchDatasources: [
-        'helm',
-        'docker',
-      ],
+      description: "Auto merge KPS minors and patches",
+      matchDatasources: ["helm", "docker"],
       automerge: true,
-      matchUpdateTypes: [
-        'minor',
-        'patch',
-      ],
-      matchDepNames: [
-        'kube-prometheus-stack',
-      ],
+      matchUpdateTypes: ["minor", "patch"],
+      matchDepNames: ["kube-prometheus-stack"],
     },
     {
-      description: 'Auto merge container digests',
-      matchDatasources: [
-        'docker',
-      ],
+      description: "Auto merge container digests",
+      matchDatasources: ["docker"],
       automerge: true,
-      automergeType: 'branch',
-      matchUpdateTypes: [
-        'digest',
-      ],
+      automergeType: "branch",
+      matchUpdateTypes: ["digest"],
       matchPackageNames: [
-        'ghcr.io/home-operations{/,}**',
-        'ghcr.io/bjw-s{/,}**',
-        'ghcr.io/lucadev{/,}**',
+        "ghcr.io/home-operations{/,}**",
+        "ghcr.io/bjw-s{/,}**",
+        "ghcr.io/lucadev{/,}**",
       ],
     },
     {
-      description: 'Flux Group',
-      groupName: 'Flux',
-      matchDatasources: [
-        'docker',
-        'github-tags',
-      ],
-      versioning: 'semver',
+      description: "Flux Group",
+      groupName: "Flux",
+      matchDatasources: ["docker", "github-tags"],
+      versioning: "semver",
       group: {
-        commitMessageTopic: '{{{groupName}}} group',
+        commitMessageTopic: "{{{groupName}}} group",
       },
       separateMinorPatch: true,
-      matchPackageNames: [
-        '/^flux/',
-        '/^ghcr.io/fluxcd//',
-      ],
+      matchPackageNames: ["/^flux/", "/^ghcr.io/fluxcd//"],
     },
     {
-      description: 'Immich images',
-      groupName: 'Immich',
+      description: "Immich images",
+      groupName: "Immich",
       matchPackageNames: [
-        'ghcr.io/immich-app/immich-server',
-        'ghcr.io/immich-app/immich-machine-learning',
+        "ghcr.io/immich-app/immich-server",
+        "ghcr.io/immich-app/immich-machine-learning",
       ],
-      matchDatasources: [
-        'docker',
-      ],
+      matchDatasources: ["docker"],
       group: {
-        commitMessageTopic: '{{{groupName}}} group',
+        commitMessageTopic: "{{{groupName}}} group",
       },
       separateMinorPatch: true,
     },
   ],
   customManagers: [
     {
-      customType: 'regex',
-      description: [
-        'Process custom dependencies',
-      ],
+      customType: "regex",
+      description: ["Process custom dependencies"],
       managerFilePatterns: [
-        '/(^|/).taskfiles/.+\\.ya?ml(?:\\.j2)?$/',
-        '/(^|/)apps/.+\\.ya?ml(?:\\.j2)?$/',
+        "/(^|/).taskfiles/.+\\.ya?ml(?:\\.j2)?$/",
+        "/(^|/)apps/.+\\.ya?ml(?:\\.j2)?$/",
       ],
       matchStrings: [
-        'datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( repository=(?<registryUrl>\\S+))?\\n.+: (&\\S+\\s)?(?<currentValue>\\S+)',
-        'datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n.+/(?<currentValue>(v|\\d)[^/]+)',
+        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( repository=(?<registryUrl>\\S+))?\\n.+: (&\\S+\\s)?(?<currentValue>\\S+)",
+        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n.+/(?<currentValue>(v|\\d)[^/]+)",
       ],
-      datasourceTemplate: '{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}',
+      datasourceTemplate: "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
     },
   ],
 }
