@@ -30,6 +30,8 @@ spec:
     service:
       app:
         controller: goflow2
+        type: LoadBalancer
+        loadBalancerClass: "io.cilium/node"
         ports:
           ipfix:
             port: 2055
