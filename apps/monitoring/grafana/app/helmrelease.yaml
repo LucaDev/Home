@@ -87,6 +87,19 @@ spec:
         cert-manager:
           url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
           datasource: Prometheus
+        envoy-gateway:
+          url: https://raw.githubusercontent.com/envoyproxy/gateway/refs/heads/main/charts/gateway-addons-helm/dashboards/envoy-gateway-global.json
+          datasource: Prometheus
+        envoy-proxy:
+          url: https://raw.githubusercontent.com/envoyproxy/gateway/refs/heads/main/charts/gateway-addons-helm/dashboards/envoy-proxy-global.json
+          datasource: Prometheus
+        volsync:
+          # renovate: depName="VolSync Dashboard"
+          gnetId: 21356
+          revision: 3
+          datasource:
+            - {name: DS_PROMETHEUS, value: Prometheus}
+            - {name: VAR_REPLICATIONDESTNAME, value: .*-dst}
 
       flux:
         flux-cluster:
@@ -156,10 +169,10 @@ spec:
             name: Prometheus
             type: prometheus
             url: http://kube-prometheus-stack-prometheus.monitoring:9090
-            # - access: proxy
-            #   name: Loki
-            #   type: loki
-            #   url: http://loki.monitoring.svc.cluster.local:3100
+          - access: proxy
+            name: Loki
+            type: loki
+            url: http://loki.monitoring.svc.cluster.local:3100
           - name: Alertmanager
             type: alertmanager
             access: proxy
