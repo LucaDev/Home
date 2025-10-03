@@ -21,4 +21,4 @@ spec:
               type: GatewayNamespace
         logging:
           level:
-            default: warn
+            provider: warn
