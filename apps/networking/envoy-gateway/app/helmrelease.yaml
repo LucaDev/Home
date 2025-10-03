@@ -19,6 +19,6 @@ spec:
           kubernetes:
             deploy:
               type: GatewayNamespace
-      logging:
-        level:
-          default: warn
+        logging:
+          level:
+            default: warn
