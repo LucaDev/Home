@@ -1,0 +1,22 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: alloy
+spec:
+  interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: alloy
+  values:
+    fullnameOverride: alloy
+    alloy:
+      configMap:
+        create: false
+        name: &name alloy-configmap
+        key: config.alloy
+    controller:
+      podAnnotations:
+        configmap.reloader.stakater.com/reload: *name
+    serviceMonitor:
+      enabled: true
