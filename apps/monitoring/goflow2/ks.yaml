@@ -1,0 +1,21 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &appname mqtt-exporter
+  namespace: flux-system
+spec:
+  interval: 1h
+  path: "./apps/monitoring/mqtt-exporter/app"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: github-repo
+  wait: false # no flux ks dependents
+  postBuild:
+    substitute:
+      APP: *appname
+      APP_UID: "568"
+      APP_GID: "568"
+  dependsOn:
+    - name: external-secrets-stores
