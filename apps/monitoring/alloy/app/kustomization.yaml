@@ -9,6 +9,6 @@ resources:
 configMapGenerator:
   - name: alloy-configmap
     files:
-      - /config/config.alloy
+      - ./config/config.alloy
 generatorOptions:
   disableNameSuffixHash: true
