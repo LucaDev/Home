@@ -16,3 +16,4 @@ resources:
   - ./gatus/ks.yaml
   - ./healthcheck
   - ./nut-exporter/ks.yaml
+  - ./loki/ks.yaml
