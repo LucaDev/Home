@@ -5,7 +5,7 @@ metadata:
   name: github-repo
   namespace: flux-system
 spec:
-  interval: 60m
+  interval: 1h
   ref:
     branch: main
   url: https://github.com/LucaDev/Home
@@ -16,7 +16,7 @@ metadata:
   name: sops
   namespace: flux-system
 spec:
-  interval: 10m0s
+  interval: 1h
   path: ./flux
   prune: true
   sourceRef:
