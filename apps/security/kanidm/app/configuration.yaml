@@ -16,7 +16,7 @@ data:
     db_path = "/data/persistent/kanidm.db"
     tls_chain = "/data/certs/tls.crt"
     tls_key = "/data/certs/tls.key"
-    log_level = "warn"
+    log_level = "info"
     domain = "idm.lucadev.de"
     origin = "https://idm.lucadev.de"
 
