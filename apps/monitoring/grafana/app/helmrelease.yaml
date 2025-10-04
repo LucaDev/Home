@@ -77,7 +77,7 @@ spec:
         node-exporter-full:
           # renovate: dashboardName="Node Exporter Full"
           gnetId: 1860
-          revision: 34
+          revision: 42
           datasource: Prometheus
         blackbox-exporter:
           # renovate: dashboardName="Blackbox Exporter (HTTP prober)"
