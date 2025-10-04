@@ -35,7 +35,7 @@ spec:
             resources: &resources
             env:
               GEOIPUPDATE_EDITION_IDS: "GeoLite2-ASN"
-            envFrom:
+            envFrom: &envFrom
               - secretRef:
                   name: maxmind-credentials
       geoip-updater-city:
@@ -54,6 +54,7 @@ spec:
             resources: *resources
             env:
               GEOIPUPDATE_EDITION_IDS: "GeoLite2-City"
+            envFrom: *envFrom
 
     persistence:
       storage:
