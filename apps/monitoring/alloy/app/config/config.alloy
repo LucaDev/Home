@@ -123,7 +123,7 @@ loki.process "pod_logs" {
     selector = "{app=\"envoy\"}"
 
     stage.json {
-      expressions = {ip = "downstream_remote_address"}
+      expressions = {ip = "x_forwarded_for"}
     }
 
     stage.geoip {
