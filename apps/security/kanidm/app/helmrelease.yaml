@@ -40,7 +40,8 @@ spec:
                     path: /status
                     port: &httpsPort 8443
                     scheme: HTTPS
-              readiness: *probe
+              readiness:
+                enabled: false
               startup: *probe
     service:
       app:
