@@ -103,8 +103,10 @@ spec:
           gnetId: 21356
           revision: 3
           datasource:
-            - {name: DS_PROMETHEUS, value: Prometheus}
-            - {name: VAR_REPLICATIONDESTNAME, value: .*-dst}
+            - name: DS_PROMETHEUS
+              value: Prometheus
+            - name: VAR_REPLICATIONDESTNAME
+              value: .*-dst
 
       flux:
         flux-cluster:
@@ -235,6 +237,7 @@ spec:
         url: https://grafana.net
       log:
         mode: console
+        filters: tsdb.loki:warn
       news:
         news_feed_enabled: false
       panels:
