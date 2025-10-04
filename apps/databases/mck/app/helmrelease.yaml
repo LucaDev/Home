@@ -14,7 +14,7 @@ spec:
         kind: HelmRepository
         name: mongodb
         namespace: flux-system
-      interval: 5m
+      interval: 30m
   values:
     operator:
       watchNamespace: "*"
