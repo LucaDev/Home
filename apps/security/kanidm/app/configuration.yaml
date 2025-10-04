@@ -8,9 +8,9 @@ data:
     version = "2"
 
     # Bind
-    bindaddress = "[0.0.0.0]:8443"
+    bindaddress = "0.0.0.0:8443"
     # LDAP Bind
-    ldapbindaddress = "[0.0.0.0]:636"
+    ldapbindaddress = "0.0.0.0:636"
 
     # General
     db_path = "/data/persistent/kanidm.db"
