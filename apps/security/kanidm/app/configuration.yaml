@@ -22,7 +22,7 @@ data:
 
     # Envoy
     [http_client_address_info]
-    x-forward-for = ["10.0.0.0/8"]
+    x-forward-for = ["0.0.0.0/0"]
 
     # Backups
     [online_backup]
