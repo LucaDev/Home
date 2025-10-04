@@ -15,18 +15,18 @@ spec:
         create: false
         name: &name alloy-configmap
         key: config.alloy
+      mounts:
+        varlog: true
+        extra:
+          - mountPath: /geoip/
+            name: config
     controller:
       podAnnotations:
         configmap.reloader.stakater.com/reload: *name
+      volumes:
+        extra:
+          - name: storage
+            persistentVolumeClaim:
+              claimName: geoip-updater
     serviceMonitor:
       enabled: true
-    volumes:
-      extra:
-        - name: storage
-          persistentVolumeClaim:
-            claimName: geoip-updater
-    mounts:
-      varlog: true
-      extra:
-        - mountPath: /geoip/
-          name: config
