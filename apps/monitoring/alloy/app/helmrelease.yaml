@@ -19,13 +19,13 @@ spec:
         varlog: true
         extra:
           - mountPath: /geoip/
-            name: config
+            name: geoip
     controller:
       podAnnotations:
         configmap.reloader.stakater.com/reload: *name
       volumes:
         extra:
-          - name: storage
+          - name: geoip
             persistentVolumeClaim:
               claimName: geoip-updater
     serviceMonitor:
