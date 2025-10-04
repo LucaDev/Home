@@ -89,7 +89,7 @@ loki.process "pod_logs" {
   forward_to = [loki.write.default.receiver]
 
   stage.match {
-    selector = "{container=\"goflow2\"}"
+    selector = "{app=\"goflow2\"}"
 
     stage.json {
       expressions = {dst = "dst_addr", src = "src_addr"}
