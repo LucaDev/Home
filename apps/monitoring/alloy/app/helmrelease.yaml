@@ -20,3 +20,13 @@ spec:
         configmap.reloader.stakater.com/reload: *name
     serviceMonitor:
       enabled: true
+    volumes:
+      extra:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: geoip-updater
+    mounts:
+      varlog: true
+      extra:
+        - mountPath: /geoip/
+          name: config
