@@ -87,6 +87,37 @@ loki.source.kubernetes "pod_logs" {
 
 loki.process "pod_logs" {
   forward_to = [loki.write.default.receiver]
+
+  stage.match {
+    selector = "{container=\"goflow2\"}"
+
+    stage.json {
+      expressions = {dst = "dst_addr", src = "src_addr"}
+    }
+
+    stage.geoip {
+      source  = "dst"
+      db      = "/geoip/GeoLite2-ASN.mmdb"
+      db_type = "asn"
+    }
+
+    stage.geoip {
+      source  = "dst"
+      db      = "/geoip/GeoLite2-City.mmdb"
+      db_type = "city"
+    }
+
+    stage.labels {
+      values = {
+        geoip_city_name          = "",
+        geoip_country_code       = "",
+        geoip_location_latitude  = "",
+        geoip_location_longitude = "",
+        geoip_autonomous_system_number       = "",
+        geoip_autonomous_system_organization = "",
+      }
+    }
+  }
 }
 
 loki.source.kubernetes_events "cluster_events" {
