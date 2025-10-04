@@ -34,7 +34,7 @@ spec:
             securityContext: &sc
             resources: &resources
             env:
-              GEOIPUPDATE_EDITION_IDS: "GeoLite ASN"
+              GEOIPUPDATE_EDITION_IDS: "GeoLite2-ASN"
             envFrom:
               - secretRef:
                   name: maxmind-credentials
@@ -53,7 +53,7 @@ spec:
             securityContext: *sc
             resources: *resources
             env:
-              GEOIPUPDATE_EDITION_IDS: "GeoLite City"
+              GEOIPUPDATE_EDITION_IDS: "GeoLite2-City"
 
     persistence:
       storage:
