@@ -30,7 +30,7 @@ spec:
       server:
         grpc_server_max_recv_msg_size: 10485760 # 10 MiB
         grpc_server_max_send_msg_size: 10485760 # 10 MiB
-        log_level: info
+        log_level: warn
       storage:
         type: filesystem
       schemaConfig:
