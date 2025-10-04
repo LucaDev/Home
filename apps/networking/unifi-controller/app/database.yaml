@@ -6,7 +6,7 @@ metadata:
 spec:
   members: 1
   type: ReplicaSet
-  version: "7.0.24"
+  version: "7.0.25"
   featureCompatibilityVersion: "7.0"
   agent:
     logLevel: INFO
@@ -60,3 +60,6 @@ spec:
             resources:
               requests:
                 storage: 2G
+  additionalMongodConfig:
+    systemLog:
+      quiet: true
