@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h
-  path: "./apps/monitoring/geoip-updater/app"
+  path: "./apps/monitoring/geoip_updater/app"
   prune: true
   sourceRef:
     kind: GitRepository
