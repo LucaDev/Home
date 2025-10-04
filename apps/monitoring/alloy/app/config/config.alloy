@@ -118,6 +118,37 @@ loki.process "pod_logs" {
       }
     }
   }
+
+  stage.match {
+    selector = "{app=\"envoy\"}"
+
+    stage.json {
+      expressions = {ip = "downstream_remote_address"}
+    }
+
+    stage.geoip {
+      source  = "ip"
+      db      = "/geoip/GeoLite2-ASN.mmdb"
+      db_type = "asn"
+    }
+
+    stage.geoip {
+      source  = "ip"
+      db      = "/geoip/GeoLite2-City.mmdb"
+      db_type = "city"
+    }
+
+    stage.labels {
+      values = {
+        geoip_city_name          = "",
+        geoip_country_code       = "",
+        geoip_location_latitude  = "",
+        geoip_location_longitude = "",
+        geoip_autonomous_system_number       = "",
+        geoip_autonomous_system_organization = "",
+      }
+    }
+  }
 }
 
 loki.source.kubernetes_events "cluster_events" {
