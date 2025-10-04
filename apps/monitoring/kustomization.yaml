@@ -19,3 +19,4 @@ resources:
   - ./loki/ks.yaml
   - ./goflow2/ks.yaml
   - ./alloy/ks.yaml
+  - ./geoip_updater/ks.yaml
