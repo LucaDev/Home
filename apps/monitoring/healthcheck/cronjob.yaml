@@ -20,6 +20,6 @@ spec:
                 - "10"
                 - --retry
                 - "5"
-                - --quiet
+                - --silent
                 - https://hc-ping.com/5e725dea-0780-402b-bc24-b15ecdf6509f
           restartPolicy: Never
