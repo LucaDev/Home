@@ -22,7 +22,7 @@ endpoints:
     client:
       dns-resolver: tcp://1.1.1.1:53
     conditions:
-      - condition: "[STATUS] == 404"
+      - "[STATUS] == 404"
     alerting:
       discord:
         webhook-url: ${DISCORD_WEBHOOK}
