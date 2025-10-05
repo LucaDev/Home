@@ -135,9 +135,3 @@ spec:
           - backendRefs:
               - name: app
                 port: *s3-port
-        annotations:
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: S3 Storage
-          gethomepage.dev/group: Weitere
-          gethomepage.dev/icon: minio
-          gethomepage.dev/name: MinIO
