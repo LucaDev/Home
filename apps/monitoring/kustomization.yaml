@@ -20,3 +20,4 @@ resources:
   - ./goflow2/ks.yaml
   - ./alloy/ks.yaml
   - ./geoip_updater/ks.yaml
+  - ./gatus/ks.yaml
