@@ -26,3 +26,13 @@ endpoints:
     alerting:
       discord:
         webhook-url: ${DISCORD_WEBHOOK}
+announcements:
+  - timestamp: 2025-08-15T14:00:00Z
+    type: outage
+    message: "Scheduled maintenance on database servers from 14:00 to 16:00 UTC"
+  - timestamp: 2025-08-15T16:15:00Z
+    type: operational
+    message: "Database maintenance completed successfully. All systems operational."
+  - timestamp: 2025-08-15T12:00:00Z
+    type: information
+    message: "New monitoring dashboard features will be deployed next week"
