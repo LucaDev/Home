@@ -20,7 +20,10 @@ spec:
             image:
               repository: busybox
               tag: 1.37.0
-            command: ["sh", "-c", "until wget https://idm.lucadev.de -q -O /dev/null; do echo waiting for kanidm; sleep 2; done"]
+            command:
+              - "sh"
+              - "-c"
+              - "until wget https://idm.lucadev.de -q -O /dev/null; do echo waiting for kanidm; sleep 2; done"
         containers:
           app:
             image:
@@ -39,7 +42,11 @@ spec:
             envFrom:
               - secretRef:
                   name: minio-secret
-            args: ["server", "/data", "--console-address", ":9001"]
+            args:
+              - "server"
+              - "/data"
+              - "--console-address"
+              - ":9001"
             probes:
               liveness: &probes
                 enabled: true
@@ -70,16 +77,17 @@ spec:
         runAsGroup: 568
         fsGroup: 568
         fsGroupChangePolicy: OnRootMismatch
-        supplementalGroups: [10000]
+        supplementalGroups:
+          - 10000
         seccompProfile: {type: RuntimeDefault}
     service:
       app:
         controller: minio
         ports:
           http:
-            port: 9001
+            port: &console-port 9001
           s3:
-            port: 9000
+            port: &s3-port 9000
     serviceMonitor:
       app:
         serviceName: minio
@@ -99,9 +107,25 @@ spec:
           - path: /data
 
     route:
-      app:
+      console:
         hostnames:
           - minio.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https
+        rules:
+          - backendRefs:
+              - name: app
+                port: *console-port
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: S3 Storage
+          gethomepage.dev/group: Weitere
+          gethomepage.dev/icon: minio
+          gethomepage.dev/name: MinIO
+      s3:
+        hostnames:
           - s3.lucadev.de
         parentRefs:
           - name: envoy
@@ -110,7 +134,7 @@ spec:
         rules:
           - backendRefs:
               - name: app
-                port: 9001
+                port: *s3-port
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: S3 Storage
