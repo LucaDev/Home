@@ -54,6 +54,11 @@ metadata:
       ui:
         hide-hostname: true
         hide-url: true
+      alerts:
+        - type: discord
+          description: "healthcheck failed"
+          send-on-resolved: true
+          failure-threshold: 2
 spec:
   gatewayClassName: envoy
   listeners:
