@@ -7,5 +7,4 @@ resources:
   - ./helmrelease.yaml
   - ./external-secret.yaml
 components:
-  - ../../../../components/gatus/internal
   - ../../../../components/volsync/hetzner_ext

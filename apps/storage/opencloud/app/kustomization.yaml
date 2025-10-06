@@ -6,4 +6,3 @@ namespace: storage
 resources:
   - ./helmrelease.yaml
 components:
-  - ../../../../components/gatus/external

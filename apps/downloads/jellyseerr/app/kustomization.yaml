@@ -6,4 +6,3 @@ resources:
   - ./helmrelease.yaml
 components:
   - ../../../../components/volsync/hetzner
-  - ../../../../components/gatus/external

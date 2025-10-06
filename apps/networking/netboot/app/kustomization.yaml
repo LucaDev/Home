@@ -6,7 +6,6 @@ resources:
   - ./helmrelease.yaml
   - ./securitypolicy.yaml
 components:
-  - ../../../../components/gatus/internal
 configMapGenerator:
   - name: netboot-config
     files:

@@ -23,4 +23,3 @@ spec:
       APP_UID: "568"
       APP_GID: "568"
       VOLSYNC_CLAIM: jellyfin-config # TODO
-      GATUS_SUBDOMAIN: lucaflix

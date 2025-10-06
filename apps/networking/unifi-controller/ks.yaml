@@ -20,4 +20,3 @@ spec:
   postBuild:
     substitute:
       APP: *appname
-      GATUS_SUBDOMAIN: unifi

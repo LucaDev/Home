@@ -8,7 +8,6 @@ resources:
   - ./securitypolicy.yaml
   - ./externalsecret.yaml
 components:
-  - ../../../../components/gatus/external
   - ../../../../components/volsync/hetzner_ext
 labels:
   - pairs:

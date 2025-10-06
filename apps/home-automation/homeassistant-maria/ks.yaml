@@ -17,6 +17,5 @@ spec:
   postBuild:
     substitute:
       APP: *appname
-      GATUS_SUBDOMAIN: ha-maria
       VOLSYNC_CLAIM: config-home-assistant-maria-0
       APP_UID: "0"

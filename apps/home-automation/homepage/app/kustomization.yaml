@@ -9,4 +9,3 @@ resources:
   - ./securitypolicy.yaml
   - ./configmap.yaml
 components:
-  - ../../../../components/gatus/internal

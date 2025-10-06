@@ -9,4 +9,3 @@ resources:
   - ./volsync.yaml
   - ./securitypolicy.yaml
 components:
-  - ../../../../components/gatus/internal

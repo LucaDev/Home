@@ -12,4 +12,3 @@ components:
   - ../../../../components/netpol/dns-traefik
   - ../../../../components/netpol/egress-local
   - ../../../../components/netpol/kanidm
-  - ../../../../components/gatus/internal

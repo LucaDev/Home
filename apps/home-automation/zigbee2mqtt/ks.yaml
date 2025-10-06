@@ -19,4 +19,3 @@ spec:
   postBuild:
     substitute:
       APP: *appname
-      GATUS_SUBDOMAIN: z2m

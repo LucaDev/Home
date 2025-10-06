@@ -11,4 +11,3 @@ components:
   - ../../../../components/volsync/hetzner
   - ../../../../components/netpol/dns-traefik
   - ../../../../components/netpol/egress-internet
-  - ../../../../components/gatus/internal

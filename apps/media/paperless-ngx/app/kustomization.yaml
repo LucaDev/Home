@@ -10,7 +10,6 @@ resources:
   - ./volsync.yaml
   - ./securitypolicy.yaml
 components:
-  - ../../../../components/gatus/internal
 labels:
   - pairs:
       app.kubernetes.io/name: paperless

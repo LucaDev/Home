@@ -9,4 +9,3 @@ resources:
   - ./securitypolicy.yaml
 components:
   - ../../../../components/netpol/dns-traefik
-  - ../../../../components/gatus/internal

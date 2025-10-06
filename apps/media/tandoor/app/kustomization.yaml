@@ -8,7 +8,6 @@ resources:
   - ./externalsecret.yaml
 components:
   - ../../../../components/volsync/hetzner
-  - ../../../../components/gatus/internal
 configMapGenerator:
   - name: tandoor-nginx-configmap
     files:

@@ -9,4 +9,3 @@ resources:
   - ./backendTLSpolicy.yaml
   - ./volsync.yaml
 components:
-  - ../../../../components/gatus/external

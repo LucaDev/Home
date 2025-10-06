@@ -15,7 +15,6 @@ spec:
   postBuild:
     substitute:
       APP: *appname
-      GATUS_SUBDOMAIN: photos
   dependsOn:
     - name: shared-pg
     - name: external-secrets-stores

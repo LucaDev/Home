@@ -8,4 +8,3 @@ resources:
   - ./externalsecret.yaml
   - ./securitypolicy.yaml
 components:
-  - ../../../../components/gatus/internal

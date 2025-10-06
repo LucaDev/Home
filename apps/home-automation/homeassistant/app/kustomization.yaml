@@ -8,4 +8,3 @@ resources:
   - ./volsync.yaml
   - ./external-secret.yaml
 components:
-  - ../../../../components/gatus/internal

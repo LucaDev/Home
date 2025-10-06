@@ -12,4 +12,3 @@ resources:
   - ./database-sa.yaml
   - ./certificate.yaml
 components:
-  - ../../../../components/gatus/internal

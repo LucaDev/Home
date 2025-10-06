@@ -7,4 +7,3 @@ resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
 components:
-  - ../../../../components/gatus/external

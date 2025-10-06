@@ -7,7 +7,6 @@ resources:
   - ./helmrelease.yaml
   - ./securitypolicy.yaml
 components:
-  - ../../../../components/gatus/internal
 labels:
   - pairs:
       app.kubernetes.io/name: kiwix
