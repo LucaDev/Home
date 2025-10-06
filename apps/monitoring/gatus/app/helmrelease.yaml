@@ -20,7 +20,7 @@ spec:
           gatus-sidecar:
             image:
               repository: ghcr.io/home-operations/gatus-sidecar
-              tag: 0.0.6
+              tag: 0.0.7
             args:
               - --auto-httproute
             resources:
