@@ -6,3 +6,4 @@ namespace: flux-system
 resources:
   - ./webhook.yaml
   - ./externalsecret.yaml
+  - ./httproute.yaml

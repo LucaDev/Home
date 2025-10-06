@@ -7,5 +7,4 @@ resources:
   - ./FluxGitRepo.yaml
   - ./helmRepos
   - ./cluster-apps.yaml
-  - ./httproute.yaml
   - ./service.yaml
