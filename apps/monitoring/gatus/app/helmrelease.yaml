@@ -16,25 +16,18 @@ spec:
         replicas: 1
         annotations:
           reloader.stakater.com/auto: "true"
-        initContainers:
-          init-config:
+        containers:
+          gatus-sidecar:
             image:
-              repository: ghcr.io/kiwigrid/k8s-sidecar
-              tag: 1.30.10@sha256:835d79d8fbae62e42d8a86929d4e3c5eec2e869255dd37756b5a3166c2f22309
-            env:
-              FOLDER: /config
-              LABEL: gatus.io/enabled
-              NAMESPACE: ALL
-              RESOURCE: both
-              UNIQUE_FILENAMES: true
-              METHOD: WATCH
-            restartPolicy: Always
+              repository: ghcr.io/home-operations/gatus-sidecar
+              tag: 0.0.6
+            args:
+              - --auto-httproute
             resources:
               requests:
                 cpu: 10m
               limits:
-                memory: 128Mi
-        containers:
+                memory: 64Mi
           app:
             image:
               repository: ghcr.io/twin/gatus
@@ -101,6 +94,44 @@ spec:
     serviceAccount:
       create: true
       name: gatus
+
+    rbac:
+      roles:
+        gatus:
+          type: ClusterRole
+          rules:
+            - apiGroups:
+                - ""
+              resources:
+                - services
+              verbs:
+                - get
+                - watch
+                - list
+            - apiGroups:
+                - gateway.networking.k8s.io
+              resources:
+                - gateways
+                - httproutes
+              verbs:
+                - get
+                - watch
+                - list
+            - apiGroups:
+                - networking.k8s.io
+              resources:
+                - ingresses
+              verbs:
+                - get
+                - watch
+                - list
+      bindings:
+        gatus:
+          type: ClusterRoleBinding
+          roleRef:
+            identifier: gatus
+          subjects:
+            - identifier: gatus
 
     persistence:
       config:
