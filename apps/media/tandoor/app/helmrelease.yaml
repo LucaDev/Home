@@ -94,7 +94,8 @@ spec:
                 subPath: django_js_reverse
               - path: /tmp
                 subPath: tmp
-
+              - path: /run
+                subPath: run
     route:
       app:
         hostnames:
