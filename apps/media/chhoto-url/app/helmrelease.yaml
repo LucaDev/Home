@@ -93,3 +93,5 @@ spec:
             backendRefs:
               - name: *app
                 port: *port
+        annotations:
+          gatus.home-operations.com/enabled: "false"
