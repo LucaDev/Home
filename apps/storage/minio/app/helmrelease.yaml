@@ -135,3 +135,7 @@ spec:
           - backendRefs:
               - name: app
                 port: *s3-port
+        annotations:
+          gatus.home-operations.com/endpoint: |-
+            conditions:
+              - "[STATUS] == 400"
