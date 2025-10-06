@@ -72,3 +72,5 @@ spec:
           - backendRefs:
               - name: app
                 port: 8080
+        annotations:
+          gatus.home-operations.com/enabled: "false"

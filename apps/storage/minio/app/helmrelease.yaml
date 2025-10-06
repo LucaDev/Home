@@ -138,4 +138,4 @@ spec:
         annotations:
           gatus.home-operations.com/endpoint: |-
             conditions:
-              - "[STATUS] == 400"
+              - "[STATUS] == 403"
