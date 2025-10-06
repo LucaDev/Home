@@ -5,9 +5,9 @@ metadata:
   name: flux-webhook-receiver
   namespace: flux-system
   annotations:
-  gatus.home-operations.com/endpoint: |
-    conditions:
-      - "[STATUS] == 404"
+    gatus.home-operations.com/endpoint: |
+      conditions:
+        - "[STATUS] == 404"
 spec:
   hostnames:
     - github-webhook.lucadev.de
