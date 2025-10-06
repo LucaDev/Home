@@ -96,6 +96,8 @@ spec:
                 subPath: tmp
               - path: /run
                 subPath: run
+              - path: /run/nginx
+                subPath: run-nginx
     route:
       app:
         hostnames:
