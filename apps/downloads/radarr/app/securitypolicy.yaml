@@ -16,3 +16,4 @@ spec:
       name: radarr-secret
     redirectURL: https://radarr.lucadev.de/oidc/callback
     logoutPath: /logout
+    refreshToken: true

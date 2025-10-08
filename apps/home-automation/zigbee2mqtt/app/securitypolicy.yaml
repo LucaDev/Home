@@ -16,3 +16,4 @@ spec:
       name: zigbee2mqtt-secret
     redirectURL: https://z2m.lucadev.de/oidc/callback
     logoutPath: /logout
+    refreshToken: true

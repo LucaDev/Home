@@ -16,3 +16,4 @@ spec:
       name: prowlarr-secret
     redirectURL: https://prowlarr.lucadev.de/oidc/callback
     logoutPath: /logout
+    refreshToken: true

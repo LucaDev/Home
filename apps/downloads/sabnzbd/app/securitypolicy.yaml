@@ -16,3 +16,4 @@ spec:
       name: sabnzbd-secret
     redirectURL: https://sabnzbd.lucadev.de/oidc/callback
     logoutPath: /logout
+    refreshToken: true

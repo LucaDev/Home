@@ -8,7 +8,7 @@ storage:
 metrics: true
 debug: false
 ui:
-  title: Status | Gatus
+  title: Status
   header: Status
 connectivity:
   checker:

@@ -16,3 +16,4 @@ spec:
       name: stirling-pdf-secret
     redirectURL: https://pdf.lucadev.de/oidc/callback
     logoutPath: /logout
+    refreshToken: true

@@ -16,3 +16,4 @@ spec:
       name: esphome-secrets
     redirectURL: https://esphome.lucadev.de/oidc/callback
     logoutPath: /logout
+    refreshToken: true

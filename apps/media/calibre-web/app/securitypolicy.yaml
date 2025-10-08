@@ -16,3 +16,4 @@ spec:
       name: calibre-web-secret
     redirectURL: https://calibre.lucadev.de/oidc/callback
     logoutPath: /logout
+    refreshToken: true

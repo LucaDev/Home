@@ -16,3 +16,4 @@ spec:
       name: n8n-secret
     redirectURL: https://n8n.lucadev.de/oidc/callback
     logoutPath: /logout
+    refreshToken: true

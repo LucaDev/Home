@@ -16,3 +16,4 @@ spec:
       name: alertmanager-secret
     redirectURL: https://alerts.lucadev.de/oidc/callback
     logoutPath: /logout
+    refreshToken: true

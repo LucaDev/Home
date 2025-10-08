@@ -16,3 +16,4 @@ spec:
       name: memos-secret
     redirectURL: https://notes.lucadev.de/oidc/callback
     logoutPath: /logout
+    refreshToken: true

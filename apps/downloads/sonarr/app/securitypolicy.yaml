@@ -16,3 +16,4 @@ spec:
       name: sonarr-secret
     redirectURL: https://sonarr.lucadev.de/oidc/callback
     logoutPath: /logout
+    refreshToken: true

@@ -16,3 +16,4 @@ spec:
       name: openspeedtest-secret
     redirectURL: https://speedtest.lucadev.de/oidc/callback
     logoutPath: /logout
+    refreshToken: true

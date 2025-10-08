@@ -16,3 +16,4 @@ spec:
       name: chhoto-secret
     redirectURL: https://link.lucadev.de/oidc/callback
     logoutPath: /logout
+    refreshToken: true
