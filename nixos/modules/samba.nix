@@ -34,7 +34,7 @@
     settings = {
       global = {
         # Bind
-        "interfaces" = "enp1s0np0";
+        "interfaces" = "enp1s0";
         "bind interfaces only" = "yes";
         # General
         "workgroup" = "WORKGROUP";

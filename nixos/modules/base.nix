@@ -95,6 +95,8 @@
       "net.ipv4.tcp_wmem" = "4096 65536 33554432";
       "net.ipv4.tcp_window_scaling" = 1;
       "vm.nr_hugepages" = 512;
+      "kernel.sysrq" = 1;
+      "kernel.panic" = 120;  
     };
 
     kernelModules = [
