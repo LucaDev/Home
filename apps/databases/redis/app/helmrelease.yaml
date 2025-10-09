@@ -22,9 +22,11 @@ spec:
               requests:
                 cpu: 5m
                 memory: 25Mi
+                hugepages-2Mi: 64Mi
               limits:
                 cpu: 500m
                 memory: 256Mi
+                hugepages-2Mi: 256Mi
 
     service:
       app:
