@@ -41,7 +41,7 @@ spec:
               requests:
                 cpu: 10m
               limits:
-                amd.com/gpu: 1
+                amd.com/gpu: 0
                 memory: 8G
     defaultPodOptions:
       automountServiceAccountToken: false
