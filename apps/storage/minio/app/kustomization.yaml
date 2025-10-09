@@ -8,4 +8,3 @@ resources:
   - ./externalsecret.yaml
   - ./volsync.yaml
   - ./securitypolicy.yaml
-components:

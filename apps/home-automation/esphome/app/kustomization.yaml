@@ -8,4 +8,3 @@ resources:
   - ./esphome-secrets.yaml
   - ./volsync.yaml
   - ./securitypolicy.yaml
-components:

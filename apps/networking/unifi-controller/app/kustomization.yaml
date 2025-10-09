@@ -11,4 +11,3 @@ resources:
   - ./volsync-db.yaml
   - ./database-sa.yaml
   - ./certificate.yaml
-components:

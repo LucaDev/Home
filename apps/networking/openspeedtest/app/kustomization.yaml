@@ -8,4 +8,3 @@ resources:
   - ./openspeedtest-middleware.yaml
   - ./externalsecret.yaml
   - ./securitypolicy.yaml
-components:
