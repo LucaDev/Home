@@ -58,7 +58,7 @@ metadata:
         - type: discord
           description: "healthcheck failed"
           send-on-resolved: true
-          failure-threshold: 2
+          failure-threshold: 3
 spec:
   gatewayClassName: envoy
   listeners:
