@@ -49,6 +49,4 @@ spec:
         hostPath: /var/lib/kubelet/device-plugins
       health:
         type: hostPath
-        hostPath:
-          path: /var/lib/amd-metrics-exporter/
-          type: DirectoryOrCreate
+        hostPath: /var/lib/amd-metrics-exporter/
