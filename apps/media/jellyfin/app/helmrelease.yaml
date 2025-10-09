@@ -51,7 +51,7 @@ spec:
                 memory: 512Mi
               limits:
                 memory: 6Gi
-                amd.com/gpu: 0
+                amd.com/gpu: 1
 
     service:
       app:

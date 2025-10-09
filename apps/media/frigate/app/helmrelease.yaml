@@ -36,7 +36,7 @@ spec:
               requests:
                 memory: 512Mi
               limits:
-                amd.com/gpu: 0
+                amd.com/gpu: 1
                 memory: 4Gi
             securityContext:
               privileged: true
