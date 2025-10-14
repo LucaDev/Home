@@ -102,7 +102,7 @@ spec:
           nginx:
             image:
               repository: nginxinc/nginx-unprivileged
-              tag: 1.29.2-alpine@sha256:b5bc5d387b68f37e43eb6d9c7faec95138ca68eae3484b9965d4419d8047eb20
+              tag: 1.29.2-alpine@sha256:7f264708d61b6601ea160505d029ed822b0b610aa5226e9dbc1a4ecdc0c5559f
 
     defaultPodOptions:
       securityContext:
