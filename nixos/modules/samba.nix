@@ -125,47 +125,12 @@
 
   services.avahi = {
     enable = true;
-    allowInterfaces = [ "enp1s0np0" ];
+    allowInterfaces = [ "enp1s0" ];
     publish = {
       enable = true;
       userServices = true;
     };
     ipv6 = true;
     openFirewall = true;
-  };
-
-  environment.etc."samba/smb-scanner-proxy.conf".text = ''
-    [global]
-      netbios name = scannerproxy
-      workgroup = WORKGROUP
-      server min protocol = NT1
-      interfaces = "vlanIOT"
-      bind interfaces only = yes
-      log level = 4
-      pid directory = /var/run/samba-scanner-proxy
-      load printers = no
-      printcap name = /dev/null
-      disable spoolss = yes
-      map to guest = Bad User
-
-    [paperless-ingest]
-      path = /tmp/paperless-ingest
-      guest ok = yes
-      writeable = yes
-      read only = no
-  '';
-
-  systemd.services.samba-scanner-proxy = {
-    description = "Samba scanner-proxy instance";
-    wantedBy = [ "multi-user.target" ];
-    wants = [ "network-online.target" ];
-    serviceConfig = {
-      ExecStart = "/run/current-system/sw/bin/smbd -s /etc/samba/smb-scanner-proxy.conf --foreground --no-process-group";
-      Restart = "on-failure";
-      LimitCORE = "infinity";
-      LimitNOFILE = "16384";
-      PIDFile = "/run/samba-scanner-proxy/smbd.pid";
-      Type = "notify";
-    };
   };
 }
