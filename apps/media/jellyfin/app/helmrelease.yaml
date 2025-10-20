@@ -41,7 +41,7 @@ spec:
         containers:
           app:
             image:
-              repository: jellyfin/jellyfin
+              repository: ghcr.io/jellyfin/jellyfin
               tag: "10.11.0"
             env:
               TZ: Europe/Berlin
