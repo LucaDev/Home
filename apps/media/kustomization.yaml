@@ -15,6 +15,5 @@ resources:
   - ./frigate/ks.yaml
   - ./ersatztv/ks.yaml
   - ./romm/ks.yaml
-  - ./paperless-ai/ks.yaml
   - ./kiwix/ks.yaml
   - ./chhoto-url/ks.yaml
