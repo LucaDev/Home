@@ -20,7 +20,7 @@ spec:
           exporter:
             image:
               repository: druggeri/nut_exporter
-              tag: 3.2.1
+              tag: 3.2.2
             env:
               NUT_EXPORTER_USERNAME: upsmon
               NUT_EXPORTER_SERVER: homeserver.home.lucadev.de
