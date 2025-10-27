@@ -34,10 +34,10 @@ spec:
             resources:
               requests:
                 cpu: 5m
-                memory: 10M
+                memory: 15M
               limits:
                 cpu: 100m
-                memory: 15M
+                memory: 50M
             env:
               site_url: "https://link.lucadev.de"
               redirect_method: "TEMPORARY"
