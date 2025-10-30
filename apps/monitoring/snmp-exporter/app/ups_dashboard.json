@@ -1502,7 +1502,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "APC UPS (SNMP)",
+  "title": "UPS (SNMP)",
   "uid": "FBsdas",
   "version": 2
 }
