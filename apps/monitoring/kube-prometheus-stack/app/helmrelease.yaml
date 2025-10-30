@@ -97,6 +97,7 @@ spec:
                   - router.home.lucadev.de
                   - SFP-Switch.home.lucadev.de
                   - POE-Switch.home.lucadev.de
+                  - 192.168.1.72
             metrics_path: /snmp
             params:
               auth:
