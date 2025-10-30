@@ -96,14 +96,55 @@ spec:
               - targets:
                   - router.home.lucadev.de
                   - SFP-Switch.home.lucadev.de
-                  - POE-Switch.home.lucadev.de
-                  - 192.168.1.72
             metrics_path: /snmp
             params:
               auth:
                 - public_v2
               module:
                 - if_mib
+                - mikrotik
+            relabel_configs:
+              - source_labels:
+                  - __address__
+                target_label: __param_target
+              - source_labels:
+                  - __param_target
+                target_label: instance
+              - target_label: __address__
+                replacement: "snmp-exporter-prometheus-snmp-exporter.monitoring.svc.cluster.local:9116"
+          - job_name: snmp-exporter
+            scrape_interval: 1m
+            scrape_timeout: 10s
+            static_configs:
+              - targets:
+                  - POE-Switch.home.lucadev.de
+            metrics_path: /snmp
+            params:
+              auth:
+                - public_v2
+              module:
+                - if_mib
+            relabel_configs:
+              - source_labels:
+                  - __address__
+                target_label: __param_target
+              - source_labels:
+                  - __param_target
+                target_label: instance
+              - target_label: __address__
+                replacement: "snmp-exporter-prometheus-snmp-exporter.monitoring.svc.cluster.local:9116"
+          - job_name: snmp-exporter
+            scrape_interval: 1m
+            scrape_timeout: 10s
+            static_configs:
+              - targets:
+                  - 192.168.1.72
+            metrics_path: /snmp
+            params:
+              auth:
+                - public_v2
+              module:
+                - ups_mic
             relabel_configs:
               - source_labels:
                   - __address__
