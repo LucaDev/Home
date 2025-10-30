@@ -144,7 +144,7 @@ spec:
               auth:
                 - public_v2
               module:
-                - ups_mic
+                - ups_mib
             relabel_configs:
               - source_labels:
                   - __address__
