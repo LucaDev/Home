@@ -24,7 +24,8 @@ spec:
     kind: OCIRepository
     name: snmp-exporter
   values:
-    extraArgs: "--config.file=/etc/snmp_exporter/snmp.yml"
+    extraArgs:
+      - "--config.file=/etc/snmp_exporter/snmp.yml"
     config: |-
       modules:
         ups_mib:
