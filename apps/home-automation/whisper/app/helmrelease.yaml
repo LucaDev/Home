@@ -31,7 +31,7 @@ spec:
           app:
             image:
               repository: rhasspy/wyoming-whisper
-              tag: 2.5.0
+              tag: 3.0.1
             args: ["--model", "small-int8", "--language", "de"]
             probes:
               liveness:
