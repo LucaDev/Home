@@ -77,7 +77,7 @@ spec:
       tls:
         certificateRefs:
           - kind: Secret
-            name: home-lucadev-de-wildcard-cert
+            name: lucadev-de-wildcard-cert
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/envoyproxy/gateway/refs/heads/main/charts/gateway-helm/crds/generated/gateway.envoyproxy.io_clienttrafficpolicies.yaml
 apiVersion: gateway.envoyproxy.io/v1alpha1

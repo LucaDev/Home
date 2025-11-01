@@ -8,3 +8,4 @@ resources:
   - ./configuration.yaml
   - ./backendTLSpolicy.yaml
   - ./volsync.yaml
+  - ./certificate.yaml

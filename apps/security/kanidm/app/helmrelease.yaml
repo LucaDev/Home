@@ -84,7 +84,7 @@ spec:
                 subPath: server.toml
       certs:
         type: secret
-        name: home-lucadev-de-wildcard-cert
+        name: idm-lucadev-de-cert
         globalMounts:
           - path: /data/certs/
 

@@ -1,0 +1,12 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: lucadev-de-wildcard
+spec:
+  secretName: lucadev-de-wildcard-cert
+  dnsNames:
+    - "*.lucadev.de"
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer

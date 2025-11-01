@@ -7,6 +7,8 @@ resources:
   - ./envoy.yaml
   - ./observability.yaml
   - ./backendTrafficPolicy.yaml
+  - ./home-lucadev-de.yaml
+  - ./lucadev-de.yaml
 configMapGenerator:
   - name: envoy-5xx-error
     files:
