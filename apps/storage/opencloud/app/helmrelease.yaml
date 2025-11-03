@@ -19,7 +19,7 @@ spec:
           app:
             image:
               repository: docker.io/opencloudeu/opencloud-rolling
-              tag: 3.6.0
+              tag: 3.7.0
             env:
               PROXY_CSP_CONFIG_FILE_LOCATION: /etc/opencloud/proxy/csp.yaml
               WEB_OIDC_SCOPE: "openid profile email groups"
