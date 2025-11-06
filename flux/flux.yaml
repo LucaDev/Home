@@ -92,6 +92,14 @@ spec:
       target:
         kind: Deployment
         name: source-controller
+    # Cache Secrets and ConfigMaps
+    - patch: |-
+        - op: add
+          path: /spec/template/spec/containers/0/args/-
+          value: --feature-gates=CacheSecretsAndConfigMaps=true
+      target:
+        kind: Deployment
+        name: source-controller
     # Enable Helm near OOM detection
     # https://fluxcd.io/flux/cheatsheets/bootstrap/#enable-helm-near-oom-detection
     - patch: |
