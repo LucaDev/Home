@@ -13,7 +13,6 @@ spec:
     name: github-repo
   dependsOn:
     - name: cert-manager
-    - name: cert-manager-issuers
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
