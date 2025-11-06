@@ -98,8 +98,7 @@
         "path" = "/tmp/paperless-ingest";
         "public" = "yes";
         "writeable" = "true";
-        "guest ok" = "yes";
-      };
+     };
 
       media = {
         "path" = "/mnt/data/hdd/single/media";

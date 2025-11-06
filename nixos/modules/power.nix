@@ -23,9 +23,9 @@
       passwordFile = config.sops.secrets.upsmon_password.path;
     };
     ups.rack = {
-      description = "Smart-UPS 750 RM";
-      port = "/dev/usb/hiddev0";
-      driver = "usbhid-ups";
+      description = "Eaton 5P 1550";
+      port = "192.168.1.72";
+      driver = "snmp-ups";
     };
     upsmon.monitor.rack = {
       powerValue = 1;
