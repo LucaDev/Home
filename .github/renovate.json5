@@ -38,9 +38,6 @@
   nix: {
     enabled: true,
   },
-  lockFileMaintenance: {
-    enabled: true,
-  },
   packageRules: [
     {
       description: ["Custom versioning for k3s"],
