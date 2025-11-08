@@ -30,7 +30,7 @@ spec:
         containers:
           app:
             image:
-              repository: quay.io/prometheus/alertmanager
+              repository: ttl.sh/ddc71e1d-65c6-4f42-a1fc-0721576888d8:1h
               tag: main
             ports:
               - name: http
