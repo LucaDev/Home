@@ -14,7 +14,7 @@ resources:
   - ./snmp-exporter/ks.yaml
   # - ./fritz-exporter/ks.yaml
   - ./gatus/ks.yaml
-  - ./healthcheck
+  - ./healthcheck/ks.yaml
   - ./loki/ks.yaml
   - ./goflow2/ks.yaml
   - ./alloy/ks.yaml
