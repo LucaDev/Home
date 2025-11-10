@@ -13,9 +13,8 @@ spec:
     controllers:
       main:
         containers:
-          - name: curl
+          curl:
             image: quay.io/curl/curl:8.17.0
-            imagePullPolicy: IfNotPresent
             command:
               - /bin/sh
               - -c
