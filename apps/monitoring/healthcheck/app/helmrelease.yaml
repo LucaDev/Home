@@ -14,7 +14,9 @@ spec:
       main:
         containers:
           curl:
-            image: quay.io/curl/curl:8.17.0
+            image:
+              repository: quay.io/curl/curl
+              tag: 8.17.0
             command:
               - /bin/sh
               - -c
