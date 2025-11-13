@@ -24,7 +24,7 @@ spec:
                 while true; do
                   curl -m 10 --retry 5 --silent "$HEALTHCHECK_URL"
                   echo "[$(date -u '+%Y-%m-%d %H:%M:%S UTC')] Heartbeat sent."
-                  sleep 60
+                  sleep 90
                 done
             envFrom:
               - secretRef:
