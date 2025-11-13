@@ -60,6 +60,15 @@ spec:
             resources:
               requests:
                 storage: 2G
+      template:
+        spec:
+          containers:
+            - name: mongod
+              resources:
+                requests:
+                  memory: 500Mi
+                limits:
+                  memory: 600Mi
   additionalMongodConfig:
     systemLog:
       quiet: true
