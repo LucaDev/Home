@@ -96,6 +96,10 @@ spec:
           gethomepage.dev/group: Weitere
           gethomepage.dev/icon: rustfs
           gethomepage.dev/name: RustFS
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: 9001
       s3:
         hostnames:
           - news3.lucadev.de
@@ -107,3 +111,7 @@ spec:
           gatus.home-operations.com/endpoint: |-
             conditions:
               - "[STATUS] == 403"
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: 9000
