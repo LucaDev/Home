@@ -80,7 +80,7 @@ spec:
       logs:
         type: emptyDir
         globalMounts:
-          - /logs
+          - path: /logs
 
     route:
       console:
