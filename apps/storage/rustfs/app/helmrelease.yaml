@@ -77,6 +77,10 @@ spec:
         storageClass: cached-dualreplica
         globalMounts:
           - path: /data
+      logs:
+        type: emptyDir
+        globalMounts:
+          - /logs
 
     route:
       console:
