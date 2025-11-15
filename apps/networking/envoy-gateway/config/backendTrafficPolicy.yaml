@@ -8,27 +8,13 @@ spec:
   compression:
     - type: Brotli
     - type: Gzip
+    - type: Zstd
   connection:
     bufferLimit: 64Mi
-  timeout:
-    http:
-      requestTimeout: 0s
   targetSelectors:
     - group: gateway.networking.k8s.io
       kind: Gateway
   tcpKeepalive: {}
-  #  responseOverride:
-  #    - match:
-  #        statusCodes:
-  #          - type: Range
-  #            range:
-  #              start: 500
-  #              end: 511
-  #      response:
-  #        contentType: text/html
-  #        body:
-  #          type: ValueRef
-  #          valueRef:
-  #            group: ""
-  #            kind: ConfigMap
-  #            name: envoy-5xx-error
+  timeout:
+    http:
+      requestTimeout: 0s
