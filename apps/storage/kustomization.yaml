@@ -10,3 +10,4 @@ resources:
   - ./minio/ks.yaml
   - ./opencloud/ks.yaml
   - ./forgejo/ks.yaml
+  - ./rustfs/ks.yaml
