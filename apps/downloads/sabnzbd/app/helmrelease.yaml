@@ -120,6 +120,3 @@ spec:
           gethomepage.dev/icon: sabnzbd
           gethomepage.dev/name: Sabnzbd
           gethomepage.dev/weight: "-100"
-          gethomepage.dev/widget.type: sabnzbd
-          gethomepage.dev/widget.url: "https://sabnzbd.lucadev.de"
-          gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_SABNZBD_APIKEY}}`}}"

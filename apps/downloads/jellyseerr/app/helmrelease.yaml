@@ -74,6 +74,3 @@ spec:
           gethomepage.dev/group: Medien
           gethomepage.dev/icon: jellyseerr
           gethomepage.dev/name: Jellyseerr
-          gethomepage.dev/widget.type: jellyseerr
-          gethomepage.dev/widget.url: https://jellyseerr.lucadev.de
-          gethomepage.dev/widget.key: "{{`{{HOMEPAGE_VAR_JELLYSEERR_APIKEY}}`}}"

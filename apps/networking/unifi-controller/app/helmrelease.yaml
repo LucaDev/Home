@@ -104,11 +104,6 @@ spec:
           gethomepage.dev/group: Netzwerk
           gethomepage.dev/icon: unifi
           gethomepage.dev/name: Unifi
-          gethomepage.dev/widget.type: "unifi"
-          gethomepage.dev/widget.url: "https://unifi.lucadev.de"
-          gethomepage.dev/widget.username: "monitoring"
-          gethomepage.dev/widget.password: "{{`{{HOMEPAGE_VAR_UNIFI_MONITORING_PASSWORD}}`}}"
-          gethomepage.dev/widget.fields: "[\"wlan_users\"]"
 
     persistence:
       cert:
