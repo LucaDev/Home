@@ -9,9 +9,6 @@ spec:
     kind: OCIRepository
     name: app-template-4
     namespace: flux-system
-  maxHistory: 2
-  uninstall:
-    keepHistory: false
   values:
     controllers:
       main:
@@ -26,9 +23,6 @@ spec:
             image:
               repository: ghcr.io/gethomepage/homepage
               tag: v1.7.0
-            envFrom:
-              - secretRef:
-                  name: homepage-secret
             env:
               HOMEPAGE_ALLOWED_HOSTS: &host "home.lucadev.de"
             resources:
