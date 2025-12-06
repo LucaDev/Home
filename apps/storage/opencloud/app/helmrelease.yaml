@@ -15,11 +15,26 @@ spec:
       opencloud:
         annotations:
           reloader.stakater.com/auto: "true"
+        initContainers:
+          init-config:
+            image:
+              repository: docker.io/opencloudeu/opencloud-rolling
+              tag: 4.0.0@sha256:1cbce735bfdde97d38422a52b92104dfd2fd320e2e3febc05314b00d6d115d7e
+            command:
+              - /bin/sh
+              - -c
+              - test -f /etc/opencloud/opencloud.yaml || opencloud init --insecure=true
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop:
+                  - ALL
         containers:
           app:
             image:
               repository: docker.io/opencloudeu/opencloud-rolling
-              tag: 4.0.0
+              tag: 4.0.0@sha256:1cbce735bfdde97d38422a52b92104dfd2fd320e2e3febc05314b00d6d115d7e
             env:
               PROXY_CSP_CONFIG_FILE_LOCATION: /etc/opencloud/proxy/csp.yaml
               WEB_OIDC_SCOPE: "openid profile email groups"
@@ -42,9 +57,8 @@ spec:
               # PosixFS collaborative mode
               STORAGE_USERS_POSIX_WATCH_FS: "true"
             command:
-              - "sh"
-              - "-c"
-              - "opencloud init || true; opencloud server"
+              - "opencloud"
+              - "server"
             probes:
               liveness: &probes
                 enabled: true
