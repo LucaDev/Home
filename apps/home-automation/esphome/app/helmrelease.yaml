@@ -67,7 +67,13 @@ spec:
         type: emptyDir
         globalMounts:
           - path: /config/.esphome
-
+      buildcache:
+        suffix: buildcache
+        size: 15Gi
+        accessMode: ReadWriteOnce
+        storageClass: cached-singlereplica
+        globalMounts:
+          - path: /cache
     route:
       app:
         hostnames:
