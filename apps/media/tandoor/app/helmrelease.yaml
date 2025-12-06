@@ -164,7 +164,7 @@ spec:
     route:
       nginx:
         hostnames:
-          - &host tandoor.lucadev.de
+          - tandoor.lucadev.de
         parentRefs:
           - name: envoy
             namespace: networking
