@@ -81,10 +81,6 @@ spec:
           - name: envoy
             namespace: networking
             sectionName: https
-        rules:
-          - backendRefs:
-              - name: app
-                port: 6052
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Geräte-Verwaltung
