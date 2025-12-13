@@ -9,7 +9,7 @@ spec:
   interval: 1h
   chartRef:
     kind: OCIRepository
-    name: app-template
+    name: app-template-4
     namespace: flux-system
 
   values:
@@ -68,7 +68,6 @@ spec:
         globalMounts:
           - path: /config/.esphome
       buildcache:
-        suffix: buildcache
         size: 15Gi
         accessMode: ReadWriteOnce
         storageClass: cached-singlereplica
