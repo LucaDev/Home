@@ -19,7 +19,7 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/alam00000/bentopdf
+              repository: ghcr.io/alam00000/bentopdf-simple
               tag: v1.11.2
             resources:
               requests:
