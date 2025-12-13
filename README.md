@@ -1,14 +1,17 @@
 # Home
+
 This repository contains the configuration files and scripts for my personal homelab setup.
 
 I use k3s as my lightweight Kubernetes distribution for running containerized applications. FluxCD is employed for continuous deployment and GitOps workflows, while Renovate Bot helps in automating dependency updates.
 
 ## Core Components
+
 1. k3s: Lightweight Kubernetes distribution optimized for edge and IoT devices.
 2. FluxCD: GitOps operator for Kubernetes.
 3. Renovate Bot: Automated dependency update tool.
 
 ## Current Applications
+
 ```
 > tree -d -L 2 apps/
 apps/
@@ -50,7 +53,7 @@ apps/
 │   ├── memos
 │   ├── paperless-ngx
 │   ├── chotto
-│   ├── stirling-pdf
+│   ├── bento-pdf
 │   └── tandoor
 ├── monitoring
 │   ├── alertmanager
@@ -84,10 +87,13 @@ apps/
     ├── snapshot
     └── volsync
 ```
+
 ## Contributing
+
 Contributions are welcome! If you have any suggestions, improvements, or fixes, feel free to open an issue or submit a pull request. Please bare in mind that my homelab is constanly changing and never close to what I'd call "production ready".
 
 ## License
+
 This project is licensed under the MIT License.
 
 ---
