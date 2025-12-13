@@ -13,7 +13,6 @@ resources:
   - ./tandoor/ks.yaml
   - ./mailbackup/ks.yaml
   - ./frigate/ks.yaml
-  - ./ersatztv/ks.yaml
   - ./romm/ks.yaml
   - ./kiwix/ks.yaml
   - ./chhoto-url/ks.yaml
