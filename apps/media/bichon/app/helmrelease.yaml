@@ -30,6 +30,7 @@ spec:
             env:
               BICHON_HTTP_PORT: &httpPort 8080
               BICHON_LOG_LEVEL: info
+              BICHON_JSON_LOGS: "true"
               BICHON_PUBLIC_URL: https://mailbackup.lucadev.de
               BICHON_ROOT_DIR: /data
             envFrom:
