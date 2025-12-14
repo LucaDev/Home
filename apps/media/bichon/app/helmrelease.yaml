@@ -78,4 +78,5 @@ spec:
           - mailbackup.lucadev.de
         parentRefs:
           - name: envoy
-            namespace: network
+            namespace: networking
+            sectionName: https
