@@ -16,3 +16,4 @@ resources:
   - ./romm/ks.yaml
   - ./kiwix/ks.yaml
   - ./chhoto-url/ks.yaml
+  - ./bichon/ks.yaml
