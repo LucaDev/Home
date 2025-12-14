@@ -44,8 +44,6 @@ apps/
 │   └── traefik
 ├── media
 │   ├── calibre-web
-│   ├── dawarich
-│   ├── ersatztv
 │   ├── frigate
 │   ├── immich
 │   ├── jellyfin
