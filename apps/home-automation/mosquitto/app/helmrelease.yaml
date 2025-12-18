@@ -44,9 +44,9 @@ spec:
             resources:
               requests:
                 cpu: 5m
-                memory: 10M
-              limits:
                 memory: 25M
+              limits:
+                memory: 50M
 
     service:
       app:
