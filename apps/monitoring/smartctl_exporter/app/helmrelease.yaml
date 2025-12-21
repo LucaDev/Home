@@ -24,3 +24,7 @@ spec:
     kind: OCIRepository
     name: smartctl-exporter
   values:
+    serviceMonitor:
+      enabled: true
+    prometheusRules:
+      enabled: true
