@@ -21,6 +21,7 @@ spec:
           default:
             - Include @recommended-conf
             # - SecRuleEngine On
+            - SecDebugLogLevel 2
             - Include @crs-setup-conf
             - Include @owasp_crs/*.conf
         default_directives: "default"
