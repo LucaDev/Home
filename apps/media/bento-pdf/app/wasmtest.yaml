@@ -17,13 +17,15 @@ spec:
         image:
           url: ghcr.io/corazawaf/coraza-proxy-wasm:0.6.0
       config: |-
+        "@type": "type.googleapis.com/google.protobuf.StringValue"
+        value: |
         {
-          "directives_map": {
-              "default": [
-                  "SecDebugLogLevel 9",
-                  "SecRuleEngine On",
-                  "SecRule REQUEST_URI \"@streq /admin\" \"id:101,phase:1,t:lowercase,deny\""
-              ]
-          },
-          "default_directives": "default"
+            "directives_map": {
+                "default": [
+                    "SecDebugLogLevel 9",
+                    "SecRuleEngine On",
+                    "SecRule REQUEST_URI \"@streq /admin\" \"id:101,phase:1,t:lowercase,deny\""
+                ]
+            },
+            "default_directives": "default"
         }
