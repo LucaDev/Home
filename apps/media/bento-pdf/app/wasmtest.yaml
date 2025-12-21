@@ -16,14 +16,14 @@ spec:
         type: Image
         image:
           url: ghcr.io/corazawaf/coraza-proxy-wasm:0.6.0
-        config: |-
-          {
-            "directives_map": {
-                "default": [
-                    "SecDebugLogLevel 9",
-                    "SecRuleEngine On",
-                    "SecRule REQUEST_URI \"@streq /admin\" \"id:101,phase:1,t:lowercase,deny\""
-                ]
-            },
-            "default_directives": "default"
-          }
+      config: |-
+        {
+          "directives_map": {
+              "default": [
+                  "SecDebugLogLevel 9",
+                  "SecRuleEngine On",
+                  "SecRule REQUEST_URI \"@streq /admin\" \"id:101,phase:1,t:lowercase,deny\""
+              ]
+          },
+          "default_directives": "default"
+        }
