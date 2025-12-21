@@ -19,7 +19,9 @@ spec:
       config:
         directives_map:
           default:
-            - "SecDebugLogLevel 9"
-            - "SecRuleEngine On"
-            - "SecRule REQUEST_URI \"@streq /admin\" \"id:101,phase:1,t:lowercase,deny\""
+            - Include @recommended-conf
+            - SecDebugLogLevel 9
+            - SecRuleEngine On
+            - Include @crs-setup-conf
+            - Include @owasp_crs/*.conf
         default_directives: "default"
