@@ -9,6 +9,7 @@ resources:
   - ./backendTrafficPolicy.yaml
   - ./home-lucadev-de.yaml
   - ./lucadev-de.yaml
+  - ./coraza.yaml
 configMapGenerator:
   - name: envoy-5xx-error
     files:
