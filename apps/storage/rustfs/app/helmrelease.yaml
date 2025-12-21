@@ -82,6 +82,10 @@ spec:
         storageClass: cached-dualreplica
         globalMounts:
           - path: /logs
+      scanner:
+        type: emptyDir
+        globalMounts:
+          - path: /tmp/rustfs_scanner
 
     route:
       console:
