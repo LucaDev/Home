@@ -2,12 +2,12 @@
 apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: EnvoyExtensionPolicy
 metadata:
-  name: coraza-test
+  name: coraza
 spec:
   targetRefs:
     - group: gateway.networking.k8s.io
-      kind: HTTPRoute
-      name: bento-pdf
+      kind: Gateway
+      name: envoy
   wasm:
     - name: coraza-filter
       rootID: ""
@@ -20,8 +20,7 @@ spec:
         directives_map:
           default:
             - Include @recommended-conf
-            - SecDebugLogLevel 9
-            - SecRuleEngine On
+            # - SecRuleEngine On
             - Include @crs-setup-conf
             - Include @owasp_crs/*.conf
         default_directives: "default"
