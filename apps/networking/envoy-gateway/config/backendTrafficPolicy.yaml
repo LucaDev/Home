@@ -10,7 +10,7 @@ spec:
     - type: Gzip
     - type: Zstd
   connection:
-    bufferLimit: 64Mi
+    bufferLimit: 256Mi
   targetSelectors:
     - group: gateway.networking.k8s.io
       kind: Gateway
