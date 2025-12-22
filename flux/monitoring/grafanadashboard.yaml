@@ -25,7 +25,7 @@ spec:
     matchLabels:
       grafana.internal/instance: grafana
   datasources:
-    - datasourceName: prometheus
+    - datasourceName: Prometheus
       inputName: DS_PROMETHEUS
   url: https://raw.githubusercontent.com/controlplaneio-fluxcd/flux-operator/refs/heads/main/config/monitoring/dashboards/flux-performance.json
 ---
@@ -40,7 +40,7 @@ spec:
     matchLabels:
       grafana.internal/instance: grafana
   datasources:
-    - datasourceName: prometheus
+    - datasourceName: Prometheus
       inputName: DS_PROMETHEUS
   url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/refs/heads/main/monitoring/configs/dashboards/cluster.json
 ---
@@ -55,6 +55,6 @@ spec:
     matchLabels:
       grafana.internal/instance: grafana
   datasources:
-    - datasourceName: prometheus
+    - datasourceName: Prometheus
       inputName: DS_PROMETHEUS
   url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/refs/heads/main/monitoring/configs/dashboards/control-plane.json
