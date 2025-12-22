@@ -5,14 +5,4 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - ./helmrelease.yaml
-configMapGenerator:
-  - name: ups-dashboard
-    files:
-      - ups_dashboard.json
-generatorOptions:
-  disableNameSuffixHash: true
-  annotations:
-    kustomize.toolkit.fluxcd.io/substitute: disabled
-  labels:
-    grafana_dashboard: "true"
-    grafana_folder: "Infra"
+  - ./grafanadashboard.yaml

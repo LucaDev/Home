@@ -8,3 +8,4 @@ resources:
   - ./prometheusrule.yaml
   - ./clusterissuers.yaml
   - ./external-secret.yaml
+  - ./grafanadashboard.yaml

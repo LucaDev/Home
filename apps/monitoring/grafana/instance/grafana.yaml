@@ -1,0 +1,91 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/grafana.integreatly.org/grafana_v1beta1.json
+apiVersion: grafana.integreatly.org/v1beta1
+kind: Grafana
+metadata:
+  name: grafana
+  labels:
+    grafana.internal/instance: grafana
+spec:
+  config:
+    explore:
+      enabled: "true"
+    analytics:
+      check_for_updates: "false"
+      check_for_plugin_updates: "false"
+      feedback_links_enabled: "false"
+      reporting_enabled: "false"
+    log:
+      mode: console
+      filters: tsdb.loki:warn
+    news:
+      news_feed_enabled: "false"
+    server:
+      root_url: https://grafana.lucadev.de
+    metrics:
+      enabled: "true"
+    plugins:
+      plugin_admin_enabled: "false"
+    auth:
+      oauth_auto_login: "true"
+      oauth_allow_insecure_email_lookup: "true"
+    auth.basic:
+      enabled: "true"
+    auth.generic_oauth:
+      enabled: "true"
+      name: kanidm
+      icon: signin
+      scopes: openid profile email groups
+      empty_scopes: "false"
+      login_attribute_path: preferred_username
+      groups_attribute_path: groups
+      name_attribute_path: name
+      use_pkce: "true"
+      client_id: grafana
+      # client_secret: # Set by env vars
+      auth_url: https://idm.lucadev.de/ui/oauth2
+      token_url: https://idm.lucadev.de/oauth2/token
+      api_url: https://idm.lucadev.de/oauth2/openid/grafana/userinfo
+    auth.generic_oauth.group_mapping:
+      org_id: "1"
+      role_attribute_path: |
+        contains(groups[*], '5a34f43b-6cdc-4881-993c-063c2e6329c3') && 'GrafanaAdmin' || 'Viewer'
+      allow_assign_grafana_admin: "true"
+    date_formats:
+      use_browser_locale: "true"
+    panels:
+      disable_sanitize_html: "true"
+    security:
+      allow_embedding: "true"
+      cookie_samesite: grafana
+
+  deployment:
+    spec:
+      strategy:
+        type: Recreate
+      template:
+        spec:
+          containers:
+            - name: grafana
+              envFrom:
+                - secretRef:
+                    name: grafana-secret
+
+  httpRoute:
+    metadata:
+      annotations:
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/description: Dashboards
+        gethomepage.dev/group: Überwachung
+        gethomepage.dev/icon: grafana
+        gethomepage.dev/name: Grafana
+    spec:
+      hostnames:
+        - grafana.lucadev.de
+      parentRefs:
+        - name: envoy
+          namespace: networking
+      rules:
+        - backendRefs:
+            - name: grafana-service
+              port: 3000

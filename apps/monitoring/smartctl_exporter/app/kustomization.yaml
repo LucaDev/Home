@@ -5,16 +5,6 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - ./helmrelease.yaml
+  - ./grafanadashboard.yaml
 components:
   - ../../../../components/netpol/ingress-prometheus
-configMapGenerator:
-  - name: smart-dashboard
-    files:
-      - dashboard.json
-generatorOptions:
-  disableNameSuffixHash: true
-  annotations:
-    kustomize.toolkit.fluxcd.io/substitute: disabled
-  labels:
-    grafana_dashboard: "true"
-    grafana_folder: "Infra"

@@ -10,6 +10,7 @@ resources:
   - ./home-lucadev-de.yaml
   - ./lucadev-de.yaml
   - ./coraza.yaml
+  - ./grafanadashboard.yaml
 configMapGenerator:
   - name: envoy-5xx-error
     files:
