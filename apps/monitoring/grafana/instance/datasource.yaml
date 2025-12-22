@@ -10,7 +10,7 @@ spec:
       grafana.internal/instance: grafana
   datasource:
     type: prometheus
-    name: Prometheus
+    name: prometheus
     access: proxy
     isDefault: true
     url: http://kube-prometheus-stack-prometheus.monitoring:9090
@@ -26,7 +26,7 @@ spec:
       grafana.internal/instance: grafana
   datasource:
     type: loki
-    name: Loki
+    name: loki
     access: proxy
     url: http://loki.monitoring.svc.cluster.local:3100
 ---
@@ -41,7 +41,7 @@ spec:
       grafana.internal/instance: grafana
   datasource:
     type: alertmanager
-    name: Alertmanager
+    name: alertmanager
     access: proxy
     url: http://alertmanager.monitoring.svc.cluster.local:9093
     jsonData:
@@ -58,7 +58,7 @@ spec:
       grafana.internal/instance: grafana
   datasource:
     type: fetzerch-sunandmoon-datasource
-    name: Sun
+    name: sun
     access: proxy
     jsonData:
       latitude: 52.1
