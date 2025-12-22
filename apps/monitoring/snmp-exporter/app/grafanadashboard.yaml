@@ -3,7 +3,7 @@
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
 metadata:
-  name: UPS
+  name: ups2
 spec:
   instanceSelector:
     matchLabels:
