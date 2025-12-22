@@ -28,3 +28,6 @@ spec:
     - datasourceName: prometheus
       inputName: DS_PROMETHEUS
   url: https://grafana.com/api/dashboards/11315/revisions/9/download
+  plugins:
+    - name: grafana-clock-panel
+      version: latest
