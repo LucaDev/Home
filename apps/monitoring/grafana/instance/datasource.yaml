@@ -34,7 +34,7 @@ spec:
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDatasource
 metadata:
-  name: loki
+  name: alertmanager
 spec:
   instanceSelector:
     matchLabels:
