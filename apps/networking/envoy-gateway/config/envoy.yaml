@@ -48,7 +48,7 @@ spec:
                         - name: attachment-shared
                           mountPath: /usr/lib/attachment
                     - name: openappsec-agent
-                      image: ghcr.io/openappsec/agent:1.1.29
+                      image: ghcr.io/openappsec/agent:1.1.32
                       imagePullPolicy: IfNotPresent
                       command:
                         - /cp-nano-agent
