@@ -12,7 +12,7 @@ resources:
   - ./coraza.yaml
   - ./grafanadashboard.yaml
   - ./externalsecret.yaml
-  - https://raw.githubusercontent.com/openappsec/openappsec/main/config/crds/open-appsec-crd-v1beta2.yaml
+  - ./openappseccrd.yaml
 configMapGenerator:
   - name: envoy-5xx-error
     files:
