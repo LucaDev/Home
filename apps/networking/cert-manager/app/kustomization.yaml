@@ -7,5 +7,5 @@ resources:
   - ./helmrelease.yaml
   - ./prometheusrule.yaml
   - ./clusterissuers.yaml
-  - ./external-secret.yaml
+  - ./externalsecret.yaml
   - ./grafanadashboard.yaml

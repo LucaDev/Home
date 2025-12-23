@@ -11,6 +11,8 @@ resources:
   - ./lucadev-de.yaml
   - ./coraza.yaml
   - ./grafanadashboard.yaml
+  - ./externalsecret.yaml
+  - https://raw.githubusercontent.com/openappsec/openappsec/main/config/crds/open-appsec-crd-v1beta2.yaml
 configMapGenerator:
   - name: envoy-5xx-error
     files:

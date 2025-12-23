@@ -15,11 +15,74 @@ spec:
         replicas: 1
         container:
           imageRepository: mirror.gcr.io/envoyproxy/envoy
+          image: envoyproxy/envoy:contrib-v1.34-latest
           resources:
             requests:
               cpu: 100m
             limits:
               memory: 2Gi
+        patch:
+          type: StrategicMerge
+          value:
+            spec:
+              template:
+                spec:
+                  initContainers:
+                    - name: envoy-attachments
+                      image: ghcr.io/openappsec/openappsec-envoy-filters:latest
+                      imagePullPolicy: Always
+                      command:
+                        - "/prepare_attachment.sh"
+                      env:
+                        - name: ENVOY_VERSION
+                          value: "1.34"
+                      volumeMounts:
+                        - name: attachment-shared
+                          mountPath: /envoy/attachment/shared
+                  containers:
+                    - name: envoy
+                      env:
+                        - name: LD_LIBRARY_PATH
+                          value: /usr/lib/attachment
+                      volumeMounts:
+                        - name: attachment-shared
+                          mountPath: /usr/lib/attachment
+                    - name: openappsec-agent
+                      image: ghcr.io/openappsec/agent:1.1.29
+                      imagePullPolicy: IfNotPresent
+                      command:
+                        - /cp-nano-agent
+                      envFrom:
+                        - secretRef:
+                            name: openappsec-secret
+                      env:
+                        - name: registered_server
+                          value: "Envoy Gateway"
+                      volumeMounts:
+                        - name: agent-config
+                          mountPath: /etc/cp/conf
+                        - name: agent-data
+                          mountPath: /etc/cp/data
+                        - name: agent-logs
+                          mountPath: /var/log/nano_agent
+                      resources:
+                        limits:
+                          cpu: 200m
+                          memory: 256Mi
+                        requests:
+                          cpu: 100m
+                          memory: 128Mi
+                      securityContext:
+                        runAsUser: 0
+                  volumes:
+                    - name: attachment-shared
+                      emptyDir: {}
+                    - name: agent-config
+                      emptyDir: {}
+                    - name: agent-data
+                      emptyDir: {}
+                    - name: agent-logs
+                      emptyDir: {}
       envoyService:
         externalTrafficPolicy: Local
         loadBalancerClass: "io.cilium/node"

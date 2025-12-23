@@ -1,0 +1,28 @@
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyPatchPolicy
+metadata:
+  name: insert-go-filter
+spec:
+  targetRef:
+    group: gateway.networking.k8s.io
+    kind: Gateway
+    name: envoy
+  type: JSONPatch
+  jsonPatches:
+    - type: type.googleapis.com/envoy.config.listener.v3.Listener
+      name: networking/envoy/http
+      operation:
+        op: add
+        path: "/default_filter_chain/filters/0/typed_config/http_filters/0"
+        value:
+          name: envoy.filters.http.golang
+          typed_config:
+            "@type": type.googleapis.com/envoy.extensions.filters.http.golang.v3alpha.Config
+            library_id: cp_nano_filter
+            plugin_name: cp_nano_filter
+            library_path: /usr/lib/attachment/libenvoy_attachment.so
+            plugin_config:
+              "@type": type.googleapis.com/xds.type.v3.TypedStruct
+              value:
+                prefix_localreply_body: "hello from go filter"
