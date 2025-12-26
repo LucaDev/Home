@@ -102,6 +102,14 @@ spec:
     prometheus:
       ingress:
         enabled: false
+      route:
+        main:
+          enabled: true
+          hostnames:
+            - prometheus.lucadev.de
+          parentRefs:
+            - name: envoy
+              namespace: networking
 
       prometheusSpec:
         version: v2.55.1 # override 'unsupported Prometheus version' error
@@ -206,14 +214,6 @@ spec:
                 target_label: instance
               - target_label: __address__
                 replacement: "snmp-exporter-prometheus-snmp-exporter.monitoring.svc.cluster.local:9116"
-      route:
-        main:
-          enabled: true
-          hostnames:
-            - prometheus.lucadev.de
-          parentRefs:
-            - name: envoy
-              namespace: networkings
 
         storageSpec:
           volumeClaimTemplate:
