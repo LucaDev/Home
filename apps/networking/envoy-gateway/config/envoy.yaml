@@ -64,16 +64,22 @@ spec:
                           mountPath: /etc/cp/data
                         - name: agent-logs
                           mountPath: /var/log/nano_agent
+                        - name: advanced-model
+                          mountPaht: /advanced-model/open-appsec-advanced-model.tgz
+                          subPath: open-appsec-advanced-model.tgz
                       resources:
                         limits:
-                          cpu: 300m
+                          cpu: 600m
                           memory: 512Mi
                         requests:
-                          cpu: 100m
+                          cpu: 200m
                           memory: 256Mi
                       securityContext:
                         runAsUser: 0
                   volumes:
+                    - name: advanced-model
+                      configMap:
+                        name: advanced-model-config
                     - name: attachment-shared
                       emptyDir: {}
                     - name: agent-config
