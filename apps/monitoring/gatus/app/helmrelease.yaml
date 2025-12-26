@@ -35,8 +35,9 @@ spec:
             env:
               TZ: Europe/Berlin
               GATUS_CONFIG_PATH: /config
-              GATUS_DELAY_START_SECONDS: 5
+              GATUS_DELAY_START_SECONDS: 15
               WEB_PORT: &port 80
+              GATUS_LOG_LEVEL: WARN
             envFrom:
               - secretRef:
                   name: gatus-secret
