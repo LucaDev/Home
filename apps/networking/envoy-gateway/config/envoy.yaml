@@ -70,10 +70,10 @@ spec:
                       resources:
                         limits:
                           cpu: 600m
-                          memory: 512Mi
+                          memory: 750Mi
                         requests:
                           cpu: 200m
-                          memory: 256Mi
+                          memory: 512Mi
                       securityContext:
                         runAsUser: 0
                   volumes:
