@@ -65,7 +65,7 @@ spec:
                         - name: agent-logs
                           mountPath: /var/log/nano_agent
                         - name: advanced-model
-                          mountPaht: /advanced-model/open-appsec-advanced-model.tgz
+                          mountPath: /advanced-model/open-appsec-advanced-model.tgz
                           subPath: open-appsec-advanced-model.tgz
                       resources:
                         limits:
