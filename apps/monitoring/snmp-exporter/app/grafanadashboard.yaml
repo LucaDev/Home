@@ -9,6 +9,9 @@ spec:
   instanceSelector:
     matchLabels:
       grafana.internal/instance: "grafana"
+  datasources:
+    - datasourceName: prometheus
+      inputName: DS_PROMETHEUS
   json: >-
     {
       "annotations": {
@@ -27,7 +30,7 @@ spec:
           }
         ]
       },
-      "description": "Displays monitoring data collected from APC uninterruptible power supplies via SNMP.",
+      "description": "Displays monitoring data collected from SNMP connected UPSes.",
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
@@ -37,7 +40,7 @@ spec:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -124,7 +127,7 @@ spec:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
               "expr": "upsBatteryStatus",
@@ -140,7 +143,7 @@ spec:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -207,7 +210,7 @@ spec:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
               "expr": "upsAlarmsPresent",
@@ -223,7 +226,7 @@ spec:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -290,7 +293,7 @@ spec:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
               "expr": "upsInputFrequency",
@@ -306,7 +309,7 @@ spec:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -376,7 +379,7 @@ spec:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
               "expr": "upsOutputPercentLoad",
@@ -395,7 +398,7 @@ spec:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -470,7 +473,7 @@ spec:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
               "expr": "upsTestResultsSummary",
@@ -486,7 +489,7 @@ spec:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -553,7 +556,7 @@ spec:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
               "expr": "upsTe",
@@ -569,7 +572,7 @@ spec:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -614,7 +617,7 @@ spec:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
               "expr": "upsEstimatedChargeRemaining",
@@ -630,7 +633,7 @@ spec:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -707,7 +710,7 @@ spec:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
               "expr": "upsSecondsOnBattery",
@@ -726,7 +729,7 @@ spec:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -795,7 +798,7 @@ spec:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
               "expr": "upsEstimatedMinutesRemaining * 100",
@@ -814,7 +817,7 @@ spec:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -905,7 +908,7 @@ spec:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
               "expr": "upsShutdownType",
@@ -934,7 +937,7 @@ spec:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -1019,7 +1022,7 @@ spec:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
               "expr": "upsBatteryVoltage",
@@ -1038,7 +1041,7 @@ spec:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -1124,7 +1127,7 @@ spec:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
               "expr": "upsOutputSource",
@@ -1153,7 +1156,7 @@ spec:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -1238,7 +1241,7 @@ spec:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
               "expr": "upsInputVoltage",
@@ -1253,7 +1256,7 @@ spec:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
               "expr": "upsOutputVoltage",
@@ -1269,7 +1272,7 @@ spec:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -1354,7 +1357,7 @@ spec:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "code",
               "expr": "upsInputCurrent",
@@ -1366,7 +1369,7 @@ spec:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "builder",
               "expr": "upsOutputCurrent",
@@ -1383,7 +1386,7 @@ spec:
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "fieldConfig": {
             "defaults": {
@@ -1474,7 +1477,7 @@ spec:
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DS_PROMETHEUS}"
               },
               "editorMode": "builder",
               "expr": "upsOutputFrequency",
@@ -1492,7 +1495,7 @@ spec:
       "preload": false,
       "refresh": "30s",
       "schemaVersion": 42,
-      "tags": ["APC", "apcupsd"],
+      "tags": ["UPS", "SNMP"],
       "templating": {
         "list": []
       },
