@@ -83,11 +83,11 @@
       separateMinorPatch: true,
     },
     {
-      "description": "keep mongo on 8.0.x"
-      "matchPackageNames": ["mongo"],
-      "matchDatasources": ["docker"],
-      "allowedVersions": "<8.1.0"
-    }
+      description: "keep mongo on 8.0.x",
+      matchPackageNames: ["mongo"],
+      matchDatasources: ["docker"],
+      allowedVersions: "<8.1.0",
+    },
   ],
   customManagers: [
     {
