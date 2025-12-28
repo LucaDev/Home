@@ -40,12 +40,6 @@
   },
   packageRules: [
     {
-      description: ["Custom versioning for k3s"],
-      matchDatasources: ["github-releases"],
-      versioning: "regex:^v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?<compatibility>\\+k3s)(?<build>\\d+)$",
-      matchPackageNames: ["/k3s/"],
-    },
-    {
       description: "Auto merge KPS minors and patches",
       matchDatasources: ["helm", "docker"],
       automerge: true,
@@ -88,6 +82,12 @@
       },
       separateMinorPatch: true,
     },
+    {
+      "description": "keep mongo on 8.0.x"
+      "matchPackageNames": ["mongo"],
+      "matchDatasources": ["docker"],
+      "allowedVersions": "<8.1.0"
+    }
   ],
   customManagers: [
     {
