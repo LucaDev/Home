@@ -63,3 +63,21 @@ spec:
     jsonData:
       latitude: 52.1
       longitude: 8.7
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/grafana.integreatly.org/grafanadatasource_v1beta1.json
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: victorialogs
+spec:
+  instanceSelector:
+    matchLabels:
+      grafana.internal/instance: grafana
+  datasource:
+    type: victoriametrics-logs-datasource
+    name: victorialogs
+    access: proxy
+    url: http://victorialogs-server.monitoring:9428
+  plugins:
+    - name: victoriametrics-logs-datasource
+      version: latest

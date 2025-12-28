@@ -171,6 +171,6 @@ loki.process "cluster_events" {
 
 loki.write "default" {
   endpoint {
-    url = "http://loki-headless.monitoring.svc.cluster.local:3100/loki/api/v1/push"
+    url = "http://vectorialogs-server.monitoring:9428/insert/loki/api/v1/push"
   }
 }
