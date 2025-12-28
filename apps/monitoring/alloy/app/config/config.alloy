@@ -171,6 +171,6 @@ loki.process "cluster_events" {
 
 loki.write "default" {
   endpoint {
-    url = "http://vectorialogs-server.monitoring:9428/insert/loki/api/v1/push"
+    url = "http://victorialogs-server.monitoring:9428/insert/loki/api/v1/push"
   }
 }
