@@ -6,7 +6,7 @@ metadata:
 spec:
   members: 1
   type: ReplicaSet
-  version: "8.0.15"
+  version: "8.0.17"
   featureCompatibilityVersion: "7.0"
   agent:
     logLevel: INFO
