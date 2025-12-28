@@ -1,0 +1,30 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: victorialogs
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: victorialogs
+  interval: 30m
+  values:
+    fullnameOverride: victorialogs
+    server:
+      persistentVolume:
+        enabled: true
+        storageClassName: ssd-singlereplica
+        size: 20Gi
+      retentionPeriod: 14d
+      route:
+        enabled: true
+        hostnames:
+          - victorialogs.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+      serviceMonitor:
+        enabled: true
+    dashboards:
+      enabled: true
