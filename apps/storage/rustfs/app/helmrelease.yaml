@@ -26,7 +26,7 @@ spec:
           app:
             image:
               repository: docker.io/rustfs/rustfs
-              tag: 1.0.0-alpha.76
+              tag: 1.0.0-alpha.78
             env:
               RUSTFS_CONSOLE_ENABLE: "true"
             envFrom:
