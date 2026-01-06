@@ -63,6 +63,7 @@
           authorizedKeys = [
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILjUx5YA3RwdM0xfXY7KMZb3N3BrK1tDyJ/qcQQvBWJE luca@Laptop-von-Luca.local"
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ1WsEPt50HcTjV5WY9g3NRlUVU7RH583ocFs+FzOK38 iPhone"
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINMK9lqvQVrZvcmA4cxAeQRK0PygmpnzU0b+wTNZnnoC luca@luca-thinclient"
           ];
           hostKeys = [
             "/etc/secrets/initrd/ssh_host_rsa_key"
@@ -77,7 +78,7 @@
       "init_on_alloc=0"
       "init_on_free=0"
       "mitigations=off"
-      "module_blacklist=r8169"
+      #"module_blacklist=r8169"
       "security=none"
     ];
 
@@ -134,6 +135,7 @@
     users."root".openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILjUx5YA3RwdM0xfXY7KMZb3N3BrK1tDyJ/qcQQvBWJE luca@Laptop-von-Luca.local"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ1WsEPt50HcTjV5WY9g3NRlUVU7RH583ocFs+FzOK38 iPhone"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINMK9lqvQVrZvcmA4cxAeQRK0PygmpnzU0b+wTNZnnoC luca@luca-thinclient"
     ];
   };
 

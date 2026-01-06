@@ -27,4 +27,9 @@
       "--nonroot-devices"
     ];
   };
+
+  systemd.services.k3s = {
+    requires = [ "mnt-data.mount" ];
+    after = [ "mnt-data.mount" ];
+  };
 }

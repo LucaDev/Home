@@ -43,8 +43,8 @@
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/6AA3-9507";
-      fsType = "vfat";
+      device  = "/dev/disk/by-uuid/6AA3-9507";
+      fsType  = "vfat";
       options = [
         "fmask=0022"
         "dmask=0022"
@@ -52,8 +52,9 @@
     };
 
     "/mnt/data" = {
-      device = "/dev/disk/by-uuid/58220e85-242c-4f31-ae73-a94b68c22094";
-      fsType = "bcachefs";
+      device  = "/dev/disk/by-uuid/58220e85-242c-4f31-ae73-a94b68c22094";
+      fsType  = "bcachefs";
+      options = [ "x-systemd.mount-timeout=0" ];
     };
   };
 

@@ -34,7 +34,7 @@
     settings = {
       global = {
         # Bind
-        "interfaces" = "enp1s0";
+        "interfaces" = "enp3s0";
         "bind interfaces only" = "yes";
         # General
         "workgroup" = "WORKGROUP";
@@ -118,13 +118,13 @@
   services.samba-wsdd = {
     enable = true;
     extraOptions = [ "--preserve-case" ];
-    interface = "enp1s0";
+    interface = "enp3s0";
     openFirewall = true;
   };
 
   services.avahi = {
     enable = true;
-    allowInterfaces = [ "enp1s0" ];
+    allowInterfaces = [ "enp3s0" ];
     publish = {
       enable = true;
       userServices = true;

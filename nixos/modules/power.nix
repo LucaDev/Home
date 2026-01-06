@@ -34,5 +34,13 @@
     };
   };
 
+  systemd.services."upsdrv" = {
+    serviceConfig = {
+      Restart = "on-failure";
+      RestartSec = "90s";
+    };
+  };
+
+
   powerManagement.powertop.enable = true;
 }
