@@ -11,8 +11,8 @@ resources:
   - ./lucadev-de.yaml
   - ./grafanadashboard.yaml
   - ./externalsecret.yaml
-  - ./openappseccrd.yaml
-  - ./openappsec.yaml
+  # - ./openappseccrd.yaml
+  # - ./openappsec.yaml
 configMapGenerator:
   - name: envoy-5xx-error
     files:
