@@ -54,6 +54,7 @@ spec:
               OC_INSECURE: "false"
               # Other settings
               OC_SHARING_PUBLIC_SHARE_MUST_HAVE_PASSWORD: "false"
+              FRONTEND_CHECK_FOR_UPDATES: "false"
               # PosixFS collaborative mode
               STORAGE_USERS_POSIX_WATCH_FS: "true"
             command:
