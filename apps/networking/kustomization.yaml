@@ -12,3 +12,4 @@ resources:
   - ./netbox/ks.yaml
   - ./wg-portal/ks.yaml
   - ./envoy-gateway/ks.yaml
+  - ./external-dns/ks.yaml

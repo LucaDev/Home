@@ -10,7 +10,6 @@ spec:
     kind: OCIRepository
     name: app-template
     namespace: flux-system
-
   values:
     controllers:
       romm:
@@ -30,6 +29,8 @@ spec:
                 cpu: 1000m
                 memory: 2048M
 
+        pod:
+          enableServiceLinks: false
         annotations:
           reloader.stakater.com/auto: "true"
 
