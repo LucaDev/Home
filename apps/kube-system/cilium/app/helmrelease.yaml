@@ -28,10 +28,10 @@ spec:
       mode: cluster-pool
       operator:
         clusterPoolIPv4PodCIDRList: "10.42.0.0/16"
-        #clusterPoolIPv6PodCIDRList: "2001:cafe:42::/104"
+        clusterPoolIPv6PodCIDRList: "fd00:cafe:42::/104"
 
     ipv6:
-      enabled: false
+      enabled: true
 
     bpf:
       masquerade: true
@@ -47,7 +47,7 @@ spec:
       enabled: true
 
     operator:
-      replicas: 1 # singlenode
+      replicas: 1 # single node
 
     hubble:
       enabled: false
