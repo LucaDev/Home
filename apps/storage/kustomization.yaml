@@ -6,7 +6,7 @@ resources:
   - ./configuration/ks.yaml
   - ./snapshot/ks.yaml
   - ./volsync/ks.yaml
-  - ./filebrowser/ks.yaml
+  # - ./filebrowser/ks.yaml
   - ./minio/ks.yaml
   - ./opencloud/ks.yaml
   - ./forgejo/ks.yaml
