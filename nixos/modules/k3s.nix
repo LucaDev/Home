@@ -22,9 +22,10 @@
       "--disable=servicelb"
       "--disable=traefik"
       "--tls-san homeserver.home.lucadev.de"
-      "--cluster-cidr=10.42.0.0/16,2001:cafe:42::/56"
-      "--service-cidr=10.43.0.0/16,2001:cafe:43::/112"
+      "--cluster-cidr=10.42.0.0/16,fd00:42::/56"
+      "--service-cidr=10.43.0.0/16,fd00:43::/112"
       "--nonroot-devices"
+      "--kube-controller-manager-arg=controllers=*,-node-ipam-controller"
     ];
   };
 

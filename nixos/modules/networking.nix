@@ -8,6 +8,8 @@
 {
   networking.firewall.enable = false;
 
+  networking.tempAddresses = "disabled";
+
   networking.useNetworkd = true;
 
   systemd.network = {
@@ -18,6 +20,7 @@
       networkConfig = {
         DHCP = "ipv4";
         IPv6AcceptRA = true;
+        IPv6PrivacyExtensions = false;
       };
       vlan = ["vlanIOT"];
     };

@@ -48,6 +48,7 @@
 
     kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = [ "bcachefs" ];
+    boot.bcachefs.package = pkgs-unstable.bcachefs-tools;
 
     initrd = {
       availableKernelModules = [
