@@ -9,6 +9,7 @@ spec:
     preferredChain: ""
     privateKeySecretRef:
       name: letsencrypt-production
+    profile: shortlived
     server: https://acme-v02.api.letsencrypt.org/directory
     solvers:
       - dns01:
@@ -30,6 +31,7 @@ spec:
     preferredChain: ""
     privateKeySecretRef:
       name: letsencrypt-staging
+    profile: shortlived
     server: https://acme-staging-v02.api.letsencrypt.org/directory
     solvers:
       - dns01:

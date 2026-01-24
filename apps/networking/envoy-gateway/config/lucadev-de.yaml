@@ -10,3 +10,10 @@ spec:
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
+  duration: 160h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+    rotationPolicy: Always
+  usages:
+    - digital signature

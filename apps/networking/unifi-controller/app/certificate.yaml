@@ -17,3 +17,10 @@ spec:
       create: true
       alias: unifi
       password: aircontrolenterprise
+  duration: 160h
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+    rotationPolicy: Always
+  usages:
+    - digital signature
