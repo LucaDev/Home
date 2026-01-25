@@ -44,7 +44,7 @@ kind: ReplicationSource
 metadata:
   name: bichon
 spec:
-  sourcePVC: nichon
+  sourcePVC: bichon
   trigger:
     schedule: "0 */12 * * *"
   restic:
