@@ -17,7 +17,7 @@ spec:
           app:
             image:
               repository: rommapp/romm
-              tag: 4.6.0-slim
+              tag: 4.6.1-slim
             envFrom:
               - secretRef:
                   name: romm-secret
