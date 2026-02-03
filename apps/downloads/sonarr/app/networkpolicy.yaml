@@ -25,6 +25,13 @@ spec:
       ports:
         - port: *port
           protocol: TCP
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: jellyfin
+      ports:
+        - port: *port
+          protocol: TCP
   egress:
     - to:
         - podSelector:
