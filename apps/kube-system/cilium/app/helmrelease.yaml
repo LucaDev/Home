@@ -35,7 +35,6 @@ spec:
 
     bpf:
       masquerade: true
-      tproxy: true
       datapathMode: netkit
       preallocateMaps: true
       distributedLRU:
