@@ -23,6 +23,8 @@ spec:
               tag: 0.0.13
             args:
               - --auto-httproute
+              - --enable-httproute
+              - --enable-service
             resources:
               requests:
                 cpu: 10m
