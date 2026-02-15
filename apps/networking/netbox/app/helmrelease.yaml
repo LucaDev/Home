@@ -55,7 +55,8 @@ spec:
     # dateTimeFormat: "N j, Y g:i a"
     # shortDateTimeFormat: ""Y-m-d H:i""
     enableLocalization: true
-    debug: true
+    livenessProbe:
+      enabled: false
     remoteAuth:
       backends:
         - "social_core.backends.open_id_connect.OpenIdConnectAuth"
