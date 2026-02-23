@@ -7,7 +7,7 @@ spec:
   members: 1
   type: ReplicaSet
   # renovate: datasource=docker depName=mongo
-  version: "8.0.19"
+  version: "8.2.5"
   featureCompatibilityVersion: "8.0"
   agent:
     logLevel: INFO
