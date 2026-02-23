@@ -19,7 +19,7 @@ spec:
           app:
             image:
               repository: docker.io/gtstef/filebrowser
-              tag: 1.2.6-beta
+              tag: 1.2.7-beta
             env:
               TZ: Europe/Berlin
             probes:
