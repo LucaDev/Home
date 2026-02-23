@@ -67,9 +67,9 @@ spec:
             - name: mongod
               resources:
                 requests:
-                  memory: 500Mi
+                  memory: 600Mi
                 limits:
-                  memory: 800Mi
+                  memory: 1024Mi
   additionalMongodConfig:
     systemLog:
       quiet: true
