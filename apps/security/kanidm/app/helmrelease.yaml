@@ -23,7 +23,7 @@ spec:
           app:
             image:
               repository: docker.io/kanidm/server
-              tag: 1.9.0
+              tag: 1.9.1
             resources:
               requests:
                 cpu: 50m
