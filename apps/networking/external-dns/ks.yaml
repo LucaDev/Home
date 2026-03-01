@@ -8,7 +8,7 @@ metadata:
 spec:
   interval: 1h
   path: "./apps/networking/external-dns/app"
-  prune: true
+  prune: false # TODO
   sourceRef:
     kind: GitRepository
     name: github-repo

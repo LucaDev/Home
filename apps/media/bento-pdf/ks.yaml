@@ -8,7 +8,7 @@ spec:
   interval: 1h
   path: "./apps/media/bento-pdf/app"
   targetNamespace: media
-  prune: true
+  prune: false # TODO
   sourceRef:
     kind: GitRepository
     name: github-repo

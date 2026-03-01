@@ -33,7 +33,7 @@ spec:
               DB_SQLITE_POOL_SIZE: 2
               N8N_PROXY_HOPS: 1
               N8N_RUNNERS_ENABLED: true
-              EXECUTIONS_DATA_PRUNE: true
+              EXECUTIONS_DATA_prune: false # TODO
               N8N_BLOCK_ENV_ACCESS_IN_NODE: false
               N8N_GIT_NODE_DISABLE_BARE_REPOS: true
               EXECUTIONS_DATA_MAX_AGE: 7

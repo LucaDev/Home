@@ -18,7 +18,7 @@ metadata:
 spec:
   interval: 1h
   path: ./
-  prune: true
+  prune: false # TODO
   wait: true
   sourceRef:
     kind: OCIRepository
@@ -148,7 +148,7 @@ metadata:
   namespace: flux-system
 spec:
   path: ./flux/webhook/
-  prune: true
+  prune: false # TODO
   sourceRef:
     kind: GitRepository
     name: github-repo
@@ -167,7 +167,7 @@ metadata:
   namespace: flux-system
 spec:
   path: ./flux/alerts/
-  prune: true
+  prune: false # TODO
   sourceRef:
     kind: GitRepository
     name: github-repo
@@ -186,7 +186,7 @@ metadata:
   namespace: flux-system
 spec:
   path: ./flux/monitoring/
-  prune: true
+  prune: false # TODO
   sourceRef:
     kind: GitRepository
     name: github-repo

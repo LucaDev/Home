@@ -13,7 +13,7 @@ spec:
   dependsOn:
     - name: external-secrets-stores
   path: ./apps/monitoring/gatus/app
-  prune: true
+  prune: false # TODO
   sourceRef:
     kind: GitRepository
     name: github-repo

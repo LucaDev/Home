@@ -18,7 +18,7 @@ metadata:
 spec:
   interval: 1h
   path: ./flux
-  prune: true
+  prune: false # TODO
   sourceRef:
     kind: GitRepository
     name: github-repo

@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 1h
   path: "./apps/networking/envoy-gateway/app"
-  prune: true
+  prune: false # TODO
   sourceRef:
     kind: GitRepository
     name: github-repo
@@ -22,7 +22,7 @@ metadata:
 spec:
   interval: 1h
   path: "./apps/networking/envoy-gateway/config"
-  prune: true
+  prune: false # TODO
   sourceRef:
     kind: GitRepository
     name: github-repo
