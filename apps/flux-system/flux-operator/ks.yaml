@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 1h
   path: "./apps/flux-system/flux-operator/app"
-  prune: true
+  prune: false # never prune!
   sourceRef:
     kind: GitRepository
     name: flux-system
