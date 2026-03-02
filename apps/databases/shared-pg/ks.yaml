@@ -10,7 +10,8 @@ spec:
   prune: false # TODO
   sourceRef:
     kind: GitRepository
-    name: github-repo
+    name: flux-system
+    namespace: flux-system
   wait: true
   dependsOn:
     - name: external-secrets-stores

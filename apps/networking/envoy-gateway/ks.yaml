@@ -10,7 +10,8 @@ spec:
   prune: false # TODO
   sourceRef:
     kind: GitRepository
-    name: github-repo
+    name: flux-system
+    namespace: flux-system
   dependsOn:
     - name: cert-manager
 ---
@@ -25,6 +26,7 @@ spec:
   prune: false # TODO
   sourceRef:
     kind: GitRepository
-    name: github-repo
+    name: flux-system
+    namespace: flux-system
   dependsOn:
     - name: envoy-gateway

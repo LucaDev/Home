@@ -10,7 +10,8 @@ spec:
   prune: false # TODO
   sourceRef:
     kind: GitRepository
-    name: github-repo
+    name: flux-system
+    namespace: flux-system
   wait: false # no flux ks dependents
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -24,7 +25,8 @@ spec:
   prune: false # TODO
   sourceRef:
     kind: GitRepository
-    name: github-repo
+    name: flux-system
+    namespace: flux-system
   wait: false # no flux ks dependents
   dependsOn:
     - name: external-secrets-stores

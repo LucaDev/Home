@@ -15,7 +15,8 @@ spec:
   prune: false # TODO
   sourceRef:
     kind: GitRepository
-    name: github-repo
+    name: flux-system
+    namespace: flux-system
   wait: false
   dependsOn:
     - name: volsync
