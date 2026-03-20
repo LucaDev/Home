@@ -12,14 +12,14 @@ spec:
     namespace: flux-system
   values:
     controllers:
-      jellyseerr:
+      seerr:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
           app:
             image:
-              repository: fallenbagel/jellyseerr
-              tag: preview-OIDC
+              repository: ghcr.io/seerr-team/seerr
+              tag: preview-new-oidc
               pullPolicy: Always
             env:
               TZ: Europe/Berlin
@@ -34,6 +34,13 @@ spec:
               capabilities:
                 drop:
                   - ALL
+              readOnlyRootFilesystem: false
+              runAsNonRoot: true
+              privileged: false
+              runAsUser: 1000
+              runAsGroup: 1000
+              seccompProfile:
+                type: RuntimeDefault
             probes:
               liveness:
                 enabled: true
@@ -46,7 +53,7 @@ spec:
                   periodSeconds: 5
     service:
       app:
-        controller: jellyseerr
+        controller: seerr
         ports:
           http:
             port: 5055
@@ -60,6 +67,7 @@ spec:
       app:
         hostnames:
           - jellyseerr.lucadev.de
+          - seerr.lucadev.de
         parentRefs:
           - name: envoy
             namespace: networking
@@ -72,5 +80,5 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Filme & Serien Anfragen
           gethomepage.dev/group: Medien
-          gethomepage.dev/icon: jellyseerr
-          gethomepage.dev/name: Jellyseerr
+          gethomepage.dev/icon: seerr
+          gethomepage.dev/name: Seerr
