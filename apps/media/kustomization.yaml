@@ -11,7 +11,6 @@ resources:
   - ./calibre-web/ks.yaml
   - ./memos/ks.yaml
   - ./tandoor/ks.yaml
-  - ./mailbackup/ks.yaml
   - ./frigate/ks.yaml
   - ./romm/ks.yaml
   - ./kiwix/ks.yaml
