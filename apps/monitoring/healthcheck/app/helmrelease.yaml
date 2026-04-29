@@ -16,7 +16,7 @@ spec:
           curl:
             image:
               repository: quay.io/curl/curl
-              tag: 8.19.0
+              tag: 8.20.0
             command:
               - /bin/sh
               - -c
