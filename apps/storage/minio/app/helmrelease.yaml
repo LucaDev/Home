@@ -19,7 +19,7 @@ spec:
           ping-kanidm:
             image:
               repository: busybox
-              tag: 1.37.0
+              tag: 1.38.0
             command:
               - "sh"
               - "-c"
