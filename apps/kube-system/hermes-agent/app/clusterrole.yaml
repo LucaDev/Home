@@ -1,0 +1,111 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: hermes-agent-readonly
+rules:
+  # Core resources — read-only
+  - apiGroups: [""]
+    resources:
+      - namespaces
+      - nodes
+      - pods
+      - services
+      - endpoints
+      - configmaps
+      - persistentvolumes
+      - persistentvolumeclaims
+      - events
+    verbs: ["get", "list", "watch"]
+
+  # Apps API
+  - apiGroups: ["apps"]
+    resources:
+      - deployments
+      - statefulsets
+      - daemonsets
+      - replicasets
+    verbs: ["get", "list", "watch"]
+
+  # Batch API
+  - apiGroups: ["batch"]
+    resources:
+      - jobs
+      - cronjobs
+    verbs: ["get", "list", "watch"]
+
+  # Networking
+  - apiGroups: ["networking.k8s.io"]
+    resources:
+      - ingresses
+      - networkpolicies
+    verbs: ["get", "list", "watch"]
+
+  # Autoscaling
+  - apiGroups: ["autoscaling"]
+    resources:
+      - horizontalpodautoscalers
+    verbs: ["get", "list", "watch"]
+
+  # Storage
+  - apiGroups: ["storage.k8s.io"]
+    resources:
+      - storageclasses
+      - volumeattachments
+    verbs: ["get", "list", "watch"]
+
+  # Flux CD
+  - apiGroups: ["kustomize.toolkit.fluxcd.io", "helm.toolkit.fluxcd.io", "source.toolkit.fluxcd.io", "notification.toolkit.fluxcd.io"]
+    resources:
+      - "*"
+    verbs: ["get", "list", "watch"]
+
+  # Cert-Manager
+  - apiGroups: ["cert-manager.io"]
+    resources:
+      - certificates
+      - issuers
+    verbs: ["get", "list", "watch"]
+
+  # Prometheus / Monitoring
+  - apiGroups: ["monitoring.coreos.com"]
+    resources:
+      - servicemonitors
+      - podmonitors
+      - prometheusrules
+      - alertmanagers
+    verbs: ["get", "list", "watch"]
+
+  # Cilium
+  - apiGroups: ["cilium.io"]
+    resources:
+      - ciliumnetworkpolicies
+      - ciliumendpoints
+      - ciliumidentities
+    verbs: ["get", "list", "watch"]
+
+  # Helm
+  - apiGroups: ["helm.cattle.io"]
+    resources:
+      - helmcharts
+    verbs: ["get", "list", "watch"]
+
+  # Events
+  - apiGroups: ["events.k8s.io"]
+    resources:
+      - events
+    verbs: ["get", "list", "watch"]
+
+  # Coordination (leases)
+  - apiGroups: ["coordination.k8s.io"]
+    resources:
+      - leases
+    verbs: ["get", "list", "watch"]
+
+  # Snapshots
+  - apiGroups: ["snapshot.storage.k8s.io"]
+    resources:
+      - volumesnapshots
+      - volumesnapshotclasses
+      - volumesnapshotcontents
+    verbs: ["get", "list", "watch"]

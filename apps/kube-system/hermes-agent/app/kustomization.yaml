@@ -2,8 +2,8 @@
 # yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: kube-system
 resources:
-  - ./hermes-agent/ks.yaml
-  - ./reloader/ks.yaml
-  - ./amd-k8s-plugin/ks.yaml
-  - ./cilium/ks.yaml
+  - ./serviceaccount.yaml
+  - ./clusterrole.yaml
+  - ./clusterrolebinding.yaml
