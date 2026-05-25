@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: hermes-agent
+  namespace: flux-system
+spec:
+  interval: 1h
+  path: "./apps/kube-system/hermes-agent/app"
+  prune: false # TODO
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  wait: false # no flux ks dependents
