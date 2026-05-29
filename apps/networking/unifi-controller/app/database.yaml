@@ -37,6 +37,8 @@ spec:
           db: unifi_stat
         - name: dbOwner
           db: unifi_audit
+        - name: dbOwner
+          db: unifi_restore
         - name: clusterMonitor
           db: admin
       scramCredentialsSecretName: mongodb-unifi-unifi-scram
