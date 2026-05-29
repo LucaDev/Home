@@ -37,7 +37,7 @@ spec:
           db: unifi_stat
         - name: dbOwner
           db: unifi_audit
-        - name: dbOwner
+        - name: dbAdmin
           db: unifi_restore
         - name: clusterMonitor
           db: admin
