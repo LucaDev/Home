@@ -10,7 +10,7 @@ metadata:
   name: kubeexposure-backend
 spec:
   hostnames:
-    - kubexposure.lucadev.de
+    - kubeexposure.lucadev.de
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway
