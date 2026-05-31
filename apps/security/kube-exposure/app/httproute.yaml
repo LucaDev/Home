@@ -23,7 +23,7 @@ spec:
           kind: Service
           name: kubeexposure-backend
           namespace: networking
-          port: 8080
+          port: 8000
           weight: 1
       matches:
         - path:
