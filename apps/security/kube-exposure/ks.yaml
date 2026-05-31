@@ -24,7 +24,7 @@ metadata:
   name: kube-exposure-forwarder
   namespace: flux-system
 spec:
-  path: ./apps/security/kube-exposure-forwarder/app
+  path: ./apps/security/kube-exposure/forwarder
   prune: true
   sourceRef:
     kind: GitRepository
