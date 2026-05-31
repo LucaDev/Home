@@ -21,7 +21,7 @@ spec:
     - backendRefs:
         - group: ""
           kind: Service
-          name: kubeexposure-backend
+          name: kube-exposure
           namespace: networking
           port: 8000
           weight: 1
