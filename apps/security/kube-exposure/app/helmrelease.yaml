@@ -16,3 +16,8 @@ spec:
     postgres:
       enabled: false
     existingSecret: kubeexposure-secret
+    externalDatabase:
+      host: "shared-pg-rw.databases.svc.cluster.local"
+      port: 5432
+      user: "kubeexposure"
+      db: "kubeexposure"
