@@ -2,9 +2,10 @@
 # yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: security
 resources:
-  - ./namespace.yaml
-  - ./kanidm/ks.yaml
-  - ./crowdsec/ks.yaml
-  - ./trivy-operator/ks.yaml
-  - ./kube-exposure/ks.yaml
+  - ./helmrelease.yaml
+  - ./ocirepository.yaml
+  - ./httproute.yaml
+  - ./securitypolicy.yaml
+  - ./externalsecret.yaml

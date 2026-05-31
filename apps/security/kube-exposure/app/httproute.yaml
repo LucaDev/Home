@@ -1,0 +1,31 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description: Trivy Overview auf Steroiden
+    gethomepage.dev/group: Sicherheit
+    gethomepage.dev/name: KubeExposure
+  name: kubeexposure-backend
+spec:
+  hostnames:
+    - kubexposure.lucadev.de
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: envoy
+      namespace: networking
+      sectionName: https
+  rules:
+    - backendRefs:
+        - group: ""
+          kind: Service
+          name: kubeexposure-backend
+          namespace: networking
+          port: 8080
+          weight: 1
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
