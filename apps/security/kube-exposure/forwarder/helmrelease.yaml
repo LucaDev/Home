@@ -1,0 +1,22 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kube-exposure-forwarder
+  namespace: security
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: kube-exposure-forwarder
+    namespace: security
+  values:
+    image:
+      repository: registry.gitlab.com/tobi-it/kubeexposure/kubeexposure-forwarder
+      tag: 0.6.0-rc1
+    backend:
+      url: "http://kube-exposure:8000"
+      existingSecret: "kubeexposure-forwarder-secret"
+
+    clusterId: "local"
