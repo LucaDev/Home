@@ -7,7 +7,7 @@ metadata:
     gethomepage.dev/description: Trivy Overview auf Steroiden
     gethomepage.dev/group: Sicherheit
     gethomepage.dev/name: KubeExposure
-  name: kubeexposure-backend
+  name: kubeexposure
 spec:
   hostnames:
     - kubeexposure.lucadev.de
@@ -22,7 +22,7 @@ spec:
         - group: ""
           kind: Service
           name: kube-exposure
-          namespace: networking
+          namespace: security
           port: 8000
           weight: 1
       matches:
