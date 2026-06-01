@@ -20,5 +20,5 @@ spec:
       authTokenSecretName: "kubeexposure-forwarder-secret"
     clusterId: "local"
     externalGatewayClasses:
-      - envoy:
-          weight: 10.0
+      envoy:
+        weight: 10.0
