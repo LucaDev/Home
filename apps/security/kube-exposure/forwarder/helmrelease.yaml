@@ -14,7 +14,7 @@ spec:
   values:
     image:
       repository: registry.gitlab.com/tobi-it/kubeexposure/kubeexposure-forwarder
-      tag: 0.6.0-rc1
+      tag: 0.6.0-rc4
     backend:
       url: "http://kube-exposure:8000"
       existingSecret: "kubeexposure-forwarder-secret"

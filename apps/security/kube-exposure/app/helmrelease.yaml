@@ -23,4 +23,4 @@ spec:
       db: "kubeexposure"
     image:
       repository: registry.gitlab.com/tobi-it/kubeexposure/kubeexposure-backend
-      tag: 0.6.0-rc1
+      tag: 0.6.0-rc4
