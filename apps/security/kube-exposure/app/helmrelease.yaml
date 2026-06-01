@@ -15,7 +15,11 @@ spec:
     replicaCount: 1
     postgres:
       enabled: false
-    existingSecret: kubeexposure-secret
+    externalDatabaseSecretName: kubeexposure-secret
+    jwtSecretName: kubeexposure-secret
+    encryptionSecretName: kubeexposure-secret
+    dragonflySecretName: kubeexposure-secret
+    postgresSecretName: kubeexposure-secret
     externalDatabase:
       host: "shared-pg-rw.databases.svc.cluster.local"
       port: 5432

@@ -17,6 +17,6 @@ spec:
       tag: 0.6.0-rc4
     backend:
       url: "http://kube-exposure:8000"
-      existingSecret: "kubeexposure-forwarder-secret"
+      authTokenSecretName: "kubeexposure-forwarder-secret"
 
     clusterId: "local"
