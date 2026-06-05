@@ -7,7 +7,7 @@ metadata:
   namespace: flux-system
 spec:
   path: ./apps/storage/snapshot/crd
-  prune: false # TODO
+  prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system

@@ -8,7 +8,7 @@ spec:
   interval: 1h
   path: "./apps/networking/kms/app"
   targetNamespace: networking
-  prune: false # TODO
+  prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
