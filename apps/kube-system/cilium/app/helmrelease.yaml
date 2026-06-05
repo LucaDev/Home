@@ -68,3 +68,6 @@ spec:
 
     pmtuDiscovery:
       enabled: true
+
+    dashboards:
+      enabled: true
