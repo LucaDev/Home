@@ -8,7 +8,6 @@ resources:
   - ./paperless-ngx/ks.yaml
   - ./immich/ks.yaml
   - ./bento-pdf/ks.yaml
-  - ./calibre-web/ks.yaml
   - ./memos/ks.yaml
   - ./tandoor/ks.yaml
   - ./frigate/ks.yaml
