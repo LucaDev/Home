@@ -43,6 +43,7 @@ apps/
 │   ├── system-upgrade-controller
 │   └── traefik
 ├── media
+│   ├── calibre-web
 │   ├── frigate
 │   ├── immich
 │   ├── jellyfin
