@@ -20,4 +20,3 @@ resources:
   - ./alloy/ks.yaml
   - ./geoip_updater/ks.yaml
   - ./victorialogs/ks.yaml
-  - ./dn42-monitoring/ks.yaml
