@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 1h
   path: "./apps/databases/shared-pg/cluster"
-  prune: false # TODO
+  prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
@@ -15,3 +15,4 @@ spec:
   wait: true
   dependsOn:
     - name: external-secrets-stores
+    - name: plugin-barman-cloud

@@ -6,5 +6,6 @@ resources:
   - ./namespace.yaml
   - ./redis/ks.yaml
   - ./cloudnative-pg # TODO
+  - ./barman-cloud-plugin/ks.yaml
   - ./shared-pg/ks.yaml
   - ./mck/ks.yaml

@@ -1,0 +1,23 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/barmancloud.cnpg.io/objectstore_v1.json
+apiVersion: barmancloud.cnpg.io/v1
+kind: ObjectStore
+metadata:
+  name: shared-pg-backup
+spec:
+  retentionPolicy: 30d
+  configuration:
+    destinationPath: s3://cnpg-backup/
+    endpointURL: http://rustfs.storage.svc.cluster.local:9000
+    data:
+      compression: bzip2
+    wal:
+      compression: bzip2
+      maxParallel: 8
+    s3Credentials:
+      accessKeyId:
+        name: cloudnative-pg-secret
+        key: s3-access-key-id
+      secretAccessKey:
+        name: cloudnative-pg-secret
+        key: s3-access-key-secret

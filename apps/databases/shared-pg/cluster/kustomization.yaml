@@ -8,3 +8,4 @@ resources:
   - ./prometheusrule.yaml
   - ./externalsecret.yaml
   - ./scheduledbackup.yaml
+  - ./objectstore.yaml
