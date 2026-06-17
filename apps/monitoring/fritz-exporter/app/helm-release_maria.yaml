@@ -22,7 +22,7 @@ spec:
           app:
             image:
               repository: pdreker/fritz_exporter
-              tag: "2"
+              tag: "3"
             envFrom:
               - secretRef:
                   name: fritz-maria-secret
