@@ -28,7 +28,7 @@ jobs:
         uses: fluxcd/flux2/action@v2.8.8
 
       - name: Diff resources
-        uses: allenporter/flux-local/action/diff@8.3.0
+        uses: allenporter/flux-local/action/diff@8.4.0
         id: diff
         with:
           path: "${{ matrix.path }}"
