@@ -16,6 +16,14 @@ spec:
         replicas: 1
         annotations:
           reloader.stakater.com/auto: "true"
+        pod:
+          automountServiceAccountToken: true
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
+            fsGroupChangePolicy: OnRootMismatch
         containers:
           gatus-sidecar:
             image:
@@ -65,17 +73,6 @@ spec:
                 cpu: 100m
               limits:
                 memory: 256Mi
-    defaultPodOptions:
-      dnsConfig:
-        options:
-          - {name: ndots, value: "1"}
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
-        fsGroupChangePolicy: OnRootMismatch
-        seccompProfile: {type: RuntimeDefault}
 
     service:
       app:
