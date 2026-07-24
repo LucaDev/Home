@@ -19,7 +19,7 @@ spec:
           app:
             image:
               repository: ghcr.io/paperless-ngx/paperless-ngx
-              tag: beta
+              tag: 3.0.2
               pullPolicy: Always
             envFrom:
               - secretRef:
