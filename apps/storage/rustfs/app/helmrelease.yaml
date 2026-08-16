@@ -109,6 +109,7 @@ spec:
       s3:
         hostnames:
           - news3.lucadev.de
+          - s3.lucadev.de
         parentRefs:
           - name: envoy
             namespace: networking
