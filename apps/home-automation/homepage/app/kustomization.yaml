@@ -7,3 +7,4 @@ resources:
   - ./helmrelease.yaml
   - ./securitypolicy.yaml
   - ./configmap.yaml
+  - ./external-secret.yaml

@@ -26,6 +26,13 @@ spec:
               tag: v2.0.0
             env:
               HOMEPAGE_ALLOWED_HOSTS: &host "home.lucadev.de"
+              HOMEPAGE_AUTH_ENABLED: "true"
+              HOMEPAGE_OIDC_ISSUER: "https://idm.lucadev.de/oauth2/openid/homepage/"
+              HOMEPAGE_OIDC_CLIENT_ID: "homepage"
+              HOMEPAGE_EXTERNAL_URL: "https://home.lucadev.de"
+            envFrom:
+              - secretRef:
+                  name: homepage-secret
             resources:
               requests:
                 memory: 10Mi
