@@ -45,6 +45,9 @@ spec:
                 drop:
                   - ALL
 
+    defaultPodOptions:
+      automountServiceAccountToken: true
+
     serviceAccount:
       homepage: {}
 
