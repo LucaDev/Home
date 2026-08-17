@@ -12,12 +12,15 @@ I use k3s as my lightweight Kubernetes distribution for running containerized ap
 
 ## Current Applications
 
+<!-- This block is generated from apps/ — do not edit by hand, run `task readme:generate` instead -->
+<!-- app-tree:start -->
 ```
 > tree -d -L 2 apps/
 apps/
 ├── databases
+│   ├── barman-cloud-plugin
 │   ├── cloudnative-pg
-│   ├── mongodb-operator
+│   ├── mck
 │   ├── redis
 │   └── shared-pg
 ├── downloads
@@ -26,64 +29,81 @@ apps/
 │   ├── radarr
 │   ├── sabnzbd
 │   └── sonarr
+├── flux-system
+│   ├── flux-instance
+│   ├── flux-operator
+│   └── konflate
 ├── home-automation
 │   ├── esphome
 │   ├── homeassistant
+│   ├── homeassistant-maria
 │   ├── homepage
-│   ├── maybe
 │   ├── mosquitto
-│   ├── nut
+│   ├── n8n
 │   ├── whisper
 │   └── zigbee2mqtt
 ├── kube-system
 │   ├── amd-k8s-plugin
 │   ├── cilium
-│   ├── node-feature-discovery
-│   ├── reloader
-│   ├── system-upgrade-controller
-│   └── traefik
+│   ├── hermes-agent
+│   └── reloader
 ├── media
+│   ├── bento-pdf
+│   ├── bichon
+│   ├── chhoto-url
 │   ├── frigate
 │   ├── immich
 │   ├── jellyfin
-│   ├── mailbackup
+│   ├── kiwix
 │   ├── memos
 │   ├── paperless-ngx
-│   ├── chotto
-│   ├── bento-pdf
+│   ├── romm
 │   └── tandoor
 ├── monitoring
 │   ├── alertmanager
+│   ├── alloy
 │   ├── blackbox-exporter
 │   ├── fritz-exporter
 │   ├── gatus
+│   ├── geoip_updater
+│   ├── goflow2
 │   ├── grafana
 │   ├── healthcheck
 │   ├── kube-prometheus-stack
+│   ├── loki
 │   ├── mqtt-exporter
 │   ├── smartctl_exporter
 │   ├── snmp-exporter
-│   └── unpoller
+│   ├── unpoller
+│   └── victorialogs
 ├── networking
 │   ├── cert-manager
+│   ├── envoy-gateway
+│   ├── external-dns
+│   ├── kms
+│   ├── netboot
+│   ├── netbox
 │   ├── openspeedtest
-│   └── unifi-controller
+│   ├── unifi-controller
+│   └── wg-portal
 ├── secrets
 │   ├── bitwarden-cli
-│   ├── external-secrets
-│   └── reflector
+│   └── external-secrets
 ├── security
 │   ├── crowdsec
 │   ├── kanidm
-│   └── oauth2-proxy
+│   ├── kube-exposure
+│   └── trivy-operator
 └── storage
-    ├── backup
     ├── configuration
     ├── filebrowser
-    ├── minio
+    ├── forgejo
+    ├── opencloud
+    ├── rustfs
     ├── snapshot
     └── volsync
 ```
+<!-- app-tree:end -->
 
 ## Contributing
 

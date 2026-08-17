@@ -45,3 +45,12 @@ repos:
     rev: v1.4.0
     hooks:
       - id: nixfmt
+
+  - repo: local
+    hooks:
+      - id: readme-app-tree
+        name: Check README.md app tree is up to date
+        entry: .taskfiles/_scripts/gen-readme-tree.sh --check
+        language: script
+        pass_filenames: false
+        files: ^(apps/.*|README\.md|\.taskfiles/_scripts/gen-readme-tree\.sh)$
