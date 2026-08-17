@@ -16,6 +16,7 @@ spec:
   wait: false # no flux ks dependents
   dependsOn:
     - name: external-secrets-stores
+    - name: shared-pg
   postBuild:
     substitute:
       APP: *appname

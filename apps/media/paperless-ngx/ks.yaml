@@ -17,6 +17,7 @@ spec:
   dependsOn:
     - name: redis
     - name: external-secrets-stores
+    - name: volsync
   postBuild:
     substitute:
       APP: *appname

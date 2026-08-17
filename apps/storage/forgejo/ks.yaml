@@ -18,6 +18,8 @@ spec:
   timeout: 5m
   dependsOn:
     - name: external-secrets-stores
+    - name: shared-pg
+    - name: redis
   postBuild:
     substitute:
       APP: *appname
