@@ -5,7 +5,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./redis/ks.yaml
-  - ./cloudnative-pg # TODO
+  - ./cloudnative-pg/ks.yaml
   - ./barman-cloud-plugin/ks.yaml
   - ./shared-pg/ks.yaml
   - ./mck/ks.yaml
