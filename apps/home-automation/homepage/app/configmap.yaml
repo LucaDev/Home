@@ -59,10 +59,6 @@ data:
             ping: http://router.home.lucadev.de
             icon: mikrotik
             description: Verwaltungsoberfläche des Routers
-        - Crowdsec:
-            href: https://app.crowdsec.net
-            icon: crowdsec
-            description: Sicherheitsplattform
   settings.yaml: |
     background:
       image: https://raw.githubusercontent.com/gethomepage/homepage/main/docs/assets/blossom_valley.jpg
