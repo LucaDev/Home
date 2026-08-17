@@ -9,5 +9,5 @@ resources:
   - ./securitypolicy.yaml
 components:
   - ../../../../components/volsync/hetzner
-  - ../../../../components/netpol/dns-traefik
+  - ../../../../components/netpol/dns-envoy
   - ../../../../components/netpol/egress-internet
