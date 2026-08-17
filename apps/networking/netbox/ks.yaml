@@ -20,3 +20,5 @@ spec:
       VOLSYNC_CLAIM: netbox-media
   dependsOn:
     - name: external-secrets-stores
+    - name: shared-pg
+    - name: redis

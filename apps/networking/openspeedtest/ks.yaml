@@ -16,6 +16,7 @@ spec:
   wait: false # no flux ks dependents
   dependsOn:
     - name: envoy-gateway
+    - name: external-secrets-stores
   postBuild:
     substitute:
       APP: *appname

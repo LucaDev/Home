@@ -32,3 +32,4 @@ spec:
     namespace: flux-system
   dependsOn:
     - name: envoy-gateway
+    - name: external-secrets-stores

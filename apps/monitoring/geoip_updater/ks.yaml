@@ -14,3 +14,5 @@ spec:
     name: flux-system
     namespace: flux-system
   wait: false # no flux ks dependents
+  dependsOn:
+    - name: external-secrets-stores

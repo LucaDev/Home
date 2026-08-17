@@ -18,6 +18,9 @@ spec:
     name: flux-system
     namespace: flux-system
   wait: false
+  dependsOn:
+    - name: volsync
+    - name: external-secrets-stores
   postBuild:
     substitute:
       APP: *appname
