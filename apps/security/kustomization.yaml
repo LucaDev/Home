@@ -5,5 +5,3 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./kanidm/ks.yaml
-  #- ./trivy-operator/ks.yaml
-  #- ./kube-exposure/ks.yaml
