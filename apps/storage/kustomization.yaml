@@ -7,7 +7,6 @@ resources:
   - ./configuration/ks.yaml
   - ./snapshot/ks.yaml
   - ./volsync/ks.yaml
-  # - ./filebrowser/ks.yaml
   - ./opencloud/ks.yaml
   - ./forgejo/ks.yaml
   - ./rustfs/ks.yaml

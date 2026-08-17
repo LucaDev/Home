@@ -43,7 +43,7 @@ spec:
       - --default-targets=homeserver.lucadev.de
     podAnnotations:
       secret.reloader.stakater.com/reload: externaldns-secrets
-    policy: upsert-only # change to sync at some point
+    policy: sync
     provider:
       name: cloudflare
     resources:
