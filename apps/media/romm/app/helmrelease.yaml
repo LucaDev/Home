@@ -69,6 +69,14 @@ spec:
             app:
               - path: /etc/nginx/nginx.conf
                 subPath: nginx.conf
+      config:
+        type: secret
+        name: romm-config-secret
+        advancedMounts:
+          romm:
+            app:
+              - path: /romm/config/config.yml
+                subPath: config.yml
 
     route:
       app:
