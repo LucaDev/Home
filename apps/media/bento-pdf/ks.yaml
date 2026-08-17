@@ -9,7 +9,7 @@ spec:
   interval: 1h
   path: "./apps/media/bento-pdf/app"
   targetNamespace: media
-  prune: false # TODO
+  prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
