@@ -20,3 +20,7 @@ tasks:
     silent: true
     cmds:
       - task -l
+
+  readme:generate:
+    desc: Regenerate the app tree in README.md from apps/
+    cmd: .taskfiles/_scripts/gen-readme-tree.sh
