@@ -19,3 +19,6 @@ spec:
   postBuild:
     substitute:
       APP: *appname
+      VOLSYNC_CLAIM: n8n-data
+      APP_UID: "1000"
+      APP_GID: "1000"
