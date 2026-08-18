@@ -7,3 +7,5 @@ resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
   - ./securitypolicy.yaml
+components:
+  - ../../../../components/volsync/hetzner_ext
