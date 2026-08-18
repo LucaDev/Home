@@ -5,3 +5,5 @@ kind: Kustomization
 namespace: storage
 resources:
   - ./helmrelease.yaml
+components:
+  - ../../../../components/volsync/hetzner_ext
