@@ -22,3 +22,6 @@ spec:
   postBuild:
     substitute:
       APP: *appname
+      VOLSYNC_CLAIM: rustfs-data
+      APP_UID: "10001"
+      APP_GID: "10001"
