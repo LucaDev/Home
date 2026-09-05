@@ -1,0 +1,24 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: Kanidm
+metadata:
+  name: kanidm
+spec:
+  domain: idm.lucadev.de
+  image: kanidm/server:1.11.1
+  replicaGroups:
+    - name: default
+      replicas: 1
+      primaryNode: true
+  storage:
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        storageClassName: ssd-dualreplica
+        resources:
+          requests:
+            storage: 1Gi
+  tlsSecretName: idm-lucadev-de-cert
+  ldapPortName: ldaps
+  oauth2ClientNamespaceSelector: {}

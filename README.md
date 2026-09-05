@@ -90,6 +90,7 @@ apps/
 │   └── external-secrets
 ├── security
 │   ├── kanidm
+│   ├── kaniop
 │   ├── kube-exposure
 │   └── trivy-operator
 └── storage

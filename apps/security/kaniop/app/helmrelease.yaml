@@ -1,0 +1,24 @@
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kaniop
+  namespace: security
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: kaniop
+  values:
+    replicas: 1
+    leaderElection:
+      enabled: false
+    webhook:
+      enabled: true
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+      prometheusRules:
+        enabled: true

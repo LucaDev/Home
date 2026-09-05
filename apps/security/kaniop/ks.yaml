@@ -3,24 +3,14 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &appname kanidm
+  name: kaniop
   namespace: flux-system
 spec:
-  path: ./apps/security/kanidm/app
+  interval: 1h
+  path: "./apps/security/kaniop/app"
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  wait: false
-  interval: 1h
-  retryInterval: 1m
-  timeout: 5m
-  dependsOn:
-    - name: envoy-gateway
-    - name: external-secrets-stores
-    - name: volsync
-    - name: kaniop
-  postBuild:
-    substitute:
-      APP: *appname
+  wait: true
