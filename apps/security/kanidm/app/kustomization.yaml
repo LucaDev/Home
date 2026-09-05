@@ -9,3 +9,4 @@ resources:
   - ./backendTLSpolicy.yaml
   - ./volsync.yaml
   - ./certificate.yaml
+  - ./kanidm.yaml
