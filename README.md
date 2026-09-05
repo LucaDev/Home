@@ -63,7 +63,6 @@ apps/
 │   ├── alertmanager
 │   ├── alloy
 │   ├── blackbox-exporter
-│   ├── fritz-exporter
 │   ├── gatus
 │   ├── geoip_updater
 │   ├── goflow2
@@ -90,13 +89,11 @@ apps/
 │   ├── bitwarden-cli
 │   └── external-secrets
 ├── security
-│   ├── crowdsec
 │   ├── kanidm
 │   ├── kube-exposure
 │   └── trivy-operator
 └── storage
     ├── configuration
-    ├── filebrowser
     ├── forgejo
     ├── opencloud
     ├── rustfs

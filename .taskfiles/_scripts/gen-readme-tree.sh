@@ -22,7 +22,7 @@ generate_block() {
   echo "apps/"
 
   local top_dirs top_total top_i=0
-  top_dirs="$(find "${APPS_DIR}" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort)"
+  top_dirs="$(find "${APPS_DIR}" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort)"
   top_total="$(printf '%s\n' "${top_dirs}" | sed '/^$/d' | wc -l)"
 
   while IFS= read -r top; do
@@ -36,7 +36,7 @@ generate_block() {
     echo "${top_prefix}${top}"
 
     local subs sub_total sub_i=0
-    subs="$(find "${APPS_DIR}/${top}" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort)"
+    subs="$(find "${APPS_DIR}/${top}" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort)"
     sub_total="$(printf '%s\n' "${subs}" | sed '/^$/d' | wc -l)"
     while IFS= read -r sub; do
       [[ -z "${sub}" ]] && continue
@@ -54,8 +54,11 @@ generate_block() {
 
 new_block="$(generate_block)"
 
-new_readme="$(awk -v start="${START_MARKER}" -v end="${END_MARKER}" -v block="${new_block}" '
-  $0 == start { print; print block; skip=1; next }
+# The tree block spans multiple lines; passed via -v it would need shell/awk
+# escaping that differs between GNU and BSD awk. Passing it through the
+# environment instead (read via ENVIRON) sidesteps that entirely.
+new_readme="$(APP_TREE_BLOCK="${new_block}" awk -v start="${START_MARKER}" -v end="${END_MARKER}" '
+  $0 == start { print; print ENVIRON["APP_TREE_BLOCK"]; skip=1; next }
   $0 == end { skip=0 }
   skip { next }
   { print }
