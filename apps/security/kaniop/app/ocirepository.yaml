@@ -4,6 +4,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
   name: kaniop
+  namespace: security
 spec:
   interval: 30m
   layerSelector:

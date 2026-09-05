@@ -3,6 +3,7 @@ apiVersion: kaniop.rs/v1beta1
 kind: Kanidm
 metadata:
   name: kanidm
+  namespace: security
 spec:
   domain: idm.lucadev.de
   image: kanidm/server:1.11.1
