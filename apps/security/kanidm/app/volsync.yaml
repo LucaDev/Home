@@ -44,7 +44,7 @@ kind: ReplicationSource
 metadata:
   name: kanidm
 spec:
-  sourcePVC: kanidm-data
+  sourcePVC: kanidm-data-kanidm-default-0
   trigger:
     schedule: "0 */12 * * *"
   restic:

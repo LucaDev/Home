@@ -23,3 +23,18 @@ spec:
   tlsSecretName: idm-lucadev-de-cert
   ldapPortName: ldaps
   oauth2ClientNamespaceSelector: {}
+  gateway:
+    parentRefs:
+      - name: envoy
+        namespace: networking
+        sectionName: https
+    backendTlsPolicy:
+      validation:
+        wellKnownCaCertificates: System
+        hostname: idm.lucadev.de
+    annotations:
+      gethomepage.dev/enabled: "true"
+      gethomepage.dev/description: Zentrale Nutzerverwaltung
+      gethomepage.dev/group: Weitere
+      gethomepage.dev/icon: mdi-account-lock
+      gethomepage.dev/name: kanidm
