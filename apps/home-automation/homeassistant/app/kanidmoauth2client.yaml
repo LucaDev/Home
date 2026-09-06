@@ -1,0 +1,21 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: homeassistant
+spec:
+  kanidmRef:
+    name: kanidm
+    namespace: security
+  displayname: "HomeAssistant"
+  origin: "https://ha.lucadev.de/"
+  redirectUrl:
+    - "https://ha.lucadev.de/auth/oidc/callback"
+  scopeMap:
+    - group: admins
+      scopes: [email, groups, openid, profile]
+    - group: home_baeckers
+      scopes: [email, groups, openid, profile]
+  preferShortUsername: true
+  jwtLegacyCryptoEnable: true
+  disableConsentPrompt: true

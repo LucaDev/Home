@@ -1,0 +1,19 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: paperless
+spec:
+  kanidmRef:
+    name: kanidm
+    namespace: security
+  displayname: "Paperless"
+  origin: "https://paperless.lucadev.de/accounts/oidc/kanidm/login/callback/"
+  public: true
+  redirectUrl:
+    - "https://paperparrot.me/oidc-callback"
+    - "paperparrot://oidc-callback"
+  scopeMap:
+    - group: admins
+      scopes: [email, groups, openid, profile]
+  preferShortUsername: true

@@ -7,3 +7,4 @@ resources:
   - ./helmrelease.yaml
   - ./volsync.yaml
   - ./external-secret.yaml
+  - ./kanidmoauth2client.yaml

@@ -1,0 +1,19 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: homepage
+spec:
+  kanidmRef:
+    name: kanidm
+    namespace: security
+  displayname: "Homepage"
+  origin: "https://home.lucadev.de/"
+  redirectUrl:
+    - "https://home.lucadev.de/api/auth"
+    - "https://home.lucadev.de/api/auth/callback/homepage-oidc"
+  scopeMap:
+    - group: idm_all_accounts
+      scopes: [email, openid, profile]
+  jwtLegacyCryptoEnable: true
+  disableConsentPrompt: true

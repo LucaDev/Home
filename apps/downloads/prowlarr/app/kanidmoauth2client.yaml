@@ -1,0 +1,17 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: prowlarr
+spec:
+  kanidmRef:
+    name: kanidm
+    namespace: security
+  displayname: "Prowlarr"
+  origin: "https://prowlarr.lucadev.de/"
+  redirectUrl:
+    - "https://prowlarr.lucadev.de/oidc/callback"
+  scopeMap:
+    - group: admins
+      scopes: [email, groups, openid, profile]
+  disableConsentPrompt: true

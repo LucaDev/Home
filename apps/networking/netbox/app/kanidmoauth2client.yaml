@@ -1,0 +1,22 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: netbox
+spec:
+  kanidmRef:
+    name: kanidm
+    namespace: security
+  displayname: "Netbox"
+  origin: "https://netbox.lucadev.de/"
+  redirectUrl:
+    - "https://netbox.lucadev.de/oauth/complete/oidc/"
+  scopeMap:
+    - group: idm_all_persons
+      scopes: [email, groups, openid, profile]
+    - group: admins
+      scopes: [email, groups, openid, profile]
+  preferShortUsername: true
+  jwtLegacyCryptoEnable: true
+  disableConsentPrompt: true
+  allowInsecureClientDisablePkce: true

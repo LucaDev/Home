@@ -9,6 +9,7 @@ resources:
   - ./server
   - ./machine-learning
   - ./volsync.yaml
+  - ./kanidmoauth2client.yaml
 components:
 labels:
   - pairs:

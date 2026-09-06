@@ -1,0 +1,19 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: rustfs
+spec:
+  kanidmRef:
+    name: kanidm
+    namespace: security
+  displayname: "rustfs"
+  origin: "https://rustfs.lucadev.de/"
+  redirectUrl:
+    - "https://rustfs.lucadev.de/rustfs/admin/vs/oidc/callback/default"
+    - "https://rustfs.lucadev.de/rustfs/admin/v3/oidc/callback/default"
+  scopeMap:
+    - group: admins
+      scopes: [email, groups, openid, profile]
+  preferShortUsername: true
+  disableConsentPrompt: true

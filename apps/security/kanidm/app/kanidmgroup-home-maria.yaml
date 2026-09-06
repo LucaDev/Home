@@ -1,0 +1,9 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmGroup
+metadata:
+  name: home-maria
+spec:
+  kanidmRef:
+    name: kanidm
+  kanidmName: home_maria

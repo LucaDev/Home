@@ -1,0 +1,17 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: opencloudios
+spec:
+  kanidmRef:
+    name: kanidm
+    namespace: security
+  displayname: "OpenCloudIOS"
+  origin: "oc://ios.opencloud.eu"
+  public: true
+  redirectUrl: []
+  scopeMap:
+    - group: file_users
+      scopes: [email, groups, offline_access, openid, profile]
+  preferShortUsername: true

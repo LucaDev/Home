@@ -1,0 +1,9 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmGroup
+metadata:
+  name: service-users
+spec:
+  kanidmRef:
+    name: kanidm
+  kanidmName: service_users

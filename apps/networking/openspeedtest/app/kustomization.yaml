@@ -8,3 +8,4 @@ resources:
   - ./openspeedtest-middleware.yaml
   - ./externalsecret.yaml
   - ./securitypolicy.yaml
+  - ./kanidmoauth2client.yaml

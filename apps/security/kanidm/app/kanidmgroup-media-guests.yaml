@@ -1,0 +1,9 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmGroup
+metadata:
+  name: media-guests
+spec:
+  kanidmRef:
+    name: kanidm
+  kanidmName: media_guests

@@ -8,3 +8,4 @@ resources:
   - ./securitypolicy.yaml
   - ./configmap.yaml
   - ./external-secret.yaml
+  - ./kanidmoauth2client.yaml

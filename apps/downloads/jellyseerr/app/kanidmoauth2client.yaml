@@ -1,0 +1,24 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: jellyseerr
+spec:
+  kanidmRef:
+    name: kanidm
+    namespace: security
+  displayname: "Jellyseerr"
+  origin: "https://seerr.lucadev.de/"
+  redirectUrl:
+    - "https://jellyseerr.lucadev.de/login"
+    - "https://jellyseerr.lucadev.de/login?provider=kanidm&callback=true"
+    - "https://seerr.lucadev.de/login"
+    - "https://jellyseerr.lucadev.de/login/oidc/callback/kanidm"
+  scopeMap:
+    - group: admin
+      scopes: [email, groups, openid, profile]
+    - group: media_users
+      scopes: [email, groups, openid, profile]
+  preferShortUsername: true
+  disableConsentPrompt: true
+  allowInsecureClientDisablePkce: true

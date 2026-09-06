@@ -1,0 +1,23 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: immich
+spec:
+  kanidmRef:
+    name: kanidm
+    namespace: security
+  displayname: "Immich"
+  origin: "https://photos.lucadev.de/"
+  redirectUrl:
+    - "app.immich:///oauth-callback"
+    - "https://photos.lucadev.de/"
+    - "https://photos.lucadev.de/api/oauth/mobile-redirect"
+    - "https://photos.lucadev.de/auth/login"
+  scopeMap:
+    - group: file_users
+      scopes: [email, openid, profile]
+    - group: admins
+      scopes: [email, openid, profile]
+  preferShortUsername: true
+  disableConsentPrompt: true

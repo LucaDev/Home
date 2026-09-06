@@ -7,3 +7,19 @@ resources:
   - ./volsync.yaml
   - ./certificate.yaml
   - ./kanidm.yaml
+  - ./kanidmgroup-admins.yaml
+  - ./kanidmgroup-file-users.yaml
+  - ./kanidmgroup-home-baeckers.yaml
+  - ./kanidmgroup-home-maria.yaml
+  - ./kanidmgroup-media-guests.yaml
+  - ./kanidmgroup-media-users.yaml
+  - ./kanidmgroup-service-users.yaml
+  - ./kanidmgroup-vpn-users.yaml
+  - ./holding/kanidmoauth2client-blackbox-exporter.yaml
+  - ./holding/kanidmoauth2client-calibre-web.yaml
+  - ./holding/kanidmoauth2client-cloudflare.yaml
+  - ./holding/kanidmoauth2client-ersatztv.yaml
+  - ./holding/kanidmoauth2client-filebrowser.yaml
+  - ./holding/kanidmoauth2client-minio.yaml
+  - ./holding/kanidmoauth2client-prometheus.yaml
+  - ./holding/kanidmoauth2client-stirling-pdf.yaml

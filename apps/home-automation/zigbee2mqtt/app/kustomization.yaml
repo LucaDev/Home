@@ -8,3 +8,4 @@ resources:
   - ./externalsecret.yaml
   - ./volsync.yaml
   - ./securitypolicy.yaml
+  - ./kanidmoauth2client.yaml

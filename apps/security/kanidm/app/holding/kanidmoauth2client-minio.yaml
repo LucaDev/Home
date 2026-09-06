@@ -1,0 +1,17 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: minio
+spec:
+  kanidmRef:
+    name: kanidm
+  displayname: "MinIO"
+  origin: "https://minio.lucadev.de/"
+  redirectUrl:
+    - "https://minio.lucadev.de/oauth_callback"
+  scopeMap:
+    - group: admins
+      scopes: [email, openid, profile]
+  disableConsentPrompt: true
+  allowInsecureClientDisablePkce: true

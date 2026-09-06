@@ -1,0 +1,17 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: radarr
+spec:
+  kanidmRef:
+    name: kanidm
+    namespace: security
+  displayname: "Radarr"
+  origin: "https://radarr.lucadev.de/"
+  redirectUrl:
+    - "https://radarr.lucadev.de/oidc/callback"
+  scopeMap:
+    - group: admins
+      scopes: [email, groups, openid, profile]
+  disableConsentPrompt: true

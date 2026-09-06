@@ -8,3 +8,4 @@ resources:
   - ./esphome-secrets.yaml
   - ./volsync.yaml
   - ./securitypolicy.yaml
+  - ./kanidmoauth2client.yaml

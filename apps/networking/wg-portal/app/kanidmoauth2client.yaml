@@ -1,0 +1,19 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: wg-portal
+spec:
+  kanidmRef:
+    name: kanidm
+    namespace: security
+  displayname: "VPN"
+  origin: "https://vpn.lucadev.de/"
+  redirectUrl:
+    - "https://vpn.lucadev.de/api/v0/auth/login/idm/callback"
+  scopeMap:
+    - group: vpn_users
+      scopes: [email, groups, openid, profile]
+  preferShortUsername: true
+  disableConsentPrompt: true
+  allowInsecureClientDisablePkce: true

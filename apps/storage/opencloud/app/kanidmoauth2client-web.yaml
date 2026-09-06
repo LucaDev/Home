@@ -1,0 +1,19 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: web
+spec:
+  kanidmRef:
+    name: kanidm
+    namespace: security
+  displayname: "OpenCloudWeb"
+  origin: "https://cloud.lucadev.de/"
+  public: true
+  redirectUrl:
+    - "https://cloud.lucadev.de/oidc-callback.html"
+    - "https://cloud.lucadev.de/oidc-silent-redirect.html"
+  scopeMap:
+    - group: file_users
+      scopes: [email, groups, openid, profile]
+  preferShortUsername: true

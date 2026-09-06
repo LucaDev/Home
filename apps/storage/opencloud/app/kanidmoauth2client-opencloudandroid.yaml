@@ -1,0 +1,17 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: opencloudandroid
+spec:
+  kanidmRef:
+    name: kanidm
+    namespace: security
+  displayname: "OpenCloudAndroid"
+  origin: "oc://android.opencloud.eu"
+  public: true
+  redirectUrl: []
+  scopeMap:
+    - group: file_users
+      scopes: [email, groups, offline_access, openid, profile]
+  preferShortUsername: true

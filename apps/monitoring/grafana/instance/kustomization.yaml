@@ -10,3 +10,4 @@ resources:
   - ./dashboards.yaml
   - ./servicemonitor.yaml
   - ./datasource.yaml
+  - ./kanidmoauth2client.yaml
