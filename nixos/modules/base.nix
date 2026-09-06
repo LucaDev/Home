@@ -2,13 +2,12 @@
   config,
   lib,
   pkgs,
+  pkgs-unstable,
   ...
 }:
 
 {
   # Base Config
-  system.rebuild.enableNg = true;
-
   nixpkgs.config.allowUnfree = true;
   hardware.enableAllFirmware = true;
 
@@ -46,9 +45,11 @@
       pkiBundle = "/var/lib/sbctl";
     };
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    # Pinned to 7.1: kernel 7.2 breaks Cilium's BPF probing (bpf_set_retval / FnSetRetval verifier rejection) - see https://github.com/cilium/cilium/issues/48016.
+    kernelPackages = pkgs.linuxPackages_7_1;
+    #kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = [ "bcachefs" ];
-    boot.bcachefs.package = pkgs-unstable.bcachefs-tools;
+    bcachefs.package = pkgs-unstable.bcachefs-tools;
 
     initrd = {
       availableKernelModules = [

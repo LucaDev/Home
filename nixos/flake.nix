@@ -2,7 +2,7 @@
   description = "NixOS Homeserver";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -18,6 +18,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-unstable,
       sops-nix,
       lanzaboote,
       ...
