@@ -91,6 +91,7 @@ apps/
 ├── security
 │   ├── kanidm
 │   ├── kaniop
+│   ├── kguardian
 │   ├── kube-exposure
 │   └── trivy-operator
 └── storage

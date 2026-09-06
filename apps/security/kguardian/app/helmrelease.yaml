@@ -1,0 +1,21 @@
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kguardian
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: kguardian
+  interval: 1h
+  values:
+    controller:
+      containerdSockPath: /run/k3s/containerd/containerd.sock
+      containerdBundlePath: /run/k3s/containerd/io.containerd.runtime.v2.task
+      excludedNamespaces:
+        - security
+        - kube-system
+    database:
+      persistence:
+        storageClassName: ssd-dualreplica
