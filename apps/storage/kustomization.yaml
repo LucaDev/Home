@@ -5,6 +5,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./configuration/ks.yaml
+  - ./local-path-provisioner/ks.yaml
   - ./snapshot/ks.yaml
   - ./volsync/ks.yaml
   - ./opencloud/ks.yaml

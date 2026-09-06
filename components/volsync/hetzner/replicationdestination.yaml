@@ -10,7 +10,7 @@ spec:
   restic:
     copyMethod: Direct
     repository: "${APP}-restic"
-    cacheStorageClassName: "${VOLSYNC_CACHE_SNAPSHOTCLASS:-local-path}"
+    cacheStorageClassName: "${VOLSYNC_CACHE_SNAPSHOTCLASS:-cached-singlereplica}"
     cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:-2Gi}"
     moverSecurityContext:
       runAsUser: ${APP_UID:-568}

@@ -55,7 +55,7 @@ spec:
       daily: 14
       monthly: 1
       yearly: 1
-    cacheStorageClassName: local-path
+    cacheStorageClassName: cached-singlereplica
     moverSecurityContext:
       runAsUser: 2000
       runAsGroup: 2000

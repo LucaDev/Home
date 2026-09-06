@@ -55,4 +55,4 @@ spec:
       daily: 14
       monthly: 1
       yearly: 1
-    cacheStorageClassName: local-path
+    cacheStorageClassName: cached-singlereplica

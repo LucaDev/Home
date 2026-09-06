@@ -4,6 +4,8 @@ kind: StorageClass
 metadata:
   name: cached-dualreplica
   namespace: storage
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
 provisioner: rancher.io/local-path
 parameters:
   nodePath: /mnt/data/cached/dual

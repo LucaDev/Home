@@ -97,6 +97,7 @@ apps/
 └── storage
     ├── configuration
     ├── forgejo
+    ├── local-path-provisioner
     ├── opencloud
     ├── rustfs
     ├── snapshot

@@ -10,4 +10,3 @@ resources:
   - ./ssd-dualreplica.yaml
   - ./cached-dualreplica.yaml
   - ./localpath-config.yaml
-#  - ./local-path.yaml # ToDo: fully replace
