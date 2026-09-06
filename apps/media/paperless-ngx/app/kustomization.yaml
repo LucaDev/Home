@@ -9,9 +9,7 @@ resources:
   - ./helmrelease.yaml
   - ./volsync.yaml
   - ./securitypolicy.yaml
-  - ./kanidmoauth2client-paper.yaml
-  - ./kanidmoauth2client-paperless.yaml
-components:
+  - ./kanidmoauth2client.yaml
 labels:
   - pairs:
       app.kubernetes.io/name: paperless

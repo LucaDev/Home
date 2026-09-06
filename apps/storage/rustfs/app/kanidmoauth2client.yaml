@@ -10,10 +10,13 @@ spec:
   displayname: "rustfs"
   origin: "https://rustfs.lucadev.de/"
   redirectUrl:
-    - "https://rustfs.lucadev.de/rustfs/admin/vs/oidc/callback/default"
     - "https://rustfs.lucadev.de/rustfs/admin/v3/oidc/callback/default"
   scopeMap:
     - group: admins
-      scopes: [email, groups, openid, profile]
+      scopes:
+        - email
+        - groups
+        - openid
+        - profile
   preferShortUsername: true
   disableConsentPrompt: true

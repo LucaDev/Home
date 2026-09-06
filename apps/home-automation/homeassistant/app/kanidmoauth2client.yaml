@@ -13,9 +13,16 @@ spec:
     - "https://ha.lucadev.de/auth/oidc/callback"
   scopeMap:
     - group: admins
-      scopes: [email, groups, openid, profile]
+      scopes:
+        - email
+        - groups
+        - openid
+        - profile
     - group: home_baeckers
-      scopes: [email, groups, openid, profile]
+      scopes:
+        - email
+        - groups
+        - openid
+        - profile
   preferShortUsername: true
-  jwtLegacyCryptoEnable: true
   disableConsentPrompt: true

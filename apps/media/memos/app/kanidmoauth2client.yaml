@@ -11,11 +11,17 @@ spec:
   origin: "https://notes.home.lucadev.de/"
   redirectUrl:
     - "https://notes.lucadev.de/oidc/callback"
-    - "https://notes.lucadev.de/auth/callback"
   scopeMap:
     - group: idm_all_persons
-      scopes: [email, openid, profile]
+      scopes:
+        - email
+        - openid
+        - profile
     - group: service_users
-      scopes: [email, groups, openid, profile]
+      scopes:
+        - email
+        - groups
+        - openid
+        - profile
   preferShortUsername: true
   disableConsentPrompt: true

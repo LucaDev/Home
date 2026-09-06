@@ -11,14 +11,22 @@ spec:
   origin: "https://lucaflix.lucadev.de/"
   redirectUrl:
     - "https://lucaflix.lucadev.de/sso/OID/redirect/kanidm"
-    - "https://jellyfin.lucadev.de/sso/OID/redirect/kanidm"
   scopeMap:
     - group: media_users
-      scopes: [groups, openid, profile]
+      scopes:
+        - groups
+        - openid
+        - profile
     - group: admins
-      scopes: [groups, openid, profile]
+      scopes:
+        - groups
+        - openid
+        - profile
     - group: media_guests
-      scopes: [groups, openid, profile]
+      scopes:
+        - groups
+        - openid
+        - profile
   preferShortUsername: true
   jwtLegacyCryptoEnable: true
   disableConsentPrompt: true

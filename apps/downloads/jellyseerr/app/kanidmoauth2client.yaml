@@ -10,15 +10,21 @@ spec:
   displayname: "Jellyseerr"
   origin: "https://seerr.lucadev.de/"
   redirectUrl:
-    - "https://jellyseerr.lucadev.de/login"
-    - "https://jellyseerr.lucadev.de/login?provider=kanidm&callback=true"
-    - "https://seerr.lucadev.de/login"
     - "https://jellyseerr.lucadev.de/login/oidc/callback/kanidm"
+    - "https://seerr.lucadev.de/api/v1/auth/oidc/callback/kanidm"
   scopeMap:
     - group: admin
-      scopes: [email, groups, openid, profile]
+      scopes:
+        - email
+        - groups
+        - openid
+        - profile
     - group: media_users
-      scopes: [email, groups, openid, profile]
+      scopes:
+        - email
+        - groups
+        - openid
+        - profile
   preferShortUsername: true
   disableConsentPrompt: true
   allowInsecureClientDisablePkce: true

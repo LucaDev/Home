@@ -104,7 +104,7 @@ spec:
         enabled: false
       route:
         main:
-          enabled: true
+          enabled: false
           hostnames:
             - prometheus.lucadev.de
           parentRefs:

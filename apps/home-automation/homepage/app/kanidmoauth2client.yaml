@@ -10,10 +10,12 @@ spec:
   displayname: "Homepage"
   origin: "https://home.lucadev.de/"
   redirectUrl:
-    - "https://home.lucadev.de/api/auth"
     - "https://home.lucadev.de/api/auth/callback/homepage-oidc"
   scopeMap:
     - group: idm_all_accounts
-      scopes: [email, openid, profile]
+      scopes:
+        - email
+        - openid
+        - profile
   jwtLegacyCryptoEnable: true
   disableConsentPrompt: true
