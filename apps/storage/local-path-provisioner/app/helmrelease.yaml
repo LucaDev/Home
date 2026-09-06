@@ -14,6 +14,7 @@ spec:
     controllers:
       local-path-provisioner:
         pod:
+          automountServiceAccountToken: true
           nodeSelector:
             kubernetes.io/os: linux
           priorityClassName: system-node-critical
