@@ -7,6 +7,7 @@ resources:
   - ./volsync.yaml
   - ./certificate.yaml
   - ./kanidm.yaml
+  - ./ldap-service.yaml
   - ./groups/admins.yaml
   - ./groups/file-users.yaml
   - ./groups/home-baeckers.yaml

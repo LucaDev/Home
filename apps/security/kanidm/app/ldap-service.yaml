@@ -1,0 +1,19 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/kubernetes/v1.29.0-standalone-strict/service-v1.json
+apiVersion: v1
+kind: Service
+metadata:
+  name: kanidm-ldap-lb
+spec:
+  type: LoadBalancer
+  loadBalancerClass: "io.cilium/node"
+  selector:
+    app.kubernetes.io/name: kanidm
+    app.kubernetes.io/instance: kanidm
+    app.kubernetes.io/managed-by: kaniop-kanidm
+    kanidm.kaniop.rs/cluster: kanidm
+  ports:
+    - name: ldaps
+      port: 636
+      protocol: TCP
+      targetPort: ldaps
