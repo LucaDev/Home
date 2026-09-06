@@ -2,10 +2,6 @@
 
 ## Flux
 
-### Install Flux
-
-kubectl apply --server-side --kustomize ./bootstrap
-
 ### Apply Configuration
 
 Some files have to be decrypted first
