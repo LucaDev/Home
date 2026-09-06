@@ -20,6 +20,7 @@ data:
     metadata:
       name: helper-pod
     spec:
+      serviceAccountName: local-path-provisioner
       containers:
       - name: helper-pod
         image: rancher/mirrored-library-busybox:1.37.0
