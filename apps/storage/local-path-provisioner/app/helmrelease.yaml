@@ -47,7 +47,7 @@ spec:
                 memory: 128Mi
 
     serviceAccount:
-      local-path-provisioner: {}
+      local-path-provisioner-service-account: {}
 
     rbac:
       roles:
@@ -72,7 +72,7 @@ spec:
           roleRef:
             identifier: local-path-provisioner
           subjects:
-            - identifier: local-path-provisioner
+            - identifier: local-path-provisioner-service-account
 
     persistence:
       config:
