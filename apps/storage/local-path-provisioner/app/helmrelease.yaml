@@ -13,6 +13,8 @@ spec:
   values:
     controllers:
       local-path-provisioner:
+        serviceAccount:
+          identifier: local-path-provisioner-service-account
         pod:
           automountServiceAccountToken: true
           nodeSelector:
@@ -47,7 +49,8 @@ spec:
                 memory: 128Mi
 
     serviceAccount:
-      local-path-provisioner-service-account: {}
+      local-path-provisioner-service-account:
+        forceRename: local-path-provisioner-service-account
 
     rbac:
       roles:
