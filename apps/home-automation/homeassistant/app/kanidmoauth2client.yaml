@@ -9,6 +9,8 @@ spec:
     namespace: security
   displayname: "HomeAssistant"
   origin: "https://ha.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/home-assistant.svg"
   redirectUrl:
     - "https://ha.lucadev.de/auth/oidc/callback"
   scopeMap:

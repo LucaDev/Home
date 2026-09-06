@@ -9,9 +9,14 @@ spec:
     namespace: security
   displayname: "Zigbee2MQTT"
   origin: "https://z2m.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/zigbee2mqtt.svg"
   redirectUrl:
     - "https://z2m.lucadev.de/oidc/callback"
   scopeMap:
     - group: admins
       scopes: [email, openid, profile]
   disableConsentPrompt: true
+  secretKeyAliases:
+    clientSecret:
+      - client-secret

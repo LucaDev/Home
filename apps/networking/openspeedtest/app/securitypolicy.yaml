@@ -14,7 +14,7 @@ spec:
       issuer: https://idm.lucadev.de/oauth2/openid/openspeedtest
     clientID: openspeedtest
     clientSecret:
-      name: openspeedtest-secret
+      name: openspeedtest-kanidm-oauth2-credentials
     redirectURL: https://speedtest.lucadev.de/oidc/callback
     logoutPath: /logout
     refreshToken: true

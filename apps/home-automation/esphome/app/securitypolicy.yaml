@@ -14,7 +14,7 @@ spec:
       issuer: https://idm.lucadev.de/oauth2/openid/esphome
     clientID: esphome
     clientSecret:
-      name: esphome-secrets
+      name: esphome-kanidm-oauth2-credentials
     redirectURL: https://esphome.lucadev.de/oidc/callback
     logoutPath: /logout
     refreshToken: true

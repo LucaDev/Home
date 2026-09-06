@@ -9,6 +9,8 @@ spec:
     namespace: security
   displayname: "Jellyfin"
   origin: "https://lucaflix.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/jellyfin.svg"
   redirectUrl:
     - "https://lucaflix.lucadev.de/sso/OID/redirect/kanidm"
   scopeMap:

@@ -14,7 +14,7 @@ spec:
       issuer: https://idm.lucadev.de/oauth2/openid/sabnzbd
     clientID: sabnzbd
     clientSecret:
-      name: sabnzbd-secret
+      name: sabnzbd-kanidm-oauth2-credentials
     redirectURL: https://sabnzbd.lucadev.de/oidc/callback
     logoutPath: /logout
     refreshToken: true

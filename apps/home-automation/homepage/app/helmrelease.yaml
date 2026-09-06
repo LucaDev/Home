@@ -30,6 +30,11 @@ spec:
               HOMEPAGE_OIDC_ISSUER: "https://idm.lucadev.de/oauth2/openid/homepage/"
               HOMEPAGE_OIDC_CLIENT_ID: "homepage"
               HOMEPAGE_EXTERNAL_URL: "https://home.lucadev.de"
+              HOMEPAGE_OIDC_CLIENT_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: homepage-kanidm-oauth2-credentials
+                    key: CLIENT_SECRET
             envFrom:
               - secretRef:
                   name: homepage-secret

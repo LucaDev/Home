@@ -9,6 +9,8 @@ spec:
     namespace: security
   displayname: "Jellyseerr"
   origin: "https://seerr.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/seerr.svg"
   redirectUrl:
     - "https://jellyseerr.lucadev.de/login/oidc/callback/kanidm"
     - "https://seerr.lucadev.de/api/v1/auth/oidc/callback/kanidm"

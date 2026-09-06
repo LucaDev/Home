@@ -24,6 +24,11 @@ spec:
               tag: v2.3.1@sha256:6f9d929c326caba36a3b483c410cb8c3fb633a6bb32499e816829ac0596fc274
             env:
               TZ: Europe/Berlin
+              WGPORTAL_OIDC_CLIENT_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: wg-portal-kanidm-oauth2-credentials
+                    key: CLIENT_SECRET
             resources:
               requests:
                 cpu: 10m

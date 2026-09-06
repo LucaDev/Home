@@ -14,7 +14,7 @@ spec:
       issuer: https://idm.lucadev.de/oauth2/openid/prowlarr
     clientID: prowlarr
     clientSecret:
-      name: prowlarr-secret
+      name: prowlarr-kanidm-oauth2-credentials
     redirectURL: https://prowlarr.lucadev.de/oidc/callback
     logoutPath: /logout
     refreshToken: true

@@ -9,9 +9,14 @@ spec:
     namespace: security
   displayname: "Radarr"
   origin: "https://radarr.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/radarr.svg"
   redirectUrl:
     - "https://radarr.lucadev.de/oidc/callback"
   scopeMap:
     - group: admins
       scopes: [email, groups, openid, profile]
   disableConsentPrompt: true
+  secretKeyAliases:
+    clientSecret:
+      - client-secret

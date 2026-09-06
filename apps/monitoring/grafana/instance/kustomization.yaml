@@ -5,7 +5,6 @@ kind: Kustomization
 namespace: monitoring
 resources:
   - ./grafana.yaml
-  - ./externalsecret.yaml
   - ./dashboard
   - ./dashboards.yaml
   - ./servicemonitor.yaml

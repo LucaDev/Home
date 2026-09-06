@@ -9,6 +9,8 @@ spec:
     namespace: security
   displayname: "Alertmanager"
   origin: "https://alertmanager.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/alertmanager.svg"
   redirectUrl:
     - "https://alerts.lucadev.de/oidc/callback"
   scopeMap:
@@ -19,3 +21,6 @@ spec:
         - openid
         - profile
   disableConsentPrompt: true
+  secretKeyAliases:
+    clientSecret:
+      - client-secret

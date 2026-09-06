@@ -14,7 +14,7 @@ spec:
       issuer: https://idm.lucadev.de/oauth2/openid/radarr
     clientID: radarr
     clientSecret:
-      name: radarr-secret
+      name: radarr-kanidm-oauth2-credentials
     redirectURL: https://radarr.lucadev.de/oidc/callback
     logoutPath: /logout
     refreshToken: true

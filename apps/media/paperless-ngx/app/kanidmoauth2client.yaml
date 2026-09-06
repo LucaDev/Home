@@ -9,6 +9,8 @@ spec:
     namespace: security
   displayname: "Paperless"
   origin: "https://paperless.lucadev.de/accounts/oidc/kanidm/login/callback/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/paperless-ngx.svg"
   public: true
   redirectUrl:
     - "https://paperparrot.me/oidc-callback"

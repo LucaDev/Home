@@ -14,7 +14,7 @@ spec:
       issuer: https://idm.lucadev.de/oauth2/openid/zigbee2mqtt
     clientID: zigbee2mqtt
     clientSecret:
-      name: zigbee2mqtt-secret
+      name: zigbee2mqtt-kanidm-oauth2-credentials
     redirectURL: https://z2m.lucadev.de/oidc/callback
     logoutPath: /logout
     refreshToken: true

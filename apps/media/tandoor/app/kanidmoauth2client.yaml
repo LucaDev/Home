@@ -9,6 +9,8 @@ spec:
     namespace: security
   displayname: "Tandoor"
   origin: "https://tandoor.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/tandoor-recipes.svg"
   redirectUrl:
     - "https://tandoor.lucadev.de/accounts/oidc/kanidm/login/callback/"
   scopeMap:

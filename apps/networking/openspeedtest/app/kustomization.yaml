@@ -6,6 +6,5 @@ namespace: networking
 resources:
   - ./helmrelease.yaml
   - ./openspeedtest-middleware.yaml
-  - ./externalsecret.yaml
   - ./securitypolicy.yaml
   - ./kanidmoauth2client.yaml

@@ -9,9 +9,14 @@ spec:
     namespace: security
   displayname: "OpenSpeedtest"
   origin: "https://speedtest.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/openspeedtest.svg"
   redirectUrl:
     - "https://speedtest.lucadev.de/oidc/callback"
   scopeMap:
     - group: idm_all_persons
       scopes: [email, groups, openid, profile]
   disableConsentPrompt: true
+  secretKeyAliases:
+    clientSecret:
+      - client-secret

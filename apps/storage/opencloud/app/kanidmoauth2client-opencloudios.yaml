@@ -9,6 +9,8 @@ spec:
     namespace: security
   displayname: "OpenCloudIOS"
   origin: "oc://ios.opencloud.eu"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/open-cloud.svg"
   public: true
   redirectUrl: []
   scopeMap:

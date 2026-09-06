@@ -9,6 +9,8 @@ spec:
     namespace: security
   displayname: "Memos"
   origin: "https://notes.home.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/memos.svg"
   redirectUrl:
     - "https://notes.lucadev.de/oidc/callback"
   scopeMap:
@@ -25,3 +27,6 @@ spec:
         - profile
   preferShortUsername: true
   disableConsentPrompt: true
+  secretKeyAliases:
+    clientSecret:
+      - client-secret

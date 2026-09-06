@@ -67,15 +67,15 @@ spec:
     loginRequired: true
     powerFeedDefaultVoltage: 220
     extraConfig:
-      - secret:
-          secretName: netbox-secret
-          items:
-            - key: oidc_auth.yaml
-              path: oidc_auth.yaml
-          optional: false
       - values:
           SOCIAL_AUTH_OIDC_OIDC_ENDPOINT: https://idm.lucadev.de/oauth2/openid/netbox/
           SOCIAL_AUTH_OIDC_KEY: netbox
           SOCIAL_AUTH_OIDC_SCOPE:
             - 'groups'
           LOGIN_FORM_HIDDEN: "true"
+    extraEnvs:
+      - name: SOCIAL_AUTH_OIDC_SECRET
+        valueFrom:
+          secretKeyRef:
+            name: netbox-kanidm-oauth2-credentials
+            key: CLIENT_SECRET

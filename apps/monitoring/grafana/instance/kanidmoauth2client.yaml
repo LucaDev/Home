@@ -9,6 +9,8 @@ spec:
     namespace: security
   displayname: "Grafana"
   origin: "https://grafana.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/grafana.svg"
   redirectUrl:
     - "https://grafana.lucadev.de/login/generic_oauth"
   scopeMap:

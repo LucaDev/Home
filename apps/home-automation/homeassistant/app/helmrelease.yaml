@@ -32,6 +32,12 @@ spec:
             image:
               repository: ghcr.io/home-assistant/home-assistant
               tag: 2026.9.1@sha256:612d76760b544cb40b7ba01387fdac964c59a6a550a50a4d30b4773c822d2918
+            env:
+              oidc_secret:
+                valueFrom:
+                  secretKeyRef:
+                    name: homeassistant-kanidm-oauth2-credentials
+                    key: CLIENT_SECRET
             envFrom:
               - secretRef:
                   name: home-assistant-secret

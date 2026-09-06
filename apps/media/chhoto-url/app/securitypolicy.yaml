@@ -14,7 +14,7 @@ spec:
       issuer: https://idm.lucadev.de/oauth2/openid/chhoto-url
     clientID: chhoto-url
     clientSecret:
-      name: chhoto-secret
+      name: chhoto-url-kanidm-oauth2-credentials
     redirectURL: https://link.lucadev.de/oidc/callback
     logoutPath: /logout
     refreshToken: true

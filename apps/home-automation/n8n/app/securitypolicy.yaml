@@ -14,7 +14,7 @@ spec:
       issuer: https://idm.lucadev.de/oauth2/openid/n8n
     clientID: n8n
     clientSecret:
-      name: n8n-secret
+      name: n8n-kanidm-oauth2-credentials
     redirectURL: https://n8n.lucadev.de/oidc/callback
     logoutPath: /logout
     refreshToken: true

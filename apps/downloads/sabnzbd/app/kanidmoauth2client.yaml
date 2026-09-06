@@ -9,9 +9,14 @@ spec:
     namespace: security
   displayname: "Sabnzbd"
   origin: "https://sabnzbd.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/sabnzbd.svg"
   redirectUrl:
     - "https://sabnzbd.lucadev.de/oidc/callback"
   scopeMap:
     - group: admins
       scopes: [email, openid, profile]
   disableConsentPrompt: true
+  secretKeyAliases:
+    clientSecret:
+      - client-secret

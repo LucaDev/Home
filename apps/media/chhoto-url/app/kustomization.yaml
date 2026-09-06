@@ -6,7 +6,6 @@ namespace: media
 resources:
   - ./helmrelease.yaml
   - ./securitypolicy.yaml
-  - ./externalsecret.yaml
   - ./kanidmoauth2client.yaml
 components:
   - ../../../../components/volsync/hetzner_ext

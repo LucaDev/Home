@@ -9,6 +9,8 @@ spec:
     namespace: security
   displayname: "Immich"
   origin: "https://photos.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/immich.svg"
   redirectUrl:
     - "app.immich:///oauth-callback"
     - "https://photos.lucadev.de/"

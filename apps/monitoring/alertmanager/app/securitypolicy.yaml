@@ -14,7 +14,7 @@ spec:
       issuer: https://idm.lucadev.de/oauth2/openid/alertmanager
     clientID: alertmanager
     clientSecret:
-      name: alertmanager-secret
+      name: alertmanager-kanidm-oauth2-credentials
     redirectURL: https://alerts.lucadev.de/oidc/callback
     logoutPath: /logout
     refreshToken: true

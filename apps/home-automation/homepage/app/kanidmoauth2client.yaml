@@ -9,6 +9,8 @@ spec:
     namespace: security
   displayname: "Homepage"
   origin: "https://home.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/png/homepage.png"
   redirectUrl:
     - "https://home.lucadev.de/api/auth/callback/homepage-oidc"
   scopeMap:

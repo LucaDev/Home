@@ -9,9 +9,14 @@ spec:
     namespace: security
   displayname: "Links"
   origin: "https://link.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/chhoto-url.svg"
   redirectUrl:
     - "https://link.lucadev.de/oidc/callback"
   scopeMap:
     - group: service_users
       scopes: [email, groups, openid, profile]
   disableConsentPrompt: true
+  secretKeyAliases:
+    clientSecret:
+      - client-secret

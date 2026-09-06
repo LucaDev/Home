@@ -9,6 +9,8 @@ spec:
     namespace: security
   displayname: "RomM"
   origin: "https://romm.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/romm.svg"
   redirectUrl:
     - "https://romm.lucadev.de/api/oauth/openid"
   scopeMap:

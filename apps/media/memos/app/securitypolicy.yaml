@@ -14,7 +14,7 @@ spec:
       issuer: https://idm.lucadev.de/oauth2/openid/memos
     clientID: memos
     clientSecret:
-      name: memos-secret
+      name: memos-kanidm-oauth2-credentials
     redirectURL: https://notes.lucadev.de/oidc/callback
     logoutPath: /logout
     refreshToken: true

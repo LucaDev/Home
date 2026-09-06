@@ -9,6 +9,8 @@ spec:
     namespace: security
   displayname: "OpenCloudWeb"
   origin: "https://cloud.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/open-cloud.svg"
   public: true
   redirectUrl:
     - "https://cloud.lucadev.de/oidc-callback.html"

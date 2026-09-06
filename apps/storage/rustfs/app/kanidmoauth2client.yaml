@@ -9,6 +9,8 @@ spec:
     namespace: security
   displayname: "rustfs"
   origin: "https://rustfs.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/rustfs.svg"
   redirectUrl:
     - "https://rustfs.lucadev.de/rustfs/admin/v3/oidc/callback/default"
   scopeMap:

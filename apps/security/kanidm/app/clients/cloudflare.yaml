@@ -8,6 +8,8 @@ spec:
     name: kanidm
   displayname: "Cloudflare"
   origin: "https://kroeger.cloudflareaccess.com/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/cloudflare.svg"
   redirectUrl:
     - "https://kroeger.cloudflareaccess.com/cdn-cgi/access/callback"
   scopeMap:

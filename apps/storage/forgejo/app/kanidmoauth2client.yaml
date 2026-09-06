@@ -9,6 +9,8 @@ spec:
     namespace: security
   displayname: "forgejo"
   origin: "https://git.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/forgejo.svg"
   redirectUrl:
     - "https://git.lucadev.de/user/oauth2/IDM/callback"
   scopeMap:
@@ -16,3 +18,8 @@ spec:
       scopes: [email, groups, openid, profile, ssh_publickeys]
   preferShortUsername: true
   disableConsentPrompt: true
+  secretKeyAliases:
+    clientId:
+      - key
+    clientSecret:
+      - secret

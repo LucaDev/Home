@@ -9,6 +9,8 @@ spec:
     namespace: security
   displayname: "VPN"
   origin: "https://vpn.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/wireguard.svg"
   redirectUrl:
     - "https://vpn.lucadev.de/api/v0/auth/login/idm/callback"
   scopeMap:

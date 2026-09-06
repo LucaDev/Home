@@ -18,6 +18,12 @@ spec:
             image:
               repository: rommapp/romm
               tag: 5.2.0-slim
+            env:
+              OIDC_CLIENT_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: romm-kanidm-oauth2-credentials
+                    key: CLIENT_SECRET
             envFrom:
               - secretRef:
                   name: romm-secret

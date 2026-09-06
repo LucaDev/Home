@@ -9,6 +9,8 @@ spec:
     namespace: security
   displayname: "Netbox"
   origin: "https://netbox.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/svg/netbox.svg"
   redirectUrl:
     - "https://netbox.lucadev.de/oauth/complete/oidc/"
   scopeMap:
