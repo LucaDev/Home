@@ -35,7 +35,7 @@ spec:
               SONARR__INSTANCE_NAME: Sonarr
               SONARR__PORT: &port 8989
               SONARR__AUTHENTICATION_METHOD: External
-              SONARR__AUTHENTICATION_REQUIRED: DisabledForLocalAddresses
+              SONARR__AUTHENTICATION_REQUIRED: Enabled
               SONARR__APPLICATION_URL: "https://sonarr.lucadev.de"
               SONARR__LOG_LEVEL: info
               SONARR__API_KEY:
@@ -44,7 +44,6 @@ spec:
                     name: sonarr-secret
                     key: api_key
               SONARR__SERVER__TRUSTEDNETWORKS: 10.42.0.0/16
-              SONARR__SERVER__ALLOWEDHOSTS: sonarr.lucadev.de,sonarr.downloads.svc.cluster.local
             resources:
               requests:
                 cpu: 20m
