@@ -13,9 +13,6 @@ spec:
     controller:
       containerdSockPath: /run/k3s/containerd/containerd.sock
       containerdBundlePath: /run/k3s/containerd/io.containerd.runtime.v2.task
-      excludedNamespaces:
-        - security
-        - kube-system
     database:
       persistence:
         storageClassName: ssd-dualreplica
