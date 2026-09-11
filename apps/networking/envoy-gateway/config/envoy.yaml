@@ -120,7 +120,7 @@ kind: Gateway
 metadata:
   name: envoy
   annotations:
-    external-dns.alpha.kubernetes.io/target: homeserver.lucadev.de
+    external-dns.kubernetes.io/target: homeserver.lucadev.de
     gatus.home-operations.com/endpoint: |-
       ui:
         hide-hostname: true
