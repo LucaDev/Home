@@ -6,7 +6,7 @@ metadata:
   namespace: security
 spec:
   domain: idm.lucadev.de
-  image: kanidm/server:1.11.1
+  image: kanidm/server:1.11.2
   replicaGroups:
     - name: default
       replicas: 1
