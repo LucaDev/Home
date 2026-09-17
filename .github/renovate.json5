@@ -88,13 +88,6 @@
       matchDatasources: ["docker"],
       allowedVersions: "<8.1.0",
     },
-    {
-      description: "RustFS uses pre-release semver (alpha.x, beta.x, rc.x) — exclude glibc variants",
-      matchPackageNames: ["docker.io/rustfs/rustfs"],
-      matchDatasources: ["docker"],
-      versioning: "semver",
-      allowedVersions: "/^1\\.0\\.0-rc\\.\\d+$/",
-    },
   ],
   customManagers: [
     {
