@@ -50,6 +50,7 @@ apps/
 ├── media
 │   ├── bento-pdf
 │   ├── bichon
+│   ├── bookboss
 │   ├── chhoto-url
 │   ├── frigate
 │   ├── immich

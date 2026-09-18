@@ -1,0 +1,122 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: bookboss
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: app-template-4
+    namespace: flux-system
+  interval: 1h
+  values:
+    controllers:
+      bookboss:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        pod:
+          securityContext:
+            fsGroup: 2000
+            fsGroupChangePolicy: OnRootMismatch
+            runAsGroup: 2000
+            runAsNonRoot: true
+            runAsUser: 2000
+        containers:
+          app:
+            image:
+              repository: ghcr.io/szinn/bookboss
+              tag: v0.8.34
+            env:
+              BOOKBOSS__DATABASE__DATABASE_URL: sqlite:///data/bookboss.db?mode=rwc
+              BOOKBOSS__FRONTEND__BASE_URL: https://books.lucadev.de
+              BOOKBOSS__FRONTEND__LISTEN_PORT: &httpPort 8080
+              BOOKBOSS__LIBRARY__LIBRARY_PATH: /library/books
+              BOOKBOSS__IMPORT__BOOKDROP_PATH: /library/bookdrop
+              BOOKBOSS__OIDC__DISCOVERY_URL: https://idm.lucadev.de/oauth2/openid/bookboss/.well-known/openid-configuration
+              BOOKBOSS__OIDC__CLIENT_ID: bookboss
+              BOOKBOSS__OIDC__CLIENT_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: bookboss-kanidm-oauth2-credentials
+                    key: CLIENT_SECRET
+            envFrom:
+              - secretRef:
+                  name: bookboss
+            probes:
+              liveness:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /healthz
+                    port: *httpPort
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /readyz
+                    port: *httpPort
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+              limits:
+                memory: 512Mi
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop:
+                  - ALL
+    service:
+      app:
+        ports:
+          http:
+            port: *httpPort
+    persistence:
+      data:
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        storageClass: ssd-singlereplica
+        size: 1Gi
+        globalMounts:
+          - path: /data
+      library:
+        type: hostPath
+        hostPath: /mnt/data/hdd/single/media/books
+        globalMounts:
+          - path: /library/books
+      bookdrop:
+        type: hostPath
+        hostPath: /mnt/data/hdd/single/media/books-bookdrop
+        hostPathType: DirectoryOrCreate
+        globalMounts:
+          - path: /library/bookdrop
+      tmp:
+        type: emptyDir
+        globalMounts:
+          - path: /tmp
+    route:
+      app:
+        hostnames:
+          - books.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: E-Book Verwaltung
+          gethomepage.dev/group: Medien
+          gethomepage.dev/icon: bookstack
+          gethomepage.dev/name: BookBoss
