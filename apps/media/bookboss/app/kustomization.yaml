@@ -7,4 +7,3 @@ resources:
   - helmrelease.yaml
   - kanidmoauth2client.yaml
   - volsync.yaml
-  - securitypolicy.yaml
