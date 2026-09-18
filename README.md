@@ -28,6 +28,7 @@ apps/
 │   ├── prowlarr
 │   ├── radarr
 │   ├── sabnzbd
+│   ├── shelfmark
 │   └── sonarr
 ├── flux-system
 │   ├── flux-instance

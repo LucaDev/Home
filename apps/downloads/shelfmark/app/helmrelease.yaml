@@ -1,0 +1,141 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: shelfmark
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: app-template-4
+    namespace: flux-system
+  interval: 1h
+  values:
+    controllers:
+      shelfmark:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        pod:
+          securityContext:
+            fsGroup: 2000
+            fsGroupChangePolicy: OnRootMismatch
+            runAsGroup: 2000
+            runAsNonRoot: true
+            runAsUser: 2000
+        containers:
+          app:
+            image:
+              repository: ghcr.io/calibrain/shelfmark
+              tag: v1.3.15@sha256:9602290324993c801b319d3166b202b96bd9039af2416f0916dae03a5bdca815
+            command:
+              - gunicorn
+            args:
+              - --access-logfile=-
+              - --error-logfile=-
+              - --worker-class=geventwebsocket.gunicorn.workers.GeventWebSocketWorker
+              - --workers=1
+              - -t
+              - "300"
+              - -b
+              - 0.0.0.0:8084
+              - shelfmark.main:app
+            env:
+              TZ: Europe/Berlin
+              SESSION_COOKIE_SECURE: "true"
+              CALIBRE_WEB_URL: https://books.lucadev.de
+              AUTH_METHOD: oidc
+              OIDC_DISCOVERY_URL: https://idm.lucadev.de/oauth2/openid/shelfmark/.well-known/openid-configuration
+              OIDC_CLIENT_ID: shelfmark
+              OIDC_CLIENT_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: shelfmark-kanidm-oauth2-credentials
+                    key: CLIENT_SECRET
+              OIDC_ADMIN_GROUP: admins
+              PROWLARR_ENABLED: "true"
+              PROWLARR_URL: http://prowlarr.downloads.svc.cluster.local:9696
+              PROWLARR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: shelfmark
+                    key: prowlarr_api_key
+              PROWLARR_USENET_CLIENT: sabnzbd
+              SABNZBD_URL: http://sabnzbd.downloads.svc.cluster.local:8080
+              SABNZBD_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: shelfmark
+                    key: sabnzbd_api_key
+            probes:
+              liveness:
+                enabled: true
+                spec:
+                  periodSeconds: 30
+                  timeoutSeconds: 5
+                  failureThreshold: 5
+              readiness:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /api/health
+                    port: &httpPort 8084
+                  periodSeconds: 10
+                  timeoutSeconds: 5
+                  failureThreshold: 5
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 10
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+              limits:
+                memory: 512Mi
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop:
+                  - ALL
+    service:
+      app:
+        ports:
+          http:
+            port: *httpPort
+    persistence:
+      config:
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        storageClass: ssd-singlereplica
+        size: 2Gi
+        globalMounts:
+          - path: /config
+      bookdrop:
+        type: hostPath
+        hostPath: /mnt/data/hdd/single/media/books-bookdrop
+        globalMounts:
+          - path: /books
+      tmp:
+        type: emptyDir
+        globalMounts:
+          - path: /tmp
+            subPath: tmp
+          - path: /var/log
+            subPath: var-log
+    route:
+      app:
+        hostnames:
+          - shelfmark.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Bücher & Hörbücher suchen
+          gethomepage.dev/group: Downloads
+          gethomepage.dev/icon: shelfmark.png
+          gethomepage.dev/name: Shelfmark

@@ -1,0 +1,22 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: shelfmark
+spec:
+  kanidmRef:
+    name: kanidm
+    namespace: security
+  displayname: "Shelfmark"
+  origin: "https://shelfmark.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons@main/png/shelfmark.png"
+  redirectUrl:
+    - "https://shelfmark.lucadev.de/api/auth/oidc/callback"
+  scopeMap:
+    - group: media_users
+      scopes: [email, groups, openid, profile]
+    - group: admins
+      scopes: [email, groups, openid, profile]
+  preferShortUsername: true
+  disableConsentPrompt: true
