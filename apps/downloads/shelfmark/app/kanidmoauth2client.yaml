@@ -15,8 +15,16 @@ spec:
     - "https://shelfmark.lucadev.de/api/auth/oidc/callback"
   scopeMap:
     - group: media_users
-      scopes: [email, groups, openid, profile]
+      scopes:
+        - email
+        - groups
+        - openid
+        - profile
     - group: admins
-      scopes: [email, groups, openid, profile]
+      scopes:
+        - email
+        - groups
+        - openid
+        - profile
   preferShortUsername: true
   disableConsentPrompt: true
