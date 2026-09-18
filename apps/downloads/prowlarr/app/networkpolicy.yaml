@@ -25,6 +25,13 @@ spec:
       ports:
         - port: 9696
           protocol: TCP
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: shelfmark
+      ports:
+        - port: 9696
+          protocol: TCP
   egress:
     - to:
         - podSelector:
