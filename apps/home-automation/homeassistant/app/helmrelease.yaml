@@ -18,6 +18,11 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
 
+        # host network for mDNS discovery and IPv6 routes to thread border routers
+        pod:
+          hostNetwork: true
+          dnsPolicy: ClusterFirstWithHostNet
+
         statefulset:
           volumeClaimTemplates:
             - name: config

@@ -99,7 +99,9 @@
       "net.ipv4.tcp_window_scaling" = 1;
       "vm.nr_hugepages" = 512;
       "kernel.sysrq" = 1;
-      "kernel.panic" = 120;  
+      "kernel.panic" = 120;
+      # matter: sleepy thread devices report less often than the default 120s udp timeout
+      "net.netfilter.nf_conntrack_udp_timeout_stream" = 3600;
     };
 
     kernelModules = [
