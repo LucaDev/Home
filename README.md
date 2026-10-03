@@ -39,6 +39,7 @@ apps/
 │   ├── homeassistant
 │   ├── homeassistant-maria
 │   ├── homepage
+│   ├── matter-server
 │   ├── mosquitto
 │   ├── n8n
 │   ├── whisper

@@ -8,6 +8,7 @@ resources:
   - ./homepage/ks.yaml
   - ./mosquitto/ks.yaml
   - ./homeassistant/ks.yaml
+  - ./matter-server/ks.yaml
   - ./zigbee2mqtt/ks.yaml
   - ./whisper/ks.yaml
   - ./homeassistant-maria/ks.yaml
