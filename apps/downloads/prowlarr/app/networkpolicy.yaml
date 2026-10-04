@@ -32,6 +32,16 @@ spec:
       ports:
         - port: 9696
           protocol: TCP
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: media
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: aerofoil
+      ports:
+        - port: 9696
+          protocol: TCP
   egress:
     - to:
         - podSelector:

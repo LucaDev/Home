@@ -71,6 +71,12 @@ spec:
         hostPath: /mnt/data/hdd/single/media/roms/roms/switch
         globalMounts:
           - path: /games
+      # same path as in sabnzbd, aerofoil uses the job paths reported by the client as-is
+      downloads:
+        type: hostPath
+        hostPath: /mnt/data/hdd/single/media/Downloads
+        globalMounts:
+          - path: /media/Downloads
       tmp:
         type: emptyDir
         globalMounts:
