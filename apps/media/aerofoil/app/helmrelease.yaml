@@ -31,7 +31,8 @@ spec:
           app:
             image:
               repository: docker.io/luketanti/aerofoil
-              tag: 2.6.0@sha256:2139575dc0cb39af8481fe9b4255753ac90c80139528270276e11ced4d0e6ed8
+              # dev build, 2.6.0 has a broken download client test (luketanti/AeroFoil#136), back to semver after 2.6.0
+              tag: sha-253c827@sha256:e6d1b82a40bbca3607a2e4ee54305edbe502d9ca508fcd4fbd684b4d6a796e8e
             # run.sh needs root for chown + sudo, start the app directly instead
             command: ["python", "/app/app.py"]
             env:
