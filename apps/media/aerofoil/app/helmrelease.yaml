@@ -1,0 +1,92 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: aerofoil
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+    namespace: flux-system
+
+  values:
+    controllers:
+      aerofoil:
+        strategy: Recreate
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        pod:
+          enableServiceLinks: false
+          securityContext:
+            runAsUser: ${APP_UID}
+            runAsGroup: ${APP_GID}
+            runAsNonRoot: true
+            fsGroup: ${APP_GID}
+            fsGroupChangePolicy: OnRootMismatch
+
+        containers:
+          app:
+            image:
+              repository: docker.io/luketanti/aerofoil
+              tag: 2.6.0@sha256:2139575dc0cb39af8481fe9b4255753ac90c80139528270276e11ced4d0e6ed8
+            # run.sh needs root for chown + sudo, start the app directly instead
+            command: ["python", "/app/app.py"]
+            env:
+              TZ: Europe/Berlin
+              HOME: /tmp
+              AEROFOIL_PORT: &port 8465
+              AEROFOIL_TRUST_PROXY_HEADERS: "true"
+              AEROFOIL_TRUSTED_PROXIES: 10.0.0.0/8
+            securityContext:
+              allowPrivilegeEscalation: false
+              capabilities:
+                drop: ["ALL"]
+            resources:
+              requests:
+                cpu: 10m
+                memory: 256M
+              limits:
+                memory: 2048M
+
+    service:
+      app:
+        controller: aerofoil
+        ports:
+          http:
+            port: *port
+
+    persistence:
+      data:
+        existingClaim: "${APP}"
+        globalMounts:
+          - path: /app/config
+            subPath: config
+          - path: /app/data
+            subPath: data
+      games:
+        type: hostPath
+        hostPath: /mnt/data/hdd/single/media/roms/roms/switch
+        globalMounts:
+          - path: /games
+      tmp:
+        type: emptyDir
+        globalMounts:
+          - path: /tmp
+
+    route:
+      app:
+        hostnames:
+          - aerofoil.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Switch Bibliothek
+          gethomepage.dev/group: Medien
+          gethomepage.dev/icon: mdi-nintendo-switch
+          gethomepage.dev/name: AeroFoil

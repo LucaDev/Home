@@ -50,6 +50,7 @@ apps/
 │   ├── hermes-agent
 │   └── reloader
 ├── media
+│   ├── aerofoil
 │   ├── bento-pdf
 │   ├── bichon
 │   ├── bookboss
