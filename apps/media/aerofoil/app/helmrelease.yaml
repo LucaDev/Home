@@ -84,6 +84,10 @@ spec:
           - name: envoy
             namespace: networking
             sectionName: https
+        rules:
+          - backendRefs:
+              - name: app
+                port: *port
         annotations:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/description: Switch Bibliothek
