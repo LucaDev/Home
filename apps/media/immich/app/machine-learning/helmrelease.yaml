@@ -38,6 +38,7 @@ spec:
               IMMICH_PORT: &port 3003
               # Machine learning
               MACHINE_LEARNING_CACHE_FOLDER: /cache
+              MACHINE_LEARNING_MODEL_REVISION: v2
               TRANSFORMERS_CACHE: /cache
             resources:
               requests:
