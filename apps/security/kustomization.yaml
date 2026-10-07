@@ -6,4 +6,4 @@ resources:
   - ./namespace.yaml
   - ./kaniop/ks.yaml
   - ./kanidm/ks.yaml
-  - ./kguardian/ks.yaml
+#  - ./kguardian/ks.yaml
