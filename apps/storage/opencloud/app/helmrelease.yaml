@@ -57,6 +57,8 @@ spec:
               FRONTEND_CHECK_FOR_UPDATES: "false"
               # PosixFS collaborative mode
               STORAGE_USERS_POSIX_WATCH_FS: "true"
+              # Collaborative editing via yjs
+              WEB_OPTION_YJS_SERVER_URL: wss://cloud.lucadev.de/yjs
             command:
               - "opencloud"
               - "server"
@@ -79,12 +81,59 @@ spec:
                 memory: 128Mi
               limits:
                 memory: 2Gi
+      yjs:
+        # rooms live in process memory, so all peers must hit the same instance
+        strategy: Recreate
+        pod:
+          terminationGracePeriodSeconds: 20
+        containers:
+          app:
+            image:
+              repository: docker.io/opencloudeu/yjs
+              tag: 1.1.0@sha256:99c6ce4688b06544c4e17cf149ceaefb90e2043d4e83d004c4f13c637a733dc4
+            env:
+              PORT: "1234"
+              # internal address, no TLS between the pods
+              OPENCLOUD_URL: http://opencloud-app:9200
+              SHUTDOWN_GRACE_PERIOD_MS: "15000"
+            probes:
+              liveness: &yjsProbes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /healthz/ready
+                    port: &yjsPort 1234
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *yjsProbes
+            securityContext:
+              runAsUser: 1000
+              runAsGroup: 1000
+              runAsNonRoot: true
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop:
+                  - ALL
+            resources:
+              requests:
+                cpu: 10m
+                memory: 64Mi
+              limits:
+                memory: 512Mi
     service:
       app:
         controller: opencloud
         ports:
           http:
             port: *port
+      yjs:
+        controller: yjs
+        ports:
+          http:
+            port: *yjsPort
     persistence:
       config:
         type: persistentVolumeClaim
@@ -127,6 +176,14 @@ spec:
             namespace: networking
             sectionName: https
         rules:
+          # hocuspocus ignores the path, the room is sent over the socket
+          - matches:
+              - path:
+                  type: PathPrefix
+                  value: /yjs
+            backendRefs:
+              - name: yjs
+                port: *yjsPort
           - backendRefs:
               - name: app
                 port: *port
