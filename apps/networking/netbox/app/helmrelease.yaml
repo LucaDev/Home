@@ -26,6 +26,10 @@ spec:
   values:
     image:
       repository: lucadev/netbox-fat
+    # disabled for now: scaled to 0 to keep PVC + DB intact
+    replicaCount: 0
+    worker:
+      replicaCount: 0
     postgresql:
       enabled: false
     externalDatabase:
