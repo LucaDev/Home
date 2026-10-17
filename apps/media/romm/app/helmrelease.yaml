@@ -17,7 +17,7 @@ spec:
           app:
             image:
               repository: rommapp/romm
-              tag: 5.2.0-slim
+              tag: 5.4.0-slim
             env:
               OIDC_CLIENT_SECRET:
                 valueFrom:
