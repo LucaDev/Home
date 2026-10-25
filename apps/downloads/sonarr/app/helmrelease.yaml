@@ -29,7 +29,7 @@ spec:
           app:
             image:
               repository: ghcr.io/home-operations/sonarr
-              tag: 5.0.0.2742@sha256:461e64f41e45e95637aae49d660b2116f0f8f43b0f1df86224a0e5f8a1b9f339
+              tag: 5.0.0.2785@sha256:825bf13276077b2fa57dd1c0a67d10b2e71891b7391d19636615ede8ddc0a4a5
             env:
               COMPlus_EnableDiagnostics: "0"
               SONARR__INSTANCE_NAME: Sonarr
