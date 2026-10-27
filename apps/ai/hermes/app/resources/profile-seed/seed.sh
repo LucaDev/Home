@@ -24,6 +24,11 @@ update_env() (
 cp /seed/config.yaml "$data/config.yaml"
 cp /seed/SOUL.md "$data/SOUL.md"
 
+# The image only boots the gateway when its persisted intent is "running", and the probes
+# depend on its cron heartbeat. Pin it so a fresh volume or a stop from the UI can't leave
+# the container without a gateway.
+printf '{"desired_state": "running"}\n' > "$data/gateway_state.json"
+
 cat > "$data/.hermes-terminal-env.sh" <<'EOF'
 # Bash sources this file through BASH_ENV for every Hermes terminal command.
 for directory in /opt/data/.local/bin /opt/hermes/.venv/bin /opt/hermes/bin; do
