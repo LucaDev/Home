@@ -7,4 +7,5 @@ resources:
   - ./externalsecret.yaml
   - ./kanidmoauth2client.yaml
   - ./litellmproxy.yaml
+  - ./models/openrouter-deepseek-v4.1-flash.yaml
   - ./servicemonitor.yaml

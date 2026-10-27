@@ -1,0 +1,21 @@
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/litellm.home-operations.com/litellmmodel_v1alpha1.json
+apiVersion: litellm.home-operations.com/v1alpha1
+kind: LiteLLMModel
+metadata:
+  name: openrouter-deepseek-v4.1-flash
+spec:
+  modelName: openrouter/deepseek-v4.1-flash
+  proxyRef: litellm
+  params:
+    model: openrouter/deepseek/deepseek-v4.1-flash
+    apiKeyRef:
+      name: litellm-secret
+      key: OPENROUTER_API_KEY
+  info:
+    mode: chat
+    maxInputTokens: 1048576
+    maxOutputTokens: 131072
+    supportsFunctionCalling: true
+    supportsPromptCaching: true
+    supportsVision: true
