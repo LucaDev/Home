@@ -1,0 +1,84 @@
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/litellm.home-operations.com/litellmproxy_v1alpha1.json
+apiVersion: litellm.home-operations.com/v1alpha1
+kind: LiteLLMProxy
+metadata:
+  name: litellm
+spec:
+  image: ghcr.io/berriai/litellm:v1.106.4@sha256:c169fb3adc514fcf210377c203f3de406d54f10bfdacf13948a4a839db9af7de
+  replicas: 1
+  # Admin API access for DB-backed resources (LiteLLMVirtualKey). Models stay
+  # file-backed because applyMode is left at its default.
+  apiAccess:
+    masterKeyRef:
+      name: litellm-secret
+      key: LITELLM_MASTER_KEY
+  env:
+    - name: GENERIC_AUTHORIZATION_ENDPOINT
+      value: https://idm.lucadev.de/ui/oauth2
+    - name: GENERIC_CLIENT_USE_PKCE
+      value: "true"
+    - name: GENERIC_SCOPE
+      value: openid profile email
+    - name: GENERIC_TOKEN_ENDPOINT
+      value: https://idm.lucadev.de/oauth2/token
+    - name: GENERIC_USER_DISPLAY_NAME_ATTRIBUTE
+      value: name
+    - name: GENERIC_USER_EMAIL_ATTRIBUTE
+      value: email
+    - name: GENERIC_USER_ID_ATTRIBUTE
+      value: sub
+    - name: GENERIC_USER_ROLE_ATTRIBUTE
+      value: litellm_role
+    - name: GENERIC_USERINFO_ENDPOINT
+      value: https://idm.lucadev.de/oauth2/openid/litellm/userinfo
+    - name: LITELLM_LOG
+      value: INFO
+    - name: LITELLM_MODE
+      value: PRODUCTION
+    - name: PROXY_BASE_URL
+      value: https://litellm.lucadev.de
+  envFrom:
+    - secretRef:
+        name: litellm-secret
+    - secretRef:
+        name: litellm-kanidm-oauth2-credentials
+  generalSettings:
+    # SSO (Kanidm) is the only Admin UI login; the master key no longer works
+    # as the UI password but still authenticates API calls.
+    disable_env_credential_login: true
+    health_check_endpoint: /v1/health
+    store_model_in_db: false
+    # Envoy gateway pods sit in the pod CIDR; trusting them lets the Admin UI
+    # login throttle key on the real client address from X-Forwarded-For.
+    trusted_proxy_ranges:
+      - 10.42.0.0/16
+      - fd00:cafe:42::/104
+  callbacks:
+    success:
+      - prometheus
+    failure:
+      - prometheus
+  litellmSettings:
+    drop_params: true
+    num_retries: 2
+    prometheus_adapter: true
+    request_timeout: 900
+    set_verbose: false
+  routerSettings:
+    routing_strategy: simple-shuffle
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      memory: 2Gi
+  route:
+    hostnames:
+      - litellm.lucadev.de
+    parentRefs:
+      - group: gateway.networking.k8s.io
+        kind: Gateway
+        name: envoy
+        namespace: networking
+        sectionName: https

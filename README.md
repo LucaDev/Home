@@ -17,6 +17,9 @@ I use k3s as my lightweight Kubernetes distribution for running containerized ap
 ```
 > tree -d -L 2 apps/
 apps/
+├── ai
+│   ├── litellm
+│   └── litellm-operator
 ├── databases
 │   ├── barman-cloud-plugin
 │   ├── cloudnative-pg

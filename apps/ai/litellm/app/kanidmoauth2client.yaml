@@ -1,0 +1,36 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: litellm
+spec:
+  kanidmRef:
+    name: kanidm
+    namespace: security
+  displayname: "LiteLLM"
+  origin: "https://litellm.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/litellm.svg"
+  redirectUrl:
+    - "https://litellm.lucadev.de/sso/callback"
+  scopeMap:
+    - group: admins
+      scopes: [email, openid, profile]
+  # LiteLLM reads its UI role from this claim (GENERIC_USER_ROLE_ATTRIBUTE).
+  # csv keeps the single value a plain string, which is what LiteLLM expects.
+  claimMap:
+    - name: litellm_role
+      valuesMap:
+        - group: admins
+          values:
+            - proxy_admin
+      joinStrategy: csv
+  preferShortUsername: true
+  disableConsentPrompt: true
+  # Exposes the credentials under LiteLLM's generic SSO env names, so the
+  # generated secret can be consumed with a plain envFrom.
+  secretKeyAliases:
+    clientId:
+      - GENERIC_CLIENT_ID
+    clientSecret:
+      - GENERIC_CLIENT_SECRET
