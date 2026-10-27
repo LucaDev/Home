@@ -38,6 +38,8 @@ spec:
       value: PRODUCTION
     - name: PROXY_BASE_URL
       value: https://litellm.lucadev.de
+    - name: AUTO_REDIRECT_UI_LOGIN_TO_SSO
+      value: "true"
   envFrom:
     - secretRef:
         name: litellm-secret
