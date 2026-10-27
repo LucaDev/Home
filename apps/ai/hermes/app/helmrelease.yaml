@@ -195,6 +195,9 @@ spec:
                     name: hermes-litellm
                     key: key
               UV_CACHE_DIR: /uv_cache
+              # The agent needs a newer Python than the image ships; uv downloads it here
+              # instead of the read-only ~/.local/share/uv/python.
+              UV_PYTHON_INSTALL_DIR: /uv_cache/python
               WANTED_GID: "10000"
               WANTED_UID: "10000"
             # The init script runs as PID 1 without forwarding SIGTERM; signal server.py directly.

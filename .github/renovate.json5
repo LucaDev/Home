@@ -88,6 +88,12 @@
       matchDatasources: ["docker"],
       allowedVersions: "<8.1.0",
     },
+    {
+      description: "hermes-agent switched from calver tags (v2026.9.24) to semver; ignore the old tags",
+      matchPackageNames: ["/nousresearch\\/hermes-agent$/"],
+      matchDatasources: ["docker"],
+      allowedVersions: "<1",
+    },
   ],
   customManagers: [
     {
