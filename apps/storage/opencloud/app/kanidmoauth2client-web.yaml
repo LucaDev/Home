@@ -15,6 +15,9 @@ spec:
   redirectUrl:
     - "https://cloud.lucadev.de/oidc-callback.html"
     - "https://cloud.lucadev.de/oidc-silent-redirect.html"
+    - "oc://ios.opencloud.eu"
+    - "http://localhost/"
+    - "oc://android.opencloud.eu"
   scopeMap:
     - group: file_users
       scopes: [email, groups, openid, profile]
