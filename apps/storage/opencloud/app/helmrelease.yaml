@@ -58,13 +58,8 @@ spec:
               STORAGE_USERS_POSIX_WATCH_FS: "true"
               # Collaborative editing via yjs
               WEB_OPTION_YJS_SERVER_URL: wss://cloud.lucadev.de/yjs
-              WEBFINGER_ANDROID_OIDC_CLIENT_ID: &oauthClientId "web"
-              WEBFINGER_IOS_OIDC_CLIENT_ID: *oauthClientId
-              WEBFINGER_DESKTOP_OIDC_CLIENT_ID: *oauthClientId
-              WEBFINGER_WEB_OIDC_CLIENT_SCOPES: &oauthScopes "openid profile email groups"
-              WEBFINGER_DESKTOP_OIDC_CLIENT_SCOPES: *oauthScopes
-              WEBFINGER_IOS_OIDC_CLIENT_SCOPES: *oauthScopes
-              WEBFINGER_ANDROID_OIDC_CLIENT_SCOPES: *oauthScopes
+              OC_OIDC_CLIENT_ID: "web"
+              OC_OIDC_CLIENT_SCOPES: "openid profile email groups"
             command:
               - "opencloud"
               - "server"
