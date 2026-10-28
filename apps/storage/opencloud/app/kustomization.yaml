@@ -5,9 +5,6 @@ kind: Kustomization
 namespace: storage
 resources:
   - ./helmrelease.yaml
-  - ./kanidmoauth2client-web.yaml
-  - ./kanidmoauth2client-openclouddesktop.yaml
-  - ./kanidmoauth2client-opencloudandroid.yaml
-  - ./kanidmoauth2client-opencloudios.yaml
+  - ./kanidmoauth2client.yaml
 components:
   - ../../../../components/volsync/hetzner_ext
