@@ -37,12 +37,10 @@ spec:
               tag: 9.0.0@sha256:bd57f039d0dd3df510fb25f178beefdf0b1f049097285feead607824460e6506
             env:
               PROXY_CSP_CONFIG_FILE_LOCATION: /etc/opencloud/proxy/csp.yaml
-              WEB_OIDC_SCOPE: "openid profile email groups"
-              # OIDC configuration
+              # Proxy configuration
               PROXY_AUTOPROVISION_ACCOUNTS: "true"
               PROXY_ROLE_ASSIGNMENT_DRIVER: oidc
               PROXY_ROLE_ASSIGNMENT_OIDC_CLAIM: groups
-              OC_OIDC_ISSUER: https://idm.lucadev.de/oauth2/openid/web
               PROXY_OIDC_REWRITE_WELLKNOWN: true
               PROXY_USER_OIDC_CLAIM: preferred_username
               GRAPH_ASSIGN_DEFAULT_USER_ROLE: true
@@ -59,12 +57,15 @@ spec:
               STORAGE_USERS_POSIX_WATCH_FS: "true"
               # Collaborative editing via yjs
               WEB_OPTION_YJS_SERVER_URL: wss://cloud.lucadev.de/yjs
-              WEBFINGER_ANDROID_OIDC_CLIENT_ID: web
-              WEBFINGER_ANDROID_OIDC_CLIENT_SCOPES: openid profile email groups
-              WEBFINGER_IOS_OIDC_CLIENT_ID: web
-              WEBFINGER_IOS_OIDC_CLIENT_SCOPES: openid profile email groups
-              WEBFINGER_DESKTOP_OIDC_CLIENT_ID: web
-              WEBFINGER_DESKTOP_OIDC_CLIENT_SCOPES: openid profile email groups
+              # Webfginger OIDC settings
+              WEBFINGER_OIDC_ISSUER: https://idm.lucadev.de/oauth2/openid/web
+              WEBFINGER_ANDROID_OIDC_CLIENT_ID: &oauthClientId "web"
+              WEBFINGER_IOS_OIDC_CLIENT_ID: *oauthClientId
+              WEBFINGER_DESKTOP_OIDC_CLIENT_ID: *oauthClientId
+              WEBFINGER_WEB_OIDC_CLIENT_SCOPES: &oauthScopes "openid profile email groups"
+              WEBFINGER_DESKTOP_OIDC_CLIENT_SCOPES: *oauthScopes
+              WEBFINGER_IOS_OIDC_CLIENT_SCOPES: *oauthScopes
+              WEBFINGER_ANDROID_OIDC_CLIENT_SCOPES: *oauthScopes
             command:
               - "opencloud"
               - "server"
