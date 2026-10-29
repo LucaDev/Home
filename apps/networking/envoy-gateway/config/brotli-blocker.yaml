@@ -1,0 +1,28 @@
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyExtensionPolicy
+metadata:
+  name: block-brotli-request-bodies
+  namespace: networking
+spec:
+  lua:
+    - inline: |
+        function envoy_on_request(request_handle)
+          local ce = request_handle:headers():get("content-encoding")
+          if ce then
+            for token in string.gmatch(string.lower(ce), "[^,]+") do
+              token = token:match("^%s*(.-)%s*$")
+              if token == "br" then
+                request_handle:respond(
+                  {[":status"] = "415"},
+                  "Brotli-encoded request bodies are not supported")
+                return
+              end
+            end
+          end
+        end
+      type: Inline
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: envoy

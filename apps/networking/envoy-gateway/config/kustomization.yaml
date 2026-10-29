@@ -11,6 +11,7 @@ resources:
   - ./lucadev-de.yaml
   - ./grafanadashboard.yaml
   - ./externalsecret.yaml
+  - ./brotli-blocker.yaml
   # - ./openappseccrd.yaml
   # - ./openappsec.yaml
 configMapGenerator:
