@@ -8,5 +8,3 @@ resources:
   - ./externalsecret.yaml
   - ./securitypolicy.yaml
   - ./kanidmoauth2client.yaml
-components:
-  - ../../../../components/volsync/hetzner_ext
