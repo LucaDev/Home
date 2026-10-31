@@ -162,7 +162,7 @@ spec:
           webui:
             image:
               repository: ghcr.io/nesquena/hermes-webui
-              tag: 0.52.573@sha256:8b94d575eed895e712fd4def5e762c58000edbf1f338f0468e8e24e047c376b4
+              tag: 0.52.597@sha256:cc13a3096668a391f4de004f80b68c0e2cf3f66b810bd4a3fb88e8f5138ac5d3
             env:
               HERMES_API_URL: http://127.0.0.1:8642
               HERMES_HOME: /home/hermeswebui/.hermes
