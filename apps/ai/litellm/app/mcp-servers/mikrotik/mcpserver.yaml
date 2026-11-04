@@ -12,11 +12,6 @@ spec:
     image: ghcr.io/wiresage/mikrotik-mcp:0.26.2@sha256:49a9e66ebc4dbfe1a5eceff8b55b01200949a1350727ec37e69fb153193c1ff9
     automountServiceAccountToken: false
     env:
-      # RB4011 over SSH; the user only needs a group with the read and ssh policies.
-      - name: MIKROTIK_HOST
-        value: 192.168.1.1
-      - name: MIKROTIK_PORT
-        value: "22"
       - name: MIKROTIK_MCP__ALLOWED_HOSTS
         value: mikrotik-mcp.ai.svc.cluster.local:*,mikrotik-mcp:*
       - name: MIKROTIK_MCP__TRANSPORT
@@ -25,6 +20,7 @@ spec:
         value: "true"
       - name: MIKROTIK_SENSITIVE_HIDING
         value: "true"
+    # MIKROTIK_INVENTORY (router and SFP switch over SSH) comes from the Secret.
     envFrom:
       - secretRef:
           name: mikrotik-mcp
