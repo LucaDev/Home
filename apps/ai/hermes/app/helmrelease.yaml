@@ -59,6 +59,29 @@ spec:
               capabilities:
                 drop:
                   - ALL
+          # RouterOS knowledge for the MikroTik MCP; profiles load it via skills.external_dirs.
+          routeros-skills:
+            image: *image
+            command:
+              - /bin/sh
+              - -c
+              - >-
+                curl -fsSL "https://codeload.github.com/wiresage/routeros-skills/tar.gz/$ROUTEROS_SKILLS_REF" |
+                tar -xz -C /skills --strip-components=2 "routeros-skills-$ROUTEROS_SKILLS_REF/skills"
+            env:
+              # renovate: datasource=git-refs depName=https://github.com/wiresage/routeros-skills branch=master
+              ROUTEROS_SKILLS_REF: 9cd652618074b1dabcc508a9fb6c53683b0ce526
+            resources:
+              requests:
+                cpu: 10m
+              limits:
+                memory: 256Mi
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop:
+                  - ALL
         containers:
           app:
             image: *image
@@ -183,6 +206,15 @@ spec:
               - path: /opt/mise
                 subPath: usr/local/bin
                 readOnly: true
+      routeros-skills:
+        type: emptyDir
+        advancedMounts:
+          hermes:
+            app:
+              - path: /opt/skills/routeros
+                readOnly: true
+            routeros-skills:
+              - path: /skills
       run:
         type: emptyDir
         globalMounts:
