@@ -9,3 +9,4 @@ spec:
   # No models listed: the key may call every model the proxy serves.
   proxyRef: litellm
   secretName: hermes-litellm
+  teamID: hermes

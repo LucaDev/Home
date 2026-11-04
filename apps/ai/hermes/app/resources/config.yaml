@@ -1,0 +1,40 @@
+---
+# Managed infrastructure overlay, mounted read-only at /etc/hermes/config.yaml.
+# Profile preferences (model, toolsets, MCP servers, secrets) stay on the PVC.
+dashboard:
+  oauth:
+    provider: self-hosted
+    self_hosted:
+      client_id: hermes
+      issuer: https://idm.lucadev.de/oauth2/openid/hermes
+      scopes: openid profile email
+  public_url: https://hermes-dash.lucadev.de
+
+gateway:
+  multiplex_profiles: true
+
+providers:
+  litellm:
+    api: http://litellm.ai.svc.cluster.local:4000/v1
+    discover_models: true
+    key_env: LITELLM_API_KEY
+    name: LiteLLM
+    transport: chat_completions
+
+security:
+  redact_secrets: true
+
+terminal:
+  backend: local
+  cwd: /opt/data/workspace
+
+telemetry:
+  shared_metrics:
+    enabled: false
+    send: false
+
+webapp:
+  enabled: true
+  host: 0.0.0.0
+  port: 9120
+  public_url: https://hermes.lucadev.de

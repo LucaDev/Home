@@ -16,7 +16,7 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
         pod:
-          # WebUI rejects OIDC endpoints that resolve to private IPs. The router dst-nats this
+          # The OIDC client rejects endpoints that resolve to private IPs. The router dst-nats this
           # non-RFC1918 address to envoy (keep in sync with its NAT rule); TLS still validates.
           hostAliases:
             - ip: 100.64.0.10
@@ -33,39 +33,13 @@ spec:
           terminationGracePeriodSeconds: 60
         strategy: Recreate
         initContainers:
-          profile-seed:
-            image: &image
-              repository: docker.io/nousresearch/hermes-agent
-              tag: v0.22.5@sha256:9c5561579f3ffdf333401797094ac3a743738d6c25d40f4331c7bf77b694238d
-            command:
-              - /bin/bash
-              - /seed/seed.sh
-            env:
-              LITELLM_API_KEY:
-                valueFrom:
-                  secretKeyRef:
-                    name: hermes-litellm
-                    key: key
-            envFrom:
-              - secretRef:
-                  name: hermes-secret
-            resources:
-              requests:
-                cpu: 10m
-              limits:
-                memory: 512Mi
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop:
-                  - ALL
           # Run the image's config migration before s6 starts. Its own boot hook calls it through
           # `s6-setuidgid hermes`, which needs CAP_SETGID and fails as non-root. Skipped on first
-          # boot only when no profile config was seeded.
+          # boot only when no profile config exists yet.
           config-migrate:
-            dependsOn: profile-seed
-            image: *image
+            image: &image
+              repository: docker.io/nousresearch/hermes-agent
+              tag: v0.22.7@sha256:e6d81ae52ebf6a43efa529701405509f20054ba818f179ddd748bed4f8af584c
             command:
               - /bin/sh
               - -c
@@ -88,23 +62,27 @@ spec:
         containers:
           app:
             image: *image
+            # Explicitly start the gateway under s6; sleep alone only restores saved run intent.
             args:
-              - "sleep"
-              - "infinity"
+              - gateway
+              - run
             env:
-              BASH_ENV: /opt/data/.hermes-terminal-env.sh
               S6_YES_I_WANT_A_WORLD_WRITABLE_RUN_BECAUSE_KUBERNETES: "1"
               # Hermes settings
+              HERMES_DASHBOARD: "true"
+              HERMES_DASHBOARD_HOST: 0.0.0.0
+              HERMES_DASHBOARD_OIDC_CLIENT_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: hermes-kanidm-oauth2-credentials
+                    key: CLIENT_SECRET
+              HERMES_DASHBOARD_PORT: "9119"
               HERMES_DISABLE_LAZY_INSTALLS: "true"
               HERMES_HOME: /opt/data
               HERMES_WRITE_SAFE_ROOT: /opt/data
               HOME: /opt/data
+              PATH: /opt/data/.local/bin:/opt/data/.local/share/mise/shims:/opt/mise:/opt/hermes/.venv/bin:/opt/hermes/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
               LITELLM_BASE_URL: "http://litellm.ai.svc.cluster.local:4000/v1"
-              LITELLM_API_KEY:
-                valueFrom:
-                  secretKeyRef:
-                    name: hermes-litellm
-                    key: key
               # Terminal HOME moves into each named profile; mise stays on the shared PVC.
               MISE_CACHE_DIR: /opt/data/.cache/mise
               MISE_CONFIG_DIR: /opt/data/.config/mise
@@ -149,95 +127,10 @@ spec:
                   timeoutSeconds: 5
             resources:
               requests:
-                memory: 1Gi
-                cpu: 10m
+                memory: 1536Mi
+                cpu: 110m
               limits:
-                memory: 4Gi
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop:
-                  - ALL
-          webui:
-            image:
-              repository: ghcr.io/nesquena/hermes-webui
-              tag: 0.52.573@sha256:8b94d575eed895e712fd4def5e762c58000edbf1f338f0468e8e24e047c376b4
-            env:
-              HERMES_API_URL: http://127.0.0.1:8642
-              HERMES_HOME: /home/hermeswebui/.hermes
-              HERMES_WEBUI_CHAT_BACKEND: gateway
-              HERMES_WEBUI_DEFAULT_WORKSPACE: /home/hermeswebui/.hermes/workspace
-              HERMES_WEBUI_GATEWAY_API_KEY:
-                valueFrom:
-                  secretKeyRef:
-                    name: hermes-secret
-                    key: API_SERVER_KEY
-              HERMES_WEBUI_GATEWAY_BASE_URL: http://127.0.0.1:8642
-              HERMES_WEBUI_GATEWAY_USE_RUNS_API: "true"
-              HERMES_WEBUI_HOST: 0.0.0.0
-              HERMES_WEBUI_OIDC_ALLOW_CLAIM: hermes_access
-              HERMES_WEBUI_OIDC_ALLOW_VALUES: admin
-              HERMES_WEBUI_OIDC_CLIENT_ID: hermes
-              HERMES_WEBUI_OIDC_CLIENT_SECRET:
-                valueFrom:
-                  secretKeyRef:
-                    name: hermes-kanidm-oauth2-credentials
-                    key: CLIENT_SECRET
-              HERMES_WEBUI_OIDC_ISSUER: https://idm.lucadev.de/oauth2/openid/hermes
-              HERMES_WEBUI_OIDC_REDIRECT_URI: https://hermes.lucadev.de/api/auth/oidc/callback
-              HERMES_WEBUI_PORT: &port 8787
-              HERMES_WEBUI_STATE_DIR: /home/hermeswebui/.hermes/webui
-              HOME: /home/hermeswebui
-              LITELLM_API_KEY:
-                valueFrom:
-                  secretKeyRef:
-                    name: hermes-litellm
-                    key: key
-              UV_CACHE_DIR: /uv_cache
-              # The agent needs a newer Python than the image ships; uv downloads it here
-              # instead of the read-only ~/.local/share/uv/python.
-              UV_PYTHON_INSTALL_DIR: /uv_cache/python
-              WANTED_GID: "10000"
-              WANTED_UID: "10000"
-            # The init script runs as PID 1 without forwarding SIGTERM; signal server.py directly.
-            lifecycle:
-              preStop:
-                exec:
-                  command:
-                    - /bin/sh
-                    - -c
-                    - kill -TERM $(cat /proc/1/task/1/children)
-            probes:
-              liveness:
-                enabled: true
-                custom: true
-                spec:
-                  httpGet:
-                    path: /health
-                    port: *port
-              readiness:
-                enabled: true
-                custom: true
-                spec:
-                  httpGet:
-                    path: /health
-                    port: *port
-              startup:
-                enabled: true
-                custom: true
-                spec:
-                  failureThreshold: 90
-                  httpGet:
-                    path: /health
-                    port: *port
-                  periodSeconds: 10
-            resources:
-              requests:
-                cpu: 100m
-                memory: 1Gi
-              limits:
-                memory: 4Gi
+                memory: 6Gi
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
@@ -248,8 +141,12 @@ spec:
     service:
       app:
         ports:
-          http:
-            port: *port
+          webapp:
+            appProtocol: kubernetes.io/wss
+            port: 9120
+          dashboard:
+            appProtocol: kubernetes.io/wss
+            port: 9119
 
     persistence:
       data:
@@ -260,32 +157,22 @@ spec:
               - path: /opt/data
             config-migrate:
               - path: /opt/data
-            profile-seed:
-              - path: /opt/data
-            webui:
-              - path: /home/hermeswebui/.hermes
-      agent-source:
-        type: image
-        image: *image
-        advancedMounts:
-          hermes:
-            webui:
-              - path: /home/hermeswebui/.hermes/hermes-agent
-                subPath: opt/hermes
-                readOnly: true
-      app:
-        type: emptyDir
-        advancedMounts:
-          hermes:
-            webui:
-              - path: /app
-      profile-seed:
+      config:
         type: configMap
-        name: hermes-profile-seed
+        name: hermes-config
         advancedMounts:
           hermes:
-            profile-seed:
-              - path: /seed
+            app:
+              - path: /etc/hermes
+                readOnly: true
+      # Read by each profile's secrets.command helper.
+      litellm-token:
+        type: secret
+        name: hermes-litellm
+        advancedMounts:
+          hermes:
+            app:
+              - path: /mnt/secrets/litellm
                 readOnly: true
       mise:
         type: image
@@ -293,10 +180,6 @@ spec:
         advancedMounts:
           hermes:
             app:
-              - path: /opt/mise
-                subPath: usr/local/bin
-                readOnly: true
-            profile-seed:
               - path: /opt/mise
                 subPath: usr/local/bin
                 readOnly: true
@@ -308,15 +191,9 @@ spec:
         type: emptyDir
         globalMounts:
           - path: /tmp
-      uv-cache:
-        type: emptyDir
-        advancedMounts:
-          hermes:
-            webui:
-              - path: /uv_cache
 
     route:
-      app:
+      webapp:
         hostnames:
           - hermes.lucadev.de
         parentRefs:
@@ -329,3 +206,20 @@ spec:
           gethomepage.dev/group: Weitere
           gethomepage.dev/icon: sh-hermes-agent.svg
           gethomepage.dev/name: Hermes
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: webapp
+            timeouts:
+              request: 0s
+      dashboard:
+        hostnames:
+          - hermes-dash.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: dashboard
