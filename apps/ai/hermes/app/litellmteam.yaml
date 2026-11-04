@@ -14,4 +14,7 @@ spec:
     - kubectl
     - kubesearch
     - unifi_network
+  # LiteLLM rejects /team/new without a model list.
+  models:
+    - all-proxy-models
   proxyRef: litellm
