@@ -11,6 +11,6 @@ resources:
   - ./models/openrouter-claude-sonnet-5.5.yaml
   - ./models/openrouter-deepseek-v4.1-flash.yaml
   - ./models/openrouter-qwen3.7-flash.yaml
-  - ./models/openrouter-text-embedding-3-small.yaml
+  - ./models/openrouter-qwen3-embedding-8b.yaml
   - ./servicemonitor.yaml
   - ./mcp-servers/

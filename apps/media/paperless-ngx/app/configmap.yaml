@@ -51,7 +51,7 @@ data:
   PAPERLESS_AI_LLM_OUTPUT_LANGUAGE: German
   # Endpoint and API key fall back to the LLM settings above.
   PAPERLESS_AI_LLM_EMBEDDING_BACKEND: openai-like
-  PAPERLESS_AI_LLM_EMBEDDING_MODEL: openrouter/text-embedding-3-small
+  PAPERLESS_AI_LLM_EMBEDDING_MODEL: openrouter/qwen3-embedding-8b
   PAPERLESS_AI_LLM_EMBEDDING_CHUNK_SIZE: "8192"
 
   # Reverse Proxy Configuration

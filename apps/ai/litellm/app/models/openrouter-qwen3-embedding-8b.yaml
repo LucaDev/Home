@@ -3,15 +3,15 @@
 apiVersion: litellm.home-operations.com/v1alpha1
 kind: LiteLLMModel
 metadata:
-  name: openrouter-text-embedding-3-small
+  name: openrouter-qwen3-embedding-8b
 spec:
-  modelName: openrouter/text-embedding-3-small
+  modelName: openrouter/qwen3-embedding-8b
   proxyRef: litellm
   params:
-    model: openrouter/openai/text-embedding-3-small
+    model: openrouter/qwen/qwen3-embedding-8b
     apiKeyRef:
       name: litellm-secret
       key: OPENROUTER_API_KEY
   info:
     mode: embedding
-    maxInputTokens: 8192
+    maxInputTokens: 32768

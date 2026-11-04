@@ -14,4 +14,4 @@ spec:
   models:
     - openrouter/deepseek-v4.1-flash
     - openrouter/claude-haiku-5.5
-    - openrouter/text-embedding-3-small
+    - openrouter/qwen3-embedding-8b
