@@ -12,6 +12,16 @@ spec:
     apiKeyRef:
       name: litellm-secret
       key: OPENROUTER_API_KEY
+    additional:
+      # Nebius alone rate-limits bulk re-indexing (token quota 429s), so
+      # prefer DeepInfra. Paperless sends private documents: no providers
+      # that keep or train on prompts.
+      provider:
+        order:
+          - deepinfra
+          - nebius
+        allow_fallbacks: false
+        data_collection: deny
   info:
     mode: embedding
     maxInputTokens: 32768
