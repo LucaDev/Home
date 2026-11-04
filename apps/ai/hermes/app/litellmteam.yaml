@@ -13,6 +13,7 @@ spec:
     - home_assistant
     - kubectl
     - kubesearch
+    - mikrotik
     - unifi_network
   # LiteLLM rejects /team/new without a model list.
   models:
