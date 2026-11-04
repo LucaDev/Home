@@ -7,6 +7,10 @@ resources:
   - ./externalsecret.yaml
   - ./kanidmoauth2client.yaml
   - ./litellmproxy.yaml
+  - ./models/openrouter-claude-haiku-5.5.yaml
+  - ./models/openrouter-claude-sonnet-5.5.yaml
   - ./models/openrouter-deepseek-v4.1-flash.yaml
+  - ./models/openrouter-qwen3.7-flash.yaml
+  - ./models/openrouter-text-embedding-3-small.yaml
   - ./servicemonitor.yaml
   - ./mcp-servers/

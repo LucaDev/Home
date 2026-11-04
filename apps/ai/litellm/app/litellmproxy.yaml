@@ -69,6 +69,11 @@ spec:
     set_verbose: false
   routerSettings:
     routing_strategy: simple-shuffle
+    # Different upstream vendor, same price class, so a DeepSeek outage or
+    # rate limit does not take Paperless and Hermes down.
+    fallbacks:
+      - openrouter/deepseek-v4.1-flash:
+          - openrouter/claude-haiku-5.5
   resources:
     requests:
       cpu: 100m
