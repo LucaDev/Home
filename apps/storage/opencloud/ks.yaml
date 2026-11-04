@@ -22,5 +22,5 @@ spec:
     substitute:
       APP: *appname
       VOLSYNC_CLAIM: opencloud-data
-      APP_UID: "0"
-      APP_GID: "0"
+      APP_UID: "1000"
+      APP_GID: "1000"

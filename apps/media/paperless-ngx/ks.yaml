@@ -21,6 +21,3 @@ spec:
   postBuild:
     substitute:
       APP: *appname
-      APP_UID: "568" # TODO
-      APP_GID: "568"
-      VOLSYNC_CLAIM: paperless-config # TODO
