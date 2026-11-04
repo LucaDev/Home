@@ -9,3 +9,4 @@ resources:
   - ./litellmproxy.yaml
   - ./models/openrouter-deepseek-v4.1-flash.yaml
   - ./servicemonitor.yaml
+  - ./mcp-servers/
