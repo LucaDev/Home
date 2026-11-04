@@ -21,6 +21,12 @@ spec:
               repository: ghcr.io/paperless-ngx/paperless-ngx
               tag: 3.4.2
               pullPolicy: Always
+            env:
+              PAPERLESS_AI_LLM_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: paperless-litellm
+                    key: key
             envFrom:
               - secretRef:
                   name: paperless-secret

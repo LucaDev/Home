@@ -1,0 +1,17 @@
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/litellm.home-operations.com/litellmvirtualkey_v1alpha1.json
+apiVersion: litellm.home-operations.com/v1alpha1
+kind: LiteLLMVirtualKey
+metadata:
+  name: paperless
+spec:
+  keyAlias: paperless
+  proxyRef: litellm
+  proxyNamespace: ai
+  secretName: paperless-litellm
+  # Must match PAPERLESS_AI_LLM_MODEL / PAPERLESS_AI_LLM_EMBEDDING_MODEL, plus
+  # the proxy's fallback for the chat model.
+  models:
+    - openrouter/deepseek-v4.1-flash
+    - openrouter/claude-haiku-5.5
+    - openrouter/text-embedding-3-small

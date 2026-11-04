@@ -10,6 +10,7 @@ resources:
   - ./volsync.yaml
   - ./securitypolicy.yaml
   - ./kanidmoauth2client.yaml
+  - ./litellmvirtualkey.yaml
 labels:
   - pairs:
       app.kubernetes.io/name: paperless

@@ -41,5 +41,18 @@ data:
   # Configure user permissions
   USERMAP_GID: "65543"
 
+  # Configure AI via LiteLLM (API key comes from the paperless-litellm virtual key).
+  # Values set in the UI (Settings > Configuration) override these.
+  PAPERLESS_AI_ENABLED: "true"
+  PAPERLESS_AI_LLM_BACKEND: openai-like
+  PAPERLESS_AI_LLM_ENDPOINT: http://litellm.ai.svc.cluster.local:4000/v1
+  PAPERLESS_AI_LLM_MODEL: openrouter/deepseek-v4.1-flash
+  PAPERLESS_AI_LLM_CONTEXT_SIZE: "100000"
+  PAPERLESS_AI_LLM_OUTPUT_LANGUAGE: German
+  # Endpoint and API key fall back to the LLM settings above.
+  PAPERLESS_AI_LLM_EMBEDDING_BACKEND: openai-like
+  PAPERLESS_AI_LLM_EMBEDDING_MODEL: openrouter/text-embedding-3-small
+  PAPERLESS_AI_LLM_EMBEDDING_CHUNK_SIZE: "8192"
+
   # Reverse Proxy Configuration
   PAPERLESS_ALLAUTH_TRUSTED_CLIENT_IP_HEADER: "X-Forwarded-For"

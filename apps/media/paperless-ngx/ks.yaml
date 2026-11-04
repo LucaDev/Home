@@ -18,6 +18,7 @@ spec:
     - name: redis
     - name: external-secrets-stores
     - name: volsync
+    - name: litellm
   postBuild:
     substitute:
       APP: *appname
