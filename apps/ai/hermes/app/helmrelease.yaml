@@ -70,7 +70,7 @@ spec:
                 tar -xz -C /skills --strip-components=2 "routeros-skills-$ROUTEROS_SKILLS_REF/skills"
             env:
               # renovate: datasource=git-refs depName=https://github.com/wiresage/routeros-skills branch=master
-              ROUTEROS_SKILLS_REF: 9cd652618074b1dabcc508a9fb6c53683b0ce526
+              ROUTEROS_SKILLS_REF: 11afbc8311837c630ba103372c637cd65d6c8b84
             resources:
               requests:
                 cpu: 10m
