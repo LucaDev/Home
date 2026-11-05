@@ -33,6 +33,10 @@ telemetry:
     enabled: false
     send: false
 
+# SearXNG is search-only; web_extract keeps falling through to web.backend per profile.
+web:
+  search_backend: searxng
+
 webapp:
   enabled: true
   host: 0.0.0.0
