@@ -7,3 +7,4 @@ resources:
   - ./litellm-operator/ks.yaml
   - ./litellm/ks.yaml
   - ./hermes/ks.yaml
+  - ./searxng/ks.yaml

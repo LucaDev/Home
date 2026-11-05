@@ -20,7 +20,8 @@ apps/
 ├── ai
 │   ├── hermes
 │   ├── litellm
-│   └── litellm-operator
+│   ├── litellm-operator
+│   └── searxng
 ├── databases
 │   ├── barman-cloud-plugin
 │   ├── cloudnative-pg

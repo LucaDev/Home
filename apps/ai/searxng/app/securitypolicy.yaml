@@ -1,0 +1,20 @@
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/gateway.envoyproxy.io/securitypolicy_v1alpha1.json
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: searxng-auth
+spec:
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: searxng
+  oidc:
+    provider:
+      issuer: https://idm.lucadev.de/oauth2/openid/searxng
+    clientID: searxng
+    clientSecret:
+      name: searxng-kanidm-oauth2-credentials
+    redirectURL: https://search.lucadev.de/oidc/callback
+    logoutPath: /logout
+    refreshToken: true
