@@ -36,7 +36,8 @@ spec:
               POSTGRES_PORT: 5432
               POSTGRES_DB: tandoor
               POSTGRES_USER: "tandoor"
-              AI_MODEL_NAME: openai/gpt-4o
+              # Exact match against the AI Provider URL configured in the UI.
+              AI_ALLOWED_URLS: http://litellm.ai.svc.cluster.local:4000/v1
               ALLOWED_HOSTS: "*"
             envFrom: &envFrom
               - secretRef:

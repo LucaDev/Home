@@ -8,3 +8,4 @@ resources:
   - ./volsync.yaml
   - ./external-secret.yaml
   - ./kanidmoauth2client.yaml
+  - ./litellmvirtualkey.yaml

@@ -21,6 +21,7 @@ spec:
   dependsOn:
     - name: external-secrets-stores
     - name: shared-pg
+    - name: litellm
   postBuild:
     substitute:
       APP: *appname

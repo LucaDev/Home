@@ -1,0 +1,13 @@
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/litellm.home-operations.com/litellmvirtualkey_v1alpha1.json
+apiVersion: litellm.home-operations.com/v1alpha1
+kind: LiteLLMVirtualKey
+metadata:
+  name: homeassistant
+spec:
+  keyAlias: homeassistant
+  proxyRef: litellm
+  proxyNamespace: ai
+  secretName: homeassistant-litellm
+  # No models listed: the LiteLLM integration discovers every model the key may call
+  # and offers each as a conversation agent.

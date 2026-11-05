@@ -1,0 +1,12 @@
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/litellm.home-operations.com/litellmvirtualkey_v1alpha1.json
+apiVersion: litellm.home-operations.com/v1alpha1
+kind: LiteLLMVirtualKey
+metadata:
+  name: tandoor
+spec:
+  keyAlias: tandoor
+  proxyRef: litellm
+  proxyNamespace: ai
+  secretName: tandoor-litellm
+  # No models listed: the model is chosen in Tandoor's AI Provider settings.

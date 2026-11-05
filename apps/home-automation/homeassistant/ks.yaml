@@ -18,6 +18,7 @@ spec:
     - name: volsync
     - name: external-secrets-stores
     - name: shared-pg
+    - name: litellm
   postBuild:
     substitute:
       APP: *appname
