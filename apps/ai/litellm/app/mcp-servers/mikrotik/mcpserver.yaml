@@ -9,7 +9,7 @@ spec:
   proxyRef: litellm
   transport: http
   workload:
-    image: ghcr.io/wiresage/mikrotik-mcp:0.26.2@sha256:49a9e66ebc4dbfe1a5eceff8b55b01200949a1350727ec37e69fb153193c1ff9
+    image: ghcr.io/wiresage/mikrotik-mcp:0.27.0@sha256:d6cfa94c881f37031ea4e9d797c0147087a80ce6a5222d467200145b419b2a7c
     automountServiceAccountToken: false
     env:
       - name: MIKROTIK_MCP__ALLOWED_HOSTS
