@@ -1,0 +1,19 @@
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/litellm.home-operations.com/litellmmodel_v1alpha1.json
+apiVersion: litellm.home-operations.com/v1alpha1
+kind: LiteLLMModel
+metadata:
+  name: openrouter-nano-banana-2.1
+spec:
+  modelName: openrouter/nano-banana-2.1
+  proxyRef: litellm
+  params:
+    model: openrouter/google/gemini-nano-banana-2.1
+    apiKeyRef:
+      name: litellm-secret
+      key: OPENROUTER_API_KEY
+  info:
+    mode: image_generation
+    maxInputTokens: 65536
+    maxOutputTokens: 58982
+    supportsVision: true

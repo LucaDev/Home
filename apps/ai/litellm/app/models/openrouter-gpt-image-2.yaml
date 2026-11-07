@@ -1,0 +1,19 @@
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/litellm.home-operations.com/litellmmodel_v1alpha1.json
+apiVersion: litellm.home-operations.com/v1alpha1
+kind: LiteLLMModel
+metadata:
+  name: openrouter-gpt-image-2
+spec:
+  modelName: openrouter/gpt-image-2
+  proxyRef: litellm
+  params:
+    model: openrouter/openai/gpt-5.4-image-2
+    apiKeyRef:
+      name: litellm-secret
+      key: OPENROUTER_API_KEY
+  info:
+    mode: image_generation
+    maxInputTokens: 272000
+    maxOutputTokens: 128000
+    supportsVision: true

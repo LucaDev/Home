@@ -10,6 +10,8 @@ resources:
   - ./models/openrouter-claude-haiku-5.5.yaml
   - ./models/openrouter-claude-sonnet-5.5.yaml
   - ./models/openrouter-deepseek-v4.1-flash.yaml
+  - ./models/openrouter-gpt-image-2.yaml
+  - ./models/openrouter-nano-banana-2.1.yaml
   - ./models/openrouter-qwen3.7-flash.yaml
   - ./models/openrouter-qwen3-embedding-8b.yaml
   - ./servicemonitor.yaml
