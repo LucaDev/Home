@@ -17,6 +17,3 @@ spec:
     - group: service_users
       scopes: [email, groups, openid, profile]
   disableConsentPrompt: true
-  secretKeyAliases:
-    clientSecret:
-      - client-secret

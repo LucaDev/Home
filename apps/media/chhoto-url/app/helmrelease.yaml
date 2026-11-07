@@ -39,8 +39,17 @@ spec:
                 cpu: 100m
                 memory: 50M
             env:
-              site_url: "https://link.lucadev.de"
-              redirect_method: "TEMPORARY"
+              CHHOTO_SITE_URL: "https://link.lucadev.de"
+              CHHOTO_REDIRECT_METHOD: "TEMPORARY"
+              CHHOTO_OIDC_ISSUER_URL: "https://idm.lucadev.de/oauth2/openid/chhoto-url"
+              CHHOTO_OIDC_CLIENT_ID: "chhoto-url"
+              CHHOTO_OIDC_CLIENT_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: chhoto-url-kanidm-oauth2-credentials
+                    key: CLIENT_SECRET
+              # refuse to start unauthenticated if OIDC discovery fails
+              CHHOTO_EXIT_ON_NO_AUTH: "True"
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -61,37 +70,6 @@ spec:
             kind: Gateway
             namespace: networking
         rules:
-          - matches:
-              - path:
-                  type: PathPrefix
-                  value: /
-            backendRefs:
-              - name: *app
-                port: *port
           - backendRefs:
               - name: *app
                 port: *port
-      secure:
-        hostnames:
-          - link.lucadev.de
-        parentRefs:
-          - name: envoy
-            sectionName: https
-            kind: Gateway
-            namespace: networking
-        rules:
-          - matches:
-              - path:
-                  type: PathPrefix
-                  value: /oidc/
-              - path:
-                  type: PathPrefix
-                  value: /api/
-              - path:
-                  type: Exact
-                  value: /
-            backendRefs:
-              - name: *app
-                port: *port
-        annotations:
-          gatus.home-operations.com/enabled: "false"
