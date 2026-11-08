@@ -53,7 +53,7 @@ spec:
               directory: /rules
           rule_path: /rules/fake
     singleBinary:
-      replicas: 1
+      replicas: 0
       persistence:
         enabled: true
         storageClass: cached-singlereplica

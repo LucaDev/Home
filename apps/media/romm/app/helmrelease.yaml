@@ -13,6 +13,7 @@ spec:
   values:
     controllers:
       romm:
+        replicas: 0
         containers:
           app:
             image:
