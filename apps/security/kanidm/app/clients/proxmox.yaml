@@ -14,7 +14,7 @@ spec:
     - "https://10.0.0.1:8006/"
   scopeMap:
     - group: admins
-      scopes: [email, groups, openid, profile]
+      scopes: [email, groups_name, openid, profile]
   preferShortUsername: true
   disableConsentPrompt: true
   # Proxmox unterstützt kein PKCE
