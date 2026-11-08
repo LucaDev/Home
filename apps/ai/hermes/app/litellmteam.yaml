@@ -9,6 +9,7 @@ spec:
   # LiteLLM gives virtual keys no MCP servers unless granted.
   mcpServers:
     - context7
+    - esphome
     - flux
     - home_assistant
     - kubectl
