@@ -1,0 +1,13 @@
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/litellm.home-operations.com/litellmmcpserver_v1alpha1.json
+apiVersion: litellm.home-operations.com/v1alpha1
+kind: LiteLLMMCPServer
+metadata:
+  name: esphome
+spec:
+  alias: esphome
+  proxyRef: litellm
+  # ESPHome Device Builder's built-in MCP endpoint; cluster-internal, so the
+  # Envoy OIDC policy on esphome.lucadev.de does not apply.
+  url: http://esphome.home-automation.svc.cluster.local:6052/api/mcp
+  transport: http
