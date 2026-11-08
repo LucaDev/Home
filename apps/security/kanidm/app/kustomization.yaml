@@ -17,3 +17,4 @@ resources:
   - ./groups/service-users.yaml
   - ./groups/vpn-users.yaml
   - ./clients/cloudflare.yaml
+  - ./clients/proxmox.yaml
