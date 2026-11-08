@@ -62,6 +62,11 @@ spec:
     # ipv4NativeRoutingCIDR: 10.0.0.0/16 TODO
     # routingMode: native
 
+    cgroup:
+      autoMount:
+        enabled: false
+      hostRoot: /sys/fs/cgroup
+
     kubeProxyReplacement: true
     k8sServiceHost: homeserver.home.lucadev.de
     k8sServicePort: 6443
