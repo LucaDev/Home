@@ -108,6 +108,7 @@ spec:
               LITELLM_BASE_URL: "http://litellm.ai.svc.cluster.local:4000/v1"
               # In-cluster SearXNG for web_search; allowed by its searxng-ingress-ai NetworkPolicy.
               SEARXNG_URL: "http://searxng.ai.svc.cluster.local:8080"
+              EXTRACT_BACKEND: exa
               # Terminal HOME moves into each named profile; mise stays on the shared PVC.
               MISE_CACHE_DIR: /opt/data/.cache/mise
               MISE_CONFIG_DIR: /opt/data/.config/mise
