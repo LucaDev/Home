@@ -90,6 +90,8 @@ spec:
             protocol: UDP
     route:
       main:
+        # replaced by unifi-os; the older route would win for the same hostname
+        enabled: false
         hostnames:
           - unifi.lucadev.de
         parentRefs:

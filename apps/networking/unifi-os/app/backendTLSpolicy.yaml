@@ -7,7 +7,8 @@ spec:
   targetRefs:
     - group: ''
       kind: Service
-      name: unifi-os
+      # app-template appends the identifier once there is more than one service (app, devices)
+      name: unifi-os-app
       sectionName: https
   validation:
     wellKnownCACertificates: "System"
