@@ -45,9 +45,7 @@
       pkiBundle = "/var/lib/sbctl";
     };
 
-    # Pinned to 7.1: kernel 7.2 breaks Cilium's BPF probing (bpf_set_retval / FnSetRetval verifier rejection) - see https://github.com/cilium/cilium/issues/48016.
-    kernelPackages = pkgs.linuxPackages_7_1;
-    #kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = [ "bcachefs" ];
     bcachefs.package = pkgs-unstable.bcachefs-tools;
 
