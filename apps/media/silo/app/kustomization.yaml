@@ -6,6 +6,7 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
   - ./kanidmoauth2client.yaml
+  - ./litellmvirtualkey.yaml
   - ./secretstore.yaml
   - ./securitypolicy.yaml
 components:

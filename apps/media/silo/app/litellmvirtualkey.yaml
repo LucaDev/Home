@@ -1,0 +1,12 @@
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/litellm.home-operations.com/litellmvirtualkey_v1alpha1.json
+apiVersion: litellm.home-operations.com/v1alpha1
+kind: LiteLLMVirtualKey
+metadata:
+  name: silo
+spec:
+  keyAlias: silo
+  proxyRef: litellm
+  proxyNamespace: ai
+  secretName: silo-litellm
+  # No models listed: the key may call every model the proxy serves, Silo picks them in its UI.
