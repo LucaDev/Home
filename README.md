@@ -93,6 +93,7 @@ apps/
 │   ├── netbox
 │   ├── openspeedtest
 │   ├── unifi-controller
+│   ├── unifi-os
 │   └── wg-portal
 ├── secrets
 │   ├── bitwarden-cli

@@ -1,0 +1,10 @@
+---
+# Pods with this class get a writable /sys/fs/cgroup (containerd cgroup_writable), so systemd can run as PID 1
+# without privileged or extra capabilities. The handler is defined in nixos/modules/k3s.nix.
+# Requires cgroup2 mounted with nsdelegate on the node, otherwise containers could change their own limits.
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/node.k8s.io/runtimeclass_v1.json
+apiVersion: node.k8s.io/v1
+kind: RuntimeClass
+metadata:
+  name: systemd
+handler: runc-systemd

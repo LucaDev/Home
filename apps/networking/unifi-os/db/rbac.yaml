@@ -1,0 +1,34 @@
+---
+# Lets the SecretStore in networking (../app/externalsecret.yaml) read the role passwords, and nothing else
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: unifi-os-pg-secret-reader
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get"]
+    resourceNames:
+      - unifi-os-pg-unifi-core
+      - unifi-os-pg-ulp-go
+      - unifi-os-pg-unifi-directory
+      - unifi-os-pg-ucs-agent
+      - unifi-os-pg-unifi-identity-update
+      - unifi-os-pg-unifi-network-admin
+  # ESO validates the store with a SelfSubjectRulesReview
+  - apiGroups: ["authorization.k8s.io"]
+    resources: ["selfsubjectrulesreviews"]
+    verbs: ["create"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: unifi-os-pg-secret-reader
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: unifi-os-pg-secret-reader
+subjects:
+  - kind: ServiceAccount
+    name: unifi-os-pg-secret-reader
+    namespace: networking

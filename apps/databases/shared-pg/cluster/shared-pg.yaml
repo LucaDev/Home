@@ -21,6 +21,35 @@ spec:
   superuserSecret:
     name: cloudnative-pg-secret
   enableSuperuserAccess: true
+  managed:
+    roles:
+      # UniFi OS (apps/networking/unifi-os/db): generated passwords
+      - name: unifi-core
+        login: true
+        createdb: true
+        passwordSecret:
+          name: unifi-os-pg-unifi-core
+      - name: ulp-go
+        login: true
+        passwordSecret:
+          name: unifi-os-pg-ulp-go
+      - name: unifi-directory
+        login: true
+        passwordSecret:
+          name: unifi-os-pg-unifi-directory
+      - name: ucs-agent
+        login: true
+        passwordSecret:
+          name: unifi-os-pg-ucs-agent
+      - name: unifi-identity-update
+        login: true
+        passwordSecret:
+          name: unifi-os-pg-unifi-identity-update
+      - name: unifi_network_admin
+        login: true
+        createdb: true
+        passwordSecret:
+          name: unifi-os-pg-unifi-network-admin
   nodeMaintenanceWindow:
     inProgress: false
     reusePVC: true

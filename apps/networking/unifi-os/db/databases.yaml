@@ -1,0 +1,107 @@
+---
+# Same databases as UniFi OS creates locally. Each role owns its DB: on PostgreSQL 15+ only the owner
+# may create tables in the public schema (UniFi's local PG 14 used owner postgres + GRANT ALL).
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/postgresql.cnpg.io/database_v1.json
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: unifi-os-pg-unifi-core
+spec:
+  cluster:
+    name: shared-pg
+  name: unifi-core
+  owner: unifi-core
+  template: template0
+  encoding: UTF8
+  localeCollate: C.UTF-8
+  localeCType: C.UTF-8
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/postgresql.cnpg.io/database_v1.json
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: unifi-os-pg-ulp-go
+spec:
+  cluster:
+    name: shared-pg
+  name: ulp-go
+  owner: ulp-go
+  template: template0
+  encoding: UTF8
+  localeCollate: C.UTF-8
+  localeCType: C.UTF-8
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/postgresql.cnpg.io/database_v1.json
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: unifi-os-pg-ulp-go-syslog
+spec:
+  cluster:
+    name: shared-pg
+  name: ulp-go-syslog
+  owner: ulp-go
+  template: template0
+  encoding: UTF8
+  localeCollate: C.UTF-8
+  localeCType: C.UTF-8
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/postgresql.cnpg.io/database_v1.json
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: unifi-os-pg-unifi-directory
+spec:
+  cluster:
+    name: shared-pg
+  name: unifi-directory
+  owner: unifi-directory
+  template: template0
+  encoding: UTF8
+  localeCollate: C.UTF-8
+  localeCType: C.UTF-8
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/postgresql.cnpg.io/database_v1.json
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: unifi-os-pg-ucs-agent
+spec:
+  cluster:
+    name: shared-pg
+  name: ucs-agent
+  owner: ucs-agent
+  template: template0
+  encoding: UTF8
+  localeCollate: C.UTF-8
+  localeCType: C.UTF-8
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/postgresql.cnpg.io/database_v1.json
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: unifi-os-pg-unifi-identity-update
+spec:
+  cluster:
+    name: shared-pg
+  name: unifi-identity-update
+  owner: unifi-identity-update
+  template: template0
+  encoding: UTF8
+  localeCollate: C.UTF-8
+  localeCType: C.UTF-8
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/postgresql.cnpg.io/database_v1.json
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: unifi-os-pg-unifi-network
+spec:
+  cluster:
+    name: shared-pg
+  name: unifi-network
+  owner: unifi_network_admin
+  template: template0
+  encoding: UTF8
+  localeCollate: C.UTF-8
+  localeCType: C.UTF-8

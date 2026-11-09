@@ -13,3 +13,4 @@ resources:
   - ./wg-portal/ks.yaml
   - ./envoy-gateway/ks.yaml
   - ./external-dns/ks.yaml
+  - ./unifi-os/ks.yaml
