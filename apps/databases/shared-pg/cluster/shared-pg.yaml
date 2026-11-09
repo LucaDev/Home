@@ -23,7 +23,7 @@ spec:
   enableSuperuserAccess: true
   managed:
     roles:
-      # Silo (apps/media/silo/db): Passwort aus Bitwarden
+      # Silo (apps/media/silo/db): generated password
       - name: silo
         login: true
         passwordSecret:

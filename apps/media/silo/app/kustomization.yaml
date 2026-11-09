@@ -6,6 +6,7 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
   - ./kanidmoauth2client.yaml
+  - ./secretstore.yaml
   - ./securitypolicy.yaml
 components:
   - ../../../../components/volsync/hetzner

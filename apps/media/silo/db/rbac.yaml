@@ -1,0 +1,29 @@
+---
+# Lets the SecretStore in media (../app/secretstore.yaml) read the role password, and nothing else
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: silo-pg-secret-reader
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get"]
+    resourceNames:
+      - silo-pg
+  # ESO validates the store with a SelfSubjectRulesReview
+  - apiGroups: ["authorization.k8s.io"]
+    resources: ["selfsubjectrulesreviews"]
+    verbs: ["create"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: silo-pg-secret-reader
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: silo-pg-secret-reader
+subjects:
+  - kind: ServiceAccount
+    name: silo-pg-secret-reader
+    namespace: media
