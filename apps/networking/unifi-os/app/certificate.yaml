@@ -9,9 +9,9 @@ spec:
   issuerRef:
     name: letsencrypt-production-classic
     kind: ClusterIssuer
-  commonName: 'unifi-os.lucadev.de'
+  commonName: 'unifi.lucadev.de'
   dnsNames:
-    - 'unifi-os.lucadev.de'
+    - 'unifi.lucadev.de'
   privateKey:
     algorithm: RSA
     size: 2048

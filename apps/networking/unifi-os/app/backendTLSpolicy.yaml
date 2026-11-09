@@ -11,4 +11,4 @@ spec:
       sectionName: https
   validation:
     wellKnownCACertificates: "System"
-    hostname: unifi-os.lucadev.de
+    hostname: unifi.lucadev.de
