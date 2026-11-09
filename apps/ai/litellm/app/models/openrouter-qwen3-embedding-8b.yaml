@@ -25,3 +25,31 @@ spec:
   info:
     mode: embedding
     maxInputTokens: 32768
+---
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/litellm.home-operations.com/litellmmodel_v1alpha1.json
+apiVersion: litellm.home-operations.com/v1alpha1
+kind: LiteLLMModel
+metadata:
+  name: openrouter-qwen3-embedding-8b-small-dim
+spec:
+  modelName: openrouter/qwen3-embedding-8b-small-dim
+  proxyRef: litellm
+  params:
+    model: openrouter/qwen/qwen3-embedding-8b
+    apiKeyRef:
+      name: litellm-secret
+      key: OPENROUTER_API_KEY
+    additional:
+      # Nebius alone rate-limits bulk re-indexing (token quota 429s), so
+      # prefer DeepInfra. Paperless sends private documents: no providers
+      # that keep or train on prompts.
+      provider:
+        order:
+          - deepinfra
+          - nebius
+        allow_fallbacks: false
+        data_collection: deny
+      dimensions: 3072
+  info:
+    mode: embedding
+    maxInputTokens: 32768
