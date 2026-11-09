@@ -52,7 +52,8 @@ spec:
           install-cert:
             image: &image
               repository: ghcr.io/lucadev/unifios6-on-k8s
-              tag: 6.0.21-n11.0.99
+              # <uos>-n<network>-<commit>: the plain <uos>-n<network> tag is overwritten by every build
+              tag: 6.0.21-n11.0.99-4e71b15
             command: ["/bin/sh", "-c"]
             args:
               - |

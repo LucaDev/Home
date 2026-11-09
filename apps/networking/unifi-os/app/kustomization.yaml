@@ -8,5 +8,6 @@ resources:
   - ./externalsecret.yaml
   - ./certificate.yaml
   - ./backendTLSpolicy.yaml
+  - ./backendtrafficpolicy.yaml
 components:
   - ../../../../components/volsync/hetzner_ext

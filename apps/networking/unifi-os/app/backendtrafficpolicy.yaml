@@ -1,0 +1,18 @@
+---
+# Envoy talks HTTP/2 to UniFi's nginx (ALPN), but nginx can't do WebSockets over HTTP/2 (RFC 8441):
+# the UI's /api/ws/* upgrades failed with 400. Use the client's protocol upstream, so upgrades go
+# over HTTP/1.1 while normal requests stay on HTTP/2. Merged with the gateway-wide policy "envoy".
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/gateway.envoyproxy.io/backendtrafficpolicy_v1alpha1.json
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: BackendTrafficPolicy
+metadata:
+  name: unifi-os
+spec:
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: unifi-os
+  mergeType: StrategicMerge
+  useClientProtocol: true
+  httpUpgrade:
+    - type: websocket
