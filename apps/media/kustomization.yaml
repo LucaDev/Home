@@ -17,3 +17,4 @@ resources:
   - ./bichon/ks.yaml
   - ./bookboss/ks.yaml
   - ./aerofoil/ks.yaml
+  - ./silo/ks.yaml

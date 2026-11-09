@@ -1,0 +1,19 @@
+---
+# Silo braucht pgvector. "vector" ist nicht trusted, CNPG legt die Extension als Superuser an.
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/postgresql.cnpg.io/database_v1.json
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: silo
+spec:
+  cluster:
+    name: shared-pg
+  name: silo
+  owner: silo
+  template: template0
+  encoding: UTF8
+  localeCollate: C.UTF-8
+  localeCType: C.UTF-8
+  extensions:
+    - name: vector
+      ensure: present

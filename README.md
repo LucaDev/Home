@@ -66,6 +66,7 @@ apps/
 │   ├── memos
 │   ├── paperless-ngx
 │   ├── romm
+│   ├── silo
 │   └── tandoor
 ├── monitoring
 │   ├── alertmanager

@@ -1,0 +1,136 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: silo
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+    namespace: flux-system
+  interval: 1h
+  values:
+    controllers:
+      silo:
+        strategy: Recreate
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        pod:
+          enableServiceLinks: false
+          # kein runAsUser/runAsNonRoot: Container muss als root starten und wechselt selbst auf PUID/PGID.
+          # Silo nimmt PUID in die Gruppen der durchgereichten Devices (/dev/dri) auf, supplementalGroups nicht noetig.
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/silo-server/silo-server
+              # prerelease, bewusst gepinnt statt latest
+              tag: build-2117
+            env:
+              TZ: Europe/Berlin
+              PORT: "8080"
+              JF_PORT: "8096"
+              ABS_PORT: "13378"
+              PUID: "${APP_UID}"
+              PGID: "${APP_GID}"
+              MEDIA_CONTAINER_ROOT: /mnt/media
+              # externe Datenbanken: eingebettetes Postgres/Redis starten dann nicht (DATABASE_URL kommt aus dem Secret)
+              REDIS_URL: redis://shared-redis.databases.svc.cluster.local:6379/7
+              # Auto-Tuning wuerde den Silo-Container statt den DB-Host vermessen
+              POSTGRES_TUNE: "off"
+            envFrom:
+              - secretRef:
+                  name: silo
+            probes:
+              startup:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /api/v1/ready
+                    port: 8080
+                  periodSeconds: 5
+                  failureThreshold: 60 # Migrationen beim ersten Start + Plugin-Download
+              readiness:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /api/v1/ready
+                    port: 8080
+              liveness:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /api/v1/ready
+                    port: 8080
+                  failureThreshold: 6
+            # GPU wird mit jellyfin geteilt: der einzige amd.com/gpu gehoert dort schon, daher Limit 0 + hostPath /dev/dri
+            # (wie frigate). Ohne privileged lassen die Device-Cgroups hostPath-Devices nicht durch.
+            securityContext:
+              privileged: true
+            resources:
+              requests:
+                cpu: 200m
+                memory: 512Mi
+              limits:
+                memory: 8Gi
+                amd.com/gpu: 0
+
+    service:
+      app:
+        controller: silo
+        ports:
+          http:
+            port: 8080
+          # Jellyfin-kompatible Clients, nur clusterintern
+          jellyfin:
+            port: 8096
+
+    persistence:
+      config:
+        existingClaim: "${APP}"
+        globalMounts:
+          - path: /config
+      dri:
+        type: hostPath
+        hostPath: /dev/dri
+        globalMounts:
+          - path: /dev/dri
+      # gleiche Library wie jellyfin, aber nur lesend
+      media:
+        type: hostPath
+        hostPath: /mnt/data/hdd/single/media
+        globalMounts:
+          - path: /mnt/media
+            readOnly: true
+      transcode:
+        type: emptyDir
+        globalMounts:
+          - path: /tmp/silo-transcode
+      download-artifacts:
+        type: emptyDir
+        globalMounts:
+          - path: /tmp/silo-download-artifacts
+
+    route:
+      app:
+        hostnames:
+          - silo.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https
+        rules:
+          - backendRefs:
+              - name: app
+                port: 8080
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: Filme und Serien (Test)
+          gethomepage.dev/group: Medien
+          gethomepage.dev/icon: mdi-filmstrip-box
+          gethomepage.dev/name: Silo

@@ -1,0 +1,28 @@
+---
+# Silo konfiguriert OIDC nur ueber die UI (Admin > Sign-in & Security, Plugin "OpenID Connect Sign-in").
+# Dort eintragen:
+#   Issuer URL:    https://idm.lucadev.de/oauth2/openid/silo   (gegen das discovery-Dokument pruefen, Slash am Ende!)
+#   Client ID:     silo
+#   Client secret: kubectl -n media get secret silo-kanidm-oauth2-credentials -o jsonpath='{.data.CLIENT_SECRET}' | base64 -d
+#   "Request the groups scope" aktivieren, "Request offline access" aus lassen
+# TODO: INSTALLATION_ID durch die ID aus der Redirect URI ersetzen, die Silo nach der Plugin-Installation anzeigt
+#       (setzt "Silo public URL" = https://silo.lucadev.de in Admin > Server > General voraus)
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: silo
+spec:
+  kanidmRef:
+    name: kanidm
+    namespace: security
+  displayname: "Silo"
+  origin: "https://silo.lucadev.de/"
+  redirectUrl:
+    - "https://silo.lucadev.de/api/v2/auth/oauth/INSTALLATION_ID/callback"
+  scopeMap:
+    - group: media_users
+      scopes: [email, groups, openid, profile]
+    - group: admins
+      scopes: [email, groups, openid, profile]
+  preferShortUsername: true
+  disableConsentPrompt: true
