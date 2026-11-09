@@ -21,10 +21,10 @@ spec:
       - name: UNIFI_MCP_PORT
         value: "3000"
       - name: UNIFI_NETWORK_HOST
-        value: unifi-controller-internal.networking.svc.cluster.local
+        value: unifi-os-app.networking.svc.cluster.local
       # Self-hosted Network Application, not UniFi OS.
       - name: UNIFI_NETWORK_PORT
-        value: "8443"
+        value: "443"
     envFrom:
       - secretRef:
           name: unifi-network-mcp
