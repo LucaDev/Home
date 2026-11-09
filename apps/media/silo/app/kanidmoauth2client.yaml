@@ -18,7 +18,7 @@ spec:
   displayname: "Silo"
   origin: "https://silo.lucadev.de/"
   redirectUrl:
-    - "https://silo.lucadev.de/api/v2/auth/oauth/INSTALLATION_ID/callback"
+    - "https://silo.lucadev.de/api/v2/auth/oauth/5/callback"
   scopeMap:
     - group: media_users
       scopes: [email, groups, openid, profile]
