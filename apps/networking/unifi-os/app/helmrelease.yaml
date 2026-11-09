@@ -53,7 +53,7 @@ spec:
             image: &image
               repository: ghcr.io/lucadev/unifios6-on-k8s
               # <uos>-n<network>-<commit>: the plain <uos>-n<network> tag is overwritten by every build
-              tag: 6.0.21-n11.0.99-4e71b15
+              tag: 6.0.21-n11.0.99-c3b031b
             command: ["/bin/sh", "-c"]
             args:
               - |
@@ -117,8 +117,7 @@ spec:
             port: 443
             protocol: HTTPS
       devices:
-        # enable at cutover: unifi-controller still holds these ports on the node IP
-        enabled: false
+        enabled: true
         controller: unifi-os
         type: LoadBalancer
         loadBalancerClass: "io.cilium/node"
@@ -136,7 +135,7 @@ spec:
     route:
       app:
         hostnames:
-          - unifi-os.lucadev.de
+          - unifi.lucadev.de
         parentRefs:
           - name: envoy
             namespace: networking

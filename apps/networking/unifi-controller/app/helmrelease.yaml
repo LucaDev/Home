@@ -15,6 +15,7 @@ spec:
     controllers:
       unifi:
         type: statefulset
+        replicas: 0
         annotations:
           reloader.stakater.com/auto: "true"
         statefulset:
@@ -61,6 +62,7 @@ spec:
         controller: unifi
         type: LoadBalancer
         loadBalancerClass: "io.cilium/node"
+        enabled: false
         ports:
           controller:
             enabled: true
