@@ -16,9 +16,9 @@ spec:
               kubernetes.io/metadata.name: networking
           podSelector:
             matchLabels:
-              app.kubernetes.io/name: unifi-controller
+              app.kubernetes.io/name: unifi-os
       ports:
-        - port: 8443
+        - port: 443
           protocol: TCP
     - to:
         - namespaceSelector: {}
