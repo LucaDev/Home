@@ -7,14 +7,15 @@ metadata:
 spec:
   secretName: unifi-os-certificate
   issuerRef:
-    name: letsencrypt-production
+    name: letsencrypt-production-classic
     kind: ClusterIssuer
   commonName: 'unifi-os.lucadev.de'
   dnsNames:
     - 'unifi-os.lucadev.de'
   privateKey:
-    algorithm: ECDSA
-    size: 256
+    algorithm: RSA
+    size: 2048
     rotationPolicy: Always
   usages:
     - digital signature
+    - key encipherment
