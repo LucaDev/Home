@@ -69,7 +69,6 @@ rules:
   - apiGroups:
       - acme.cert-manager.io
       - admissionregistration.k8s.io
-      - ai.mongodb.com
       - apiextensions.k8s.io
       - apiregistration.k8s.io
       - apps
@@ -100,8 +99,6 @@ rules:
       - kustomize.toolkit.fluxcd.io
       - litellm.home-operations.com
       - metrics.k8s.io
-      - mongodb.com
-      - mongodbcommunity.mongodb.com
       - monitoring.coreos.com
       - monitoring.grafana.com
       - networking.k8s.io

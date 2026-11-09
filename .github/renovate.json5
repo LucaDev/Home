@@ -83,12 +83,6 @@
       separateMinorPatch: true,
     },
     {
-      description: "keep mongo on 8.0.x",
-      matchPackageNames: ["mongo"],
-      matchDatasources: ["docker"],
-      allowedVersions: "<8.1.0",
-    },
-    {
       description: "hermes-agent switched from calver tags (v2026.9.24) to semver; ignore the old tags",
       matchPackageNames: ["/nousresearch\\/hermes-agent$/"],
       matchDatasources: ["docker"],

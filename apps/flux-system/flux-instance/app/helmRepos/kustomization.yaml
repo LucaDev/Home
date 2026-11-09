@@ -5,5 +5,4 @@ kind: Kustomization
 namespace: flux-system
 resources:
   - ./app-template.yaml
-  - ./mongodb.yaml
   - ./bjw-s-labs.yaml

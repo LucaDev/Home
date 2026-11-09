@@ -25,7 +25,6 @@ apps/
 ├── databases
 │   ├── barman-cloud-plugin
 │   ├── cloudnative-pg
-│   ├── mck
 │   ├── redis
 │   └── shared-pg
 ├── downloads
@@ -92,7 +91,6 @@ apps/
 │   ├── netboot
 │   ├── netbox
 │   ├── openspeedtest
-│   ├── unifi-controller
 │   ├── unifi-os
 │   └── wg-portal
 ├── secrets

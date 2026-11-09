@@ -8,4 +8,3 @@ resources:
   - ./cloudnative-pg/ks.yaml
   - ./barman-cloud-plugin/ks.yaml
   - ./shared-pg/ks.yaml
-  - ./mck/ks.yaml
