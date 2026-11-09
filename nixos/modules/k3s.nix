@@ -34,4 +34,18 @@
     requires = [ "mnt-data.mount" ];
     after = [ "mnt-data.mount" ];
   };
+
+  # runc-systemd for rw cgroup
+  systemd.tmpfiles.rules = [
+    "L+ /var/lib/rancher/k3s/agent/etc/containerd/config-v3.toml.tmpl - - - - ${pkgs.writeText "config-v3.toml.tmpl" ''
+      {{ template "base" . }}
+
+      [plugins.'io.containerd.cri.v1.runtime'.containerd.runtimes.runc-systemd]
+        runtime_type = "io.containerd.runc.v2"
+        cgroup_writable = true
+
+      [plugins.'io.containerd.cri.v1.runtime'.containerd.runtimes.runc-systemd.options]
+        SystemdCgroup = {{ .SystemdCgroup }}
+    ''}"
+  ];
 }
