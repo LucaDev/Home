@@ -13,6 +13,7 @@ spec:
   values:
     controllers:
       seerr:
+        replicas: 0
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
@@ -77,7 +78,7 @@ spec:
               - name: app
                 port: 5055
         annotations:
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: "false"
           gethomepage.dev/description: Filme & Serien Anfragen
           gethomepage.dev/group: Medien
           gethomepage.dev/icon: seerr

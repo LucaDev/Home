@@ -119,7 +119,7 @@ spec:
     route:
       app:
         hostnames:
-          - silo.lucadev.de
+          - lucaflix.lucadev.de
         parentRefs:
           - name: envoy
             namespace: networking
@@ -130,7 +130,7 @@ spec:
                 port: 8080
         annotations:
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/description: Filme und Serien (Test)
+          gethomepage.dev/description: Filme und Serien
           gethomepage.dev/group: Medien
           gethomepage.dev/icon: mdi-filmstrip-box
           gethomepage.dev/name: Silo

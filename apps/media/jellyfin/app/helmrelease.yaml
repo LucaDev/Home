@@ -14,6 +14,7 @@ spec:
   values:
     controllers:
       jellyfin:
+        replicas: 0
         type: statefulset
         annotations:
           reloader.stakater.com/auto: "true"
@@ -79,7 +80,7 @@ spec:
     route:
       app:
         hostnames:
-          - lucaflix.lucadev.de
+          - lucaflix-old.lucadev.de
         parentRefs:
           - name: envoy
             namespace: networking
@@ -89,7 +90,7 @@ spec:
               - name: app
                 port: 8096
         annotations:
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: "false"
           gethomepage.dev/description: Filme und Serien
           gethomepage.dev/group: Medien
           gethomepage.dev/icon: jellyfin
