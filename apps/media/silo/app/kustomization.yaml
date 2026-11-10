@@ -8,6 +8,5 @@ resources:
   - ./kanidmoauth2client.yaml
   - ./litellmvirtualkey.yaml
   - ./secretstore.yaml
-  - ./securitypolicy.yaml
 components:
   - ../../../../components/volsync/hetzner
