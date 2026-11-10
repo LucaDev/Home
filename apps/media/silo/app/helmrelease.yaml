@@ -27,7 +27,7 @@ spec:
             image:
               repository: ghcr.io/silo-server/silo-server
               # prerelease, bewusst gepinnt statt latest
-              tag: build-2117
+              tag: build-2141
             env:
               TZ: Europe/Berlin
               PORT: "8080"
