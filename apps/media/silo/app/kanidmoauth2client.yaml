@@ -16,10 +16,12 @@ spec:
     name: kanidm
     namespace: security
   displayname: "Silo"
-  origin: "https://silo.lucadev.de/"
+  origin: "https://lucaflix.lucadev.de/"
   redirectUrl:
-    - "https://silo.lucadev.de/api/v2/auth/oauth/5/callback"
+    - "https://lucaflix.lucadev.de/api/v2/auth/oauth/5/callback"
   scopeMap:
+    - group: media_guests
+      scopes: [email, groups, openid, profile]
     - group: media_users
       scopes: [email, groups, openid, profile]
     - group: admins
