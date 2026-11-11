@@ -21,6 +21,7 @@ apps/
 │   ├── hermes
 │   ├── litellm
 │   ├── litellm-operator
+│   ├── open-webui
 │   └── searxng
 ├── databases
 │   ├── barman-cloud-plugin

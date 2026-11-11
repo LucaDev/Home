@@ -1,0 +1,36 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: KanidmOAuth2Client
+metadata:
+  name: open-webui
+spec:
+  kanidmRef:
+    name: kanidm
+    namespace: security
+  displayname: "Open WebUI"
+  origin: "https://chat.lucadev.de/"
+  image:
+    url: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/open-webui.svg"
+  redirectUrl:
+    - "https://chat.lucadev.de/oauth/oidc/callback"
+  scopeMap:
+    - group: admins
+      scopes: [email, openid, profile]
+  # Open WebUI reads the role from this claim (OAUTH_ROLES_CLAIM).
+  claimMap:
+    - name: openwebui_role
+      valuesMap:
+        - group: admins
+          values:
+            - admin
+      joinStrategy: csv
+  preferShortUsername: true
+  strictRedirectUrl: true
+  disableConsentPrompt: true
+  # Exposes the credentials under Open WebUI's env names, so the generated
+  # secret can be consumed with a plain envFrom.
+  secretKeyAliases:
+    clientId:
+      - OAUTH_CLIENT_ID
+    clientSecret:
+      - OAUTH_CLIENT_SECRET

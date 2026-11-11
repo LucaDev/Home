@@ -1,0 +1,157 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: open-webui
+spec:
+  interval: 30m
+  chartRef:
+    kind: OCIRepository
+    name: app-template-4
+    namespace: flux-system
+  values:
+    controllers:
+      open-webui:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        pod:
+          securityContext:
+            fsGroup: 1000
+            fsGroupChangePolicy: OnRootMismatch
+            runAsGroup: 1000
+            runAsNonRoot: true
+            runAsUser: 1000
+            seccompProfile:
+              type: RuntimeDefault
+        # SQLite and the vector store live on a RWO volume.
+        strategy: Recreate
+        containers:
+          app:
+            image:
+              # Slim variant: no bundled embedding/whisper models; embeddings go through LiteLLM.
+              repository: ghcr.io/open-webui/open-webui
+              tag: v0.13.3-slim@sha256:8faf917243afee55e042b10ddc08ed6ae6fa9c62522c7e14d81e7cf2922325ae
+            env:
+              # The image sets HOME=/root, which is not writable as non-root.
+              HOME: /tmp
+              PORT: &port 8080
+              WEBUI_URL: &url https://chat.lucadev.de
+              CORS_ALLOW_ORIGIN: *url
+              ANONYMIZED_TELEMETRY: "false"
+              DO_NOT_TRACK: "true"
+              SCARF_NO_ANALYTICS: "true"
+              ENABLE_VERSION_UPDATE_CHECK: "false"
+              # LiteLLM is the only model backend.
+              ENABLE_OLLAMA_API: "false"
+              ENABLE_OPENAI_API: "true"
+              OPENAI_API_BASE_URL: &litellm http://litellm.ai.svc.cluster.local:4000/v1
+              OPENAI_API_KEY: &litellmKey
+                valueFrom:
+                  secretKeyRef:
+                    name: open-webui-litellm
+                    key: key
+              # RAG embeddings via LiteLLM (the slim image ships no local model).
+              RAG_EMBEDDING_ENGINE: openai
+              RAG_EMBEDDING_MODEL: openrouter/qwen3-embedding-8b
+              RAG_OPENAI_API_BASE_URL: *litellm
+              RAG_OPENAI_API_KEY: *litellmKey
+              # Kanidm SSO is the only login; the client credentials come via envFrom.
+              ENABLE_OAUTH_SIGNUP: "true"
+              ENABLE_LOGIN_FORM: "false"
+              ENABLE_PASSWORD_AUTH: "false"
+              OAUTH_AUTO_REDIRECT: "true"
+              OAUTH_PROVIDER_NAME: Kanidm
+              OPENID_PROVIDER_URL: https://idm.lucadev.de/oauth2/openid/open-webui/.well-known/openid-configuration
+              OPENID_REDIRECT_URI: https://chat.lucadev.de/oauth/oidc/callback
+              OAUTH_SCOPES: openid email profile
+              # Kanidm enforces PKCE.
+              OAUTH_CODE_CHALLENGE_METHOD: S256
+              ENABLE_OAUTH_ROLE_MANAGEMENT: "true"
+              OAUTH_ROLES_CLAIM: openwebui_role
+              OAUTH_ALLOWED_ROLES: user,admin
+              OAUTH_ADMIN_ROLES: admin
+              ENABLE_OAUTH_ID_TOKEN_COOKIE: "false"
+            envFrom:
+              - secretRef:
+                  name: open-webui-secret
+              - secretRef:
+                  name: open-webui-kanidm-oauth2-credentials
+            probes:
+              liveness: &probe
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: *port
+                  periodSeconds: 10
+                  timeoutSeconds: 5
+                  failureThreshold: 3
+              readiness: *probe
+              startup:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: *port
+                  periodSeconds: 10
+                  timeoutSeconds: 5
+                  failureThreshold: 30
+            resources:
+              requests:
+                cpu: 20m
+                memory: 512Mi
+              limits:
+                memory: 2Gi
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop:
+                  - ALL
+
+    service:
+      app:
+        ports:
+          http:
+            port: *port
+
+    persistence:
+      data:
+        existingClaim: open-webui
+        globalMounts:
+          - path: /app/backend/data
+      # Open WebUI copies its branding assets here on every start. Only the
+      # swagger-ui bundle is lost, which /docs (disabled outside ENV=dev) uses.
+      static:
+        type: emptyDir
+        globalMounts:
+          - path: /app/backend/open_webui/static
+      tmpfs:
+        type: emptyDir
+        globalMounts:
+          - path: /tmp
+
+    route:
+      app:
+        hostnames:
+          - chat.lucadev.de
+        parentRefs:
+          - name: envoy
+            namespace: networking
+            sectionName: https
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/description: KI-Chat
+          gethomepage.dev/group: Weitere
+          gethomepage.dev/icon: open-webui.svg
+          gethomepage.dev/name: Open WebUI
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: http
+            # Streamed answers from slow models can take longer than the default.
+            timeouts:
+              request: 0s
