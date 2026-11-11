@@ -83,8 +83,12 @@ spec:
     persistence:
       config:
         existingClaim: "${APP}"
+        # only persist Silo's own data; the image also creates postgres/redis/
+        # meilisearch dirs (0750, foreign uids) in /config which are unused here
+        # (external DB/Redis) and break the unprivileged volsync mover
         globalMounts:
-          - path: /config
+          - path: /config/silo
+            subPath: silo
       dri:
         type: hostPath
         hostPath: /dev/dri

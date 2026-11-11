@@ -54,3 +54,7 @@ spec:
     retain:
       daily: 14
     cacheStorageClassName: cached-singlereplica
+    moverSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 65543
+      fsGroup: 65543

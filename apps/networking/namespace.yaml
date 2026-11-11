@@ -3,3 +3,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: networking
+  annotations:
+    # unifi-os volume has mixed ownership (root, postgres, unifi, rabbitmq, 0600 keys);
+    # the mover needs DAC_OVERRIDE to read it
+    volsync.backube/privileged-movers: "true"
