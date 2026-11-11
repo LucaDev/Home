@@ -15,6 +15,9 @@ spec:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: hermes
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: open-webui
       ports:
         - port: 8080
           protocol: TCP

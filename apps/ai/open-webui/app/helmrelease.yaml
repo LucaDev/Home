@@ -42,6 +42,10 @@ spec:
               DO_NOT_TRACK: "true"
               SCARF_NO_ANALYTICS: "true"
               ENABLE_VERSION_UPDATE_CHECK: "false"
+              # Env is authoritative: otherwise the first start persists every setting
+              # to the DB and later changes here are ignored. Admin UI edits to these
+              # settings do not survive a restart.
+              ENABLE_PERSISTENT_CONFIG: "false"
               # LiteLLM is the only model backend.
               ENABLE_OLLAMA_API: "false"
               ENABLE_OPENAI_API: "true"
@@ -56,6 +60,11 @@ spec:
               RAG_EMBEDDING_MODEL: openrouter/qwen3-embedding-8b
               RAG_OPENAI_API_BASE_URL: *litellm
               RAG_OPENAI_API_KEY: *litellmKey
+              # Web search via the in-cluster SearXNG; allowed by its searxng-ingress-ai NetworkPolicy.
+              ENABLE_WEB_SEARCH: "true"
+              WEB_SEARCH_ENGINE: searxng
+              SEARXNG_QUERY_URL: http://searxng.ai.svc.cluster.local:8080/search?q=<query>
+              WEB_SEARCH_RESULT_COUNT: "5"
               # Kanidm SSO is the only login; the client credentials come via envFrom.
               ENABLE_OAUTH_SIGNUP: "true"
               ENABLE_LOGIN_FORM: "false"
