@@ -19,15 +19,12 @@ spec:
 
         pod:
           enableServiceLinks: false
-          # kein runAsUser/runAsNonRoot: Container muss als root starten und wechselt selbst auf PUID/PGID.
-          # Silo nimmt PUID in die Gruppen der durchgereichten Devices (/dev/dri) auf, supplementalGroups nicht noetig.
 
         containers:
           app:
             image:
               repository: ghcr.io/silo-server/silo-server
-              # prerelease, bewusst gepinnt statt latest
-              tag: build-2141
+              tag: build-2154
             env:
               TZ: Europe/Berlin
               PORT: "8080"
@@ -36,9 +33,7 @@ spec:
               PUID: "${APP_UID}"
               PGID: "${APP_GID}"
               MEDIA_CONTAINER_ROOT: /mnt/media
-              # externe Datenbanken: eingebettetes Postgres/Redis starten dann nicht (DATABASE_URL kommt aus dem Secret)
               REDIS_URL: redis://shared-redis.databases.svc.cluster.local:6379/7
-              # Auto-Tuning wuerde den Silo-Container statt den DB-Host vermessen
               POSTGRES_TUNE: "off"
             envFrom:
               - secretRef:
@@ -52,7 +47,7 @@ spec:
                     path: /api/v1/ready
                     port: 8080
                   periodSeconds: 5
-                  failureThreshold: 60 # Migrationen beim ersten Start + Plugin-Download
+                  failureThreshold: 60
               readiness:
                 enabled: true
                 custom: true
@@ -68,8 +63,6 @@ spec:
                     path: /api/v1/ready
                     port: 8080
                   failureThreshold: 6
-            # GPU wird mit jellyfin geteilt: der einzige amd.com/gpu gehoert dort schon, daher Limit 0 + hostPath /dev/dri
-            # (wie frigate). Ohne privileged lassen die Device-Cgroups hostPath-Devices nicht durch.
             securityContext:
               privileged: true
             resources:
@@ -86,9 +79,6 @@ spec:
         ports:
           http:
             port: 8080
-          # Jellyfin-kompatible Clients, nur clusterintern
-          jellyfin:
-            port: 8096
 
     persistence:
       config:
@@ -100,7 +90,6 @@ spec:
         hostPath: /dev/dri
         globalMounts:
           - path: /dev/dri
-      # gleiche Library wie jellyfin, aber nur lesend
       media:
         type: hostPath
         hostPath: /mnt/data/hdd/single/media
