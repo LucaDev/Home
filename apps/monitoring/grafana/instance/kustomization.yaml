@@ -10,3 +10,4 @@ resources:
   - ./servicemonitor.yaml
   - ./datasource.yaml
   - ./kanidmoauth2client.yaml
+  - ./mcp

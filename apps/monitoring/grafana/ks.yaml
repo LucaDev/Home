@@ -33,3 +33,4 @@ spec:
   dependsOn:
     - name: external-secrets-stores
     - name: grafana-operator
+    - name: litellm-operator

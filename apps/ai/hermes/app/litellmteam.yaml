@@ -11,6 +11,7 @@ spec:
     - context7
     - esphome
     - flux
+    - grafana
     - home_assistant
     - kubectl
     - kubesearch
