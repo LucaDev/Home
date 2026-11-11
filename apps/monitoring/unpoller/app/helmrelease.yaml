@@ -29,7 +29,7 @@ spec:
           app:
             image:
               repository: ghcr.io/unpoller/unpoller
-              tag: v5.9.4
+              tag: v5.9.5
             env:
               UP_UNIFI_DEFAULT_ROLE: home-ops
               UP_UNIFI_DEFAULT_URL: https://unifi-os-app.networking.svc.cluster.local
