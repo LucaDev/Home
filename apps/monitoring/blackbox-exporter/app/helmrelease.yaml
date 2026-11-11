@@ -110,14 +110,6 @@ spec:
         interval: 1m
         scrapeTimeout: 30s
       targets:
-        # Robot vacuums
-        - module: icmp
-          name: valetudo-living-room-icmp
-          url: "roborock-vacuum-a15.home.lucadev.de"
-        - module: http_2xx
-          name: valetudo-living-room-http
-          url: "http://roborock-vacuum-a15.home.lucadev.de"
-
           # WG Tunnels
         - module: http_2xx_ignore
           name: wg-opa
