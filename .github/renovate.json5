@@ -59,6 +59,15 @@
       ],
     },
     {
+      description: "Flux Operator Group: keep operator, instance chart and manifests artifact in lockstep",
+      groupName: "Flux Operator",
+      matchDatasources: ["docker"],
+      matchPackageNames: ["/^ghcr.io/controlplaneio-fluxcd//"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
+    },
+    {
       description: "Flux Group",
       groupName: "Flux",
       matchDatasources: ["docker", "github-tags"],
@@ -102,6 +111,15 @@
         "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n.+/(?<currentValue>(v|\\d)[^/]+)",
       ],
       datasourceTemplate: "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
+    },
+    {
+      customType: "regex",
+      description: ["Process the Flux Operator manifests artifact (pins the Flux release)"],
+      managerFilePatterns: ["/(^|/)apps/flux-system/flux-instance/.+\\.ya?ml$/"],
+      matchStrings: [
+        "artifact: oci://(?<depName>ghcr\\.io/controlplaneio-fluxcd/flux-operator-manifests):(?<currentValue>v\\S+)",
+      ],
+      datasourceTemplate: "docker",
     },
     {
       customType: "regex",
