@@ -4,6 +4,9 @@ apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
 metadata:
   name: ups
+  annotations:
+    # ${DS_PROMETHEUS} is resolved by the Grafana operator (spec.datasources), not Flux.
+    kustomize.toolkit.fluxcd.io/substitute: disabled
 spec:
   allowCrossNamespaceImport: true
   instanceSelector:
