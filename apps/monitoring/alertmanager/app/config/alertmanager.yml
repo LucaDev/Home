@@ -1,6 +1,10 @@
 ---
 receivers:
   - name: "null"
+  - name: "healthchecks"
+    webhook_configs:
+      - url_file: /etc/secrets/healthchecks_watchdog_url
+        send_resolved: false
   - name: "discord"
     discord_configs:
       - webhook_url_file: /etc/secrets/discord_alert_webhook
@@ -15,9 +19,16 @@ route:
   repeat_interval: 24h
   receiver: "discord"
   routes:
+    # Dead man's switch: Watchdog fires permanently, healthchecks.io alerts when pings stop
+    - receiver: "healthchecks"
+      matchers:
+        - alertname = "Watchdog"
+      group_wait: 0s
+      group_interval: 1m
+      repeat_interval: 1m
     - receiver: "null"
       matchers:
-        - alertname =~ "InfoInhibitor|Watchdog"
+        - alertname = "InfoInhibitor"
     - receiver: "discord"
       matchers:
         - severity = critical
