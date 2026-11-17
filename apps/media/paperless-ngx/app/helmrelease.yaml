@@ -19,7 +19,7 @@ spec:
           app:
             image:
               repository: ghcr.io/paperless-ngx/paperless-ngx
-              tag: 3.4.2
+              tag: 3.5.0
               pullPolicy: Always
             env:
               PAPERLESS_AI_LLM_API_KEY:
