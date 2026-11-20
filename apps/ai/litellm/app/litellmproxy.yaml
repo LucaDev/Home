@@ -5,7 +5,7 @@ kind: LiteLLMProxy
 metadata:
   name: litellm
 spec:
-  image: ghcr.io/berriai/litellm:1.110.0@sha256:4295b064b22eb88f9530e616afc812edd47048891ba64896bfc3fa74e2b883c3
+  image: ghcr.io/berriai/litellm:1.110.2@sha256:ef798594ca3db8d81bad2e1439f536f49b71fe095ee9f20416f5e149b4e22035
   replicas: 1
   # Admin API access for DB-backed resources (LiteLLMVirtualKey). Models stay
   # file-backed because applyMode is left at its default.
