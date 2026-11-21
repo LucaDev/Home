@@ -9,7 +9,7 @@ spec:
   proxyRef: litellm
   transport: http
   workload:
-    image: ghcr.io/sirkirby/unifi-network-mcp:0.48.0@sha256:0e7aa0dd506e8c921acb7ec1ad9089a73e8be4531db1f4f13944d406c7e936c2
+    image: ghcr.io/sirkirby/unifi-network-mcp:0.50.1@sha256:7cf0c557965b1e608288c22ca0b50345891fd76d06ac037138b3764680fc9db0
     automountServiceAccountToken: false
     env:
       - name: UNIFI_MCP_ALLOWED_HOSTS
