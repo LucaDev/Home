@@ -202,7 +202,7 @@ spec:
                 readOnly: true
       mise:
         type: image
-        image: ghcr.io/jdx/mise:2026.11.9
+        image: ghcr.io/jdx/mise:2026.11.12
         advancedMounts:
           hermes:
             app:
