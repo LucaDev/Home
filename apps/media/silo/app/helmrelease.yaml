@@ -24,7 +24,7 @@ spec:
           app:
             image:
               repository: ghcr.io/silo-server/silo-server
-              tag: build-2498
+              tag: build-2906
             env:
               TZ: Europe/Berlin
               PORT: "8080"
