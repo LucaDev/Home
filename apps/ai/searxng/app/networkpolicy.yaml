@@ -18,6 +18,13 @@ spec:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: open-webui
+        # n8n lives in another namespace, so it needs an explicit namespaceSelector.
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: home-automation
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: n8n
       ports:
         - port: 8080
           protocol: TCP
