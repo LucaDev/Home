@@ -31,7 +31,7 @@ spec:
             image:
               # Slim variant: no bundled embedding/whisper models; embeddings go through LiteLLM.
               repository: ghcr.io/open-webui/open-webui
-              tag: v0.13.4-slim@sha256:0c4439e78c24c85e3e7a41936771d3b02f0df38daf28a086cd83ca74804f7676
+              tag: v0.13.5-slim@sha256:f5c36d2d6c39fa6dac100ef6907d741b9571ab3d7be2368a06fa6fc13c35e25f
             env:
               # The image sets HOME=/root, which is not writable as non-root.
               HOME: /tmp
