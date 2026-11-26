@@ -14,7 +14,7 @@ spec:
       distribution:
         # Pins the Flux release ("2.x" resolves to the newest one in this artifact).
         # Bumped by Renovate together with the flux-operator charts.
-        artifact: oci://ghcr.io/controlplaneio-fluxcd/flux-operator-manifests:v0.63.1
+        artifact: oci://ghcr.io/controlplaneio-fluxcd/flux-operator-manifests:v0.64.0
         version: 2.x
       cluster:
         networkPolicy: false
