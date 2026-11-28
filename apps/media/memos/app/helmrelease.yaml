@@ -21,7 +21,7 @@ spec:
           app:
             image:
               repository: neosmemo/memos
-              tag: 26.11.2
+              tag: 26.11.3
             resources:
               requests:
                 cpu: 5m
